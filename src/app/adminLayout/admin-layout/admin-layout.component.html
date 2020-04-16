@@ -1,32 +1,36 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-  </mat-toolbar-row>
 
-</mat-toolbar>
+<div class="example-container">
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-      <a mat-list-item [routerLink]="'/dashboard'"> Dashboard </a>
-      <a mat-list-item [routerLink]="'/teams'"> Teams </a>
-      <a mat-list-item [routerLink]="'/projects'"> Projects </a>
-      <a mat-list-item [routerLink]="'/infrastructure'"> Infrastructure </a>
-      <a mat-list-item [routerLink]="'/architecture'"> Architecture </a>
-      <a mat-list-item [routerLink]="'/admin'"> Admin </a>
-      <a mat-list-item [routerLink]="'/aboutUs'"> About Us </a>
-      <a mat-list-item [routerLink]="'/contactUs'"> Contact Us </a>
-      <a mat-list-item (click)="sidenav.toggle()" >Close</a>
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened>
+      <mat-nav-list>
 
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div style="height: 84vh;">
+        <a mat-list-item [routerLink]="'/dashboard'"> Dashboard </a>
+        <a mat-list-item [routerLink]="'/teams'"> Teams </a>
+        <a mat-list-item [routerLink]="'/projects'"> Projects </a>
+        <a mat-list-item [routerLink]="'/infrastructure'"> Infrastructure </a>
+        <a mat-list-item [routerLink]="'/architecture'"> Architecture </a>
+        <a mat-list-item [routerLink]="'/admin'"> Admin </a>
+        <a mat-list-item [routerLink]="'/aboutUs'"> About Us </a>
+        <a mat-list-item [routerLink]="'/contactUs'"> Contact Us </a>
+        <a mat-list-item (click)="sidenav.toggle()" >Close</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
 
       <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
