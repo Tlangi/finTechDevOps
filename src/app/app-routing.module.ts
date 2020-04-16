@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {FormControlComponent} from './forms/form-control/form-control.component';
-import {FormGroupComponent} from './forms/form-group/form-group.component';
-import {FormBuilderComponent} from './forms/form-builder/form-builder.component';
-import {FormArrayComponent} from './forms/form-array/form-array.component';
-import {HomeComponent} from './home/home.component';
-
+import {AdminLayoutComponent} from './adminLayout/admin-layout/admin-layout.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 
 const routes: Routes = [
-  { path: 'dashboard', component: HomeComponent },
-  { path: 'formControl', component: FormControlComponent },
-  { path: 'formGroup', component: FormGroupComponent },
-  { path: 'formArray', component: FormArrayComponent },
-  { path: 'formBuilder', component: FormBuilderComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  /* {
+    path: 'login',
+    component: LoginComponent
+  },*/
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+      },
+    ],
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes)
+    ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
