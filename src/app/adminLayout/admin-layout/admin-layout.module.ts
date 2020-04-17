@@ -16,15 +16,17 @@ import {PageNotFoundComponent} from '../../pages/pageNotFoundFolder/page-not-fou
 import {ContactUsComponent} from '../../pages/contactUsFolder/contact-us/contact-us.component';
 import {DashboardComponent} from '../../pages/dashboardFolder/dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HttpClientModule,
-    MatTabsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        HttpClientModule,
+        MatTabsModule,
+        FlexModule,
+    ],
   declarations: [
     DashboardComponent,
     AboutUsComponent,
