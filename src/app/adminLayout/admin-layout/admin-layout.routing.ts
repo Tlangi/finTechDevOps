@@ -1,13 +1,13 @@
-import { Routes } from '@angular/router';
-import {TeamsComponent} from '../../pages/teamsFolder/teams/teams.component';
-import {ArchitectureComponent} from '../../pages/architectureFolder/architecture/architecture.component';
-import {AdminComponent} from '../../pages/adminFolder/admin/admin.component';
-import {AboutUsComponent} from '../../pages/aboutUsFolder/about-us/about-us.component';
-import {ProjectsComponent} from '../../pages/projectsFolder/projects/projects.component';
-import {InfrastructureComponent} from '../../pages/infrastructureFolder/infrastructure/infrastructure.component';
-import {PageNotFoundComponent} from '../../pages/pageNotFoundFolder/page-not-found/page-not-found.component';
-import {ContactUsComponent} from '../../pages/contactUsFolder/contact-us/contact-us.component';
-import {DashboardComponent} from '../../pages/dashboardFolder/dashboard/dashboard.component';
+import {Routes} from '@angular/router';
+import {TeamsComponent} from '../../pages/teams/teams.component';
+import {ArchitectureComponent} from '../../pages/architecture/architecture.component';
+import {AdminComponent} from '../../pages/admin/admin.component';
+import {AboutUsComponent} from '../../pages/about-us/about-us.component';
+import {ProjectsComponent} from '../../pages/projects/projects.component';
+import {InfrastructureComponent} from '../../pages/infrastructure/infrastructure.component';
+import {PageNotFoundComponent} from '../../pages/page-not-found/page-not-found.component';
+import {ContactUsComponent} from '../../pages/contact-us/contact-us.component';
+import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 
 export const AdminLayoutRoutes: Routes = [
   {
