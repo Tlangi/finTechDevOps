@@ -1,13 +1,14 @@
 <mat-tab-group class="mat-card">
 
   <mat-tab label="Users">
-    <form class="example-form">
+    <form [formGroup]="employees" class="example-form">
+
       <mat-form-field class="example-full-width">
         <input type="text"
-               placeholder="Pick one"
+               placeholder="Full Name"
                aria-label="Number"
                matInput
-               [formControl]="myControl"
+               formControlName="fullName"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -15,6 +16,35 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Teams"
+               aria-label="Number"
+               matInput
+               formControlName="teams"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Status"
+               aria-label="Number"
+               matInput
+               formControlName="status"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
     </form>
 
   </mat-tab>

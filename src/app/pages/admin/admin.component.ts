@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -10,16 +10,22 @@ import {Observable} from 'rxjs';
 })
 export class AdminComponent implements OnInit {
 
-  myControl = new FormControl();
+  employees: FormGroup = new FormGroup({
+    fullName: new FormControl(''),
+    teams: new FormControl(''),
+    status: new FormControl('')
+  });
+
+  // myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
+    /*this.filteredOptions = this.employees.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
-      );
+      );*/
   }
 
   private _filter(value: string): string[] {
