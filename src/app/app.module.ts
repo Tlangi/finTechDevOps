@@ -29,18 +29,18 @@ import {FlexModule} from '@angular/flex-layout';
   ],
   imports: [
     BrowserAnimationsModule,
+    AdminLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    AdminLayoutModule,
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    FlexModule,
+    FlexModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

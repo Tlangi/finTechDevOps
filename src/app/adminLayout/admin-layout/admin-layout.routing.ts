@@ -2,7 +2,6 @@ import {Routes} from '@angular/router';
 import {TeamsComponent} from '../../pages/teams/teams.component';
 import {ArchitectureComponent} from '../../pages/architecture/architecture.component';
 import {AdminComponent} from '../../pages/admin/admin.component';
-import {AboutUsComponent} from '../../pages/about-us/about-us.component';
 import {ProjectsComponent} from '../../pages/projects/projects.component';
 import {InfrastructureComponent} from '../../pages/infrastructure/infrastructure.component';
 import {PageNotFoundComponent} from '../../pages/page-not-found/page-not-found.component';
@@ -38,10 +37,6 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
-  },
-  {
-    path: 'aboutUs',
-    component: AboutUsComponent,
   },
   {
     path: 'contactUs',
