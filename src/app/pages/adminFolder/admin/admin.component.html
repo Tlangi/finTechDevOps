@@ -5,25 +5,52 @@
 
       <mat-tab label="Users">
 
-        <div class="mat-table">
-          <table>
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Due Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td> Tlangelani Maswnganye </td>
-              <td> Youth Development  </td>
-              <td> Active </td>
-              <td> 15 April 2020 </td>
-            </tr>
-            </tbody>
-          </table>
+        <div fxLayout="column" fxLayoutAlign="center center" >
+
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input type="text"
+                     placeholder="Employees"
+                     aria-label="Number"
+                     matInput
+
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input type="text"
+                     placeholder="Teams"
+                     aria-label="Number"
+                     matInput
+
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input type="text"
+                     placeholder="Status"
+                     aria-label="Number"
+                     matInput
+
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+
         </div>
       </mat-tab>
 

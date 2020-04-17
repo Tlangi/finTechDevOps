@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import {AdminComponent} from '../../pages/adminFolder/admin/admin.component';
@@ -17,16 +17,25 @@ import {ContactUsComponent} from '../../pages/contactUsFolder/contact-us/contact
 import {DashboardComponent} from '../../pages/dashboardFolder/dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FlexModule} from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule.forChild(AdminLayoutRoutes),
-        FormsModule,
-        HttpClientModule,
-        MatTabsModule,
-        FlexModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(AdminLayoutRoutes),
+    FormsModule,
+    HttpClientModule,
+    MatTabsModule,
+    FlexModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+  ],
   declarations: [
     DashboardComponent,
     AboutUsComponent,
