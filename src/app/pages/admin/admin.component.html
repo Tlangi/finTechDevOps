@@ -1,64 +1,69 @@
-<mat-tab-group class="mat-card">
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-tab-group>
 
-  <mat-tab label="Users">
-    <form [formGroup]="employees" class="example-form">
+    <mat-tab label="Users">
+      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+        <form [formGroup]="employees" class="example-form">
 
-      <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="Full Name"
-               aria-label="Number"
-               matInput
-               formControlName="fullName"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="text"
+                   placeholder="Full Name"
+                   aria-label="Number"
+                   matInput
+                   formControlName="fullName"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="Teams"
-               aria-label="Number"
-               matInput
-               formControlName="teams"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="text"
+                   placeholder="Teams"
+                   aria-label="Number"
+                   matInput
+                   formControlName="teams"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="Status"
-               aria-label="Number"
-               matInput
-               formControlName="status"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input type="text"
+                   placeholder="Status"
+                   aria-label="Number"
+                   matInput
+                   formControlName="status"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
 
-    </form>
+        </form>
+      </div>
+    </mat-tab>
 
-  </mat-tab>
+    <mat-tab label="Applications">
+      Applications
+    </mat-tab>
 
-  <mat-tab label="Applications">
-    Applications
-  </mat-tab>
+    <mat-tab label="Work Type">
+      Work Type
+    </mat-tab>
 
-  <mat-tab label="Work Type">
-    Work Type
-  </mat-tab>
+    <mat-tab label="Status">
+      Status
+    </mat-tab>
 
-  <mat-tab label="Status">
-    Status
-  </mat-tab>
+  </mat-tab-group>
+</div>
 
-</mat-tab-group>
+

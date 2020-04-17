@@ -18,6 +18,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    FlexModule,
   ],
   declarations: [
     DashboardComponent,
