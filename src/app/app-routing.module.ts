@@ -17,7 +17,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren:
-          './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+          './adminLayout/admin-layout/admin-layout.module#AdminLayoutModule'
       },
     ],
   }

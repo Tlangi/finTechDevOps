@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 import {TeamsComponent} from '../../pages/teams/teams.component';
 import {ArchitectureComponent} from '../../pages/architecture/architecture.component';
 import {AdminComponent} from '../../pages/admin/admin.component';

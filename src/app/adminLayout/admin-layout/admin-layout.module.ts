@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {AdminLayoutRoutes} from './admin-layout.routing';
+import { AdminLayoutRoutes } from './admin-layout.routing';
 import {AdminComponent} from '../../pages/admin/admin.component';
 import {TeamsComponent} from '../../pages/teams/teams.component';
 import {ArchitectureComponent} from '../../pages/architecture/architecture.component';
@@ -15,7 +15,9 @@ import {PageNotFoundComponent} from '../../pages/page-not-found/page-not-found.c
 import {ContactUsComponent} from '../../pages/contact-us/contact-us.component';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import {FlexModule} from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -24,7 +26,10 @@ import {FlexModule} from '@angular/flex-layout';
     FormsModule,
     HttpClientModule,
     MatTabsModule,
-    FlexModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
   ],
   declarations: [
     DashboardComponent,
@@ -38,4 +43,4 @@ import {FlexModule} from '@angular/flex-layout';
     InfrastructureComponent,
   ]
 })
-export class AdminLayoutModule { }
+export class AdminLayoutModule {}
