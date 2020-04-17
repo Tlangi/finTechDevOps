@@ -23,17 +23,21 @@ export class AdminComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    /* this.filteredOptions = this.employees.valueChanges
+    this.filteredOptions = this.employees.get('employees').valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
-      );*/
+      );
   }
 
-  /*private _filter(value: string): string[] {
+  private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }*/
+    return this.fullName.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  onSubmit() {
+    console.log('submitted');
+  }
 
 }

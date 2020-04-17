@@ -19,6 +19,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FlexModule} from '@angular/flex-layout';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import {FlexModule} from '@angular/flex-layout';
     ReactiveFormsModule,
     MatAutocompleteModule,
     FlexModule,
+    MatRadioModule,
+    MatButtonModule,
   ],
   declarations: [
     DashboardComponent,

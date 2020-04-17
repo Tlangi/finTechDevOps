@@ -16,7 +16,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'teams',

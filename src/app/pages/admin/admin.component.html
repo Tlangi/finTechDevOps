@@ -48,6 +48,16 @@
           </mat-form-field>
 
         </form>
+
+        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+          <button mat-raised-button (click)="onSubmit()" color="primary">
+            Add new Employee
+          </button>
+
+          <button mat-raised-button (click)="onSubmit()" color="warn">
+            Remove Employee
+          </button>
+        </div>
       </div>
     </mat-tab>
 
