@@ -17,21 +17,23 @@ export class AdminComponent implements OnInit {
   });
 
   // myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  fullName: string[] = ['One', 'Two', 'Three'];
+  teamList: string[] = ['FinTech Developers', 'FinTech Testers', 'App Support', 'Production Support', 'Oracle'];
+  statusList: string[] = ['Active', 'Inactive'];
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    /*this.filteredOptions = this.employees.valueChanges
+    /* this.filteredOptions = this.employees.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );*/
   }
 
-  private _filter(value: string): string[] {
+  /*private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  }*/
 
 }
