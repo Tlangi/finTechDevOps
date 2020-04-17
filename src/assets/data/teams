@@ -1,0 +1,22 @@
+[
+  {
+    "state": "FinTech Developers",
+    "id": 1
+  },
+  {
+    "state": "FinTech Testers",
+    "id": 2
+  },
+  {
+    "state": "FinTech App Support",
+    "id": 3
+  },
+  {
+    "state": "FinTech Production Support",
+    "id": 4
+  },
+  {
+    "state": "FinTech Oracle",
+    "id": 5
+  }
+]
