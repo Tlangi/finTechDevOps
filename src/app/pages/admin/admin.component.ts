@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -16,14 +16,13 @@ export class AdminComponent implements OnInit {
     status: new FormControl('')
   });
 
-  // myControl = new FormControl();
-  fullName: string[] = ['One', 'Two', 'Three'];
+  fullNameList: string[] = ['One', 'Two', 'Three'];
   teamList: string[] = ['FinTech Developers', 'FinTech Testers', 'App Support', 'Production Support', 'Oracle'];
   statusList: string[] = ['Active', 'Inactive'];
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.employees.get('employees').valueChanges
+    this.filteredOptions = this.employees.controls.teams.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
@@ -31,9 +30,9 @@ export class AdminComponent implements OnInit {
   }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value.toUpperCase();
 
-    return this.fullName.filter(option => option.toLowerCase().includes(filterValue));
+    return this.teamList.filter(option => option.toUpperCase().includes(filterValue));
   }
 
   onSubmit() {
