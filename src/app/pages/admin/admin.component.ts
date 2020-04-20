@@ -19,20 +19,47 @@ export class AdminComponent implements OnInit {
   fullNameList: string[] = ['One', 'Two', 'Three'];
   teamList: string[] = ['FinTech Developers', 'FinTech Testers', 'App Support', 'Production Support', 'Oracle'];
   statusList: string[] = ['Active', 'Inactive'];
-  filteredOptions: Observable<string[]>;
+
+  filteredFullName: Observable<string[]>;
+  filteredTeams: Observable<string[]>;
+  filteredStatus: Observable<string[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.employees.controls.teams.valueChanges
+    this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filter(value))
+        map(fullName => this.filterName(fullName))
+      );
+
+    this.filteredTeams = this.employees.controls.teams.valueChanges
+      .pipe(
+        startWith(''),
+        map(teams => this.filterTeams(teams))
+      );
+
+    this.filteredStatus = this.employees.controls.status.valueChanges
+      .pipe(
+        startWith(''),
+        map(status => this.filterStatus(status))
       );
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toUpperCase();
+  private filterName(fullName: string): string[] {
+    const filterValue = fullName.toUpperCase();
+
+    return this.fullNameList.filter(option => option.toUpperCase().includes(filterValue));
+  }
+
+  private filterTeams(teams: string): string[] {
+    const filterValue = teams.toUpperCase();
 
     return this.teamList.filter(option => option.toUpperCase().includes(filterValue));
+  }
+
+  private filterStatus(status: string): string[] {
+    const filterValue = status.toUpperCase();
+
+    return this.statusList.filter(option => option.toUpperCase().includes(filterValue));
   }
 
   onSubmit() {

@@ -13,8 +13,8 @@
                    formControlName="fullName"
                    [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
+              <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
+                {{fullName}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -27,8 +27,8 @@
                    formControlName="teams"
                    [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
+              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
+                {{teams}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -41,8 +41,8 @@
                    formControlName="status"
                    [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
+              <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
+                {{status}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
