@@ -11,8 +11,8 @@
                    aria-label="Number"
                    matInput
                    formControlName="fullName"
-                   [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
+                   [matAutocomplete]="autoName">
+            <mat-autocomplete #autoName="matAutocomplete">
               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
                 {{fullName}}
               </mat-option>
@@ -25,8 +25,8 @@
                    aria-label="Number"
                    matInput
                    formControlName="teams"
-                   [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
+                   [matAutocomplete]="autoTeams">
+            <mat-autocomplete #autoTeams="matAutocomplete">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
                 {{teams}}
               </mat-option>
@@ -39,8 +39,8 @@
                    aria-label="Number"
                    matInput
                    formControlName="status"
-                   [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
+                   [matAutocomplete]="autoStatus">
+            <mat-autocomplete #autoStatus="matAutocomplete">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                 {{status}}
               </mat-option>
