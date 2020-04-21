@@ -59,20 +59,20 @@ export class AdminComponent implements OnInit {
       );
   }
 
-  private filterName(fullName: string): string[] {
+  private filterName(fullName: string) {
     const filterValue = fullName.toUpperCase();
 
-    return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
+    return this.fullNameList.filter(option => new RegExp(fullName, '').test(option.name));
   }
 
-  private filterTeams(teams: string): string[] {
+  private filterTeams(teams: string) {
     const filterValue = teams.toUpperCase();
 
     return this.teamList.filter(option =>  new RegExp(teams).test(option.name));
     // return this.teamList.filter(option => option.toUpperCase().includes(filterValue));
   }
 
-  private filterStatus(status: string): string[] {
+  private filterStatus(status: string) {
     const filterValue = status.toUpperCase();
 
     return this.statusList.filter(option => new RegExp(status).test(option.name));
