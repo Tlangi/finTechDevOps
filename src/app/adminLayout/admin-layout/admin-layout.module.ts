@@ -21,6 +21,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FlexModule} from '@angular/flex-layout';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {MatButtonModule} from '@angular/material/button';
     FlexModule,
     MatRadioModule,
     MatButtonModule,
+    MatIconModule,
   ],
   declarations: [
     DashboardComponent,

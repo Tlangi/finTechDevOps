@@ -1,0 +1,50 @@
+[
+  {
+   "employeeID": 1,
+    "fullName": "Tlangelani Maswanganye",
+    "mnemonic": "abc",
+    "emailAddress": "larrymaswanganye@gmail.com"
+  },
+  {
+    "employeeID": 2,
+    "fullName": "Ayanda Vuma",
+    "mnemonic": "cba",
+    "emailAddress": "vuma@gmail.com"
+  },
+  {
+    "employeeID": 3,
+    "fullName": "Bila Stone",
+    "mnemonic": "dec",
+    "emailAddress": "stoner@gmail.com"
+  },
+  {
+    "employeeID": 4,
+    "fullName": "John Hamper",
+    "mnemonic": "twe",
+    "emailAddress": "hamper@gmail.com"
+  },
+  {
+    "employeeID": 5,
+    "fullName": "Calvin Who",
+    "mnemonic": "def",
+    "emailAddress": "larrymaswanganye@gmail.com"
+  },
+  {
+    "employeeID": 6,
+    "fullName": "Elizabeth Hopkins",
+    "mnemonic": "rew",
+    "emailAddress": "elihopkins@gmail.com"
+  },
+  {
+    "employeeID": 7,
+    "fullName": "Fulfilled Empty",
+    "mnemonic": "nop",
+    "emailAddress": "empty@gmail.com"
+  },
+  {
+    "employeeID": 8,
+    "fullName": "Victor Never",
+    "mnemonic": "trw",
+    "emailAddress": "nevervictor@gmail.com"
+  }
+]
