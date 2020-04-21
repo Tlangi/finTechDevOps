@@ -60,7 +60,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterName(fullName: string) {
-    return this.fullNameList.filter(option => new RegExp(fullName, '').test(option.name));
+    return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
   }
 
   private filterTeams(teams: string) {
