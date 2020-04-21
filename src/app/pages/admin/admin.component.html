@@ -12,9 +12,9 @@
                    matInput
                    formControlName="fullName"
                    [matAutocomplete]="autoName">
-            <mat-autocomplete #autoName="matAutocomplete">
+            <mat-autocomplete #autoName="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
-                {{fullName}}
+                {{fullName.name}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -26,9 +26,9 @@
                    matInput
                    formControlName="teams"
                    [matAutocomplete]="autoTeams">
-            <mat-autocomplete #autoTeams="matAutocomplete">
+            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams}}
+                {{teams.name}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -42,7 +42,7 @@
                    [matAutocomplete]="autoStatus">
             <mat-autocomplete #autoStatus="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
-                {{status}}
+                {{status.name}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
