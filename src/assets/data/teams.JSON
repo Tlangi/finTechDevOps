@@ -1,0 +1,34 @@
+[
+  {
+    "teamsId": 1,
+    "team": "Fintech Developers"
+  },
+  {
+    "teamsId": 2,
+    "team": "Fintech Testers"
+  },
+  {
+    "teamsId": 2,
+    "team": "App Support"
+  },
+  {
+    "teamsId": 2,
+    "team": "Production Support"
+  },
+  {
+    "teamsId": 2,
+    "team": "Business Analyst"
+  },
+  {
+    "teamsId": 2,
+    "team": "Oracle"
+  },
+  {
+    "teamsId": 2,
+    "team": "Finance Solutions"
+  },
+  {
+    "teamsId": 2,
+    "team": "Alma Developers"
+  }
+]
