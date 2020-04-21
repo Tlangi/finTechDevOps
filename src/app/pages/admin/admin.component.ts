@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   });
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),
-    contractDescription: new FormControl('')
+    workTypeDescription: new FormControl('')
   });
   statusForm: FormGroup = new FormGroup({
     statusName: new FormControl(''),

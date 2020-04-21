@@ -89,7 +89,9 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput
+                      formControlName="applicationDescription"
+            ></textarea>
           </mat-form-field>
 
         </form>
@@ -113,7 +115,9 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Work Type </mat-label>
-            <input matInput placeholder="Search">
+            <input matInput placeholder="Search"
+                   formControlName="workType"
+            >
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
@@ -124,7 +128,10 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput
+                      formControlName="workTypeDescription"
+
+            ></textarea>
           </mat-form-field>
 
         </form>
@@ -144,11 +151,13 @@
     <mat-tab label="Status">
       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <form [formGroup]="workTypeForm" class="example-form">
+        <form [formGroup]="statusForm" class="example-form">
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Status </mat-label>
-            <input matInput placeholder="Search">
+            <input matInput placeholder="Search"
+                   formControlName="statusName"
+            >
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
@@ -159,7 +168,9 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput
+                      formControlName="statusDescription"
+            ></textarea>
           </mat-form-field>
 
         </form>
