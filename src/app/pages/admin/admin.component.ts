@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
     status: new FormControl('')
   });
 
-  fullNameList  = [
+  fullNameList: any[]  = [
     /* {id: 1, name: 'Tlangelani Maswanganye'},
     {id: 2, name: 'Happy Smith'},
     {id: 3, name: 'Jerry Zoom'}*/
@@ -43,28 +43,48 @@ export class AdminComponent implements OnInit {
   constructor(private adminService: AdminService) {
   }
 
+  fetchData() {
+
+    this.adminService.getEmployees().subscribe(data => {
+      this.fullNameList = [data];
+      console.log(this.fullNameList);
+    });
+
+    this.adminService.getTeams().subscribe(data => {
+      this.teamList = [data];
+      console.log(this.teamList);
+    });
+
+    this.adminService.getStatus().subscribe(data => {
+      this.statusList = [data];
+      console.log(this.statusList);
+    });
+  }
+
   ngOnInit() {
-    this.adminService.fetchData();
+    this.fetchData();
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
-        map(fullName => this.adminService.filterName(fullName))
+        map(fullName => this.filterName(fullName))
       );
 
     this.filteredTeams = this.employees.controls.teams.valueChanges
       .pipe(
         startWith(''),
-        map(teams => this.adminService.filterTeams(teams))
+        map(teams => this.filterTeams(teams))
       );
+    // console.log(this.filteredFullName);
 
     this.filteredStatus = this.employees.controls.status.valueChanges
       .pipe(
         startWith(''),
-        map(status => this.adminService.filterStatus(status))
+        map(status => this.filterStatus(status))
       );
   }
 
-  /*private filterName(fullName: string) {
+  private filterName(fullName: string) {
+    console.log(fullName);
     return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
   }
 
@@ -74,7 +94,7 @@ export class AdminComponent implements OnInit {
 
   private filterStatus(status: string) {
     return this.statusList.filter(option => new RegExp(status).test(option.name));
-  } */
+  }
 
   displayFunction(subject) {
     return subject ? subject.name : undefined;
