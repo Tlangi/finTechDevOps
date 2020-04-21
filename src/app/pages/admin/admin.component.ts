@@ -29,28 +29,19 @@ export class AdminComponent implements OnInit {
     statusDescription: new FormControl(''),
   });
 
-  fullNameList: any[]  = [
-    /* {id: 1, name: 'Tlangelani Maswanganye'},
-    {id: 2, name: 'Happy Smith'},
-    {id: 3, name: 'Jerry Zoom'}*/
-  ];
-
-  teamList = [
-    /*{id: 1, name: 'FinTech Developers'},
-    {id: 2, name: 'FinTech Testers'},
-    {id: 3, name: 'App Support'},
-    {id: 4, name: 'Production Support'},
-    {id: 5, name: 'Oracle'}*/
-    ];
-
-  statusList = [
-   /* {id: 1, name: 'Active'},
-    {id: 2, name: 'Inactive'} */
-    ];
+  fullNameList: any[]  = [];
+  teamList: any[]  = [];
+  statusList: any[]  = [];
+  applicationsList: any[]  = [];
+  workTypeList: any[]  = [];
+  statusTabList: any[]  = [];
 
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
+  filteredApplication: Observable<any[]>;
+  filteredWorkType: Observable<any[]>;
+  filteredStatusTab: Observable<any[]>;
 
   constructor(private adminService: AdminService) {
     this.fetchData();
@@ -114,7 +105,29 @@ export class AdminComponent implements OnInit {
     return subject ? subject.name : undefined;
   }
 
-  onSubmit() {
+  addNewEmployee() {
+    console.log('submitted');
+  }
+
+  removeEmployee() {
+    console.log('submitted');
+  }
+  updateApplication() {
+    console.log('submitted');
+  }
+  removeApplication() {
+    console.log('submitted');
+  }
+  updateWorkType() {
+    console.log('submitted');
+  }
+  removeWorkType() {
+    console.log('submitted');
+  }
+  updateStatusTab() {
+    console.log('submitted');
+  }
+  removeStatus() {
     console.log('submitted');
   }
 
