@@ -17,22 +17,22 @@ export class AdminComponent implements OnInit {
   });
 
   fullNameList  = [
-    {name: 'One'},
-    {name: 'Two'},
-    {name: 'Three'}
+    {id: 1, name: 'Tlangelani Maswanganye'},
+    {id: 2, name: 'Happy Smith'},
+    {id: 3, name: 'Jerry Zoom'}
   ];
 
   teamList = [
-    {name: 'FinTech Developers'},
-    {name: 'FinTech Testers'},
-    {name: 'App Support'},
-    {name: 'Production Support'},
-    {name: 'Oracle'}
+    {id: 1, name: 'FinTech Developers'},
+    {id: 2, name: 'FinTech Testers'},
+    {id: 3, name: 'App Support'},
+    {id: 4, name: 'Production Support'},
+    {id: 5, name: 'Oracle'}
     ];
 
   statusList = [
-    {name: 'Active'},
-    {name: 'Inactive'}
+    {id: 1, name: 'Active'},
+    {id: 2, name: 'Inactive'}
     ];
 
   filteredFullName: Observable<any[]>;
@@ -68,8 +68,6 @@ export class AdminComponent implements OnInit {
   }
 
   private filterStatus(status: string) {
-    const filterValue = status.toUpperCase();
-
     return this.statusList.filter(option => new RegExp(status).test(option.name));
   }
 
