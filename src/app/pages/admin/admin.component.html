@@ -40,7 +40,7 @@
                    matInput
                    formControlName="status"
                    [matAutocomplete]="autoStatus">
-            <mat-autocomplete #autoStatus="matAutocomplete">
+            <mat-autocomplete #autoStatus="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                 {{status}}
               </mat-option>

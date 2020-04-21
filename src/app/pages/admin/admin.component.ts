@@ -77,6 +77,10 @@ export class AdminComponent implements OnInit {
     return this.statusList.filter(option => option.toUpperCase().includes(filterValue));
   }
 
+  displayFunction(subject) {
+    return subject ? subject.name : undefined;
+  }
+
   onSubmit() {
     console.log('submitted');
   }
