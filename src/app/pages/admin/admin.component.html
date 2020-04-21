@@ -5,14 +5,15 @@
       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
         <form [formGroup]="employees" class="example-form">
 
-          <mat-form-field class="example-full-width">
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Full Name </mat-label>
             <input type="text"
-                   placeholder="Full Name"
+                   placeholder="Search"
                    aria-label="Number"
                    matInput
                    formControlName="fullName"
                    [matAutocomplete]="autoName">
-            <mat-icon>search</mat-icon>
+            <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoName="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
                 {{fullName.fullName}}
@@ -20,14 +21,15 @@
             </mat-autocomplete>
           </mat-form-field>
 
-          <mat-form-field class="example-full-width">
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Teams </mat-label>
             <input type="text"
-                   placeholder="Teams"
+                   placeholder="Search"
                    aria-label="Number"
                    matInput
                    formControlName="teams"
                    [matAutocomplete]="autoTeams">
-            <mat-icon>search</mat-icon>
+            <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
                 {{teams.team}}
@@ -35,13 +37,15 @@
             </mat-autocomplete>
           </mat-form-field>
 
-          <mat-form-field class="example-full-width">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Status </mat-label>
             <input type="text"
-                   placeholder="Status"
+                   placeholder="Search"
                    aria-label="Number"
                    matInput
                    formControlName="status"
                    [matAutocomplete]="autoStatus">
+            <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatus="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
                 {{status.status}}
@@ -65,15 +69,81 @@
     </mat-tab>
 
     <mat-tab label="Applications">
-      Applications
+      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Application Name </mat-label>
+          <input matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Description </mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+
+        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+          <button mat-raised-button (click)="onSubmit()" color="primary">
+            Add new Employee
+          </button>
+
+          <button mat-raised-button (click)="onSubmit()" color="warn">
+            Remove Employee
+          </button>
+        </div>
+      </div>
     </mat-tab>
 
     <mat-tab label="Work Type">
-      Work Type
+      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Work Type </mat-label>
+          <input matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Description </mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+
+        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+          <button mat-raised-button (click)="onSubmit()" color="primary">
+            Add new Employee
+          </button>
+
+          <button mat-raised-button (click)="onSubmit()" color="warn">
+            Remove Employee
+          </button>
+        </div>
+      </div>
     </mat-tab>
 
     <mat-tab label="Status">
-      Status
+      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Status </mat-label>
+          <input matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Description </mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+
+        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+          <button mat-raised-button (click)="onSubmit()" color="primary">
+            Add new Employee
+          </button>
+
+          <button mat-raised-button (click)="onSubmit()" color="warn">
+            Remove Employee
+          </button>
+        </div>
+      </div>
     </mat-tab>
 
   </mat-tab-group>
