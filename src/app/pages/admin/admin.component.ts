@@ -16,9 +16,24 @@ export class AdminComponent implements OnInit {
     status: new FormControl('')
   });
 
-  fullNameList: string[] = ['One', 'Two', 'Three'];
-  teamList: string[] = ['FinTech Developers', 'FinTech Testers', 'App Support', 'Production Support', 'Oracle'];
-  statusList: string[] = ['Active', 'Inactive'];
+  fullNameList: string[] = [
+    {name: 'One'},
+    {name: 'Two'},
+    {name: 'Three'}
+  ];
+
+  teamList: string[] = [
+    {name: 'FinTech Developers'},
+    {name: 'FinTech Testers'},
+    {name: 'App Support'},
+    {name: 'Production Support'},
+    {name: 'Oracle'}
+    ];
+
+  statusList: string[] = [
+    {name: 'Active'},
+    {name: 'Inactive'}
+    ];
 
   filteredFullName: Observable<string[]>;
   filteredTeams: Observable<string[]>;
