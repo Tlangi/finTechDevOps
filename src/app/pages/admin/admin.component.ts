@@ -41,6 +41,7 @@ export class AdminComponent implements OnInit {
   filteredStatus: Observable<any[]>;
 
   constructor(private adminService: AdminService) {
+    this.fetchData();
   }
 
   fetchData() {
@@ -62,7 +63,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchData();
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
@@ -85,7 +85,9 @@ export class AdminComponent implements OnInit {
 
   private filterName(fullName: string) {
     console.log(fullName);
-    return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
+    if (!fullName === null) {
+      return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
+    }
   }
 
   private filterTeams(teams: string) {
