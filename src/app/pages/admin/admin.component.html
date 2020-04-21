@@ -71,16 +71,28 @@
     <mat-tab label="Applications">
       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Application Name </mat-label>
-          <input matInput placeholder="Search">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+        <form [formGroup]="applications" class="example-form">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Description </mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Application Name </mat-label>
+            <input matInput
+                   placeholder="Search"
+                   formControlName="applicationName"
+            >
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
+                {{teams.team}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Description </mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+
+        </form>
 
         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
           <button mat-raised-button (click)="onSubmit()" color="primary">
@@ -97,16 +109,25 @@
     <mat-tab label="Work Type">
       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Work Type </mat-label>
-          <input matInput placeholder="Search">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+        <form [formGroup]="workTypeForm" class="example-form">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Description </mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Work Type </mat-label>
+            <input matInput placeholder="Search">
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
+                {{teams.team}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Description </mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+
+        </form>
 
         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
           <button mat-raised-button (click)="onSubmit()" color="primary">
@@ -123,16 +144,25 @@
     <mat-tab label="Status">
       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Status </mat-label>
-          <input matInput placeholder="Search">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+        <form [formGroup]="workTypeForm" class="example-form">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Description </mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Status </mat-label>
+            <input matInput placeholder="Search">
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
+                {{teams.team}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Description </mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+
+        </form>
 
         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
           <button mat-raised-button (click)="onSubmit()" color="primary">

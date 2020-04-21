@@ -16,6 +16,18 @@ export class AdminComponent implements OnInit {
     teams: new FormControl(''),
     status: new FormControl('')
   });
+  applications: FormGroup = new FormGroup({
+    applicationName: new FormControl(''),
+    applicationDescription: new FormControl('')
+  });
+  workTypeForm: FormGroup = new FormGroup({
+    workType: new FormControl(''),
+    contractDescription: new FormControl('')
+  });
+  statusForm: FormGroup = new FormGroup({
+    statusName: new FormControl(''),
+    statusDescription: new FormControl(''),
+  });
 
   fullNameList: any[]  = [
     /* {id: 1, name: 'Tlangelani Maswanganye'},
