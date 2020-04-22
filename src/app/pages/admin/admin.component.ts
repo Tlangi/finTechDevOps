@@ -162,7 +162,7 @@ export class AdminComponent implements OnInit {
   }
   removeStatus() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to REMOVE this Status?');
+    const status = confirm('Are you sure you want to REMOVE this Status?');
     if (status === true) {
       alert('the following application has been removed ' + this.statusForm.controls.statusName.value
         + ' successfully');
