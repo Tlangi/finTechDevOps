@@ -1,5 +1,30 @@
 [
   {
-
+    "applicationId": 1,
+    "applicationName": "FMS"
+  },
+  {
+    "applicationId": 2,
+    "applicationName": "PHS"
+  },
+  {
+    "applicationId": 3,
+    "applicationName": "MJP"
+  },
+  {
+    "applicationId": 4,
+    "applicationName": "MILES"
+  },
+  {
+    "applicationId": 5,
+    "applicationName": "FDP"
+  },
+  {
+    "applicationId": 6,
+    "applicationName": "KOMAINU"
+  },
+  {
+    "applicationId": 7,
+    "applicationName": "Bitbucket"
   }
 ]
