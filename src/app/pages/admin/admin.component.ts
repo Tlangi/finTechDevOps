@@ -124,7 +124,7 @@ export class AdminComponent implements OnInit {
     console.log('submitted');
     const application = confirm('Are you sure you want to UPDATE this Application?');
     if (application === true) {
-      alert('the following application has been updated ' + this.applications.controls.applicationName
+      alert('the following application has been updated ' + this.applications.controls.applicationName.value
         + ' successfully');
     }
   }
