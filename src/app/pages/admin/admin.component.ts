@@ -89,16 +89,28 @@ export class AdminComponent implements OnInit {
   private filterName(fullName: string) {
     console.log(fullName);
     if (!fullName === null) {
-      return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
+      return this.fullNameList.filter(option => new RegExp(fullName).test(option.fullNames));
     }
   }
 
   private filterTeams(teams: string) {
-    return this.teamList.filter(option =>  new RegExp(teams).test(option.name));
+    return this.teamList.filter(option =>  new RegExp(teams).test(option.team));
   }
 
   private filterStatus(status: string) {
-    return this.statusList.filter(option => new RegExp(status).test(option.name));
+    return this.statusList.filter(option => new RegExp(status).test(option.statusState));
+  }
+
+  private filterApplications(status: string) {
+    return this.applicationsList.filter(option => new RegExp(status).test(option.name));
+  }
+
+  private filterWorkType(status: string) {
+    return this.workTypeList.filter(option => new RegExp(status).test(option.name));
+  }
+
+  private filterStatusTab(status: string) {
+    return this.statusTabList.filter(option => new RegExp(status).test(option.name));
   }
 
   displayFunction(subject) {
