@@ -16,7 +16,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoName="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
-                {{fullName.fullName}}
+                {{fullName}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -32,7 +32,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams.team}}
+                {{teams}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -48,7 +48,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatus="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
-                {{status.status}}
+                {{status}}
               </mat-option>
 
             </mat-autocomplete>
@@ -75,14 +75,17 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Application Name </mat-label>
-            <input matInput
+            <input type="text"
                    placeholder="Search"
+                   aria-label="Number"
+                   matInput
+                   [matAutocomplete]="autoApplication"
                    formControlName="applicationName"
             >
             <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
-              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams.team}}
+            <mat-autocomplete #autoApplication="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let application of filteredApplication | async" [value]="application">
+                {{application}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -90,6 +93,8 @@
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
             <textarea matInput
+                      aria-label="Number"
+                      placeholder="Description"
                       formControlName="applicationDescription"
             ></textarea>
           </mat-form-field>
@@ -115,13 +120,17 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Work Type </mat-label>
-            <input matInput placeholder="Search"
+            <input type="text"
+                   placeholder="Search"
+                   aria-label="Number"
+                   matInput
+                   [matAutocomplete]="autoWorkType"
                    formControlName="workType"
             >
             <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
-              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams.team}}
+            <mat-autocomplete #autoWorkType="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let workType of filteredWorkType | async" [value]="workType">
+                {{workType}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -129,6 +138,8 @@
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
             <textarea matInput
+                      aria-label="Number"
+                      placeholder="Description"
                       formControlName="workTypeDescription"
 
             ></textarea>
@@ -155,13 +166,17 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Status </mat-label>
-            <input matInput placeholder="Search"
+            <input type="text"
+                   placeholder="Search"
+                   aria-label="Number"
+                   matInput
+                   [matAutocomplete]="autoStatusTab"
                    formControlName="statusName"
             >
             <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
-              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams.team}}
+            <mat-autocomplete #autoStatusTab="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let statusTab of filteredStatus | async" [value]="statusTab">
+                {{statusTab}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -169,6 +184,8 @@
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Description </mat-label>
             <textarea matInput
+                      aria-label="Number"
+                      placeholder="Description"
                       formControlName="statusDescription"
             ></textarea>
           </mat-form-field>
