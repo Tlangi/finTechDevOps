@@ -25,6 +25,7 @@ export class AdminComponent implements OnInit {
     workTypeDescription: new FormControl('')
   });
   statusForm: FormGroup = new FormGroup({
+    statusState: new FormControl(''),
     statusName: new FormControl(''),
     statusDescription: new FormControl(''),
   });
@@ -34,6 +35,7 @@ export class AdminComponent implements OnInit {
   statusList: any[]  = [];
   applicationsList: any[]  = [];
   workTypeList: any[]  = [];
+  statusStateTabList: any[] = [];
   statusTabList: any[]  = [];
 
   filteredFullName: Observable<any[]>;
@@ -42,6 +44,7 @@ export class AdminComponent implements OnInit {
   filteredApplication: Observable<any[]>;
   filteredWorkType: Observable<any[]>;
   filteredStatusTab: Observable<any[]>;
+  filteredStatusStateTab: Observable<any[]>;
 
   constructor(private adminService: AdminService) {
   }
@@ -85,13 +88,18 @@ export class AdminComponent implements OnInit {
         startWith(''),
         map(statusTab => this.filterStatusTab(statusTab))
       );
+    this.filteredStatusStateTab = this.statusForm.controls.statusState.valueChanges
+      .pipe(
+        startWith(''),
+        map(statusStateTab => this.filterStatusStateTab(statusStateTab))
+      );
   }
 
   private filterName(fullName: string) {
     this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
-    return this.fullNameList.filter(option => new RegExp(fullName).test(option.fullNames));
+    return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
   }
 
   private filterTeams(teams: string) {
@@ -122,9 +130,17 @@ export class AdminComponent implements OnInit {
     return this.workTypeList.filter(option => new RegExp(status).test(option.workTypeState));
   }
 
+  private filterStatusStateTab(status: string) {
+    this.adminService.getStatusTab().subscribe(data => {
+      this.statusStateTabList = data;
+      console.log(this.statusStateTabList);
+    });
+    return this.statusStateTabList.filter(option => new RegExp(status).test(option.name));
+  }
+
   private filterStatusTab(status: string) {
     this.adminService.getStatusTab().subscribe(data => {
-      this.statusTabList = data;
+      this.statusTabList = data.state;
       console.log(this.statusTabList);
     });
     return this.statusTabList.filter(option => new RegExp(status).test(option.name));

@@ -1,5 +1,7 @@
 [
   {
+    "stateId": 1,
+    "state": "Project State",
     "statusState": [
       {
         "stateId": 1,
@@ -40,6 +42,8 @@
     ]
   },
   {
+    "stateId": 2,
+    "state": "Approval State",
     "approvalState": [
       {
         "stateId": 1,
@@ -56,6 +60,8 @@
     ]
   },
   {
+    "stateId": 3,
+    "state": "State of Emergency",
     "levelState": [
       {
         "stateId": 1,

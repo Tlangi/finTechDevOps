@@ -85,7 +85,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoApplication="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let application of filteredApplication | async" [value]="application">
-                {{application.applicationName}}
+                {{application}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -165,6 +165,23 @@
         <form [formGroup]="statusForm" class="example-form">
 
           <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Status State </mat-label>
+            <input type="text"
+                   placeholder="Search"
+                   aria-label="Number"
+                   matInput
+                   [matAutocomplete]="autoStatusStateTab"
+                   formControlName="statusState"
+            >
+            <mat-icon matSuffix>search</mat-icon>
+            <mat-autocomplete #autoStatusStateTab="matAutocomplete" [displayWith]="displayFunction">
+              <mat-option *ngFor="let statusStateTab of filteredStatusStateTab | async" [value]="statusStateTab">
+                {{statusStateTab.state}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width">
             <mat-label> Status </mat-label>
             <input type="text"
                    placeholder="Search"
@@ -176,7 +193,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatusTab="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab">
-                {{statusTab.statusTabState}}
+                {{statusTab}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
