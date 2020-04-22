@@ -107,44 +107,66 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to ADD a new Employee?');
-    alert(newUser);
+    const user = confirm('Are you sure you want to ADD a new Employee?');
+    if (user === true) {
+      alert('New employee has been successfully added!!');
+    }
   }
 
   removeEmployee() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to REMOVE Employee?');
-    alert(newUser);
+    const user = confirm('Are you sure you want to REMOVE Employee?');
+    if (user === true) {
+      alert('Employee has been successfully been removed!!');
+    }
   }
   updateApplication() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to UPDATE this Application?');
-    alert(newUser);
+    const application = confirm('Are you sure you want to UPDATE this Application?');
+    if (application === true) {
+      alert('the following application has been updated ' + this.applications.controls.applicationName
+        + ' successfully');
+    }
   }
   removeApplication() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to REMOVE this Application?');
-    alert(newUser);
+    const application = confirm('Are you sure you want to REMOVE this Application?');
+    if (application === true) {
+      alert('the following application has been removed ' + this.applications.controls.applicationName.value
+        + ' successfully');
+    }
   }
   updateWorkType() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to UPDATE this Work Type?');
-    alert(newUser);
+    const workType = confirm('Are you sure you want to UPDATE this Work Type?');
+    if (workType === true) {
+      alert('the following application has been updated ' + this.workTypeForm.controls.workType.value
+        + ' successfully');
+    }
   }
   removeWorkType() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to UPDATE this Work Type?');
-    alert(newUser);
+    const workType = confirm('Are you sure you want to REMOVE this Work Type?');
+    if (workType === true) {
+      alert('the following application has been removed ' + this.workTypeForm.controls.workType.value
+        + ' successfully');
+    }
   }
   updateStatusTab() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to UPDATE this Status?');
-    alert(newUser);
+    const status = confirm('Are you sure you want to UPDATE this Status?');
+    if (status === true) {
+      alert('the following application has been updated ' + this.statusForm.controls.statusName.value
+        + ' successfully');
+    }
   }
   removeStatus() {
     console.log('submitted');
-    const newUser = confirm('Are you sure you want to UPDATE this Status?');
-    alert(newUser);
+    const newUser = confirm('Are you sure you want to REMOVE this Status?');
+    if (status === true) {
+      alert('the following application has been removed ' + this.statusForm.controls.statusName.value
+        + ' successfully');
+    }
   }
 
 }
