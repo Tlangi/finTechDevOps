@@ -107,28 +107,44 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to ADD a new Employee?');
+    alert(newUser);
   }
 
   removeEmployee() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to REMOVE Employee?');
+    alert(newUser);
   }
   updateApplication() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to UPDATE this Application?');
+    alert(newUser);
   }
   removeApplication() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to REMOVE this Application?');
+    alert(newUser);
   }
   updateWorkType() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to UPDATE this Work Type?');
+    alert(newUser);
   }
   removeWorkType() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to UPDATE this Work Type?');
+    alert(newUser);
   }
   updateStatusTab() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to UPDATE this Status?');
+    alert(newUser);
   }
   removeStatus() {
     console.log('submitted');
+    const newUser = confirm('Are you sure you want to UPDATE this Status?');
+    alert(newUser);
   }
 
 }
