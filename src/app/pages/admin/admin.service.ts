@@ -24,4 +24,16 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl + 'status.json');
   }
 
+  public getApplications(): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'applications.json');
+  }
+
+  public getWorkType(): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'workType.json');
+  }
+
+  public getStatusTab(): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'statusTab.json');
+  }
+
 }

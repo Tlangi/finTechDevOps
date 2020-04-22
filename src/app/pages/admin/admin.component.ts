@@ -44,25 +44,6 @@ export class AdminComponent implements OnInit {
   filteredStatusTab: Observable<any[]>;
 
   constructor(private adminService: AdminService) {
-    this.fetchData();
-  }
-
-  fetchData() {
-
-    this.adminService.getEmployees().subscribe(data => {
-      this.fullNameList = data;
-      console.log(this.fullNameList);
-    });
-
-    this.adminService.getTeams().subscribe(data => {
-      this.teamList = data;
-      console.log(this.teamList);
-    });
-
-    this.adminService.getStatus().subscribe(data => {
-      this.statusList = data;
-      console.log(this.statusList);
-    });
   }
 
   ngOnInit() {
@@ -107,29 +88,45 @@ export class AdminComponent implements OnInit {
   }
 
   private filterName(fullName: string) {
-    console.log(fullName);
-    if (!fullName === null) {
-      return this.fullNameList.filter(option => new RegExp(fullName).test(option.fullNames));
-    }
+    this.adminService.getEmployees().subscribe(data => {
+      this.fullNameList = data;
+    });
+    return this.fullNameList.filter(option => new RegExp(fullName).test(option.fullNames));
   }
 
   private filterTeams(teams: string) {
+    this.adminService.getTeams().subscribe(data => {
+      this.teamList = data;
+    });
     return this.teamList.filter(option =>  new RegExp(teams).test(option.team));
   }
 
   private filterStatus(status: string) {
+    this.adminService.getStatus().subscribe(data => {
+      this.statusList = data;
+    });
     return this.statusList.filter(option => new RegExp(status).test(option.statusState));
   }
 
   private filterApplications(status: string) {
-    return this.applicationsList.filter(option => new RegExp(status).test(option.name));
+    this.adminService.getApplications().subscribe(data => {
+      this.applicationsList = data;
+    });
+    return this.applicationsList.filter(option => new RegExp(status).test(option.applicationName));
   }
 
   private filterWorkType(status: string) {
-    return this.workTypeList.filter(option => new RegExp(status).test(option.name));
+    this.adminService.getWorkType().subscribe(data => {
+      this.workTypeList = data;
+    });
+    return this.workTypeList.filter(option => new RegExp(status).test(option.workTypeState));
   }
 
   private filterStatusTab(status: string) {
+    this.adminService.getStatusTab().subscribe(data => {
+      this.statusTabList = data;
+      console.log(this.statusTabList);
+    });
     return this.statusTabList.filter(option => new RegExp(status).test(option.name));
   }
 
@@ -144,7 +141,6 @@ export class AdminComponent implements OnInit {
       alert('New employee has been successfully added!!');
     }
   }
-
   removeEmployee() {
     console.log('submitted');
     const user = confirm('Are you sure you want to REMOVE Employee?');
