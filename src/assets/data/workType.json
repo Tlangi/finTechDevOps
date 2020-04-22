@@ -1,5 +1,42 @@
 [
   {
-
+    "workTypeID": 1,
+    "workTypeState": "Enhancement"
+  },
+  {
+    "workTypeID": 2,
+    "workTypeState": "Project (Top 5)"
+  },
+  {
+    "workTypeID": 3,
+    "workTypeState": "General Admin Work"
+  },
+  {
+    "workTypeID": 4,
+    "workTypeState": "Analysis"
+  },
+  {
+    "workTypeID": 5,
+    "workTypeState": "Unit Testing"
+  },
+  {
+    "workTypeID": 6,
+    "workTypeState": "Configurations"
+  },
+  {
+    "workTypeID": 7,
+    "workTypeState": "System Administration"
+  },
+  {
+    "workTypeID": 8,
+    "workTypeState": "Production Issue Investigation"
+  },
+  {
+    "workTypeID": 9,
+    "workTypeState": "Training"
+  },
+  {
+    "workTypeID": 10,
+    "workTypeState": "Dev/UAT Issue Investigation"
   }
 ]

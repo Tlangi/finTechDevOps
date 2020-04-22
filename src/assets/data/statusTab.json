@@ -1,5 +1,78 @@
 [
   {
-    
+    "statusState": [
+      {
+        "stateId": 1,
+        "state": "Analysis/Investigation"
+      },
+      {
+        "stateId": 2,
+        "state": "Queued For Development"
+      },
+      {
+        "stateId": 3,
+        "state": "Development In Progress"
+      },
+      {
+        "stateId": 4,
+        "state": "Queued For Testing"
+      },
+      {
+        "stateId": 5,
+        "state": "Testing In Progress"
+      },
+      {
+        "stateId": 6,
+        "state": "On Hold"
+      },
+      {
+        "stateId": 7,
+        "state": "Implemented"
+      },
+      {
+        "stateId": 8,
+        "state": "Ready For Deployment"
+      },
+      {
+        "stateId": 9,
+        "state": "Parked"
+      }
+    ]
+  },
+  {
+    "approvalState": [
+      {
+        "stateId": 1,
+        "state": "Sent For Approval"
+      },
+      {
+        "stateId": 2,
+        "state": "Approved"
+      },
+      {
+        "stateId": 3,
+        "state": "Declined"
+      }
+    ]
+  },
+  {
+    "levelState": [
+      {
+        "stateId": 1,
+        "state": "Low"
+      },
+      {
+        "stateId": 2,
+        "state": "Medium"
+      },
+      {
+        "stateId": 3,
+        "state": "High"
+      },
+      {
+        "stateId": 4,
+        "state": "Eminent"
+      }
+    ]
   }
 ]
