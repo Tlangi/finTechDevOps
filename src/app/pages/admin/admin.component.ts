@@ -50,17 +50,17 @@ export class AdminComponent implements OnInit {
   fetchData() {
 
     this.adminService.getEmployees().subscribe(data => {
-      this.fullNameList = [data];
+      this.fullNameList = data;
       console.log(this.fullNameList);
     });
 
     this.adminService.getTeams().subscribe(data => {
-      this.teamList = [data];
+      this.teamList = data;
       console.log(this.teamList);
     });
 
     this.adminService.getStatus().subscribe(data => {
-      this.statusList = [data];
+      this.statusList = data;
       console.log(this.statusList);
     });
   }
@@ -77,12 +77,32 @@ export class AdminComponent implements OnInit {
         startWith(''),
         map(teams => this.filterTeams(teams))
       );
-    // console.log(this.filteredFullName);
 
     this.filteredStatus = this.employees.controls.status.valueChanges
       .pipe(
         startWith(''),
         map(status => this.filterStatus(status))
+      );
+
+
+    this.filteredApplication = this.applications.controls.applicationName.valueChanges
+      .pipe(
+        startWith(''),
+        map(application => this.filterApplications(application))
+      );
+
+
+    this.filteredWorkType = this.workTypeForm.controls.workType.valueChanges
+      .pipe(
+        startWith(''),
+        map(workType => this.filterWorkType(workType))
+      );
+
+
+    this.filteredStatusTab = this.statusForm.controls.statusName.valueChanges
+      .pipe(
+        startWith(''),
+        map(statusTab => this.filterStatusTab(statusTab))
       );
   }
 

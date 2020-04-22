@@ -16,7 +16,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoName="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName">
-                {{fullName}}
+                {{fullName.fullNames}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -32,7 +32,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoTeams="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams">
-                {{teams}}
+                {{teams.team}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -48,7 +48,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatus="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let status of filteredStatus | async" [value]="status">
-                {{status}}
+                {{status.statusState}}
               </mat-option>
 
             </mat-autocomplete>
@@ -85,7 +85,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoApplication="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let application of filteredApplication | async" [value]="application">
-                {{application}}
+                {{application.applicationName}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -130,7 +130,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoWorkType="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let workType of filteredWorkType | async" [value]="workType">
-                {{workType}}
+                {{workType.workTypeState}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -176,7 +176,7 @@
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatusTab="matAutocomplete" [displayWith]="displayFunction">
               <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab">
-                {{statusTab}}
+                {{statusTab.statusTabState}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
