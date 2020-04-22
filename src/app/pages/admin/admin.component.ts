@@ -95,25 +95,25 @@ export class AdminComponent implements OnInit {
       );
   }
 
-  private filterName(fullName: string) {
+  private filterName(value: string) {
     this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
-    return this.fullNameList.filter(option => new RegExp(fullName).test(option.name));
+    return this.fullNameList.filter(option => new RegExp(value).test(option.fullNames));
   }
 
-  private filterTeams(teams: string) {
+  private filterTeams(value: string) {
     this.adminService.getTeams().subscribe(data => {
       this.teamList = data;
     });
-    return this.teamList.filter(option =>  new RegExp(teams).test(option.team));
+    return this.teamList.filter(option =>  new RegExp(value).test(option.team));
   }
 
-  private filterStatus(status: string) {
+  private filterStatus(value: string) {
     this.adminService.getStatus().subscribe(data => {
       this.statusList = data;
     });
-    return this.statusList.filter(option => new RegExp(status).test(option.statusState));
+    return this.statusList.filter(option => new RegExp(value).test(option.statusStates));
   }
 
   private filterApplications(status: string) {
@@ -127,7 +127,7 @@ export class AdminComponent implements OnInit {
     this.adminService.getWorkType().subscribe(data => {
       this.workTypeList = data;
     });
-    return this.workTypeList.filter(option => new RegExp(status).test(option.workTypeState));
+    return this.workTypeList.filter(option => new RegExp(status).test(option.statusState));
   }
 
   private filterStatusStateTab(status: string) {
@@ -135,19 +135,15 @@ export class AdminComponent implements OnInit {
       this.statusStateTabList = data;
       console.log(this.statusStateTabList);
     });
-    return this.statusStateTabList.filter(option => new RegExp(status).test(option.name));
+    return this.statusStateTabList.filter(option => new RegExp(status).test(option.state));
   }
 
   private filterStatusTab(status: string) {
     this.adminService.getStatusTab().subscribe(data => {
-      this.statusTabList = data.state;
+      this.statusTabList = data;
       console.log(this.statusTabList);
     });
-    return this.statusTabList.filter(option => new RegExp(status).test(option.name));
-  }
-
-  displayFunction(subject) {
-    return subject ? subject.name : undefined;
+    return this.statusTabList.filter(option => new RegExp(status).test(option.state));
   }
 
   addNewEmployee() {

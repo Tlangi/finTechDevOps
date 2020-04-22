@@ -1,10 +1,10 @@
 [
   {
     "statusId": 1,
-    "statusState": "Active"
+    "statusStates": "Active"
   },
   {
     "statusId": 2,
-    "statusState": "Inactive"
+    "statusStates": "Inactive"
   }
 ]
