@@ -54,7 +54,11 @@ export class AdminComponent implements OnInit {
   }
 
   openDialog() {
-    this.matDialog.open(DialogComponent);
+    const dialogRef = this.matDialog.open(DialogComponent, {data: {tabName: 'Tab Name', name: 'object being removed'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnInit() {
