@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class AdminService {
 
   baseUrl = '../assets/data/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient
+  ) { }
 
 
   public getEmployees(): Observable<any> {

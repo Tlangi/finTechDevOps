@@ -19,13 +19,16 @@ import {fakeBackendProvider} from './authentication/services/fake-backend-interc
 import {AlertComponent} from './helpers/components/alert/alert.component';
 import {FlexModule} from '@angular/flex-layout';
 import {AdminLayoutModule} from './adminLayout/admin-layout/admin-layout.module';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './helpers/components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminLayoutComponent,
-    AlertComponent
+    AlertComponent,
+    DialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -41,6 +44,10 @@ import {AdminLayoutModule} from './adminLayout/admin-layout/admin-layout.module'
     MatSidenavModule,
     MatListModule,
     FlexModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

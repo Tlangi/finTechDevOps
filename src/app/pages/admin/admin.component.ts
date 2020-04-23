@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AdminService} from './admin.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -46,7 +48,13 @@ export class AdminComponent implements OnInit {
   filteredStatusTab: Observable<any[]>;
   filteredStatusStateTab: Observable<any[]>;
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService,
+              private matDialog: MatDialog
+              ) {
+  }
+
+  openDialog() {
+    this.matDialog.open(DialogComponent);
   }
 
   ngOnInit() {
@@ -163,6 +171,7 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
+    this.openDialog();
   }
   removeEmployee() {
     console.log('submitted');
