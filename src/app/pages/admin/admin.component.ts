@@ -53,14 +53,6 @@ export class AdminComponent implements OnInit {
               ) {
   }
 
-  openDialog() {
-    const dialogRef = this.matDialog.open(DialogComponent, {data: {tabName: 'Tab Name', name: 'object being removed'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
   ngOnInit() {
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
@@ -175,58 +167,75 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
-    this.openDialog();
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.employees.controls.fullName.value, name: 'Employees'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   removeEmployee() {
     console.log('submitted');
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.employees.controls.fullName.value, name: 'Employees'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   updateApplication() {
     console.log('submitted');
-    const application = confirm('Are you sure you want to UPDATE this Application?');
-    if (application === true) {
-      alert('the following application has been updated ' + this.applications.controls.applicationName.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.applications.controls.applicationName.value, name: 'Application'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   removeApplication() {
     console.log('submitted');
-    const application = confirm('Are you sure you want to REMOVE this Application?');
-    if (application === true) {
-      alert('the following application has been removed ' + this.applications.controls.applicationName.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.employees.controls.applicationName.value, name: 'Employees'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   updateWorkType() {
     console.log('submitted');
-    const workType = confirm('Are you sure you want to UPDATE this Work Type?');
-    if (workType === true) {
-      alert('the following application has been updated ' + this.workTypeForm.controls.workType.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.workTypeForm.controls.workType.value, name: 'Work Type'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   removeWorkType() {
     console.log('submitted');
-    const workType = confirm('Are you sure you want to REMOVE this Work Type?');
-    if (workType === true) {
-      alert('the following application has been removed ' + this.workTypeForm.controls.workType.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.workTypeForm.controls.workType.value, name: 'Work Type'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   updateStatusTab() {
     console.log('submitted');
-    const status = confirm('Are you sure you want to UPDATE this Status?');
-    if (status === true) {
-      alert('the following application has been updated ' + this.statusForm.controls.statusName.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.statusForm.controls.statusName.value, name: 'Status'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   removeStatus() {
     console.log('submitted');
-    const status = confirm('Are you sure you want to REMOVE this Status?');
-    if (status === true) {
-      alert('the following application has been removed ' + this.statusForm.controls.statusName.value
-        + ' successfully');
-    }
+    const dialogRef = this.matDialog.open(DialogComponent,
+      {data: {tabName: this.statusForm.controls.statusName.value, name: 'Status'}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
