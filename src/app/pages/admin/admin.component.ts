@@ -163,17 +163,9 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
-    const user = confirm('Are you sure you want to ADD a new Employee?');
-    if (user === true) {
-      alert('New employee has been successfully added!!');
-    }
   }
   removeEmployee() {
     console.log('submitted');
-    const user = confirm('Are you sure you want to REMOVE Employee?');
-    if (user === true) {
-      alert('Employee has been successfully been removed!!');
-    }
   }
   updateApplication() {
     console.log('submitted');
