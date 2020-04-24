@@ -196,7 +196,7 @@ export class AdminComponent implements OnInit {
   removeApplication() {
     console.log('submitted');
     const dialogRef = this.matDialog.open(DialogComponent,
-      {data: {tabName: this.employees.controls.applicationName.value, name: 'Employees'}});
+      {data: {tabName:  this.applications.controls.applicationName.value, name: 'Application Name'}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
