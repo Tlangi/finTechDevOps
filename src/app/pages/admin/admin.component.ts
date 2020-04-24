@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
+import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
 
 @Component({
   selector: 'app-admin',
@@ -167,7 +168,7 @@ export class AdminComponent implements OnInit {
 
   addNewEmployee() {
     console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
+    const dialogRef = this.matDialog.open(PopupDailogComponent,
       {data: {tabName: this.employees.controls.fullName.value, name: 'Employees'}});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -185,7 +186,7 @@ export class AdminComponent implements OnInit {
   }
   updateApplication() {
     console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
+    const dialogRef = this.matDialog.open(PopupDailogComponent,
       {data: {tabName: this.applications.controls.applicationName.value, name: 'Application'}});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -203,7 +204,7 @@ export class AdminComponent implements OnInit {
   }
   updateWorkType() {
     console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
+    const dialogRef = this.matDialog.open(PopupDailogComponent,
       {data: {tabName: this.workTypeForm.controls.workType.value, name: 'Work Type'}});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -221,7 +222,7 @@ export class AdminComponent implements OnInit {
   }
   updateStatusTab() {
     console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
+    const dialogRef = this.matDialog.open(PopupDailogComponent,
       {data: {tabName: this.statusForm.controls.statusName.value, name: 'Status'}});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -237,5 +238,4 @@ export class AdminComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
 }

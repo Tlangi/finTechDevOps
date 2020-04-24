@@ -21,6 +21,7 @@ import {FlexModule} from '@angular/flex-layout';
 import {AdminLayoutModule} from './adminLayout/admin-layout/admin-layout.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './helpers/components/dialog/dialog.component';
+import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DialogComponent } from './helpers/components/dialog/dialog.component';
     LoginComponent,
     AdminLayoutComponent,
     AlertComponent,
-    DialogComponent
+    DialogComponent,
+    PopupDailogComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -47,7 +49,8 @@ import { DialogComponent } from './helpers/components/dialog/dialog.component';
     MatDialogModule
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    PopupDailogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
