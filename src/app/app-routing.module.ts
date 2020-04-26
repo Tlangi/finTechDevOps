@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {AdminLayoutComponent} from './adminLayout/admin-layout/admin-layout.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {LoginComponent} from './authentication/login/login.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {TeamsComponent} from './pages/teams/teams.component';
 import {ProjectsComponent} from './pages/projects/projects.component';
@@ -13,11 +12,12 @@ import {AdminComponent} from './pages/admin/admin.component';
 import {ContactUsComponent} from './pages/contact-us/contact-us.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {AuthenticationGuardService} from './authentication/services/authentication-guard.service';
+import {LoginPageComponent} from './authentication/login-page/login-page.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginPageComponent
   },
   {
     path: '',

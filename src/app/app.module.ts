@@ -12,7 +12,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import {LoginComponent} from './authentication/login/login.component';
 import {ErrorInterceptorService} from './authentication/services/error-interceptor.service';
 import {JwtInterceptorService} from './authentication/services/jwt-interceptor.service';
 import {fakeBackendProvider} from './authentication/services/fake-backend-interceptor';
@@ -23,6 +22,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
 import {root} from 'rxjs/internal-compatibility';
+import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -39,15 +42,18 @@ import {root} from 'rxjs/internal-compatibility';
     MatSidenavModule,
     MatListModule,
     FlexModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent,
     AlertComponent,
     DialogComponent,
-    PopupDailogComponent
+    PopupDailogComponent,
+    LoginPageComponent
   ],
   entryComponents: [
     DialogComponent,
