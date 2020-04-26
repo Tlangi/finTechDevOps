@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { AdminLayoutRoutes } from './admin-layout.routing';
 import {AdminComponent} from '../../pages/admin/admin.component';
 import {TeamsComponent} from '../../pages/teams/teams.component';
 import {ArchitectureComponent} from '../../pages/architecture/architecture.component';
@@ -26,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
+    RouterModule,
     FormsModule,
     HttpClientModule,
     MatTabsModule,

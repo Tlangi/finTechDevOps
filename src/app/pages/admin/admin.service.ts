@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +36,4 @@ export class AdminService {
   public getStatusTab(): Observable<any> {
     return this.httpClient.get(this.baseUrl + 'statusTab.json');
   }
-
 }

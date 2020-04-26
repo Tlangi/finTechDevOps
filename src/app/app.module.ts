@@ -22,16 +22,9 @@ import {AdminLayoutModule} from './adminLayout/admin-layout/admin-layout.module'
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
+import {root} from 'rxjs/internal-compatibility';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    AdminLayoutComponent,
-    AlertComponent,
-    DialogComponent,
-    PopupDailogComponent
-  ],
   imports: [
     BrowserAnimationsModule,
     AdminLayoutModule,
@@ -47,6 +40,14 @@ import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-da
     MatListModule,
     FlexModule,
     MatDialogModule
+  ],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    LoginComponent,
+    AlertComponent,
+    DialogComponent,
+    PopupDailogComponent
   ],
   entryComponents: [
     DialogComponent,
