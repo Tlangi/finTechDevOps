@@ -101,7 +101,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterName(value: string) {
-    this.adminService.getEmployees().subscribe(data => {
+    const dataHandle = this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
     return this.fullNameList.filter(option => new RegExp(value).test(option.fullNames));
@@ -143,27 +143,39 @@ export class AdminComponent implements OnInit {
     return this.statusStateTabList.filter(option => new RegExp(value).test(option.state));
   }
 
-  private filterStatusTab(status: string) {
+
+
+
+
+  private filterStatusTab(statusStates: string) {
     const statusType = this.statusForm.controls.statusState.value;
-    if (statusType === 'Project State') {
-      this.adminService.getStatusTab().subscribe(data => {
-        this.statusTabList = data.filter(statusType);
+    if (statusType.length > 0 ) {
+      if (statusType === 'Project State') {
+        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
+          this.statusTabList = typeStatus;
+          console.log(this.statusTabList);
+        });
+        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
+      } else if (statusType === 'Approval State') {
+        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
+          this.statusTabList = typeStatus;
+          console.log(this.statusTabList);
+        });
+        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
+      } else if (statusType === 'State of Emergency') {
+        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
+          this.statusTabList = typeStatus;
+          console.log(this.statusTabList);
+        });
+        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
+      } else {
+        this.statusTabList = [];
         console.log(this.statusTabList);
-      });
-      return this.statusTabList.filter(option => new RegExp(status).test(option.state));
-    } else if (statusType === 'Approval State') {
-      this.adminService.getStatusTab().subscribe(data => {
-        this.statusTabList = data.approvalState;
-        console.log(this.statusTabList);
-      });
-      return this.statusTabList.filter(option => new RegExp(status).test(option.state));
-    } else if (statusType === 'State of Emergency') {
-      this.adminService.getStatusTab().subscribe(data => {
-        this.statusTabList = data.levelState;
-        console.log(this.statusTabList);
-      });
-      return this.statusTabList.filter(option => new RegExp(status).test(option.state));
+        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
+      }
     }
+
+    // statusLevel.unsubscribe();
   }
 
   addNewEmployee() {

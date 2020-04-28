@@ -2,7 +2,7 @@
   {
     "stateId": 1,
     "state": "Project State",
-    "statusState": [
+    "statusStates": [
       {
         "stateId": 1,
         "state": "Analysis/Investigation"
