@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
   statusList: any[]  = [];
   applicationsList: any[]  = [];
   workTypeList: any[]  = [];
-  statusStateTabList: any[] = [];
+  stateTabList: any[] = [];
   statusTabList: any[]  = [];
 
   filteredFullName: Observable<any[]>;
@@ -46,8 +46,8 @@ export class AdminComponent implements OnInit {
   filteredStatus: Observable<any[]>;
   filteredApplication: Observable<any[]>;
   filteredWorkType: Observable<any[]>;
+  filteredStateTabList: Observable<any[]>;
   filteredStatusTab: Observable<any[]>;
-  filteredStatusStateTab: Observable<any[]>;
 
   constructor(private adminService: AdminService,
               private matDialog: MatDialog
@@ -87,16 +87,16 @@ export class AdminComponent implements OnInit {
         map(workType => this.filterWorkType(workType))
       );
 
+    this.filteredStateTabList = this.statusForm.controls.statusState.valueChanges
+      .pipe(
+        startWith(''),
+        map(statusStateTab => this.filterStatusStateTab(statusStateTab))
+      );
 
     this.filteredStatusTab = this.statusForm.controls.statusName.valueChanges
       .pipe(
         startWith(''),
         map(statusTab => this.filterStatusTab(statusTab))
-      );
-    this.filteredStatusStateTab = this.statusForm.controls.statusState.valueChanges
-      .pipe(
-        startWith(''),
-        map(statusStateTab => this.filterStatusStateTab(statusStateTab))
       );
   }
 
@@ -137,10 +137,10 @@ export class AdminComponent implements OnInit {
 
   private filterStatusStateTab(value: string) {
     this.adminService.getStatusTab().subscribe(data => {
-      this.statusStateTabList = data;
-      console.log(this.statusForm.controls.statusState.value);
+      this.stateTabList = data;
+     // console.log(this.statusForm.controls.statusState.value);
     });
-    return this.statusStateTabList.filter(option => new RegExp(value).test(option.state));
+    return this.stateTabList.filter(option => new RegExp(value).test(option.state));
   }
 
   private filterStatusTab(value: string) {
@@ -148,38 +148,12 @@ export class AdminComponent implements OnInit {
     let arrayType = [];
     this.adminService.getStatusTab().subscribe(data => {
       arrayType = data;
-      if (statusType === arrayType.filter(value1 => value1.state = value1)) {
-        this.statusTabList = arrayType.filter(value2 => value2.types = value2);
-        console.log(arrayType);
-        console.log(statusType);
+      const filteredState = data.filter(value1 => value1.state = value1);
+      if (filteredState.length > 0) {
       }
-
       });
 
     return this.statusTabList.filter(option => new RegExp(value).test(option.state));
-    /*if (statusType.length > 0 ) {
-      if (statusType === 'Project State') {
-        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
-      } else if (statusType === 'Approval State') {
-        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
-          this.statusTabList = typeStatus;
-          console.log(this.statusTabList);
-        });
-        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
-      } else if (statusType === 'State of Emergency') {
-        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
-          this.statusTabList = typeStatus;
-          console.log(this.statusTabList);
-        });
-        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
-      } else {
-        this.statusTabList = [];
-        console.log(this.statusTabList);
-        return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
-      }
-    } */
-
-    // statusLevel.unsubscribe();
   }
 
   addNewEmployee() {
