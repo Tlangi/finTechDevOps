@@ -2,7 +2,7 @@
   {
     "stateId": 1,
     "state": "Project State",
-    "statusStates": [
+    "types": [
       {
         "stateId": 1,
         "state": "Analysis/Investigation"
@@ -44,7 +44,7 @@
   {
     "stateId": 2,
     "state": "Approval State",
-    "approvalState": [
+    "types": [
       {
         "stateId": 1,
         "state": "Sent For Approval"
@@ -62,7 +62,7 @@
   {
     "stateId": 3,
     "state": "State of Emergency",
-    "levelState": [
+    "types": [
       {
         "stateId": 1,
         "state": "Low"

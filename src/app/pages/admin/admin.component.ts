@@ -143,18 +143,22 @@ export class AdminComponent implements OnInit {
     return this.statusStateTabList.filter(option => new RegExp(value).test(option.state));
   }
 
-
-
-
-
-  private filterStatusTab(statusStates: string) {
+  private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
-    if (statusType.length > 0 ) {
+    let arrayType = [];
+    this.adminService.getStatusTab().subscribe(data => {
+      arrayType = data;
+      if (statusType === arrayType.filter(value1 => value1.state = value1)) {
+        this.statusTabList = arrayType.filter(value2 => value2.types = value2);
+        console.log(arrayType);
+        console.log(statusType);
+      }
+
+      });
+
+    return this.statusTabList.filter(option => new RegExp(value).test(option.state));
+    /*if (statusType.length > 0 ) {
       if (statusType === 'Project State') {
-        const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
-          this.statusTabList = typeStatus;
-          console.log(this.statusTabList);
-        });
         return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
       } else if (statusType === 'Approval State') {
         const statusLevel = this.adminService.getStatusTab().subscribe(typeStatus => {
@@ -173,7 +177,7 @@ export class AdminComponent implements OnInit {
         console.log(this.statusTabList);
         return this.statusTabList.filter(option => new RegExp(statusStates).test(option.state));
       }
-    }
+    } */
 
     // statusLevel.unsubscribe();
   }
