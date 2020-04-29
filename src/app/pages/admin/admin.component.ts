@@ -154,7 +154,7 @@ export class AdminComponent implements OnInit {
       console.log(this.statusTabList);
     });
 
-    return this.statusTabList.map(option => option.stateType);
+    return this.statusTabList.map(option => new RegExp(value).test(option.stateType));
   }
 
   addNewEmployee() {
