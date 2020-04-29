@@ -1,8 +1,8 @@
 [
   {
     "stateId": 1,
-    "state": "Project State",
-    "types": [
+    "statusNames": "Project State",
+    "statusTypes": [
       {
         "stateId": 1,
         "state": "Analysis/Investigation"
@@ -43,8 +43,8 @@
   },
   {
     "stateId": 2,
-    "state": "Approval State",
-    "types": [
+    "statusNames": "Approval State",
+    "statusTypes": [
       {
         "stateId": 1,
         "state": "Sent For Approval"
@@ -61,8 +61,8 @@
   },
   {
     "stateId": 3,
-    "state": "State of Emergency",
-    "types": [
+    "statusNames": "State of Emergency",
+    "statusTypes": [
       {
         "stateId": 1,
         "state": "Low"

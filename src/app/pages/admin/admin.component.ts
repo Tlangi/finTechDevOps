@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {filter, map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -55,6 +55,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    // valueChanges method, returns an observable
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
@@ -138,22 +139,21 @@ export class AdminComponent implements OnInit {
   private filterStatusStateTab(value: string) {
     this.adminService.getStatusTab().subscribe(data => {
       this.stateTabList = data;
+      console.log(this.stateTabList);
      // console.log(this.statusForm.controls.statusState.value);
     });
-    return this.stateTabList.filter(option => new RegExp(value).test(option.state));
+    return this.stateTabList.filter(option => new RegExp(value).test(option.statusNames));
   }
 
   private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
-    let arrayType = [];
-    this.adminService.getStatusTab().subscribe(data => {
-      arrayType = data;
-      const filteredState = data.filter(value1 => value1.state = value1);
-      if (filteredState.length > 0) {
-      }
-      });
+    const subscription = this.adminService.getStatusTab().subscribe(data => {
+      this.statusTabList = data.filter(statusName => statusName.statusNames === statusType);
+      // this.statusTabList = arrayData.find(typesData => typesData.state);
+      console.log(this.statusTabList);
+    });
 
-    return this.statusTabList.filter(option => new RegExp(value).test(option.state));
+    return this.statusTabList.filter(option => new RegExp(value).test(option.statusTypes.state));
   }
 
   addNewEmployee() {
