@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {filter, map, startWith, take} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 import {Observable, Subscription} from 'rxjs';
 import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
