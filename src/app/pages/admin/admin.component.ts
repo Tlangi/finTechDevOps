@@ -154,7 +154,8 @@ export class AdminComponent implements OnInit {
       console.log(this.statusTabList);
     });
 
-    return this.statusTabList.map(option => new RegExp(value).test(option.stateType));
+    console.log('Print the value being entered' + value + 'print the control value' + this.statusForm.controls.statusName.value);
+    return this.statusTabList.filter(option => new RegExp(value).test(option.stateType));
   }
 
   addNewEmployee() {
