@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {filter, map, startWith, take} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
@@ -12,7 +12,7 @@ import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -33,6 +33,7 @@ export class AdminComponent implements OnInit {
     statusDescription: new FormControl(''),
   });
 
+  private subs: Subscription;
   fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[]  = [];
@@ -101,9 +102,12 @@ export class AdminComponent implements OnInit {
         map(statusTab => this.filterStatusTab(statusTab))
       );
   }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 
   private filterName(value: string) {
-    const dataHandle = this.adminService.getEmployees().subscribe(data => {
+    this.subs = this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
     if (value.length >= 2) {
@@ -113,7 +117,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterTeams(value: string) {
-    this.adminService.getTeams().subscribe(data => {
+    this.subs = this.adminService.getTeams().subscribe(data => {
       this.teamList = data;
     });
     if (value.length >= 2) {
@@ -122,7 +126,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterStatus(value: string) {
-    this.adminService.getStatus().subscribe(data => {
+    this.subs = this.adminService.getStatus().subscribe(data => {
       this.statusList = data;
     });
     if (value.length >= 2) {
@@ -131,7 +135,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterApplications(value: string) {
-    this.adminService.getApplications().subscribe(data => {
+    this.subs = this.adminService.getApplications().subscribe(data => {
       this.applicationsList = data;
     });
     if (value.length >= 2) {
@@ -140,7 +144,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterWorkType(value: string) {
-    this.adminService.getWorkType().subscribe(data => {
+    this.subs = this.adminService.getWorkType().subscribe(data => {
       this.workTypeList = data;
     });
     if (value.length >= 2) {
@@ -149,7 +153,7 @@ export class AdminComponent implements OnInit {
   }
 
   private filterStatusStateTab(value: string) {
-    this.adminService.getStatusTab().subscribe(data => {
+    this.subs = this.adminService.getStatusTab().subscribe(data => {
       this.stateTabList = data;
     });
     if (value.length >= 2) {
@@ -160,7 +164,7 @@ export class AdminComponent implements OnInit {
   private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
     if (statusType !== '') {
-      const subscription = this.adminService.getStatusTab().subscribe(data => {
+      this.subs = this.adminService.getStatusTab().subscribe(data => {
         this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
       });
       if (value.length >= 2) {
