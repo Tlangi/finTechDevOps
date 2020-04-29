@@ -196,8 +196,8 @@
             >
             <mat-icon matSuffix>search</mat-icon>
             <mat-autocomplete #autoStatusTab="matAutocomplete">
-              <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab.state">
-                {{statusTab.state}}
+              <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab.stateType">
+                {{statusTab.stateType}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>

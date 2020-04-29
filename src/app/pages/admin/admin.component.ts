@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {filter, map, startWith} from 'rxjs/operators';
+import {filter, map, startWith, take} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -59,7 +59,8 @@ export class AdminComponent implements OnInit {
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
-        map(fullName => this.filterName(fullName))
+        map(fullName => this.filterName(fullName)),
+        // take(4)
       );
 
     this.filteredTeams = this.employees.controls.teams.valueChanges
@@ -139,7 +140,7 @@ export class AdminComponent implements OnInit {
   private filterStatusStateTab(value: string) {
     this.adminService.getStatusTab().subscribe(data => {
       this.stateTabList = data;
-      console.log(this.stateTabList);
+      // console.log(this.stateTabList);
      // console.log(this.statusForm.controls.statusState.value);
     });
     return this.stateTabList.filter(option => new RegExp(value).test(option.statusNames));
@@ -148,12 +149,12 @@ export class AdminComponent implements OnInit {
   private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
     const subscription = this.adminService.getStatusTab().subscribe(data => {
-      this.statusTabList = data.filter(statusName => statusName.statusNames === statusType);
+      this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
       // this.statusTabList = arrayData.find(typesData => typesData.state);
       console.log(this.statusTabList);
     });
 
-    return this.statusTabList.filter(option => new RegExp(value).test(option.statusTypes.state));
+    return this.statusTabList.map(option => option.stateType);
   }
 
   addNewEmployee() {

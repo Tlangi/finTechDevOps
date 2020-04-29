@@ -5,39 +5,39 @@
     "statusTypes": [
       {
         "stateId": 1,
-        "state": "Analysis/Investigation"
+        "stateType": "Analysis/Investigation"
       },
       {
         "stateId": 2,
-        "state": "Queued For Development"
+        "stateType": "Queued For Development"
       },
       {
         "stateId": 3,
-        "state": "Development In Progress"
+        "stateType": "Development In Progress"
       },
       {
         "stateId": 4,
-        "state": "Queued For Testing"
+        "stateType": "Queued For Testing"
       },
       {
         "stateId": 5,
-        "state": "Testing In Progress"
+        "stateType": "Testing In Progress"
       },
       {
         "stateId": 6,
-        "state": "On Hold"
+        "stateType": "On Hold"
       },
       {
         "stateId": 7,
-        "state": "Implemented"
+        "stateType": "Implemented"
       },
       {
         "stateId": 8,
-        "state": "Ready For Deployment"
+        "stateType": "Ready For Deployment"
       },
       {
         "stateId": 9,
-        "state": "Parked"
+        "stateType": "Parked"
       }
     ]
   },
@@ -47,15 +47,15 @@
     "statusTypes": [
       {
         "stateId": 1,
-        "state": "Sent For Approval"
+        "stateType": "Sent For Approval"
       },
       {
         "stateId": 2,
-        "state": "Approved"
+        "stateType": "Approved"
       },
       {
         "stateId": 3,
-        "state": "Declined"
+        "stateType": "Declined"
       }
     ]
   },
@@ -65,19 +65,19 @@
     "statusTypes": [
       {
         "stateId": 1,
-        "state": "Low"
+        "stateType": "Low"
       },
       {
         "stateId": 2,
-        "state": "Medium"
+        "stateType": "Medium"
       },
       {
         "stateId": 3,
-        "state": "High"
+        "stateType": "High"
       },
       {
         "stateId": 4,
-        "state": "Eminent"
+        "stateType": "Eminent"
       }
     ]
   }
