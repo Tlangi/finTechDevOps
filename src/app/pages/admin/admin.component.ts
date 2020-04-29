@@ -106,56 +106,67 @@ export class AdminComponent implements OnInit {
     const dataHandle = this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
-    return this.fullNameList.filter(option => new RegExp(value).test(option.fullNames));
+    if (value.length >= 2) {
+      return this.fullNameList.filter(option => new RegExp(value).test(option.fullNames));
+    }
+
   }
 
   private filterTeams(value: string) {
     this.adminService.getTeams().subscribe(data => {
       this.teamList = data;
     });
-    return this.teamList.filter(option =>  new RegExp(value).test(option.team));
+    if (value.length >= 2) {
+      return this.teamList.filter(option =>  new RegExp(value).test(option.team));
+    }
   }
 
   private filterStatus(value: string) {
     this.adminService.getStatus().subscribe(data => {
       this.statusList = data;
     });
-    return this.statusList.filter(option => new RegExp(value).test(option.statusStates));
+    if (value.length >= 2) {
+      return this.statusList.filter(option => new RegExp(value).test(option.statusStates));
+    }
   }
 
-  private filterApplications(status: string) {
+  private filterApplications(value: string) {
     this.adminService.getApplications().subscribe(data => {
       this.applicationsList = data;
     });
-    return this.applicationsList.filter(option => new RegExp(status).test(option.applicationName));
+    if (value.length >= 2) {
+      return this.applicationsList.filter(option => new RegExp(value).test(option.applicationName));
+    }
   }
 
   private filterWorkType(value: string) {
     this.adminService.getWorkType().subscribe(data => {
       this.workTypeList = data;
     });
-    return this.workTypeList.filter(option => new RegExp(value).test(option.workTypeState));
+    if (value.length >= 2) {
+      return this.workTypeList.filter(option => new RegExp(value).test(option.workTypeState));
+    }
   }
 
   private filterStatusStateTab(value: string) {
     this.adminService.getStatusTab().subscribe(data => {
       this.stateTabList = data;
-      // console.log(this.stateTabList);
-     // console.log(this.statusForm.controls.statusState.value);
     });
-    return this.stateTabList.filter(option => new RegExp(value).test(option.statusNames));
+    if (value.length >= 2) {
+      return this.stateTabList.filter(option => new RegExp(value).test(option.statusNames));
+    }
   }
 
   private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
-    const subscription = this.adminService.getStatusTab().subscribe(data => {
-      this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
-      // this.statusTabList = arrayData.find(typesData => typesData.state);
-      console.log(this.statusTabList);
-    });
-
-    console.log('Print the value being entered' + value + 'print the control value' + this.statusForm.controls.statusName.value);
-    return this.statusTabList.filter(option => new RegExp(value).test(option.stateType));
+    if (statusType !== '') {
+      const subscription = this.adminService.getStatusTab().subscribe(data => {
+        this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
+      });
+      if (value.length >= 2) {
+        return this.statusTabList.filter(option => new RegExp(value).test(option.stateType));
+      }
+    }
   }
 
   addNewEmployee() {
