@@ -67,6 +67,16 @@
              Remove Employee
            </button>
          </div>
+
+         <mat-paginator [length]="length"
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOption"
+                        (page)="pageEvent = $event"
+         >
+         </mat-paginator>
+         <div *ngIf="pageEvent">
+         <div *ngFor="let names of fullNameList"> Full Name: {{names.fullNames}}</div>
+         </div>
        </div>
      </mat-tab>
 
