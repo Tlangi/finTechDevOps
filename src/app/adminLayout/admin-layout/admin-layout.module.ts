@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AdminComponent} from '../../pages/admin/admin.component';
@@ -25,6 +25,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatSortModule} from '@angular/material/sort';
+import {StatusTabComponent} from "../../pages/admin/status-tab/status-tab.component";
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import {MatSortModule} from '@angular/material/sort';
     ProjectsComponent,
     ArchitectureComponent,
     InfrastructureComponent,
+    StatusTabComponent,
   ]
 })
 export class AdminLayoutModule {}
