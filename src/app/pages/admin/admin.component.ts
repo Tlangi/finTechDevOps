@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable, Subscription} from 'rxjs';
@@ -6,6 +6,8 @@ import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
 import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 export interface PeriodicElement {
   name: string;
@@ -35,9 +37,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class AdminComponent implements OnInit, OnDestroy {
 
   tableHeader = 'Employees';
-
   displayedColumns: string[] = ['position', 'name', 'team', 'status'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -81,6 +83,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+
     // valueChanges method, returns an observable
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
