@@ -22,24 +22,26 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        HttpClientModule,
-        MatTabsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        FlexModule,
-        MatRadioModule,
-        MatButtonModule,
-        MatIconModule,
-        MatPaginatorModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    FlexModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
+  ],
   declarations: [
     DashboardComponent,
     PageNotFoundComponent,

@@ -7,12 +7,35 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
 import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  team: number;
+  status: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  { position: 1, name: 'Hydrogen', team: 1.0079, status: 'H' },
+  { position: 2, name: 'Helium', team: 4.0026, status: 'He' },
+  { position: 3, name: 'Lithium', team: 6.941, status: 'Li' },
+  { position: 4, name: 'Beryllium', team: 9.0122, status: 'Be' },
+  { position: 5, name: 'Boron', team: 10.811, status: 'B' },
+  { position: 6, name: 'Carbon', team: 12.0107, status: 'C' },
+  { position: 7, name: 'Nitrogen', team: 14.0067, status: 'N' },
+  { position: 8, name: 'Oxygen', team: 15.9994, status: 'O' },
+  { position: 9, name: 'Fluorine', team: 18.9984, status: 'F' },
+  { position: 10, name: 'Neon', team: 20.1797, status: 'Ne' },
+];
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit, OnDestroy {
+
+  displayedColumns: string[] = ['position', 'name', 'team', 'status'];
+  dataSource = ELEMENT_DATA;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
