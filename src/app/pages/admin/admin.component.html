@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
+<div fxLayout="row" fxLayoutAlign="space-around start" >
  <div class="mat-card">
    <mat-tab-group>
 
@@ -229,7 +229,11 @@
    </mat-tab-group>
  </div>
 
-  <div class="mat-card-content">
+  <div class="mat-card">
+
+    <mat-card-header>
+      <h5> {{tableHeader}} </h5>
+    </mat-card-header>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="position">

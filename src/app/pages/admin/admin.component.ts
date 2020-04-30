@@ -34,6 +34,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
+  tableHeader = 'Employees';
+
   displayedColumns: string[] = ['position', 'name', 'team', 'status'];
   dataSource = ELEMENT_DATA;
 
