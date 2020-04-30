@@ -21,7 +21,6 @@ import {AdminLayoutModule} from './adminLayout/admin-layout/admin-layout.module'
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
-import {root} from 'rxjs/internal-compatibility';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';

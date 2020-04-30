@@ -7,10 +7,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
 import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 
-export interface PeriodicElement {
+/* export interface PeriodicElement {
   name: string;
   position: number;
   team: number;
@@ -28,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 8, name: 'Oxygen', team: 15.9994, status: 'O' },
   { position: 9, name: 'Fluorine', team: 18.9984, status: 'F' },
   { position: 10, name: 'Neon', team: 20.1797, status: 'Ne' },
-];
+]; */
 
 @Component({
   selector: 'app-admin',
@@ -37,11 +37,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  tableHeader = 'Employees';
+  /* tableHeader = 'Employees';
   displayedColumns: string[] = ['position', 'name', 'team', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort; */
+  length = 100;
+  pageSize = 10;
+  pageSizeOption: number[] = [5, 10, 25, 100];
+
+  pageEvent: PageEvent;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -85,8 +90,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
 
     // valueChanges method, returns an observable
     this.filteredFullName = this.employees.controls.fullName.valueChanges
