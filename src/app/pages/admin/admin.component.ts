@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable, Subscription} from 'rxjs';
@@ -6,9 +6,7 @@ import {AdminService} from './admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../../helpers/components/dialog/dialog.component';
 import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {PageEvent} from '@angular/material/paginator';
 
 /* export interface PeriodicElement {
   name: string;
@@ -61,11 +59,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     workType: new FormControl(''),
     workTypeDescription: new FormControl('')
   });
-  statusForm: FormGroup = new FormGroup({
-    statusState: new FormControl(''),
-    statusName: new FormControl(''),
-    statusDescription: new FormControl(''),
-  });
+
 
   private subs: Subscription;
   check = false;
@@ -75,15 +69,14 @@ export class AdminComponent implements OnInit, OnDestroy {
   applicationsList: any[]  = [];
   workTypeList: any[]  = [];
   stateTabList: any[] = [];
-  statusTabList: any[]  = [];
+
 
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
   filteredApplication: Observable<any[]>;
   filteredWorkType: Observable<any[]>;
-  filteredStateTabList: Observable<any[]>;
-  filteredStatusTab: Observable<any[]>;
+
 
   constructor(private adminService: AdminService,
               private matDialog: MatDialog
@@ -126,18 +119,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(
         startWith(''),
         map(workType => this.filterWorkType(workType))
-      );
-
-    this.filteredStateTabList = this.statusForm.controls.statusState.valueChanges
-      .pipe(
-        startWith(''),
-        map(statusStateTab => this.filterStatusStateTab(statusStateTab))
-      );
-
-    this.filteredStatusTab = this.statusForm.controls.statusName.valueChanges
-      .pipe(
-        startWith(''),
-        map(statusTab => this.filterStatusTab(statusTab))
       );
   }
   ngOnDestroy() {
@@ -190,27 +171,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   }
 
-  private filterStatusStateTab(value: string) {
-    this.subs = this.adminService.getStatusTab().subscribe(data => {
-      this.stateTabList = data;
-    });
-    if (value.length >= 2) {
-      return this.stateTabList.filter(option => new RegExp(value).test(option.statusNames));
-    }
-  }
 
-  private filterStatusTab(value: string) {
-    const statusType = this.statusForm.controls.statusState.value;
-    if (statusType !== '') {
-      this.check = true;
-      this.subs = this.adminService.getStatusTab().subscribe(data => {
-        this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
-      });
-      if (value.length >= 2) {
-        return this.statusTabList.filter(option => new RegExp(value).test(option.stateType));
-      }
-    }
-  }
 
   addNewEmployee() {
     console.log('submitted');
