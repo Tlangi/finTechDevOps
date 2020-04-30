@@ -1,231 +1,253 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <mat-tab-group>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2%">
+ <div class="mat-card">
+   <mat-tab-group>
 
-    <mat-tab label="Users">
-      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
-        <form [formGroup]="employees" class="example-form">
+     <mat-tab label="Users">
+       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+         <form [formGroup]="employees" class="example-form">
 
-          <mat-form-field  appearance="outline" class="example-full-width">
-            <mat-label> Full Name </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   formControlName="fullName"
-                   [matAutocomplete]="autoName">
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoName="matAutocomplete">
-              <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.fullNames">
-                {{fullName.fullNames}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field  appearance="outline" class="example-full-width">
+             <mat-label> Full Name </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    formControlName="fullName"
+                    [matAutocomplete]="autoName">
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoName="matAutocomplete">
+               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.fullNames">
+                 {{fullName.fullNames}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field  appearance="outline" class="example-full-width">
-            <mat-label> Teams </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   formControlName="teams"
-                   [matAutocomplete]="autoTeams">
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoTeams="matAutocomplete">
-              <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
-                {{teams.team}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field  appearance="outline" class="example-full-width">
+             <mat-label> Teams </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    formControlName="teams"
+                    [matAutocomplete]="autoTeams">
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoTeams="matAutocomplete">
+               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
+                 {{teams.team}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Status </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   formControlName="status"
-                   [matAutocomplete]="autoStatus">
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoStatus="matAutocomplete">
-              <mat-option *ngFor="let status of filteredStatus | async"
-                          [value]="status.statusStates">
-                {{status.statusStates}}
-              </mat-option>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Status </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    formControlName="status"
+                    [matAutocomplete]="autoStatus">
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoStatus="matAutocomplete">
+               <mat-option *ngFor="let status of filteredStatus | async"
+                           [value]="status.statusStates">
+                 {{status.statusStates}}
+               </mat-option>
 
-            </mat-autocomplete>
-          </mat-form-field>
+             </mat-autocomplete>
+           </mat-form-field>
 
-        </form>
+         </form>
 
-        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-          <button mat-raised-button (click)="addNewEmployee()" color="primary">
-            Add new Employee
-          </button>
+         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+           <button mat-raised-button (click)="addNewEmployee()" color="primary">
+             Add new Employee
+           </button>
 
-          <button mat-raised-button (click)="removeEmployee()" color="warn">
-            Remove Employee
-          </button>
-        </div>
-      </div>
-    </mat-tab>
+           <button mat-raised-button (click)="removeEmployee()" color="warn">
+             Remove Employee
+           </button>
+         </div>
+       </div>
+     </mat-tab>
 
-    <mat-tab label="Applications">
-      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+     <mat-tab label="Applications">
+       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <form [formGroup]="applications" class="example-form">
+         <form [formGroup]="applications" class="example-form">
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Application Name </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   [matAutocomplete]="autoApplication"
-                   formControlName="applicationName"
-            >
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoApplication="matAutocomplete">
-              <mat-option *ngFor="let application of filteredApplication | async"
-                          [value]="application.applicationName">
-                {{application.applicationName}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Application Name </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    [matAutocomplete]="autoApplication"
+                    formControlName="applicationName"
+             >
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoApplication="matAutocomplete">
+               <mat-option *ngFor="let application of filteredApplication | async"
+                           [value]="application.applicationName">
+                 {{application.applicationName}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Description </mat-label>
-            <textarea matInput
-                      aria-label="Number"
-                      placeholder="Description"
-                      formControlName="applicationDescription"
-            ></textarea>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Description </mat-label>
+             <textarea matInput
+                       aria-label="Number"
+                       placeholder="Description"
+                       formControlName="applicationDescription"
+             ></textarea>
+           </mat-form-field>
 
-        </form>
+         </form>
 
-        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-          <button mat-raised-button (click)="updateApplication()" color="primary">
-            Add/Update Applications
-          </button>
+         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+           <button mat-raised-button (click)="updateApplication()" color="primary">
+             Add/Update Applications
+           </button>
 
-          <button mat-raised-button (click)="removeApplication()" color="warn">
-            Remove Applications
-          </button>
-        </div>
-      </div>
-    </mat-tab>
+           <button mat-raised-button (click)="removeApplication()" color="warn">
+             Remove Applications
+           </button>
+         </div>
+       </div>
+     </mat-tab>
 
-    <mat-tab label="Work Type">
-      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+     <mat-tab label="Work Type">
+       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <form [formGroup]="workTypeForm" class="example-form">
+         <form [formGroup]="workTypeForm" class="example-form">
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Work Type </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   [matAutocomplete]="autoWorkType"
-                   formControlName="workType"
-            >
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoWorkType="matAutocomplete">
-              <mat-option *ngFor="let workType of filteredWorkType | async"
-                          [value]="workType.workTypeState">
-                {{workType.workTypeState}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Work Type </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    [matAutocomplete]="autoWorkType"
+                    formControlName="workType"
+             >
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoWorkType="matAutocomplete">
+               <mat-option *ngFor="let workType of filteredWorkType | async"
+                           [value]="workType.workTypeState">
+                 {{workType.workTypeState}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Description </mat-label>
-            <textarea matInput
-                      aria-label="Number"
-                      placeholder="Description"
-                      formControlName="workTypeDescription"
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Description </mat-label>
+             <textarea matInput
+                       aria-label="Number"
+                       placeholder="Description"
+                       formControlName="workTypeDescription"
 
-            ></textarea>
-          </mat-form-field>
+             ></textarea>
+           </mat-form-field>
 
-        </form>
+         </form>
 
-        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-          <button mat-raised-button (click)="updateWorkType()" color="primary">
-            Add/Update Work Type
-          </button>
+         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+           <button mat-raised-button (click)="updateWorkType()" color="primary">
+             Add/Update Work Type
+           </button>
 
-          <button mat-raised-button (click)="removeWorkType()" color="warn">
-            Remove Work Type
-          </button>
-        </div>
-      </div>
-    </mat-tab>
+           <button mat-raised-button (click)="removeWorkType()" color="warn">
+             Remove Work Type
+           </button>
+         </div>
+       </div>
+     </mat-tab>
 
-    <mat-tab label="Status">
-      <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+     <mat-tab label="Status">
+       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-        <form [formGroup]="statusForm" class="example-form">
+         <form [formGroup]="statusForm" class="example-form">
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Status State </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   [matAutocomplete]="autoStatusStateTab"
-                   formControlName="statusState"
-            >
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoStatusStateTab="matAutocomplete">
-              <mat-option *ngFor="let statusStateTab of filteredStateTabList | async"
-                          [value]="statusStateTab.statusNames">
-                {{statusStateTab.statusNames}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Status State </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    [matAutocomplete]="autoStatusStateTab"
+                    formControlName="statusState"
+             >
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoStatusStateTab="matAutocomplete">
+               <mat-option *ngFor="let statusStateTab of filteredStateTabList | async"
+                           [value]="statusStateTab.statusNames">
+                 {{statusStateTab.statusNames}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Status </mat-label>
-            <input type="text"
-                   placeholder="Search"
-                   aria-label="Number"
-                   matInput
-                   [matAutocomplete]="autoStatusTab"
-                   formControlName="statusName"
-            >
-            <mat-icon matSuffix>search</mat-icon>
-            <mat-autocomplete #autoStatusTab="matAutocomplete">
-              <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab.stateType">
-                {{statusTab.stateType}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Status </mat-label>
+             <input type="text"
+                    placeholder="Search"
+                    aria-label="Number"
+                    matInput
+                    [matAutocomplete]="autoStatusTab"
+                    formControlName="statusName"
+             >
+             <mat-icon matSuffix>search</mat-icon>
+             <mat-autocomplete #autoStatusTab="matAutocomplete">
+               <mat-option *ngFor="let statusTab of filteredStatusTab | async" [value]="statusTab.stateType">
+                 {{statusTab.stateType}}
+               </mat-option>
+             </mat-autocomplete>
+           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label> Description </mat-label>
-            <textarea matInput
-                      aria-label="Number"
-                      placeholder="Description"
-                      formControlName="statusDescription"
-            ></textarea>
-          </mat-form-field>
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label> Description </mat-label>
+             <textarea matInput
+                       aria-label="Number"
+                       placeholder="Description"
+                       formControlName="statusDescription"
+             ></textarea>
+           </mat-form-field>
 
-        </form>
+         </form>
 
-        <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-          <button mat-raised-button (click)="updateStatusTab()" color="primary">
-            Add/Update Status
-          </button>
+         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+           <button mat-raised-button (click)="updateStatusTab()" color="primary">
+             Add/Update Status
+           </button>
 
-          <button mat-raised-button (click)="removeStatus()" color="warn">
-            Remove Status
-          </button>
-        </div>
-      </div>
-    </mat-tab>
+           <button mat-raised-button (click)="removeStatus()" color="warn">
+             Remove Status
+           </button>
+         </div>
+       </div>
+     </mat-tab>
 
-  </mat-tab-group>
+   </mat-tab-group>
+ </div>
+
+  <div class="mat-card-content">
+
+    <mat-paginator [length]="100"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                   (page)="pageEvent = $event"
+
+    >
+
+    </mat-paginator>
+    <div *ngIf="pageEvent">
+      <h5>Page Change Event</h5>
+      <div>List length: {{pageEvent.length}}</div>
+      <div>Page size: {{pageEvent.pageSize}}</div>
+      <div>Page index: {{pageEvent.pageIndex}}</div>
+    </div>
+  </div>
 </div>
+
+
 
 

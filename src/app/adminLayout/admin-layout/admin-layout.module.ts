@@ -21,23 +21,25 @@ import {FlexModule} from '@angular/flex-layout';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    FlexModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        HttpClientModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        FlexModule,
+        MatRadioModule,
+        MatButtonModule,
+        MatIconModule,
+        MatPaginatorModule,
+    ],
   declarations: [
     DashboardComponent,
     PageNotFoundComponent,
