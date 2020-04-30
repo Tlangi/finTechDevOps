@@ -74,8 +74,17 @@
                         (page)="pageEvent = $event"
          >
          </mat-paginator>
-         <div *ngIf="pageEvent">
-         <div *ngFor="let names of fullNameList"> Full Name: {{names.fullNames}}</div>
+
+         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+          <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+            <div *ngFor="let names of fullNameList"> Full Name: {{names.fullNames}}</div>
+          </div>
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let team of teamList"> Team: {{team.team}}</div>
+           </div>
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let statu of statusList"> Status: {{statu.statusStates}}</div>
+           </div>
          </div>
        </div>
      </mat-tab>
@@ -122,6 +131,19 @@
            <button mat-raised-button (click)="removeApplication()" color="warn">
              Remove Applications
            </button>
+         </div>
+
+         <mat-paginator [length]="length"
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOption"
+                        (page)="pageEvent = $event"
+         >
+         </mat-paginator>
+
+         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let applications of applicationsList"> Application Name: {{applications.applicationName}}</div>
+           </div>
          </div>
        </div>
      </mat-tab>
@@ -170,6 +192,19 @@
              Remove Work Type
            </button>
          </div>
+
+         <mat-paginator [length]="length"
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOption"
+                        (page)="pageEvent = $event"
+         >
+         </mat-paginator>
+
+         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let workType of workTypeList"> Work Type: {{workType.workTypeState}}</div>
+           </div>
+         </div>
        </div>
      </mat-tab>
 
@@ -196,7 +231,7 @@
              </mat-autocomplete>
            </mat-form-field>
 
-           <mat-form-field appearance="outline" class="example-full-width">
+           <mat-form-field appearance="outline" class="example-full-width" *ngIf="check">
              <mat-label> Status </mat-label>
              <input type="text"
                     placeholder="Search"
@@ -213,7 +248,7 @@
              </mat-autocomplete>
            </mat-form-field>
 
-           <mat-form-field appearance="outline" class="example-full-width">
+           <mat-form-field appearance="outline" class="example-full-width" *ngIf="check">
              <mat-label> Description </mat-label>
              <textarea matInput
                        aria-label="Number"
@@ -233,6 +268,23 @@
              Remove Status
            </button>
          </div>
+
+         <mat-paginator [length]="length"
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOption"
+                        (page)="pageEvent = $event"
+         >
+         </mat-paginator>
+
+         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let statusType of stateTabList"> Status Type: {{statusType.statusNames}}</div>
+           </div>
+           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+             <div *ngFor="let subStatus of statusTabList"> SubStatus Type: {{subStatus.stateType}}</div>
+           </div>
+         </div>
+
        </div>
      </mat-tab>
 

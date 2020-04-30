@@ -68,6 +68,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   });
 
   private subs: Subscription;
+  check = false;
   fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[]  = [];
@@ -201,6 +202,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   private filterStatusTab(value: string) {
     const statusType = this.statusForm.controls.statusState.value;
     if (statusType !== '') {
+      this.check = true;
       this.subs = this.adminService.getStatusTab().subscribe(data => {
         this.statusTabList = (data.filter(statusName => statusName.statusNames === statusType))[0].statusTypes;
       });
