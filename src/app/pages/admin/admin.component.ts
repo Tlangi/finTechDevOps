@@ -8,6 +8,7 @@ import {DialogComponent} from '../../helpers/components/dialog/dialog.component'
 import {PopupDailogComponent} from '../../helpers/components/popup-dailog/popup-dailog.component';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 
 export interface PeriodicElement {
   name: string;
@@ -40,6 +41,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['position', 'name', 'team', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -84,6 +86,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
     // valueChanges method, returns an observable
     this.filteredFullName = this.employees.controls.fullName.valueChanges
