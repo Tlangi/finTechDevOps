@@ -3,7 +3,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import {AdminComponent} from '../../pages/admin/admin.component';
 import {TeamsComponent} from '../../pages/teams/teams.component';
 import {ArchitectureComponent} from '../../pages/architecture/architecture.component';

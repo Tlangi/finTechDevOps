@@ -20,7 +20,6 @@ import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     MatToolbarModule,
