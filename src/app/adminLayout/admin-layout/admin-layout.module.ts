@@ -13,19 +13,11 @@ import {InfrastructureComponent} from '../../pages/infrastructure/infrastructure
 import {PageNotFoundComponent} from '../../pages/page-not-found/page-not-found.component';
 import {ContactUsComponent} from '../../pages/contact-us/contact-us.component';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {FlexModule} from '@angular/flex-layout';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableModule} from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatSortModule} from '@angular/material/sort';
-import {StatusTabComponent} from "../../pages/admin/status-tab/status-tab.component";
+import {EmployeesComponent} from '../../pages/admin/employees/employees.component';
+import {ApplicationsComponent} from '../../pages/admin/applications/applications.component';
+import {WorkTypeComponent} from '../../pages/admin/work-type/work-type.component';
+import {StatusComponent} from '../../pages/admin/status/status.component';
+import {MaterialModule} from '../../helpers/material.module';
 
 @NgModule({
   imports: [
@@ -33,19 +25,8 @@ import {StatusTabComponent} from "../../pages/admin/status-tab/status-tab.compon
     RouterModule,
     FormsModule,
     HttpClientModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    FlexModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatCardModule,
-    MatSortModule,
+    MaterialModule
   ],
   declarations: [
     DashboardComponent,
@@ -57,7 +38,10 @@ import {StatusTabComponent} from "../../pages/admin/status-tab/status-tab.compon
     ProjectsComponent,
     ArchitectureComponent,
     InfrastructureComponent,
-    StatusTabComponent,
+    EmployeesComponent,
+    ApplicationsComponent,
+    WorkTypeComponent,
+    StatusComponent
   ]
 })
 export class AdminLayoutModule {}

@@ -3,212 +3,21 @@
    <mat-tab-group>
 
      <mat-tab label="Users">
-       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
-         <form [formGroup]="employees" class="example-form">
-
-           <mat-form-field  appearance="outline" class="example-full-width">
-             <mat-label> Full Name </mat-label>
-             <input type="text"
-                    placeholder="Search"
-                    aria-label="Number"
-                    matInput
-                    formControlName="fullName"
-                    [matAutocomplete]="autoName">
-             <mat-icon matSuffix>search</mat-icon>
-             <mat-autocomplete #autoName="matAutocomplete">
-               <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.fullNames">
-                 {{fullName.fullNames}}
-               </mat-option>
-             </mat-autocomplete>
-           </mat-form-field>
-
-           <mat-form-field  appearance="outline" class="example-full-width">
-             <mat-label> Teams </mat-label>
-             <input type="text"
-                    placeholder="Search"
-                    aria-label="Number"
-                    matInput
-                    formControlName="teams"
-                    [matAutocomplete]="autoTeams">
-             <mat-icon matSuffix>search</mat-icon>
-             <mat-autocomplete #autoTeams="matAutocomplete">
-               <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
-                 {{teams.team}}
-               </mat-option>
-             </mat-autocomplete>
-           </mat-form-field>
-
-           <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label> Status </mat-label>
-             <input type="text"
-                    placeholder="Search"
-                    aria-label="Number"
-                    matInput
-                    formControlName="status"
-                    [matAutocomplete]="autoStatus">
-             <mat-icon matSuffix>search</mat-icon>
-             <mat-autocomplete #autoStatus="matAutocomplete">
-               <mat-option *ngFor="let status of filteredStatus | async"
-                           [value]="status.statusStates">
-                 {{status.statusStates}}
-               </mat-option>
-
-             </mat-autocomplete>
-           </mat-form-field>
-
-         </form>
-
-         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-           <button mat-raised-button (click)="addNewEmployee()" color="primary">
-             Add new Employee
-           </button>
-
-           <button mat-raised-button (click)="removeEmployee()" color="warn">
-             Remove Employee
-           </button>
-         </div>
-
-         <mat-paginator [length]="length"
-                        [pageSize]="pageSize"
-                        [pageSizeOptions]="pageSizeOption"
-                        (page)="pageEvent = $event"
-         >
-         </mat-paginator>
-
-         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-          <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-            <div *ngFor="let names of fullNameList"> Full Name: {{names.fullNames}}</div>
-          </div>
-           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-             <div *ngFor="let team of teamList"> Team: {{team.team}}</div>
-           </div>
-           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-             <div *ngFor="let statu of statusList"> Status: {{statu.statusStates}}</div>
-           </div>
-         </div>
-       </div>
+      <app-employees></app-employees>
      </mat-tab>
 
      <mat-tab label="Applications">
-       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
-
-         <form [formGroup]="applications" class="example-form">
-
-           <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label> Application Name </mat-label>
-             <input type="text"
-                    placeholder="Search"
-                    aria-label="Number"
-                    matInput
-                    [matAutocomplete]="autoApplication"
-                    formControlName="applicationName"
-             >
-             <mat-icon matSuffix>search</mat-icon>
-             <mat-autocomplete #autoApplication="matAutocomplete">
-               <mat-option *ngFor="let application of filteredApplication | async"
-                           [value]="application.applicationName">
-                 {{application.applicationName}}
-               </mat-option>
-             </mat-autocomplete>
-           </mat-form-field>
-
-           <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label> Description </mat-label>
-             <textarea matInput
-                       aria-label="Number"
-                       placeholder="Description"
-                       formControlName="applicationDescription"
-             ></textarea>
-           </mat-form-field>
-
-         </form>
-
-         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-           <button mat-raised-button (click)="updateApplication()" color="primary">
-             Add/Update Applications
-           </button>
-
-           <button mat-raised-button (click)="removeApplication()" color="warn">
-             Remove Applications
-           </button>
-         </div>
-
-         <mat-paginator [length]="length"
-                        [pageSize]="pageSize"
-                        [pageSizeOptions]="pageSizeOption"
-                        (page)="pageEvent = $event"
-         >
-         </mat-paginator>
-
-         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-             <div *ngFor="let applications of applicationsList"> Application Name: {{applications.applicationName}}</div>
-           </div>
-         </div>
-       </div>
+       <app-applications></app-applications>
      </mat-tab>
 
      <mat-tab label="Work Type">
-       <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
-
-         <form [formGroup]="workTypeForm" class="example-form">
-
-           <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label> Work Type </mat-label>
-             <input type="text"
-                    placeholder="Search"
-                    aria-label="Number"
-                    matInput
-                    [matAutocomplete]="autoWorkType"
-                    formControlName="workType"
-             >
-             <mat-icon matSuffix>search</mat-icon>
-             <mat-autocomplete #autoWorkType="matAutocomplete">
-               <mat-option *ngFor="let workType of filteredWorkType | async"
-                           [value]="workType.workTypeState">
-                 {{workType.workTypeState}}
-               </mat-option>
-             </mat-autocomplete>
-           </mat-form-field>
-
-           <mat-form-field appearance="outline" class="example-full-width">
-             <mat-label> Description </mat-label>
-             <textarea matInput
-                       aria-label="Number"
-                       placeholder="Description"
-                       formControlName="workTypeDescription"
-
-             ></textarea>
-           </mat-form-field>
-
-         </form>
-
-         <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-           <button mat-raised-button (click)="updateWorkType()" color="primary">
-             Add/Update Work Type
-           </button>
-
-           <button mat-raised-button (click)="removeWorkType()" color="warn">
-             Remove Work Type
-           </button>
-         </div>
-
-         <mat-paginator [length]="length"
-                        [pageSize]="pageSize"
-                        [pageSizeOptions]="pageSizeOption"
-                        (page)="pageEvent = $event"
-         >
-         </mat-paginator>
-
-         <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-           <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-             <div *ngFor="let workType of workTypeList"> Work Type: {{workType.workTypeState}}</div>
-           </div>
-         </div>
-       </div>
+       <app-work-type></app-work-type>
      </mat-tab>
 
-     <app-status-tab></app-status-tab>
+     <mat-tab label="Status">
+       <app-status></app-status>
+     </mat-tab>
+
    </mat-tab-group>
  </div>
 

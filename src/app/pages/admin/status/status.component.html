@@ -1,0 +1,63 @@
+<div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+
+  <form [formGroup]="statusTab" class="example-form">
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label> Status Type </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             [matAutocomplete]="statusType"
+             formControlName="statusType"
+      >
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #statusType="matAutocomplete">
+        <mat-option *ngFor="let statusType of filteredStatusType | async"
+                    [value]="statusType.statusNames">
+          {{statusType.statusNames}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label> Sub Status Type </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             [matAutocomplete]="subStatusType"
+             formControlName="subStatusType"
+      >
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #subStatusType="matAutocomplete">
+        <mat-option *ngFor="let subStatusType of filteredSubStatusType | async"
+                    [value]="subStatusType.stateType">
+          {{subStatusType.stateType}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label> Description </mat-label>
+      <textarea matInput
+                aria-label="Number"
+                placeholder="Description"
+                formControlName="statusTypeDescription"
+
+      ></textarea>
+    </mat-form-field>
+
+  </form>
+
+  <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button (click)="updateStatusTab()" color="primary">
+      Add/Update Status
+    </button>
+
+    <button mat-raised-button (click)="removeStatusTab()" color="warn">
+      Remove Status
+    </button>
+  </div>
+
+</div>
