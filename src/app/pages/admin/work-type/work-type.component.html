@@ -1,57 +1,89 @@
-<div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+<div  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
+  <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-  <form [formGroup]="workTypeForm" class="example-form">
+    <form [formGroup]="workTypeForm" class="example-form">
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Work Type </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             [matAutocomplete]="autoWorkType"
-             formControlName="workType"
-      >
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoWorkType="matAutocomplete">
-        <mat-option *ngFor="let workType of filteredWorkType | async"
-                    [value]="workType.workTypeState">
-          {{workType.workTypeState}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Work Type </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               [matAutocomplete]="autoWorkType"
+               formControlName="workType"
+        >
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoWorkType="matAutocomplete">
+          <mat-option *ngFor="let workType of filteredWorkType | async"
+                      [value]="workType.workTypeState">
+            {{workType.workTypeState}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Description </mat-label>
-      <textarea matInput
-                aria-label="Number"
-                placeholder="Description"
-                formControlName="workTypeDescription"
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Description </mat-label>
+        <textarea matInput
+                  aria-label="Number"
+                  placeholder="Description"
+                  formControlName="workTypeDescription"
 
-      ></textarea>
-    </mat-form-field>
+        ></textarea>
+      </mat-form-field>
 
-  </form>
+    </form>
 
-  <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-    <button mat-raised-button (click)="updateWorkType()" color="primary">
-      Add/Update Work Type
-    </button>
+    <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+      <button mat-raised-button (click)="updateWorkType()" color="primary">
+        Add/Update Work Type
+      </button>
 
-    <button mat-raised-button (click)="removeWorkType()" color="warn">
-      Remove Work Type
-    </button>
+      <button mat-raised-button (click)="removeWorkType()" color="warn">
+        Remove Work Type
+      </button>
+    </div>
+
+    <!-- <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOption"
+                   (page)="pageEvent = $event"
+    >
+    </mat-paginator>
+
+    <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+        <div *ngFor="let workType of workTypeList"> Work Type: {{workType.workTypeState}}</div>
+      </div>
+    </div> -->
   </div>
 
-  <!-- <mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOption"
-                 (page)="pageEvent = $event"
-  >
-  </mat-paginator>
+  <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-  <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-    <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-      <div *ngFor="let workType of workTypeList"> Work Type: {{workType.workTypeState}}</div>
-    </div>
-  </div> -->
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullNames}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullNames}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+
+    >
+    </mat-paginator>
+
+  </div>
+
 </div>
+

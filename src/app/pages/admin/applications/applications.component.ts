@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -6,6 +6,9 @@ import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/pop
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {AdminService} from '../admin.service';
 import {MatDialog} from '@angular/material/dialog';
+import {MatSort} from '@angular/material/sort';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-applications',
@@ -13,6 +16,14 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent implements OnInit {
+
+  displayColumns: string[] = ['position', 'name'];
+  myData: string[] = [];
+  tabChanged;
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource(this.myData);
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),

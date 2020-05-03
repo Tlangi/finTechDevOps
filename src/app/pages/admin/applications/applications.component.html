@@ -1,56 +1,87 @@
-<div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
+  <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-  <form [formGroup]="applications" class="example-form">
+    <form [formGroup]="applications" class="example-form">
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Application Name </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             [matAutocomplete]="autoApplication"
-             formControlName="applicationName"
-      >
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoApplication="matAutocomplete">
-        <mat-option *ngFor="let application of filteredApplication | async"
-                    [value]="application.applicationName">
-          {{application.applicationName}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Application Name </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               [matAutocomplete]="autoApplication"
+               formControlName="applicationName"
+        >
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoApplication="matAutocomplete">
+          <mat-option *ngFor="let application of filteredApplication | async"
+                      [value]="application.applicationName">
+            {{application.applicationName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Description </mat-label>
-      <textarea matInput
-                aria-label="Number"
-                placeholder="Description"
-                formControlName="applicationDescription"
-      ></textarea>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Description </mat-label>
+        <textarea matInput
+                  aria-label="Number"
+                  placeholder="Description"
+                  formControlName="applicationDescription"
+        ></textarea>
+      </mat-form-field>
 
-  </form>
+    </form>
 
-  <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-    <button mat-raised-button (click)="updateApplication()" color="primary">
-      Add/Update Applications
-    </button>
+    <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
+      <button mat-raised-button (click)="updateApplication()" color="primary">
+        Add/Update Applications
+      </button>
 
-    <button mat-raised-button (click)="removeApplication()" color="warn">
-      Remove Applications
-    </button>
+      <button mat-raised-button (click)="removeApplication()" color="warn">
+        Remove Applications
+      </button>
+    </div>
+
+    <!--<mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOption"
+                   (page)="pageEvent = $event"
+    >
+    </mat-paginator>
+
+     <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
+        <div *ngFor="let applications of applicationsList"> Application Name: {{applications.applicationName}}</div>
+      </div>
+    </div> -->
   </div>
 
-  <!--<mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOption"
-                 (page)="pageEvent = $event"
-  >
-  </mat-paginator>
+  <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
 
-   <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-    <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-      <div *ngFor="let applications of applicationsList"> Application Name: {{applications.applicationName}}</div>
-    </div>
-  </div> -->
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullNames}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullNames}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+
+    >
+    </mat-paginator>
+
+  </div>
+
 </div>
