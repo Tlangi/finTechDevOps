@@ -6,9 +6,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-work-type',
@@ -16,14 +13,6 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./work-type.component.css']
 })
 export class WorkTypeComponent implements OnInit {
-
-  displayColumns: string[] = ['position', 'name'];
-  myData: string[] = [];
-  tabChanged;
-
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource(this.myData);
 
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),

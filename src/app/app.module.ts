@@ -16,36 +16,43 @@ import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import {MaterialModule} from './helpers/material.module';
+import { DataTableComponent } from './pages/admin/data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    AdminLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule,
-    AppRoutingModule,
-    MaterialModule
-  ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AlertComponent,
-    DialogComponent,
-    PopupDailogComponent,
-    LoginPageComponent,
-  ],
-  entryComponents: [
-    DialogComponent,
-    PopupDailogComponent
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
-    fakeBackendProvider
-  ],
-  bootstrap: [AppComponent],
- //  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    imports: [
+        BrowserAnimationsModule,
+        AdminLayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule,
+        AppRoutingModule,
+        MaterialModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
+    ],
+    declarations: [
+        AppComponent,
+        AdminLayoutComponent,
+        AlertComponent,
+        DialogComponent,
+        PopupDailogComponent,
+        LoginPageComponent
+    ],
+    entryComponents: [
+        DialogComponent,
+        PopupDailogComponent
+    ],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
+        fakeBackendProvider
+    ],
+    bootstrap: [AppComponent],
+    //  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

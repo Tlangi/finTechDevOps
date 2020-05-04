@@ -17,14 +17,6 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ApplicationsComponent implements OnInit {
 
-  displayColumns: string[] = ['position', 'name'];
-  myData: string[] = [];
-  tabChanged;
-
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource(this.myData);
-
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
     applicationDescription: new FormControl('')

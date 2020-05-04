@@ -6,9 +6,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
-import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-status',
@@ -16,14 +13,6 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-
-  displayColumns: string[] = ['position', 'name'];
-  myData: string[] = [];
-  tabChanged;
-
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource = new MatTableDataSource(this.myData);
 
   statusTab: FormGroup = new FormGroup({
     statusType: new FormControl(''),

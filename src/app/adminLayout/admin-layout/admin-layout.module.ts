@@ -17,16 +17,18 @@ import {ApplicationsComponent} from '../../pages/admin/applications/applications
 import {WorkTypeComponent} from '../../pages/admin/work-type/work-type.component';
 import {StatusComponent} from '../../pages/admin/status/status.component';
 import {MaterialModule} from '../../helpers/material.module';
+import {AppModule} from '../../app.module';
+import {DataTableComponent} from '../../pages/admin/data-table/data-table.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MaterialModule,
+    ],
   declarations: [
     DashboardComponent,
     PageNotFoundComponent,
@@ -40,7 +42,11 @@ import {MaterialModule} from '../../helpers/material.module';
     EmployeesComponent,
     ApplicationsComponent,
     WorkTypeComponent,
-    StatusComponent
-  ]
+    StatusComponent,
+    DataTableComponent
+  ],
+  exports: [
+    DataTableComponent
+  ],
 })
 export class AdminLayoutModule {}
