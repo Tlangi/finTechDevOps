@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
+import {isLowerCase} from 'tslint/lib/utils';
 
 @Component({
   selector: 'app-data-table',
@@ -29,6 +30,8 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   public doFilter(value: string) {
-
+    console.log(value);
+    console.log( this.dataSource.data.filter(option => new RegExp(value, 'gi').test(option.name)));
+    return this.dataSource.data.filter(option => new RegExp(value, 'gi').test(option.name));
   }
 }

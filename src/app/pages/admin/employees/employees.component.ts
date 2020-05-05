@@ -58,7 +58,7 @@ export class EmployeesComponent implements OnInit {
       this.fullNameList = data;
     });
     if (value.length >= 2) {
-      return this.fullNameList.filter(option => new RegExp(value).test(option.fullNames));
+      return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.fullNames));
     }
 
   }
@@ -68,7 +68,7 @@ export class EmployeesComponent implements OnInit {
       this.teamList = data;
     });
     if (value.length >= 2) {
-      return this.teamList.filter(option =>  new RegExp(value).test(option.team));
+      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
     }
   }
 
@@ -77,7 +77,7 @@ export class EmployeesComponent implements OnInit {
       this.statusList = data;
     });
     if (value.length >= 2) {
-      return this.statusList.filter(option => new RegExp(value).test(option.statusStates));
+      return this.statusList.filter(option => new RegExp(value, 'gi').test(option.statusStates));
     }
   }
 

@@ -39,7 +39,7 @@ export class ApplicationsComponent implements OnInit {
       this.applicationsList = data;
     });
     if (value.length >= 2) {
-      return this.applicationsList.filter(option => new RegExp(value).test(option.applicationName));
+      return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.applicationName));
     }
   }
 

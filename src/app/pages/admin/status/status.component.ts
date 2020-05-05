@@ -45,7 +45,7 @@ export class StatusComponent implements OnInit {
       this.statusTypeList = data;
     });
     if (value.length >= 2) {
-      return this.statusTypeList.filter(option => new RegExp(value).test(option.statusNames));
+      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.statusNames));
     }
   }
 
@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
         // console.log(this.subStatusTypeList);
       });
       if (value.length >= 1) {
-        return this.subStatusTypeList.filter(option => new RegExp(value).test(option.stateType));
+        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.stateType));
       }
     }
   }

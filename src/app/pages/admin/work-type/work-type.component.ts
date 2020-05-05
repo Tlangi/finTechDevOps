@@ -37,7 +37,7 @@ export class WorkTypeComponent implements OnInit {
       this.workTypeList = data;
     });
     if (value.length >= 2) {
-      return this.workTypeList.filter(option => new RegExp(value).test(option.workTypeState));
+      return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.workTypeState));
     }
   }
   updateWorkType() {
