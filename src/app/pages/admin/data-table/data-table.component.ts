@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { DataTableDataSource, DataTableItem } from './data-table-datasource';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent implements AfterViewInit, OnInit {
+export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   @Input() filterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -21,10 +21,6 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.dataSource = new DataTableDataSource();
-    console.log('Value in the table: ' + this.filterValue);
-    /* if (this.filterValue.length > 0) {
-      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
-    }*/
   }
 
   ngAfterViewInit() {
@@ -32,9 +28,15 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  public doFilter(value) {
-    if (value.length > 0) {
-      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(value, 'gi').test(option.name));
+  ngOnChanges(changes: SimpleChanges): void {
+    this.doFilter();
+  }
+
+  public doFilter() {
+    console.log('Value in the table: ' + this.filterValue);
+    if (this.filterValue.length > 0) {
+      console.log('Value in the table inside loop: ' + this.filterValue);
+      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
     }
   }
 }

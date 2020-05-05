@@ -12,8 +12,8 @@
                [matAutocomplete]="autoName">
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoName="matAutocomplete">
-          <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.fullNames">
-            {{fullName.fullNames}}
+          <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.name">
+            {{fullName.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

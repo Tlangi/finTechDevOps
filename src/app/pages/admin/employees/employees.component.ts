@@ -6,6 +6,7 @@ import {AdminService} from '../admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
+import {DataTableDataSource} from '../data-table/data-table-datasource';
 
 @Component({
   selector: 'app-employees',
@@ -14,6 +15,7 @@ import {DialogComponent} from '../../../helpers/components/dialog/dialog.compone
 })
 export class EmployeesComponent implements OnInit {
   @Output() sendFilterValue = new EventEmitter<string>();
+  dataSource: DataTableDataSource;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -30,6 +32,7 @@ export class EmployeesComponent implements OnInit {
   filteredStatus: Observable<any[]>;
   constructor(private adminService: AdminService,
               private matDialog: MatDialog) {
+    this.dataSource = new DataTableDataSource();
   }
 
   ngOnInit(): void {
@@ -56,11 +59,12 @@ export class EmployeesComponent implements OnInit {
 
   private filterName(value: string) {
     this.sendFilterValue.emit(value);
-    this.subs = this.adminService.getEmployees().subscribe(data => {
+    this.fullNameList = this.dataSource.data;
+    /*this.subs = this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
-    });
+    }); */
     if (value.length >= 2) {
-      return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.fullNames));
+      return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
 
   }
