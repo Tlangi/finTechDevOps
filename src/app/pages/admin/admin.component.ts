@@ -8,13 +8,13 @@ import {AdminService} from './admin.service';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  receivedFilterValue: string;
+  receivedFilterValue = '';
 
   constructor(private adminService: AdminService) {
   }
 
   getMessage(value: string) {
-    console.log(value);
+    console.log('Value in the admin component' + value);
     this.receivedFilterValue = value;
   }
 

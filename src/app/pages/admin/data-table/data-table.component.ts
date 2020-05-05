@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
-import {AdminService} from '../admin.service';
 
 @Component({
   selector: 'app-data-table',
@@ -22,6 +21,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.dataSource = new DataTableDataSource();
+    console.log('Value in the table: ' + this.filterValue);
+    /* if (this.filterValue.length > 0) {
+      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
+    }*/
   }
 
   ngAfterViewInit() {
@@ -29,10 +32,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+  /* public doFilter() {
 
-  public doFilter(value: string) {
-    if (value.length > 0) {
-      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(value, 'gi').test(option.name));
-    }
-  }
+  }*/
 }
