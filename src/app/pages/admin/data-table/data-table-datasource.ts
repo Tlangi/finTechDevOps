@@ -3,12 +3,22 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import {AdminService} from '../admin.service';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
   name: string;
   id: number;
 }
+
+/*export class DataFromService {
+  public myDataTable: DataTableItem[];
+  constructor(private adminService: AdminService) {
+    this.adminService.getEmployees().subscribe(data => {
+      this.myDataTable = data;
+    });
+  }
+} */
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
@@ -40,12 +50,17 @@ const EXAMPLE_DATA: DataTableItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class DataTableDataSource extends DataSource<DataTableItem> {
+  public myDataTable: DataTableItem[];
   data: DataTableItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 
   constructor() {
     super();
+
+    /* this.adminService.getEmployees().subscribe(data => {
+      this.myDataTable = data;
+    });*/
   }
 
   /**

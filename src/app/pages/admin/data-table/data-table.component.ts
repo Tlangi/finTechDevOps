@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
+import {AdminService} from '../admin.service';
 
 @Component({
   selector: 'app-data-table',
@@ -10,6 +11,7 @@ import { DataTableDataSource, DataTableItem } from './data-table-datasource';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements AfterViewInit, OnInit {
+  @Input() filterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;

@@ -1,7 +1,8 @@
 <div class="mat-elevation-z8">
   <div fxLayout fxLayoutAlign="center center">
     <mat-form-field fxFlex="40%">
-      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+      <input matInput type="text" value="filterValue"  (keyup)="doFilter($event.target.value)">
+      <!-- <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">-->
     </mat-form-field>
 
   </div>
