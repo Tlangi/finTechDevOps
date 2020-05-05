@@ -21,7 +21,8 @@
  </div>
 
   <div class="mat-card">
-    <app-data-table [filterValue]="receivedFilterValue"></app-data-table>
+    <app-data-table *ngIf="tabIndex == 0" [filterValue]="receivedFilterValue"></app-data-table>
+    <app-applications-table *ngIf="tabIndex == 1"></app-applications-table>
   </div>
 </div>
 

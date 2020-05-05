@@ -9,6 +9,7 @@ import {MatTabChangeEvent} from '@angular/material/tabs';
 export class AdminComponent implements OnInit, OnDestroy {
 
   receivedFilterValue = '';
+  tabIndex: number;
 
   constructor() {
   }
@@ -19,9 +20,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
   getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
     console.log(tabChangeEvent.index);
+    if (tabChangeEvent.index >= 0) {
+      this.tabIndex = tabChangeEvent.index;
+    } else {
+      this.tabIndex = 0;
+    }
   }
 
   ngOnInit() {
+    this.tabIndex = 0;
   }
 
 ngOnDestroy(): void {
