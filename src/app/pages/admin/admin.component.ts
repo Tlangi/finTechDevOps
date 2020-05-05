@@ -1,5 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AdminService} from './admin.service';
+import {Component, EventEmitter, Input, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -10,11 +9,11 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   receivedFilterValue = '';
 
-  constructor(private adminService: AdminService) {
+  constructor() {
   }
 
   getMessage(value: string) {
-    console.log('Value in the admin component' + value);
+    console.log('Value in the admin component: ' + value);
     this.receivedFilterValue = value;
   }
 

@@ -32,7 +32,9 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  /* public doFilter() {
-
-  }*/
+  public doFilter(value) {
+    if (value.length > 0) {
+      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(value, 'gi').test(option.name));
+    }
+  }
 }
