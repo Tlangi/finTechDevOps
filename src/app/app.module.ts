@@ -20,7 +20,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
-
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -41,7 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
         AlertComponent,
         DialogComponent,
         PopupDailogComponent,
-        LoginPageComponent,
+        LoginPageComponent
     ],
     entryComponents: [
         DialogComponent,

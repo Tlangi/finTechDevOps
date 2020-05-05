@@ -19,6 +19,7 @@ import {StatusComponent} from '../../pages/admin/status/status.component';
 import {MaterialModule} from '../../helpers/material.module';
 import {DataTableComponent} from '../../pages/admin/data-table/data-table.component';
 import {ApplicationsTableComponent} from '../../pages/admin/applications/applications-table/applications-table.component';
+import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
 
 @NgModule({
     imports: [
@@ -44,11 +45,13 @@ import {ApplicationsTableComponent} from '../../pages/admin/applications/applica
     WorkTypeComponent,
     StatusComponent,
     DataTableComponent,
-    ApplicationsTableComponent
+    ApplicationsTableComponent,
+    StatusTabTableComponent
   ],
   exports: [
     DataTableComponent,
-    ApplicationsTableComponent
+    ApplicationsTableComponent,
+    StatusTabTableComponent
   ],
 })
 export class AdminLayoutModule {}
