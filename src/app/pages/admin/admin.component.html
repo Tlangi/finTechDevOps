@@ -1,11 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="space-around start" >
  <div class="mat-card">
-   <mat-tab-group>
+   <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
      <mat-tab label="Users">
       <app-employees (sendFilterValue)="getMessage($event)"></app-employees>
      </mat-tab>
-
      <mat-tab label="Applications">
        <app-applications></app-applications>
      </mat-tab>

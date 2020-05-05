@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MatTabChangeEvent} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-admin',
@@ -15,6 +16,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   getMessage(value: string) {
     console.log('Value in the admin component: ' + value);
     this.receivedFilterValue = value;
+  }
+  getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
+    console.log(tabChangeEvent.index);
   }
 
   ngOnInit() {
