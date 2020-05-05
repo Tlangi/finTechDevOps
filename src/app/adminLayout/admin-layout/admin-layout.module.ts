@@ -17,8 +17,8 @@ import {ApplicationsComponent} from '../../pages/admin/applications/applications
 import {WorkTypeComponent} from '../../pages/admin/work-type/work-type.component';
 import {StatusComponent} from '../../pages/admin/status/status.component';
 import {MaterialModule} from '../../helpers/material.module';
-import {AppModule} from '../../app.module';
 import {DataTableComponent} from '../../pages/admin/data-table/data-table.component';
+import {ApplicationsTableComponent} from '../../pages/admin/applications/applications-table/applications-table.component';
 
 @NgModule({
     imports: [
@@ -43,10 +43,12 @@ import {DataTableComponent} from '../../pages/admin/data-table/data-table.compon
     ApplicationsComponent,
     WorkTypeComponent,
     StatusComponent,
-    DataTableComponent
+    DataTableComponent,
+    ApplicationsTableComponent
   ],
   exports: [
-    DataTableComponent
+    DataTableComponent,
+    ApplicationsTableComponent
   ],
 })
 export class AdminLayoutModule {}

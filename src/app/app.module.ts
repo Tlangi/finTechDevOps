@@ -16,10 +16,10 @@ import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import {MaterialModule} from './helpers/material.module';
-import { DataTableComponent } from './pages/admin/data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
     imports: [
@@ -41,7 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
         AlertComponent,
         DialogComponent,
         PopupDailogComponent,
-        LoginPageComponent
+        LoginPageComponent,
     ],
     entryComponents: [
         DialogComponent,
