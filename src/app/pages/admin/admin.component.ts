@@ -22,8 +22,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     console.log(tabChangeEvent.index);
     if (tabChangeEvent.index >= 0) {
       this.tabIndex = tabChangeEvent.index;
-    } else {
-      this.tabIndex = 0;
     }
   }
 
