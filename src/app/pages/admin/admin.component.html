@@ -3,7 +3,7 @@
    <mat-tab-group>
 
      <mat-tab label="Users">
-      <app-employees></app-employees>
+      <app-employees (sendFilterValue)="getMessage($event)"></app-employees>
      </mat-tab>
 
      <mat-tab label="Applications">
@@ -22,7 +22,7 @@
  </div>
 
   <div class="mat-card">
-    <app-data-table></app-data-table>
+    <app-data-table [filterValue]="receivedFilterValue"></app-data-table>
   </div>
 </div>
 

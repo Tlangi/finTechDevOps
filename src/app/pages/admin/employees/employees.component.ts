@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -13,6 +13,7 @@ import {DialogComponent} from '../../../helpers/components/dialog/dialog.compone
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  @Output() sendFilterValue = new EventEmitter<string>();
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -54,6 +55,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterName(value: string) {
+    this.sendFilterValue.emit(value);
     this.subs = this.adminService.getEmployees().subscribe(data => {
       this.fullNameList = data;
     });
