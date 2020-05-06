@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {DataTableDataSource} from '../data-table/data-table-datasource';
+import {TeamsDataTableDatasource} from '../data-table/teams-data-table-datasource';
 
 @Component({
   selector: 'app-employees',
@@ -15,7 +16,9 @@ import {DataTableDataSource} from '../data-table/data-table-datasource';
 })
 export class EmployeesComponent implements OnInit {
   @Output() sendFilterValue = new EventEmitter<string>();
+  @Output() sendTeamsFilterValue = new EventEmitter<string>();
   dataSource: DataTableDataSource;
+  teamsDataSource: TeamsDataTableDatasource;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -33,6 +36,7 @@ export class EmployeesComponent implements OnInit {
   constructor(private adminService: AdminService,
               private matDialog: MatDialog) {
     this.dataSource = new DataTableDataSource();
+    this.teamsDataSource = new TeamsDataTableDatasource();
   }
 
   ngOnInit(): void {
@@ -70,18 +74,14 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterTeams(value: string) {
-    this.subs = this.adminService.getTeams().subscribe(data => {
-      this.teamList = data;
-    });
+    this.sendTeamsFilterValue.emit(value);
+    this.teamList = this.teamsDataSource.data;
     if (value.length >= 2) {
-      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
+      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.name));
     }
   }
 
   private filterStatus(value: string) {
-    this.subs = this.adminService.getStatus().subscribe(data => {
-      this.statusList = data;
-    });
     if (value.length >= 2) {
       return this.statusList.filter(option => new RegExp(value, 'gi').test(option.statusStates));
     }

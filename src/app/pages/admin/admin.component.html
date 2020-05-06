@@ -3,7 +3,9 @@
    <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
      <mat-tab label="Users">
-      <app-employees (sendFilterValue)="getMessage($event)"></app-employees>
+      <app-employees (sendFilterValue)="getMessage($event)"
+                     (sendTeamsFilterValue)="getEmployeesTeamsFilterValue($event)"
+      ></app-employees>
      </mat-tab>
      <mat-tab label="Applications">
        <app-applications (sendApplicationValue)="getApplicationsFilterValue($event)"></app-applications>
@@ -22,21 +24,26 @@
 
   <div class="mat-table">
     <div class="mat-card-content" *ngIf="tabIndex == 0">
-      <mat-tab-group>
+      <mat-tab-group (selectedTabChange)="getEmployeesTabIndex($event)">
 
         <mat-tab label="Employees">
-          <app-data-table
+          <app-data-table *ngIf="employeesIndex == 0"
+                          [employeesIndex]="employeesIndex"
                           [usersFullNameFilterValue]="receivedFilterValue"
           ></app-data-table>
         </mat-tab>
         <mat-tab label="Teams">
-          <app-data-table
-                          [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
+          <app-data-table *ngIf="employeesIndex == 1"
+                          [employeesIndex]="employeesIndex"
+                          [usersTeamsFilterValue]="employeesTeamsFilterValue"
+          ></app-data-table>
         </mat-tab>
 
         <mat-tab label="Status">
-          <app-data-table
-                          [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
+          <app-data-table *ngIf="employeesIndex == 2"
+                          [employeesIndex]="employeesIndex"
+                          [usersFullNameFilterValue]="receivedFilterValue"
+          ></app-data-table>
         </mat-tab>
 
       </mat-tab-group>
