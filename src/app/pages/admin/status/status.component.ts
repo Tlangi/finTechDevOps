@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {AdminService} from '../admin.service';
@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
+import {StatusTabTableDataSource} from './status-tab-table/status-tab-table-datasource';
 
 @Component({
   selector: 'app-status',
@@ -13,6 +14,8 @@ import {DialogComponent} from '../../../helpers/components/dialog/dialog.compone
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
+  @Output() statusFilterValue = new EventEmitter<string>();
+  dataSource: StatusTabTableDataSource;
 
   statusTab: FormGroup = new FormGroup({
     statusType: new FormControl(''),
@@ -25,7 +28,9 @@ export class StatusComponent implements OnInit {
   filteredStatusType: Observable<any[]>;
   filteredSubStatusType: Observable<any[]>;
   constructor(private adminService: AdminService,
-              private matDialog: MatDialog) { }
+              private matDialog: MatDialog) {
+    this.dataSource = new StatusTabTableDataSource();
+  }
 
   ngOnInit(): void {
     this.filteredStatusType = this.statusTab.controls.statusType.valueChanges
@@ -41,11 +46,13 @@ export class StatusComponent implements OnInit {
   }
 
   private filterStatusType(value: string) {
-    this.adminService.getStatusTab().subscribe(data => {
+    this.statusFilterValue.emit(value);
+    this.statusTypeList = this.dataSource.data;
+    /* this.adminService.getStatusTab().subscribe(data => {
       this.statusTypeList = data;
-    });
+    }); */
     if (value.length >= 2) {
-      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.statusNames));
+      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
   }
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -9,7 +9,8 @@ import { ApplicationsTableDataSource, ApplicationsTableItem } from './applicatio
   templateUrl: './applications-table.component.html',
   styleUrls: ['./applications-table.component.css']
 })
-export class ApplicationsTableComponent implements AfterViewInit, OnInit {
+export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChanges {
+  @Input() title: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<ApplicationsTableItem>;
@@ -26,5 +27,8 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 }

@@ -33,9 +33,9 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   }
 
   public doFilter() {
-    console.log('Value in the table: ' + this.filterValue);
+    // console.log('Value in the table: ' + this.filterValue);
     if (this.filterValue.length > 0) {
-      console.log('Value in the table inside loop: ' + this.filterValue);
+      // console.log('Value in the table inside loop: ' + this.filterValue);
       this.table.dataSource = this.dataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
     }
   }
