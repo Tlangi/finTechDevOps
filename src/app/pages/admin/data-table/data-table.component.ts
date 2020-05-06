@@ -14,19 +14,19 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
-  dataSource: DataTableDataSource;
+  employeesDataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
   ngOnInit() {
-    this.dataSource = new DataTableDataSource();
+    this.employeesDataSource = new DataTableDataSource();
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.employeesDataSource.sort = this.sort;
+    this.employeesDataSource.paginator = this.paginator;
+    this.table.dataSource = this.employeesDataSource;
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.doFilter();
@@ -36,7 +36,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
     // console.log('Value in the table: ' + this.filterValue);
     if (this.filterValue.length > 0) {
       // console.log('Value in the table inside loop: ' + this.filterValue);
-      this.table.dataSource = this.dataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
+      this.table.dataSource = this.employeesDataSource.data.filter(option => new RegExp(this.filterValue, 'gi').test(option.name));
     }
   }
 }
