@@ -3,6 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {DataTableDataSource} from './data-table-datasource';
 
 export interface TeamsDataTable {
   name: string;
@@ -29,7 +30,7 @@ export class TeamsDataTableDatasource extends DataSource<TeamsDataTable> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor()  {
     super();
   }
   /**

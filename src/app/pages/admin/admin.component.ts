@@ -10,6 +10,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   receivedFilterValue = '';
   employeesTeamsFilterValue = '';
+  employeesStatusFilterValue = '';
   statusTabFilterValue = '';
   applicationFilterValue = '';
   workTypeFilterValue = '';
@@ -20,8 +21,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   constructor() {
   }
   getEmployeesTeamsFilterValue(value: string) {
-    console.log('Teams value: ' + this.employeesTeamsFilterValue);
+    // console.log('Teams value: ' + this.employeesTeamsFilterValue);
     this.employeesTeamsFilterValue = value;
+  }
+  getEmployeesStatusFilterValue(value: string) {
+    this.employeesStatusFilterValue = value;
   }
   getMessage(value: string) {
     // console.log('Value in the admin component: ' + value);

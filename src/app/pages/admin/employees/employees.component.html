@@ -45,8 +45,8 @@
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoStatus="matAutocomplete">
           <mat-option *ngFor="let status of filteredStatus | async"
-                      [value]="status.statusStates">
-            {{status.statusStates}}
+                      [value]="status.name">
+            {{status.name}}
           </mat-option>
 
         </mat-autocomplete>

@@ -5,6 +5,7 @@
      <mat-tab label="Users">
       <app-employees (sendFilterValue)="getMessage($event)"
                      (sendTeamsFilterValue)="getEmployeesTeamsFilterValue($event)"
+                     (sendStatusFilterValue)="getEmployeesStatusFilterValue($event)"
       ></app-employees>
      </mat-tab>
      <mat-tab label="Applications">
@@ -42,7 +43,7 @@
         <mat-tab label="Status">
           <app-data-table *ngIf="employeesIndex == 2"
                           [employeesIndex]="employeesIndex"
-                          [usersFullNameFilterValue]="receivedFilterValue"
+                          [usersStatusFilterValue]="employeesStatusFilterValue"
           ></app-data-table>
         </mat-tab>
 
