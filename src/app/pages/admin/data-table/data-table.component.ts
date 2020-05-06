@@ -12,24 +12,27 @@ import {ApplicationsTableDataSource} from '../applications/applications-table/ap
 })
 export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   @Input() usersFullNameFilterValue: string;
-  @Input() applicationsFilterValue: string;
-  @Input() mainTabIndex: number;
+  // @Input() applicationsFilterValue: string;
+  // @Input() mainTabIndex: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   usersFullNameDataSource: DataTableDataSource;
-  applicationsDataSource: ApplicationsTableDataSource;
+  // applicationsDataSource: ApplicationsTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
   ngOnInit() {
     this.usersFullNameDataSource = new DataTableDataSource();
-    this.applicationsDataSource = new ApplicationsTableDataSource();
+    // this.applicationsDataSource = new ApplicationsTableDataSource();
   }
 
   ngAfterViewInit() {
-    if (this.mainTabIndex === 0) {
+    this.usersFullNameDataSource.sort = this.sort;
+    this.usersFullNameDataSource.paginator = this.paginator;
+    this.table.dataSource = this.usersFullNameDataSource;
+    /* if (this.mainTabIndex === 0) {
       this.usersFullNameDataSource.sort = this.sort;
       this.usersFullNameDataSource.paginator = this.paginator;
       this.table.dataSource = this.usersFullNameDataSource;
@@ -37,14 +40,20 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
       this.applicationsDataSource.sort = this.sort;
       this.applicationsDataSource.paginator = this.paginator;
       this.table.dataSource = this.applicationsDataSource;
-    }
+    }*/
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.doFilter();
   }
 
   public doFilter() {
-    if (this.mainTabIndex === 0) {
+    if (this.usersFullNameFilterValue.length > 0) {
+      // console.log('Value in the table inside loop: ' + this.usersFullNameFilterValue);
+      this.table.dataSource = this.usersFullNameDataSource.data.filter(option =>
+        new RegExp(this.usersFullNameFilterValue, 'gi').test(option.name));
+    }
+  }
+   /* if (this.mainTabIndex === 0) {
       if (this.usersFullNameFilterValue.length > 0) {
         // console.log('Value in the table inside loop: ' + this.usersFullNameFilterValue);
         this.table.dataSource = this.usersFullNameDataSource.data.filter(option =>
@@ -56,7 +65,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
         this.table.dataSource = this.applicationsDataSource.data.filter(option =>
           new RegExp(this.applicationsFilterValue, 'gi').test(option.name));
       }
-    }
+    }    */
 
-  }
 }
+

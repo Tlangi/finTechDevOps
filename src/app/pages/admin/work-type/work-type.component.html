@@ -15,8 +15,8 @@
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoWorkType="matAutocomplete">
           <mat-option *ngFor="let workType of filteredWorkType | async"
-                      [value]="workType.workTypeState">
-            {{workType.workTypeState}}
+                      [value]="workType.name">
+            {{workType.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

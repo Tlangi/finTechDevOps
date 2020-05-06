@@ -15,8 +15,8 @@
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoApplication="matAutocomplete">
           <mat-option *ngFor="let application of filteredApplication | async"
-                      [value]="application.applicationName">
-            {{application.applicationName}}
+                      [value]="application.name">
+            {{application.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

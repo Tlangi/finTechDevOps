@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {ApplicationsTableDataSource} from '../applications/applications-table/applications-table-datasource';
 
 @Component({
   selector: 'app-work-type',
@@ -14,6 +15,7 @@ import {Observable} from 'rxjs';
 })
 export class WorkTypeComponent implements OnInit {
   @Output() sendWorkTypeValue = new EventEmitter<string>();
+  workTypeDataSource: ApplicationsTableDataSource;
 
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),
@@ -23,7 +25,9 @@ export class WorkTypeComponent implements OnInit {
   workTypeList: any[]  = [];
   filteredWorkType: Observable<any[]>;
   constructor(private adminService: AdminService,
-              private matDialog: MatDialog) { }
+              private matDialog: MatDialog) {
+    this.workTypeDataSource = new ApplicationsTableDataSource();
+  }
 
   ngOnInit(): void {
     this.filteredWorkType = this.workTypeForm.controls.workType.valueChanges
@@ -35,11 +39,9 @@ export class WorkTypeComponent implements OnInit {
 
   private filterWorkType(value: string) {
     this.sendWorkTypeValue.emit(value);
-    this.adminService.getWorkType().subscribe(data => {
-      this.workTypeList = data;
-    });
+    this.workTypeList = this.workTypeDataSource.data;
     if (value.length >= 2) {
-      return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.workTypeState));
+      return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
   }
   updateWorkType() {

@@ -6,6 +6,7 @@ import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/pop
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {AdminService} from '../admin.service';
 import {MatDialog} from '@angular/material/dialog';
+import {ApplicationsTableDataSource} from './applications-table/applications-table-datasource';
 
 @Component({
   selector: 'app-applications',
@@ -14,6 +15,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ApplicationsComponent implements OnInit {
   @Output() sendApplicationValue = new EventEmitter<string>();
+  applicationsDataSource: ApplicationsTableDataSource;
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
@@ -24,7 +26,9 @@ export class ApplicationsComponent implements OnInit {
 
   filteredApplication: Observable<any[]>;
   constructor(private adminService: AdminService,
-              private matDialog: MatDialog) { }
+              private matDialog: MatDialog) {
+    this.applicationsDataSource = new ApplicationsTableDataSource();
+  }
 
   ngOnInit(): void {
     this.filteredApplication = this.applications.controls.applicationName.valueChanges
@@ -37,11 +41,9 @@ export class ApplicationsComponent implements OnInit {
 
   private filterApplications(value: string) {
     this.sendApplicationValue.emit(value);
-    this.adminService.getApplications().subscribe(data => {
-      this.applicationsList = data;
-    });
+    this.applicationsList = this.applicationsDataSource.data;
     if (value.length >= 2) {
-      return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.applicationName));
+      return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
   }
 

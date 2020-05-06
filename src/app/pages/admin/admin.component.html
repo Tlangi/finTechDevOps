@@ -21,11 +21,62 @@
  </div>
 
   <div class="mat-table">
-    <app-data-table [mainTabIndex]="tabIndex"
-                    [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
-    <!-- <app-applications-table *ngIf="tabIndex == 1" [title]="tableTitle"></app-applications-table>
-    <app-applications-table *ngIf="tabIndex == 2" [title]="tableTitle"></app-applications-table>
-    <app-status-tab-table *ngIf="tabIndex == 3" [statusValueChange]="statusTabFilterValue"></app-status-tab-table> -->
+    <div class="mat-card-content" *ngIf="tabIndex == 0">
+      <mat-tab-group>
+
+        <mat-tab label="Employees">
+          <app-data-table
+                          [usersFullNameFilterValue]="receivedFilterValue"
+          ></app-data-table>
+        </mat-tab>
+        <mat-tab label="Teams">
+          <app-data-table
+                          [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
+        </mat-tab>
+
+        <mat-tab label="Status">
+          <app-data-table
+                          [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+    <div class="mat-card-content" *ngIf="tabIndex == 1">
+      <mat-tab-group>
+        <mat-tab label="Applications">
+          <app-applications-table
+                                  [tabIndex]="tabIndex"
+                                  [title]="tableTitle"
+                                  [applicationFilterValue]="applicationFilterValue"
+          ></app-applications-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="mat-card-content">
+      <mat-tab-group *ngIf="tabIndex == 2">
+        <mat-tab label="Work Type">
+          <app-applications-table
+                                  [tabIndex]="tabIndex"
+                                  [title]="tableTitle"
+                                  [workTypeFilterValue]="workTypeFilterValue"
+          ></app-applications-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="mat-card-content" *ngIf="tabIndex == 3">
+      <mat-tab-group>
+        <mat-tab label="Status Types">
+          <app-status-tab-table
+                                [statusValueChange]="statusTabFilterValue"
+          ></app-status-tab-table>
+        </mat-tab>
+        <mat-tab label="Status">
+          <app-status-tab-table
+                                [statusValueChange]="statusTabFilterValue"
+          ></app-status-tab-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
 </div>
 

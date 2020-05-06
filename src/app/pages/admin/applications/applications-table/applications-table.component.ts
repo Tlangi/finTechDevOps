@@ -11,6 +11,9 @@ import { ApplicationsTableDataSource, ApplicationsTableItem } from './applicatio
 })
 export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChanges {
   @Input() title: string;
+  @Input() tabIndex: number;
+  @Input() applicationFilterValue: string;
+  @Input() workTypeFilterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<ApplicationsTableItem>;
@@ -24,11 +27,34 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChan
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+   if (this.tabIndex === 1) {
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+     this.table.dataSource = this.dataSource;
+   } else if (this.tabIndex === 2) {
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+     this.table.dataSource = this.dataSource;
+   }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.doFilter();
+  }
+
+  public doFilter() {
+    if (this.tabIndex === 1) {
+      if (this.applicationFilterValue.length > 0) {
+        // console.log('Value in the table inside loop: ' + this.usersFullNameFilterValue);
+        this.table.dataSource = this.dataSource.data.filter(option =>
+          new RegExp(this.applicationFilterValue, 'gi').test(option.name));
+      }
+    } else if (this.tabIndex === 2) {
+      if (this.workTypeFilterValue.length > 0) {
+        // console.log('Value in the table inside loop: ' + this.usersFullNameFilterValue);
+        this.table.dataSource = this.dataSource.data.filter(option =>
+          new RegExp(this.workTypeFilterValue, 'gi').test(option.name));
+      }
+    }
   }
 }
