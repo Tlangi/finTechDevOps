@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {AdminService} from '../admin.service';
@@ -13,6 +13,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./work-type.component.css']
 })
 export class WorkTypeComponent implements OnInit {
+  @Output() sendWorkTypeValue = new EventEmitter<string>();
 
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),
@@ -33,6 +34,7 @@ export class WorkTypeComponent implements OnInit {
   }
 
   private filterWorkType(value: string) {
+    this.sendWorkTypeValue.emit(value);
     this.adminService.getWorkType().subscribe(data => {
       this.workTypeList = data;
     });

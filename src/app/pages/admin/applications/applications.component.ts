@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -13,6 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent implements OnInit {
+  @Output() sendApplicationValue = new EventEmitter<string>();
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
@@ -35,6 +36,7 @@ export class ApplicationsComponent implements OnInit {
   }
 
   private filterApplications(value: string) {
+    this.sendApplicationValue.emit(value);
     this.adminService.getApplications().subscribe(data => {
       this.applicationsList = data;
     });

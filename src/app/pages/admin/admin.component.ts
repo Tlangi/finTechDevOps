@@ -10,6 +10,8 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   receivedFilterValue = '';
   statusTabFilterValue = '';
+  applicationFilterValue = '';
+  workTypeFilterValue = '';
   tableTitle = '';
   tabIndex: number;
 
@@ -22,6 +24,12 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
   getStatusTabFilterValue(value) {
     this.statusTabFilterValue = value;
+  }
+  getApplicationsFilterValue(value: string) {
+    this.applicationFilterValue = value;
+  }
+  getWorkTypeFilterValue(value: string) {
+    this.workTypeFilterValue = value;
   }
   getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
     console.log(tabChangeEvent.index);
