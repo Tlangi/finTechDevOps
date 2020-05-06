@@ -21,10 +21,11 @@
  </div>
 
   <div class="mat-table">
-    <app-data-table *ngIf="tabIndex == 0" [filterValue]="receivedFilterValue"></app-data-table>
-    <app-applications-table *ngIf="tabIndex == 1" [title]="tableTitle"></app-applications-table>
+    <app-data-table [mainTabIndex]="tabIndex"
+                    [usersFullNameFilterValue]="receivedFilterValue"></app-data-table>
+    <!-- <app-applications-table *ngIf="tabIndex == 1" [title]="tableTitle"></app-applications-table>
     <app-applications-table *ngIf="tabIndex == 2" [title]="tableTitle"></app-applications-table>
-    <app-status-tab-table *ngIf="tabIndex == 3" [statusValueChange]="statusTabFilterValue"></app-status-tab-table>
+    <app-status-tab-table *ngIf="tabIndex == 3" [statusValueChange]="statusTabFilterValue"></app-status-tab-table> -->
   </div>
 </div>
 
