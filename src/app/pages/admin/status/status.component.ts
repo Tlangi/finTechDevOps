@@ -57,10 +57,10 @@ export class StatusComponent implements OnInit {
   private filterSubStatusType(value: string) {
     const statusType = this.statusTab.controls.statusType.value;
     if (statusType.length > 0) {
-      this.subStatusTypeList = this.dataSource.data.filter(data => data.statusType);
-      console.log(this.dataSource.data.filter(data => data.statusType));
+      this.subStatusTypeList = this.dataSource.data[0].statusType;
+      console.log(this.subStatusTypeList);
       if (value.length >= 1) {
-        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.statusType));
+        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option));
       }
     }
   }
