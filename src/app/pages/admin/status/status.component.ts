@@ -16,6 +16,7 @@ import {StatusTabTableDataSource} from './status-tab-table/status-tab-table-data
 export class StatusComponent implements OnInit {
   @Output() statusFilterValue = new EventEmitter<string>();
   dataSource: StatusTabTableDataSource;
+  statusTypeHasValue = false;
 
   statusTab: FormGroup = new FormGroup({
     statusType: new FormControl(''),
@@ -56,12 +57,10 @@ export class StatusComponent implements OnInit {
   private filterSubStatusType(value: string) {
     const statusType = this.statusTab.controls.statusType.value;
     if (statusType.length > 0) {
-      this.adminService.getStatusTab().subscribe(data => {
-        this.subStatusTypeList = data.filter(typeStatus => typeStatus.statusNames === statusType)[0].statusTypes;
-        // console.log(this.subStatusTypeList);
-      });
+      this.subStatusTypeList = this.dataSource.data.filter(data => data.statusType);
+      console.log(this.dataSource.data.filter(data => data.statusType));
       if (value.length >= 1) {
-        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.stateType));
+        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.statusType));
       }
     }
   }
