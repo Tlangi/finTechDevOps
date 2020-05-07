@@ -14,7 +14,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   statusTabFilterValue = '';
   applicationFilterValue = '';
   workTypeFilterValue = '';
-  tableTitle = '';
   tabIndex: number;
 
   constructor() {
@@ -45,11 +44,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     console.log(tabChangeEvent.index);
     if (tabChangeEvent.index >= 0) {
       this.tabIndex = tabChangeEvent.index;
-      if (tabChangeEvent.index === 1) {
-        this.tableTitle = 'Applications';
-      } else if (tabChangeEvent.index === 2) {
-        this.tableTitle = 'Work Type';
-      }
     }
   }
 

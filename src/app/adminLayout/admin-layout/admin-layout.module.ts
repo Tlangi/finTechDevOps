@@ -20,6 +20,7 @@ import {MaterialModule} from '../../helpers/material.module';
 import {DataTableComponent} from '../../pages/admin/data-table/data-table.component';
 import {ApplicationsTableComponent} from '../../pages/admin/applications/applications-table/applications-table.component';
 import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
+import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
 
 @NgModule({
     imports: [
@@ -46,12 +47,14 @@ import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table
     StatusComponent,
     DataTableComponent,
     ApplicationsTableComponent,
-    StatusTabTableComponent
+    StatusTabTableComponent,
+    WorkTypeDataTableComponent
   ],
   exports: [
     DataTableComponent,
     ApplicationsTableComponent,
-    StatusTabTableComponent
+    StatusTabTableComponent,
+    WorkTypeDataTableComponent
   ],
 })
 export class AdminLayoutModule {}

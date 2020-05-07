@@ -40,7 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
         AlertComponent,
         DialogComponent,
         PopupDailogComponent,
-        LoginPageComponent
+        LoginPageComponent,
     ],
     entryComponents: [
         DialogComponent,

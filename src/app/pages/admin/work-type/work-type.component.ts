@@ -1,12 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
-import {AdminService} from '../admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {ApplicationsTableDataSource} from '../applications/applications-table/applications-table-datasource';
+import {WorkTypeDataTableDataSource} from './work-type-data-table/work-type-data-table-datasource';
 
 @Component({
   selector: 'app-work-type',
@@ -15,6 +14,7 @@ import {ApplicationsTableDataSource} from '../applications/applications-table/ap
 })
 export class WorkTypeComponent implements OnInit {
   @Output() sendWorkTypeValue = new EventEmitter<string>();
+  datasource: WorkTypeDataTableDataSource;
 
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),
@@ -23,8 +23,8 @@ export class WorkTypeComponent implements OnInit {
 
   workTypeList: any[]  = [];
   filteredWorkType: Observable<any[]>;
-  constructor(private adminService: AdminService,
-              private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog) {
+    this.datasource = new WorkTypeDataTableDataSource();
   }
 
   ngOnInit(): void {
@@ -37,6 +37,7 @@ export class WorkTypeComponent implements OnInit {
 
   private filterWorkType(value: string) {
     this.sendWorkTypeValue.emit(value);
+    this.workTypeList = this.datasource.data;
     if (value.length >= 2) {
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
