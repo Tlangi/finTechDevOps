@@ -48,11 +48,8 @@ export class StatusComponent implements OnInit {
   private filterStatusType(value: string) {
     this.statusFilterValue.emit(value);
     this.statusTypeList = this.dataSource.data;
-    /* this.adminService.getStatusTab().subscribe(data => {
-      this.statusTypeList = data;
-    }); */
     if (value.length >= 2) {
-      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
+      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.status));
     }
   }
 

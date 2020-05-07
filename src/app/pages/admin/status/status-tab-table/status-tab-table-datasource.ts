@@ -6,17 +6,19 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface StatusTabTableItem {
-  name: string;
+  status: string;
+  statusType: string[];
+  description: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: StatusTabTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-
+  {id: 1, status: 'State of Emergency', statusType: ['Low', 'Medium', 'High', 'Eminent'], description: ''},
+  {id: 2, status: 'Approval State', statusType: ['Sent For Approval', 'Approved', 'Declined'], description: ''},
+  {id: 3, status: 'Project State', statusType: ['Analysis/Investigation', 'Queued For Development',
+    'Development In Progress', 'Queued For Testing', 'Testing In Progress', 'On Hold', 'Implemented',
+      'Ready For Deployment', 'Parked'], description: ''}
 ];
 
 /**
@@ -79,7 +81,7 @@ export class StatusTabTableDataSource extends DataSource<StatusTabTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'status': return compare(a.status, b.status, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }

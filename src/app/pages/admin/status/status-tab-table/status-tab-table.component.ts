@@ -17,7 +17,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
   dataSource: StatusTabTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'status'];
 
   ngOnInit() {
     this.dataSource = new StatusTabTableDataSource();
@@ -35,7 +35,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
   public doFilter() {
     if (this.statusValueChange.length > 0) {
       this.table.dataSource = this.dataSource.data.filter(option =>
-        new RegExp(this.statusValueChange, 'gi').test(option.name));
+        new RegExp(this.statusValueChange, 'gi').test(option.status));
     }
   }
 }
