@@ -7,31 +7,22 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 // TODO: Replace this with your own data model type
 export interface ApplicationsTableItem {
   name: string;
+  description: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: ApplicationsTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {id: 1, name: 'FMS', description: ''},
+  {id: 2, name: 'MILES', description: ''},
+  {id: 3, name: 'FDP', description: ''},
+  {id: 4, name: 'PHS', description: ''},
+  {id: 5, name: 'Komainu', description: ''},
+  {id: 6, name: 'Oracle Database', description: ''},
+  {id: 7, name: 'Murex', description: ''},
+  {id: 8, name: 'TDS', description: ''},
+  {id: 9, name: 'KYC', description: ''},
+  {id: 10, name: 'SSI', description: ''}
 ];
 
 /**

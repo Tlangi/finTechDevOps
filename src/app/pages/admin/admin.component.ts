@@ -31,14 +31,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   getUsersStatusFilterValue(value: string) {
     this.usersStatusFilterValue = value;
   }
-  getStatusTabFilterValue(value) {
-    this.statusTabFilterValue = value;
-  }
+
   getApplicationsFilterValue(value: string) {
     this.applicationFilterValue = value;
   }
   getWorkTypeFilterValue(value: string) {
     this.workTypeFilterValue = value;
+  }
+  getStatusTabFilterValue(value) {
+    this.statusTabFilterValue = value;
   }
   getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
     console.log(tabChangeEvent.index);

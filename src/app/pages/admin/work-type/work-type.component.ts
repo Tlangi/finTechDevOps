@@ -15,7 +15,6 @@ import {ApplicationsTableDataSource} from '../applications/applications-table/ap
 })
 export class WorkTypeComponent implements OnInit {
   @Output() sendWorkTypeValue = new EventEmitter<string>();
-  workTypeDataSource: ApplicationsTableDataSource;
 
   workTypeForm: FormGroup = new FormGroup({
     workType: new FormControl(''),
@@ -26,7 +25,6 @@ export class WorkTypeComponent implements OnInit {
   filteredWorkType: Observable<any[]>;
   constructor(private adminService: AdminService,
               private matDialog: MatDialog) {
-    this.workTypeDataSource = new ApplicationsTableDataSource();
   }
 
   ngOnInit(): void {
@@ -39,7 +37,6 @@ export class WorkTypeComponent implements OnInit {
 
   private filterWorkType(value: string) {
     this.sendWorkTypeValue.emit(value);
-    this.workTypeList = this.workTypeDataSource.data;
     if (value.length >= 2) {
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }

@@ -13,7 +13,6 @@
      </mat-tab>
 
      <mat-tab label="Work Type">
-       <app-work-type (sendWorkTypeValue)="getWorkTypeFilterValue($event)"></app-work-type>
      </mat-tab>
 
      <mat-tab label="Status">
@@ -32,24 +31,15 @@
       ></app-data-table>
     </div>
     <div class="mat-card-content" *ngIf="tabIndex == 1">
-      <mat-tab-group>
-        <mat-tab label="Applications">
-          <app-applications-table
-                                  [tabIndex]="tabIndex"
-                                  [title]="tableTitle"
-                                  [applicationFilterValue]="applicationFilterValue"
-          ></app-applications-table>
-        </mat-tab>
-      </mat-tab-group>
+      <app-applications-table
+        [tabIndex]="tabIndex"
+        [title]="tableTitle"
+        [applicationFilterValue]="applicationFilterValue"
+      ></app-applications-table>
     </div>
     <div class="mat-card-content">
       <mat-tab-group *ngIf="tabIndex == 2">
         <mat-tab label="Work Type">
-          <app-applications-table
-                                  [tabIndex]="tabIndex"
-                                  [title]="tableTitle"
-                                  [workTypeFilterValue]="workTypeFilterValue"
-          ></app-applications-table>
         </mat-tab>
       </mat-tab-group>
     </div>
