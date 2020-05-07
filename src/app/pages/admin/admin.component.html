@@ -3,9 +3,9 @@
    <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
      <mat-tab label="Users">
-      <app-employees (sendFilterValue)="getMessage($event)"
-                     (sendTeamsFilterValue)="getEmployeesTeamsFilterValue($event)"
-                     (sendStatusFilterValue)="getEmployeesStatusFilterValue($event)"
+      <app-employees (sendFullNameFilterValue)="getUsersFullNameFilterValue($event)"
+                     (sendTeamsFilterValue)="getUsersTeamsFilterValue($event)"
+                     (sendStatusFilterValue)="getUsersStatusFilterValue($event)"
       ></app-employees>
      </mat-tab>
      <mat-tab label="Applications">
@@ -26,33 +26,10 @@
   <div class="mat-table">
     <div class="mat-card-content" *ngIf="tabIndex == 0">
       <app-data-table
-                      [usersFullNameFilterValue]="receivedFilterValue"
-                      [usersTeamsFilterValue]="employeesTeamsFilterValue"
-                      [usersStatusFilterValue]="employeesStatusFilterValue"
+        [usersFilterValue]="usersFullNameFilterValue"
+        [usersTeamsFilterValue]="usersTeamsFilterValue"
+        [usersStatusFilterValue]="usersStatusFilterValue"
       ></app-data-table>
-      <!-- <mat-tab-group (selectedTabChange)="getEmployeesTabIndex($event)">
-
-        <mat-tab label="Users">
-          <app-data-table *ngIf="employeesIndex == 0"
-                          [employeesIndex]="employeesIndex"
-                          [usersFullNameFilterValue]="receivedFilterValue"
-          ></app-data-table>
-        </mat-tab>
-        <mat-tab label="Teams">
-          <app-data-table *ngIf="employeesIndex == 1"
-                          [employeesIndex]="employeesIndex"
-                          [usersTeamsFilterValue]="employeesTeamsFilterValue"
-          ></app-data-table>
-        </mat-tab>
-
-        <mat-tab label="Status">
-          <app-data-table *ngIf="employeesIndex == 2"
-                          [employeesIndex]="employeesIndex"
-                          [usersStatusFilterValue]="employeesStatusFilterValue"
-          ></app-data-table>
-        </mat-tab>
-
-      </mat-tab-group> -->
     </div>
     <div class="mat-card-content" *ngIf="tabIndex == 1">
       <mat-tab-group>

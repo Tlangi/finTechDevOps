@@ -8,28 +8,28 @@ import {MatTabChangeEvent} from '@angular/material/tabs';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  receivedFilterValue = '';
-  employeesTeamsFilterValue = '';
-  employeesStatusFilterValue = '';
+  usersFullNameFilterValue = '';
+  usersTeamsFilterValue = '';
+  usersStatusFilterValue = '';
   statusTabFilterValue = '';
   applicationFilterValue = '';
   workTypeFilterValue = '';
   tableTitle = '';
   tabIndex: number;
-  employeesIndex: number;
 
   constructor() {
   }
-  getEmployeesTeamsFilterValue(value: string) {
-    // console.log('Teams value: ' + this.employeesTeamsFilterValue);
-    this.employeesTeamsFilterValue = value;
-  }
-  getEmployeesStatusFilterValue(value: string) {
-    this.employeesStatusFilterValue = value;
-  }
-  getMessage(value: string) {
+  getUsersFullNameFilterValue(value: string) {
     // console.log('Value in the admin component: ' + value);
-    this.receivedFilterValue = value;
+    this.usersFullNameFilterValue = value;
+  }
+
+  getUsersTeamsFilterValue(value: string) {
+    this.usersTeamsFilterValue = value;
+  }
+
+  getUsersStatusFilterValue(value: string) {
+    this.usersStatusFilterValue = value;
   }
   getStatusTabFilterValue(value) {
     this.statusTabFilterValue = value;
@@ -39,12 +39,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
   getWorkTypeFilterValue(value: string) {
     this.workTypeFilterValue = value;
-  }
-  getEmployeesTabIndex(employeesTabChangeEvent: MatTabChangeEvent): void {
-    console.log('Employees tabs: ' + employeesTabChangeEvent.index);
-    if (employeesTabChangeEvent.index >= 0) {
-      this.employeesIndex = employeesTabChangeEvent.index;
-    }
   }
   getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
     console.log(tabChangeEvent.index);
@@ -60,7 +54,6 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.tabIndex = 0;
-    this.employeesIndex = 0;
   }
 
 ngOnDestroy(): void {

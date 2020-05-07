@@ -13,7 +13,7 @@ import {DataTableDataSource} from '../data-table/data-table-datasource';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  @Output() sendFilterValue = new EventEmitter<string>();
+  @Output() sendFullNameFilterValue = new EventEmitter<string>();
   @Output() sendTeamsFilterValue = new EventEmitter<string>();
   @Output() sendStatusFilterValue = new EventEmitter<string>();
   dataSource: DataTableDataSource;
@@ -57,7 +57,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterName(value: string) {
-    this.sendFilterValue.emit(value);
+    this.sendFullNameFilterValue.emit(value);
     this.fullNameList = this.dataSource.data;
     if (value.length >= 2) {
       return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
