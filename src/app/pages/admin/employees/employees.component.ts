@@ -2,13 +2,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {AdminService} from '../admin.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {DataTableDataSource} from '../data-table/data-table-datasource';
-import {TeamsDataTableDatasource} from '../data-table/teams-data-table-datasource';
-import {EmployeesStatusDataTableDatasource} from '../data-table/employeesStatus-data-table-datasource';
 
 @Component({
   selector: 'app-employees',
@@ -20,8 +17,6 @@ export class EmployeesComponent implements OnInit {
   @Output() sendTeamsFilterValue = new EventEmitter<string>();
   @Output() sendStatusFilterValue = new EventEmitter<string>();
   dataSource: DataTableDataSource;
-  teamsDataSource: TeamsDataTableDatasource;
-  statusDataSource: EmployeesStatusDataTableDatasource;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -35,11 +30,8 @@ export class EmployeesComponent implements OnInit {
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
-  constructor(private adminService: AdminService,
-              private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog) {
     this.dataSource = new DataTableDataSource();
-    this.teamsDataSource = new TeamsDataTableDatasource();
-    this.statusDataSource = new EmployeesStatusDataTableDatasource();
   }
 
   ngOnInit(): void {
@@ -67,9 +59,6 @@ export class EmployeesComponent implements OnInit {
   private filterName(value: string) {
     this.sendFilterValue.emit(value);
     this.fullNameList = this.dataSource.data;
-    /*this.subs = this.adminService.getEmployees().subscribe(data => {
-      this.fullNameList = data;
-    }); */
     if (value.length >= 2) {
       return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
@@ -78,17 +67,17 @@ export class EmployeesComponent implements OnInit {
 
   private filterTeams(value: string) {
     this.sendTeamsFilterValue.emit(value);
-    this.teamList = this.teamsDataSource.data;
+    this.teamList = this.dataSource.data;
     if (value.length >= 2) {
-      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.name));
+      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
     }
   }
 
   private filterStatus(value: string) {
     this.sendStatusFilterValue.emit(value);
-    this.statusList = this.statusDataSource.data;
+    this.statusList = this.dataSource.data;
     if (value.length >= 2) {
-      return this.statusList.filter(option => new RegExp(value, 'gi').test(option.name));
+      return this.statusList.filter(option => new RegExp(value, 'gi').test(option.status));
     }
   }
 

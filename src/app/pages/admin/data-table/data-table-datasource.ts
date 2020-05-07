@@ -7,31 +7,33 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
   name: string;
+  team: string;
+  status: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {id: 1, name: 'Tlangelani Maswanganye', team: 'Global Market', status: 'Active'},
+  {id: 2, name: 'Ayanda Ngobo', team: 'Fintech Java Developers', status: 'Leave'},
+  {id: 3, name: 'Steve Jonson', team: 'Oracle', status: 'Active'},
+  {id: 4, name: 'Andrew Smith', team: 'Business Technology', status: 'Inactive'},
+  {id: 5, name: 'Hector Mavunda', team: 'Fintech Java Developers', status: 'Active'},
+  {id: 6, name: 'John Stain', team: 'Application Support', status: 'Active'},
+  {id: 7, name: 'Van De Sar', team: 'Business Analysis', status: 'Active'},
+  {id: 8, name: 'Victor Gomez', team: 'Procurement', status: 'Leave'},
+  {id: 9, name: 'Ismael Makitla', team: 'Corporate Accounting', status: 'Inactive'},
+  {id: 10, name: 'Thakhani Tharange', team: 'Technical Accounting', status: 'Active'},
+  {id: 11, name: 'Phashe Makgotso', team: 'Business Support', status: 'Leave'},
+  {id: 12, name: 'Linda Ngcaba', team: 'Application Support', status: 'Active'},
+  {id: 13, name: 'Snenhlahla Khumalo', team: 'Technical Accounting', status: 'Active'},
+  {id: 14, name: 'Zinhle Dube', team: 'Oracle', status: 'Suspension'},
+  {id: 15, name: 'Faith Mdaka', team: 'FinTech Tester', status: 'Active'},
+  {id: 16, name: 'Shingisani Mashava', team: 'Murex', status: 'Active'},
+  {id: 17, name: 'Tinyiko Muvi', team: 'Corporate Accounting', status: 'Active'},
+  {id: 18, name: 'Lindiwe Mazibuko', team: 'Application Support', status: 'Active'},
+  {id: 19, name: 'Gift Khoza', team: 'Procurement', status: 'Active'},
+  {id: 20, name: 'Daisy Walker', team: 'Human Resource', status: 'Active'}
 ];
 
 /**
@@ -95,6 +97,8 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
+        case 'team': return compare(a.team, b.team, isAsc);
+        case 'status': return compare(a.status, b.status, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }

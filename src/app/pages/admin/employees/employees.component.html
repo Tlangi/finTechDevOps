@@ -28,8 +28,8 @@
                [matAutocomplete]="autoTeams">
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoTeams="matAutocomplete">
-          <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.name">
-            {{teams.name}}
+          <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
+            {{teams.team}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -45,8 +45,8 @@
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #autoStatus="matAutocomplete">
           <mat-option *ngFor="let status of filteredStatus | async"
-                      [value]="status.name">
-            {{status.name}}
+                      [value]="status.status">
+            {{status.status}}
           </mat-option>
 
         </mat-autocomplete>

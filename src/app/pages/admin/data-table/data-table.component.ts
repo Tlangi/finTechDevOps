@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -19,23 +19,28 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
-  usersFullNameDataSource: DataTableDataSource;
-  usersTeamsDataSource: TeamsDataTableDatasource;
-  usersStatusDataSource: EmployeesStatusDataTableDatasource;
+  usersDataSource: DataTableDataSource;
+  // usersTeamsDataSource: TeamsDataTableDatasource;
+  // usersStatusDataSource: EmployeesStatusDataTableDatasource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
-  dataSource = [];
+  displayedColumns = ['id', 'name', 'team', 'status'];
+  // dataSource = [];
 
   ngOnInit() {
-    this.usersFullNameDataSource = new DataTableDataSource();
-    this.usersTeamsDataSource = new TeamsDataTableDatasource();
-    this.usersStatusDataSource = new EmployeesStatusDataTableDatasource();
+    this.usersDataSource = new DataTableDataSource();
+    // this.usersTeamsDataSource = new TeamsDataTableDatasource();
+    // this.usersStatusDataSource = new EmployeesStatusDataTableDatasource();
   }
 
   ngAfterViewInit() {
 
-    if (this.employeesIndex === 0) {
+    this.usersDataSource.sort = this.sort;
+    this.usersDataSource.paginator = this.paginator;
+    this.table.dataSource = this.usersDataSource;
+    // this.dataSource = this.usersDataSource.data;
+
+    /* if (this.employeesIndex === 0) {
       this.usersFullNameDataSource.sort = this.sort;
       this.usersFullNameDataSource.paginator = this.paginator;
       this.table.dataSource = this.usersFullNameDataSource;
@@ -50,16 +55,26 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
       this.usersStatusDataSource.paginator = this.paginator;
       this.table.dataSource = this.usersStatusDataSource;
       this.dataSource = this.usersStatusDataSource.data;
-    }
+    }*/
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.doFilter();
   }
 
   public doFilter() {
-    if (this.employeesIndex === 0) {
+    if (this.usersFullNameFilterValue.length > 0) {
+      this.table.dataSource = this.usersDataSource.data.filter(option =>
+        new RegExp(this.usersFullNameFilterValue, 'gi').test(option.name));
+    } else if (this.usersTeamsFilterValue.length > 0) {
+      this.table.dataSource = this.usersDataSource.data.filter(option =>
+        new RegExp(this.usersTeamsFilterValue, 'gi').test(option.team));
+    } else if (this.usersStatusFilterValue.length > 0) {
+      this.table.dataSource = this.usersDataSource.data.filter(option =>
+        new RegExp(this.usersStatusFilterValue, 'gi').test(option.status));
+    }
+    /* if (this.employeesIndex === 0) {
       if (this.usersFullNameFilterValue.length > 0) {
-        this.table.dataSource = this.usersFullNameDataSource.data.filter(option =>
+        this.table.dataSource = this.usersDataSource.data.filter(option =>
           new RegExp(this.usersFullNameFilterValue, 'gi').test(option.name));
       }
     }else if (this.employeesIndex === 1) {
@@ -72,7 +87,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
         this.table.dataSource = this.usersStatusDataSource.data.filter(option =>
           new RegExp(this.usersStatusFilterValue, 'gi').test(option.name));
       }
-    }
+    }*/
   }
 
 }
