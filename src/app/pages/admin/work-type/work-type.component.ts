@@ -41,7 +41,7 @@ export class WorkTypeComponent implements OnInit {
     if (value.length >= 2) {
       this.workTypeForm.controls.workTypeDescription.setValue(
         'Work Type Description'
-      )
+      );
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
   }
