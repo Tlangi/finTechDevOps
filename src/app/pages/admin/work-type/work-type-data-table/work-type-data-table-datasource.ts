@@ -13,16 +13,16 @@ export interface WorkTypeDataTableItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: WorkTypeDataTableItem[] = [
-  {id: 1, name: 'Enhancement', description: ''},
-  {id: 2, name: 'Project (Top 5)', description: ''},
-  {id: 3, name: 'General Admin Work', description: ''},
-  {id: 4, name: 'Analysis', description: ''},
-  {id: 5, name: 'Unit Testing', description: ''},
-  {id: 6, name: 'Configurations', description: ''},
-  {id: 7, name: 'System Administration', description: ''},
-  {id: 8, name: 'Production Issue Investigation', description: ''},
-  {id: 9, name: 'Dev/UAT Issue Investigation', description: ''},
-  {id: 10, name: 'Training', description: ''}
+  {id: 1, name: 'Enhancement', description: 'Enhancement in FMS'},
+  {id: 2, name: 'Project (Top 5)', description: 'FMS, MILES, PHS, FDP and KYC'},
+  {id: 3, name: 'General Admin Work', description: 'Completing your time sheet and spreadsheet'},
+  {id: 4, name: 'Analysis', description: 'Looking at cubes or logs and make some sense of it'},
+  {id: 5, name: 'Unit Testing', description: 'Checking if it work perfectly'},
+  {id: 6, name: 'Configurations', description: 'Changing settings to make sure that it is working accordingly'},
+  {id: 7, name: 'System Administration', description: 'Adding new users and removing others'},
+  {id: 8, name: 'Production Issue Investigation', description: 'Checking production issues'},
+  {id: 9, name: 'Dev/UAT Issue Investigation', description: 'Investigating dev and uat issues'},
+  {id: 10, name: 'Training', description: 'Your leanings and school stuff'}
 ];
 
 /**
