@@ -54,15 +54,20 @@
 
     </form>
 
-    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="2%">
-      <button mat-raised-button (click)="addNewEmployee()" color="primary">
-        Add new Employee
-      </button>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <div class="mat-button">
+        <button mat-raised-button (click)="addNewEmployee()" color="primary">
+          Add new Employee
+        </button>
+      </div>
 
-      <button mat-raised-button (click)="removeEmployee()" color="warn">
-        Remove Employee
-      </button>
+      <div class="mat-button">
+        <button mat-raised-button (click)="removeEmployee()" color="warn">
+          Remove Employee
+        </button>
+      </div>
     </div>
+
   </div>
 
 </div>

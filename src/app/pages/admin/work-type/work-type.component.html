@@ -33,28 +33,20 @@
 
     </form>
 
-    <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-      <button mat-raised-button (click)="updateWorkType()" color="primary">
-        Add/Update Work Type
-      </button>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <div class="mat-button">
+        <button mat-raised-button (click)="updateWorkType()" color="primary">
+          Add/Update Work Type
+        </button>
+      </div>
 
-      <button mat-raised-button (click)="removeWorkType()" color="warn">
-        Remove Work Type
-      </button>
+      <div class="mat-button">
+        <button mat-raised-button (click)="removeWorkType()" color="warn">
+          Remove Work Type
+        </button>
+      </div>
     </div>
 
-    <!-- <mat-paginator [length]="length"
-                   [pageSize]="pageSize"
-                   [pageSizeOptions]="pageSizeOption"
-                   (page)="pageEvent = $event"
-    >
-    </mat-paginator>
-
-    <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-        <div *ngFor="let workType of workTypeList"> Work Type: {{workType.workTypeState}}</div>
-      </div>
-    </div> -->
   </div>
 </div>
 

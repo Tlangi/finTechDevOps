@@ -32,14 +32,18 @@
 
     </form>
 
-    <div fxLayout="raw" fxLayoutAlign="center" fxLayoutGap="2%">
-      <button mat-raised-button (click)="updateApplication()" color="primary">
-        Add/Update Applications
-      </button>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <div class="mat-button">
+        <button mat-raised-button (click)="updateApplication()" color="primary">
+          Add/Update Applications
+        </button>
+      </div>
 
-      <button mat-raised-button (click)="removeApplication()" color="warn">
-        Remove Applications
-      </button>
+      <div class="mat-button">
+        <button mat-raised-button (click)="removeApplication()" color="warn">
+          Remove Applications
+        </button>
+      </div>
     </div>
 
     <!--<mat-paginator [length]="length"
