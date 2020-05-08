@@ -17,7 +17,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChan
   dataSource: ApplicationsTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['id', 'name', 'description'];
 
   ngOnInit() {
     this.dataSource = new ApplicationsTableDataSource();

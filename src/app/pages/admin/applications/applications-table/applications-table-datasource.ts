@@ -13,16 +13,16 @@ export interface ApplicationsTableItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: ApplicationsTableItem[] = [
-  {id: 1, name: 'FMS', description: ''},
-  {id: 2, name: 'MILES', description: ''},
-  {id: 3, name: 'FDP', description: ''},
-  {id: 4, name: 'PHS', description: ''},
-  {id: 5, name: 'Komainu', description: ''},
-  {id: 6, name: 'Oracle Database', description: ''},
-  {id: 7, name: 'Murex', description: ''},
-  {id: 8, name: 'TDS', description: ''},
-  {id: 9, name: 'KYC', description: ''},
-  {id: 10, name: 'SSI', description: ''}
+  {id: 1, name: 'FMS', description: 'Financial Mapping System'},
+  {id: 2, name: 'MILES', description: 'Miles Description'},
+  {id: 3, name: 'FDP', description: 'The back bone of FMS'},
+  {id: 4, name: 'PHS', description: 'Description for PHS'},
+  {id: 5, name: 'Komainu', description: 'Used for authentication'},
+  {id: 6, name: 'Oracle Database', description: 'Handling data'},
+  {id: 7, name: 'Murex', description: 'Murex Description'},
+  {id: 8, name: 'TDS', description: 'Decription for TDS'},
+  {id: 9, name: 'KYC', description: 'KYC '},
+  {id: 10, name: 'SSI', description: 'Standard Settlement Instructions'}
 ];
 
 /**
