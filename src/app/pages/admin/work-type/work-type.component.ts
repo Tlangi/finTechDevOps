@@ -39,6 +39,9 @@ export class WorkTypeComponent implements OnInit {
     this.sendWorkTypeValue.emit(value);
     this.workTypeList = this.datasource.data;
     if (value.length >= 2) {
+      this.workTypeForm.controls.workTypeDescription.setValue(
+        'Work Type Description'
+      )
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     }
   }
