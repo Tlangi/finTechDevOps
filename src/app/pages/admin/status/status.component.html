@@ -33,8 +33,8 @@
         <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #subStatusType="matAutocomplete">
           <mat-option *ngFor="let subStatusType of filteredSubStatusType | async"
-                      [value]="subStatusType">
-            {{subStatusType}}
+                      [value]="subStatusType.subStatus">
+            {{subStatusType.subStatus}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
