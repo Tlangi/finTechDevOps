@@ -21,16 +21,18 @@ import {DataTableComponent} from '../../pages/admin/data-table/data-table.compon
 import {ApplicationsTableComponent} from '../../pages/admin/applications/applications-table/applications-table.component';
 import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
 import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        MaterialModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    ScrollingModule,
+  ],
   declarations: [
     DashboardComponent,
     PageNotFoundComponent,
