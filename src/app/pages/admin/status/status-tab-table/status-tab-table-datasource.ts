@@ -7,18 +7,41 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 // TODO: Replace this with your own data model type
 export interface StatusTabTableItem {
   status: string;
-  statusType: string[];
-  description: string;
+  statusType: SubStatusTableItem[];
   id: number;
+}
+
+export interface SubStatusTableItem {
+  subStatus: string;
+  description: string;
+  subId: number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: StatusTabTableItem[] = [
-  {id: 1, status: 'State of Emergency', statusType: ['Low', 'Medium', 'High', 'Eminent'], description: ''},
-  {id: 2, status: 'Approval State', statusType: ['Sent For Approval', 'Approved', 'Declined'], description: ''},
-  {id: 3, status: 'Project State', statusType: ['Analysis/Investigation', 'Queued For Development',
-    'Development In Progress', 'Queued For Testing', 'Testing In Progress', 'On Hold', 'Implemented',
-      'Ready For Deployment', 'Parked'], description: ''}
+  {id: 1, status: 'State of Emergency', statusType: [
+    {subId: 1, subStatus: 'Low', description: 'Not Too urgent'},
+      {subId: 2, subStatus: 'Medium', description: 'Neutral'},
+      {subId: 3, subStatus: 'High', description: 'Very urgent'},
+      {subId: 4, subStatus: 'Eminent', description: 'It takes first priority'},
+    ]},
+  {id: 2, status: 'Approval State', statusType: [
+      {subId: 1, subStatus: 'Sent For Approval', description: 'Pending Approval'},
+      {subId: 2, subStatus: 'Approved', description: 'Congratulations it is Approved'},
+      {subId: 3, subStatus: 'Declined', description: 'Not Approved'},
+      {subId: 4, subStatus: 'Eminent', description: 'It takes first priority'},
+    ]},
+  {id: 3, status: 'Project State', statusType: [
+      {subId: 1, subStatus: 'Analysis/Investigation', description: 'Being investigated and analyzed'},
+      {subId: 2, subStatus: 'Queued For Development', description: 'Not yet being developed'},
+      {subId: 3, subStatus: 'Development In Progress', description: 'Development has started'},
+      {subId: 4, subStatus: 'Queued For Testing', description: 'Inline to be tested'},
+      {subId: 5, subStatus: 'Testing In Progress', description: 'Being tested now'},
+      {subId: 6, subStatus: 'On Hold', description: 'Placed on Hold'},
+      {subId: 7, subStatus: 'Implemented', description: 'Complete'},
+      {subId: 8, subStatus: 'Ready For Deployment', description: 'Almost done, only left with being deployed'},
+      {subId: 9, subStatus: 'Parked', description: 'Placed a side. Will be picked up later'},
+    ]}
 ];
 
 /**
