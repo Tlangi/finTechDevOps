@@ -66,6 +66,8 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterTeams(value: string) {
+    /* if (this.employees.controls.fullName.value !== '') {
+    } */
     this.sendTeamsFilterValue.emit(value);
     this.teamList = this.dataSource.data;
     if (value.length >= 2) {

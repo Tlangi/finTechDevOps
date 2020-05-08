@@ -22,7 +22,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'team', 'status'];
-  // dataSource = [];
+  dataSource = [];
 
   ngOnInit() {
     this.usersDataSource = new DataTableDataSource();
@@ -33,6 +33,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
     this.usersDataSource.sort = this.sort;
     this.usersDataSource.paginator = this.paginator;
     this.table.dataSource = this.usersDataSource;
+    this.dataSource = this.usersDataSource.data;
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.doFilter();
