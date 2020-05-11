@@ -1,39 +1,46 @@
-<div cdk-scrollable>
+<!-- <div fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+
+</div> -->
+
+<ng-container cdk-scrollable>
   <div fxLayout
        fxLayout.xs="column"
-       fxLayoutAlign="space-evenly start"
+       fxLayoutAlign="space-evenly stretch"
        fxLayoutGap="10px"
        fxLayoutGap.xs="0">
-    <div  fxFlex >
-      <div>
-        <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
-          <mat-tab label="Users">
-            <app-employees (sendFullNameFilterValue)="getUsersFullNameFilterValue($event)"
-                           (sendTeamsFilterValue)="getUsersTeamsFilterValue($event)"
-                           (sendStatusFilterValue)="getUsersStatusFilterValue($event)"
-            ></app-employees>
-          </mat-tab>
-          <mat-tab label="Applications">
-            <app-applications (sendApplicationValue)="getApplicationsFilterValue($event)"></app-applications>
-          </mat-tab>
+    <div class="mat-card" fxFlex="45%" >
+      <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
-          <mat-tab label="Work Type">
-            <app-work-type (sendWorkTypeValue)="getWorkTypeFilterValue($event)">
-            </app-work-type>
-          </mat-tab>
+        <mat-tab label="Users">
+          <app-employees (sendFullNameFilterValue)="getUsersFullNameFilterValue($event)"
+                         (sendTeamsFilterValue)="getUsersTeamsFilterValue($event)"
+                         (sendStatusFilterValue)="getUsersStatusFilterValue($event)"
+          ></app-employees>
+        </mat-tab>
+        <mat-tab label="Applications">
+          <app-applications (sendApplicationValue)="getApplicationsFilterValue($event)"></app-applications>
+        </mat-tab>
 
-          <mat-tab label="Status">
-            <app-status (statusFilterValue)="getStatusTabFilterValue($event)"
-                        (statusTypeFilterValue)="getSubStatusTabFilterValue($event)"
-            ></app-status>
-          </mat-tab>
+        <mat-tab label="Work Type">
+          <app-work-type (sendWorkTypeValue)="getWorkTypeFilterValue($event)">
+          </app-work-type>
+        </mat-tab>
 
-        </mat-tab-group>
-      </div>
+        <mat-tab label="Status">
+          <app-status (statusFilterValue)="getStatusTabFilterValue($event)"
+                      (statusTypeFilterValue)="getSubStatusTabFilterValue($event)"
+          ></app-status>
+        </mat-tab>
+
+      </mat-tab-group>
     </div>
 
-    <div fxFlex>
+    <div class="mat-table" fxFlex="50%">
       <div class="mat-card-content" *ngIf="tabIndex == 0">
         <app-data-table
           [usersFilterValue]="usersFullNameFilterValue"
@@ -59,4 +66,5 @@
     </div>
 
   </div>
-</div>
+
+</ng-container>
