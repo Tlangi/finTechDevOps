@@ -2,7 +2,7 @@
   <mat-card fxFill>
     <div fxFlex="100" >
       <div fxLayout="row  wrap" fxLayoutAlign="space-evenly stretch" >
-        <div class="mat-card-content">
+        <div class="mat-card">
           <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
             <mat-tab label="Users">
@@ -29,7 +29,7 @@
           </mat-tab-group>
         </div>
 
-        <div class="mat-card-content">
+        <div>
           <div class="mat-card-content" *ngIf="tabIndex == 0">
             <app-data-table
               [usersFilterValue]="usersFullNameFilterValue"
