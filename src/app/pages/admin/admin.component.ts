@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   usersTeamsFilterValue = '';
   usersStatusFilterValue = '';
   statusTabFilterValue = '';
+  subStatusTypeFilterValue = '';
   applicationFilterValue = '';
   workTypeFilterValue = '';
   tabIndex: number;
@@ -19,7 +20,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   constructor() {
   }
   getUsersFullNameFilterValue(value: string) {
-    // console.log('Value in the admin component: ' + value);
     this.usersFullNameFilterValue = value;
   }
 
@@ -40,8 +40,10 @@ export class AdminComponent implements OnInit, OnDestroy {
   getStatusTabFilterValue(value) {
     this.statusTabFilterValue = value;
   }
+  getSubStatusTabFilterValue(value) {
+    this.subStatusTypeFilterValue = value;
+  }
   getTabIndex(tabChangeEvent: MatTabChangeEvent): void {
-    console.log(tabChangeEvent.index);
     if (tabChangeEvent.index >= 0) {
       this.tabIndex = tabChangeEvent.index;
     }

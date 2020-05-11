@@ -11,6 +11,7 @@ import { StatusTabTableDataSource, StatusTabTableItem } from './status-tab-table
 })
 export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges {
   @Input() statusValueChange: string;
+  @Input() subStatusValueChange: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
@@ -40,6 +41,11 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
       console.log(this.subStatusList);
       this.table.dataSource = this.dataSource.data.filter(option =>
         new RegExp(this.statusValueChange, 'gi').test(option.status));
+
+      /* if (this.subStatusValueChange.length > 0) {
+        this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
+          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
+      } */
     }
   }
 }

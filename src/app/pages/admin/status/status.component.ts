@@ -15,6 +15,7 @@ import {StatusTabTableDataSource} from './status-tab-table/status-tab-table-data
 })
 export class StatusComponent implements OnInit {
   @Output() statusFilterValue = new EventEmitter<string>();
+  @Output() statusTypeFilterValue = new EventEmitter<string>();
   dataSource: StatusTabTableDataSource;
 
   statusTab: FormGroup = new FormGroup({
@@ -55,6 +56,7 @@ export class StatusComponent implements OnInit {
 
   private filterSubStatusType(value: string) {
     const statusType = this.statusTab.controls.statusType.value;
+    this.statusTypeFilterValue.emit(value);
     if (statusType.length > 0) {
       this.subStatusTypeList = this.dataSource.data[0].statusType;
       if (value.length >= 1) {
