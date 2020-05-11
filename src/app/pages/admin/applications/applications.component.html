@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
-  <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center">
 
     <form [formGroup]="applications" class="example-form">
 
@@ -46,18 +46,6 @@
       </div>
     </div>
 
-    <!--<mat-paginator [length]="length"
-                   [pageSize]="pageSize"
-                   [pageSizeOptions]="pageSizeOption"
-                   (page)="pageEvent = $event"
-    >
-    </mat-paginator>
-
-     <div *ngIf="pageEvent"  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="1%">
-        <div *ngFor="let applications of applicationsList"> Application Name: {{applications.applicationName}}</div>
-      </div>
-    </div> -->
   </div>
 
 </div>
