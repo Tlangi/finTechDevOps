@@ -44,7 +44,7 @@ export class ApplicationsComponent implements OnInit {
     this.applicationsList = this.applicationsDataSource.data;
     if (value.length >= 2) {
       this.applications.controls.applicationDescription.setValue(
-        'Application Description'
+        this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name))[0].description
       );
       return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
     }

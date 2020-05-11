@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -26,7 +26,6 @@ export class EmployeesComponent implements OnInit {
   fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[] = [];
-  listHandler: any[] = [];
 
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
@@ -78,12 +77,6 @@ export class EmployeesComponent implements OnInit {
       if (value.length >= 2) {
         return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
       }
-
-    /* if (this.employees.controls.fullName.value === '') {
-    } else {
-      console.log(this.listHandler);
-      return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
-    }*/
   }
 
   private filterStatus(value: string) {
@@ -92,10 +85,6 @@ export class EmployeesComponent implements OnInit {
     if (value.length >= 2) {
       return this.statusList.filter(option => new RegExp(value, 'gi').test(option.status));
     }
-   /* if (this.employees.controls.fullName.value === '') {
-   } else {
-     return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.status));
-   }*/
   }
 
   addNewEmployee() {
