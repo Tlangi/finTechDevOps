@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {element} from 'protractor';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-data-table',
@@ -19,6 +20,11 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   usersDataSource: DataTableDataSource;
+
+  dataTableFilter: FormGroup = new FormGroup({
+    tableFilterInput: new FormControl(''),
+    }
+  );
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'team', 'status'];
