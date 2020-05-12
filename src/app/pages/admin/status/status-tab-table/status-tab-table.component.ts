@@ -32,20 +32,31 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.doFilter();
+    this.doFilterSubStatus();
   }
 
   public doFilter() {
     if (this.statusValueChange.length > 0) {
       this.subStatusList = this.dataSource.data.filter(option =>
         new RegExp(this.statusValueChange, 'gi').test(option.status))[0].statusType;
-      console.log(this.subStatusList);
+      // console.log(this.subStatusList);
       this.table.dataSource = this.dataSource.data.filter(option =>
         new RegExp(this.statusValueChange, 'gi').test(option.status));
+    }
+  }
 
-      /* if (this.subStatusValueChange.length > 0) {
+  public doFilterSubStatus() {
+    if (this.subStatusValueChange.length > 0) {
+      if (this.subStatusValueChange === 'State of Emergency') {
         this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      } */
+      } else  if (this.subStatusValueChange === 'Approval State') {
+        this.subStatusList = this.dataSource.data[1].statusType.filter(option =>
+          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
+      } else  if (this.subStatusValueChange === 'Project State') {
+        this.subStatusList = this.dataSource.data[2].statusType.filter(option =>
+          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
+      }
     }
   }
 }

@@ -57,14 +57,37 @@ export class StatusComponent implements OnInit {
   private filterSubStatusType(value: string) {
     const statusType = this.statusTab.controls.statusType.value;
     this.statusTypeFilterValue.emit(value);
-    if (statusType.length > 0) {
-      this.subStatusTypeList = this.dataSource.data[0].statusType;
-      if (value.length >= 1) {
+    if (statusType.length > 0 && value.length >= 1) {
+      if (statusType === 'State of Emergency') {
+        this.subStatusTypeList = this.dataSource.data[0].statusType;
         this.statusTab.controls.statusTypeDescription.setValue(
-          this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.subStatus))[0].description
+          this.statusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[0].description
         );
-        return this.subStatusTypeList.filter(option => new RegExp(value, 'gi').test(option.subStatus));
+        return this.subStatusTypeList.filter(option =>
+          new RegExp(value, 'gi').test(option.subStatus));
+      } else if (statusType === 'Approval State') {
+        this.subStatusTypeList = this.dataSource.data[1].statusType;
+        this.statusTab.controls.statusTypeDescription.setValue(
+          this.statusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[1].description
+        );
+        return this.subStatusTypeList.filter(option =>
+          new RegExp(value, 'gi').test(option.subStatus));
+      } else if (statusType === 'Project State') {
+        this.subStatusTypeList = this.dataSource.data[2].statusType;
+        this.statusTab.controls.statusTypeDescription.setValue(
+          this.statusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[2].description
+        );
+        return this.subStatusTypeList.filter(option =>
+          new RegExp(value, 'gi').test(option.subStatus));
+      } else {
+        this.subStatusTypeList = [];
+        return this.subStatusTypeList.filter(option =>
+          new RegExp(value, 'gi').test(option.subStatus));
       }
+
     }
   }
 
