@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
   private filterSubStatusType(value: string) {
     const statusType = this.statusTab.controls.statusType.value;
     this.statusTypeFilterValue.emit(value);
-    if (statusType.length > 0) {
+    if (statusType.length > 0 && value.length > 1) {
       this.subStatusTypeList = this.statusTypeList[0].statusType;
       this.statusTab.controls.statusTypeDescription.setValue(
         this.subStatusTypeList.filter(option =>
