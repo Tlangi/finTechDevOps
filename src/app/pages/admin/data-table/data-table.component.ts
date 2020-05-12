@@ -3,19 +3,18 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
-import {element} from 'protractor';
 import {FormControl, FormGroup} from '@angular/forms';
+import {convertRuleOptions} from 'tslint/lib/configuration';
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
+export class DataTableComponent implements AfterViewInit, OnInit {
   @Input() usersFilterValue: string;
   @Input() usersTeamsFilterValue: string;
   @Input() usersStatusFilterValue: string;
-  @Input() employeesIndex: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
@@ -31,6 +30,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
 
   ngOnInit() {
     this.usersDataSource = new DataTableDataSource();
+    this.onFilterValueChange();
   }
 
   ngAfterViewInit() {
@@ -39,11 +39,18 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
     this.usersDataSource.paginator = this.paginator;
     this.table.dataSource = this.usersDataSource;
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.doFilter();
+
+  onFilterValueChange(): void {
+    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
+      this.table.dataSource = this.usersDataSource.data.filter(option =>
+        new RegExp(value, 'gi').test(option.name));
+    });
   }
 
-  public doFilter() {
+ /* public doFilter(value): void {
+    console.log(this.dataTableFilter.controls.tableFilterInput.value);
+    this.table.dataSource = this.usersDataSource.data.filter(option =>
+      new RegExp(value, 'gi').test(option.name));
     if (this.usersFilterValue.length > 0) {
       this.table.dataSource = this.usersDataSource.data.filter(option =>
         new RegExp(this.usersFilterValue, 'gi').test(option.name));
@@ -54,7 +61,7 @@ export class DataTableComponent implements AfterViewInit, OnInit, OnChanges {
       this.table.dataSource = this.usersDataSource.data.filter(option =>
         new RegExp(this.usersStatusFilterValue, 'gi').test(option.status));
     }
-  }
+  }*/
 
 }
 
