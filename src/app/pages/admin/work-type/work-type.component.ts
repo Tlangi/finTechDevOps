@@ -40,9 +40,15 @@ export class WorkTypeComponent implements OnInit {
     this.workTypeList = this.datasource.data;
     if (value.length >= 2) {
       this.workTypeForm.controls.workTypeDescription.setValue(
-        this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name))[0].description
+        this.workTypeList.filter(option =>
+          new RegExp(value, 'gi').test(option.name))[0].description
       );
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
+    } else {
+      this.workTypeForm.controls.workTypeDescription.setValue(
+        ''
+      );
+      return;
     }
   }
   updateWorkType() {

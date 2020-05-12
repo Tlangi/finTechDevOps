@@ -61,12 +61,22 @@ export class EmployeesComponent implements OnInit {
     this.fullNameList = this.dataSource.data;
     if (value.length >= 2) {
       this.employees.controls.teams.setValue(
-        this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name))[0].team
+        this.fullNameList.filter(option =>
+          new RegExp(value, 'gi').test(option.name))[0].team
       );
       this.employees.controls.status.setValue(
-        this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name))[0].status
+        this.fullNameList.filter(option =>
+          new RegExp(value, 'gi').test(option.name))[0].status
       );
       return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
+    } else {
+      this.employees.controls.teams.setValue(
+        ''
+      );
+      this.employees.controls.status.setValue(
+        ''
+      );
+      return;
     }
 
   }

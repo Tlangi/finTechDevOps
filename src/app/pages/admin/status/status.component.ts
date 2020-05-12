@@ -64,21 +64,23 @@ export class StatusComponent implements OnInit {
           this.subStatusTypeList.filter(option =>
             new RegExp(value, 'gi').test(option.subStatus))[0].description
         );
-        console.log(this.subStatusTypeList);
       } else if (statusType === 'Approval State') {
         this.subStatusTypeList = this.statusTypeList[1].statusType;
         this.statusTab.controls.statusTypeDescription.setValue(
           this.subStatusTypeList.filter(option =>
             new RegExp(value, 'gi').test(option.subStatus))[0].description
         );
-        console.log(this.subStatusTypeList);
       } else if (statusType === 'Project State') {
         this.subStatusTypeList = this.statusTypeList[2].statusType;
         this.statusTab.controls.statusTypeDescription.setValue(
           this.subStatusTypeList.filter(option =>
             new RegExp(value, 'gi').test(option.subStatus))[0].description
         );
-        console.log(this.subStatusTypeList);
+      } else {
+        this.subStatusTypeList = [];
+        this.statusTab.controls.statusTypeDescription.setValue(
+          ''
+        );
       }
     }
     return this.subStatusTypeList.filter(option =>
