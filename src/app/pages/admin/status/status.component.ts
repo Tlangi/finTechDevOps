@@ -58,12 +58,28 @@ export class StatusComponent implements OnInit {
     const statusType = this.statusTab.controls.statusType.value;
     this.statusTypeFilterValue.emit(value);
     if (statusType.length > 0 && value.length > 1) {
-      this.subStatusTypeList = this.statusTypeList[0].statusType;
-      this.statusTab.controls.statusTypeDescription.setValue(
-        this.subStatusTypeList.filter(option =>
-          new RegExp(value, 'gi').test(option.subStatus))[0].description
-      );
-      console.log(this.subStatusTypeList);
+      if (statusType === 'State of Emergency') {
+        this.subStatusTypeList = this.statusTypeList[0].statusType;
+        this.statusTab.controls.statusTypeDescription.setValue(
+          this.subStatusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[0].description
+        );
+        console.log(this.subStatusTypeList);
+      } else if (statusType === 'Approval State') {
+        this.subStatusTypeList = this.statusTypeList[1].statusType;
+        this.statusTab.controls.statusTypeDescription.setValue(
+          this.subStatusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[0].description
+        );
+        console.log(this.subStatusTypeList);
+      } else if (statusType === 'Project State') {
+        this.subStatusTypeList = this.statusTypeList[2].statusType;
+        this.statusTab.controls.statusTypeDescription.setValue(
+          this.subStatusTypeList.filter(option =>
+            new RegExp(value, 'gi').test(option.subStatus))[0].description
+        );
+        console.log(this.subStatusTypeList);
+      }
     }
     return this.subStatusTypeList.filter(option =>
       new RegExp(value, 'gi').test(option.subStatus));
