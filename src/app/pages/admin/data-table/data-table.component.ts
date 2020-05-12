@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
-import {convertRuleOptions} from 'tslint/lib/configuration';
 
 @Component({
   selector: 'app-data-table',
@@ -42,8 +41,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   onFilterValueChange(): void {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
-      this.table.dataSource = this.usersDataSource.data.filter(option =>
-        new RegExp(value, 'gi').test(option.name));
+     if (value.length > 1) {
+       this.table.dataSource = this.usersDataSource.data.filter(option =>
+         new RegExp(value, 'gi').test(option.name));
+     }
     });
   }
 
