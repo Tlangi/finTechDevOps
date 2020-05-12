@@ -47,19 +47,16 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
 
   public doFilterSubStatus() {
     if (this.subStatusValueChange.length > 0) {
-      // console.log(this.subStatusList);
-      this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
-        new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      /* if (this.subStatusValueChange === 'State of Emergency') {
+      if (this.statusValueChange === 'State of Emergency') {
         this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      } else  if (this.subStatusValueChange === 'Approval State') {
+      } else if (this.statusValueChange === 'Approval State') {
         this.subStatusList = this.dataSource.data[1].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      } else  if (this.subStatusValueChange === 'Project State') {
+      }  else if (this.statusValueChange === 'Project State') {
         this.subStatusList = this.dataSource.data[2].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      }*/
+      }
     }
   }
 }
