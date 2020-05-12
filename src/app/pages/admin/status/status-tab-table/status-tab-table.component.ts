@@ -47,7 +47,10 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
 
   public doFilterSubStatus() {
     if (this.subStatusValueChange.length > 0) {
-      if (this.subStatusValueChange === 'State of Emergency') {
+      // console.log(this.subStatusList);
+      this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
+        new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
+      /* if (this.subStatusValueChange === 'State of Emergency') {
         this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
       } else  if (this.subStatusValueChange === 'Approval State') {
@@ -56,7 +59,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
       } else  if (this.subStatusValueChange === 'Project State') {
         this.subStatusList = this.dataSource.data[2].statusType.filter(option =>
           new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      }
+      }*/
     }
   }
 }
