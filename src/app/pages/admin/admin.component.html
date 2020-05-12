@@ -1,10 +1,3 @@
-<!-- <div fxLayout
-     fxLayout.xs="column"
-     fxLayoutAlign="center"
-     fxLayoutGap="10px"
-     fxLayoutGap.xs="0">
-
-</div> -->
 
 <ng-container cdk-scrollable>
   <div fxLayout
@@ -12,8 +5,35 @@
        fxLayoutAlign="space-evenly stretch"
        fxLayoutGap="10px"
        fxLayoutGap.xs="0">
+    <div class="mat-card-content" fxFlex="80">
+      <mat-tab-group>
+        <mat-tab label="Employees">
+          <app-data-table></app-data-table>
+        </mat-tab>
+        <mat-tab label="Applications">
+          <mat-card-content>
+            <h4> Content </h4>
+          </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Applications">
+          <mat-card-content>
+            <h4> Content </h4>
+          </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Work Type">
+          <mat-card-content>
+            <h4> Content </h4>
+          </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Status">
+          <mat-card-content>
+            <h4> Content </h4>
+          </mat-card-content>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
 
-    <div class="mat-card" fxFlex="45%" >
+    <!-- <div class="mat-card" fxFlex="40%" >
       <mat-tab-group (selectedTabChange)="getTabIndex($event)">
 
         <mat-tab label="Users">
@@ -40,7 +60,7 @@
       </mat-tab-group>
     </div>
 
-    <div class="mat-table" fxFlex="50%">
+    <div class="mat-table" fxFlex="55%">
       <div class="mat-card-content" *ngIf="tabIndex == 0">
         <app-data-table
           [usersFilterValue]="usersFullNameFilterValue"
@@ -63,7 +83,7 @@
           [subStatusValueChange]="subStatusTypeFilterValue"
         ></app-status-tab-table>
       </div>
-    </div>
+    </div> -->
 
   </div>
 
