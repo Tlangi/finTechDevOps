@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {AdminDialogBoxComponent} from '../admin-dialog-box/admin-dialog-box.component';
 
 @Component({
   selector: 'app-data-table',
@@ -25,7 +27,54 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   );
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'team', 'status'];
+  displayedColumns = ['id', 'name', 'team', 'status', 'action'];
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  openDialog(action, obj) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(AdminDialogBoxComponent, {
+      width: '250px',
+      data: obj
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'Add') {
+        this.addRowData(result.data);
+      } else if (result.event === 'Update') {
+        this.updateRowData(result.data);
+      } else if (result.event === 'Delete') {
+        this.deleteRowData(result.data);
+      }
+    });
+  }
+
+  addRowData(rowObject) {
+    const date = new Date();
+    this.usersDataSource.data.push({
+      id: date.getTime(),
+      name: rowObject.name,
+      team: rowObject.team,
+      status: rowObject.status
+    });
+    this.table.renderRows();
+  }
+
+  updateRowData(rowObject) {
+    this.usersDataSource.data =  this.usersDataSource.data.filter((value, key) => {
+      if (value.id === rowObject.id) {
+        value.name = rowObject.name;
+    }
+      return true;
+    });
+  }
+
+  deleteRowData(rowObject) {
+    this.usersDataSource.data = this.usersDataSource.data.filter((value, key) => {
+      return value.id !== rowObject.id;
+    });
+  }
 
   ngOnInit() {
     this.usersDataSource = new DataTableDataSource();
