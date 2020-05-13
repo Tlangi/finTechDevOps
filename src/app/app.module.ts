@@ -19,7 +19,6 @@ import {MaterialModule} from './helpers/material.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { AdminDialogBoxComponent } from './pages/admin/admin-dialog-box/admin-dialog-box.component';
 
 @NgModule({
     imports: [
@@ -41,8 +40,7 @@ import { AdminDialogBoxComponent } from './pages/admin/admin-dialog-box/admin-di
         AlertComponent,
         DialogComponent,
         PopupDailogComponent,
-        LoginPageComponent,
-        AdminDialogBoxComponent,
+        LoginPageComponent
     ],
     entryComponents: [
         DialogComponent,
