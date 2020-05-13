@@ -35,7 +35,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   openDialog(action, obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(AdminDialogBoxComponent, {
-      width: '250px',
+      width: '60%',
       data: obj
     });
 
