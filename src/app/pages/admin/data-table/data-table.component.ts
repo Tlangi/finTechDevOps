@@ -27,6 +27,9 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   applicationsDataSource: ApplicationsTableDataSource;
   workTypeDataSource: WorkTypeDataTableDataSource;
   statusTabDataSource: StatusTabTableDataSource;
+  column1 = '';
+  column2 = '';
+  column3 = '';
 
   dataTableFilter: FormGroup = new FormGroup({
     tableFilterInput: new FormControl(''),
@@ -85,8 +88,27 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     if (this.tabIndexValue === 0) {
-      this.displayedColumns = ['id', 'name', 'team', 'status', 'action'];
+      this.displayedColumns = ['id', 'column1', 'column2', 'column3', 'action'];
+      this.column1 = 'Full Name';
+      this.column2 = 'Team';
+      this.column3 = 'Status';
       this.usersDataSource = new DataTableDataSource();
+    } else if (this.tabIndexValue === 1) {
+      this.displayedColumns = ['id', 'column1', 'column2', 'action'];
+      this.column1 = 'Application Name';
+      this.column2 = 'Description';
+      this.applicationsDataSource = new ApplicationsTableDataSource();
+    } else if (this.tabIndexValue === 2) {
+      this.displayedColumns = ['id', 'column1', 'column2', 'action'];
+      this.column1 = 'Work Type';
+      this.column2 = 'Description';
+      this.workTypeDataSource = new WorkTypeDataTableDataSource();
+    } else if (this.tabIndexValue === 3) {
+      this.displayedColumns = ['id', 'column1', 'column2', 'column3', 'action'];
+      this.column1 = 'Status';
+      this.column2 = 'Status Type';
+      this.column3 = 'Description';
+      this.statusTabDataSource = new StatusTabTableDataSource();
     }
     this.onFilterValueChange();
   }

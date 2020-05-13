@@ -96,9 +96,9 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'team': return compare(a.team, b.team, isAsc);
-        case 'status': return compare(a.status, b.status, isAsc);
+        case 'column1': return compare(a.name, b.name, isAsc);
+        case 'column2': return compare(a.team, b.team, isAsc);
+        case 'column3': return compare(a.status, b.status, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
         default: return 0;
       }
