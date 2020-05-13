@@ -6,6 +6,9 @@ import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {AdminDialogBoxComponent} from '../admin-dialog-box/admin-dialog-box.component';
+import {ApplicationsTableDataSource} from '../applications/applications-table/applications-table-datasource';
+import {WorkTypeDataTableDataSource} from '../work-type/work-type-data-table/work-type-data-table-datasource';
+import {StatusTabTableDataSource} from '../status/status-tab-table/status-tab-table-datasource';
 
 @Component({
   selector: 'app-data-table',
@@ -16,10 +19,14 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @Input() usersFilterValue: string;
   @Input() usersTeamsFilterValue: string;
   @Input() usersStatusFilterValue: string;
+  @Input() tabIndexValue: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   usersDataSource: DataTableDataSource;
+  applicationsDataSource: ApplicationsTableDataSource;
+  workTypeDataSource: WorkTypeDataTableDataSource;
+  statusTabDataSource: StatusTabTableDataSource;
 
   dataTableFilter: FormGroup = new FormGroup({
     tableFilterInput: new FormControl(''),
@@ -27,7 +34,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   );
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'team', 'status', 'action'];
+  displayedColumns = [];
 
   constructor(public dialog: MatDialog) {
   }
@@ -77,7 +84,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.usersDataSource = new DataTableDataSource();
+    if (this.tabIndexValue === 0) {
+      this.displayedColumns = ['id', 'name', 'team', 'status', 'action'];
+      this.usersDataSource = new DataTableDataSource();
+    }
     this.onFilterValueChange();
   }
 

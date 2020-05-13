@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormControl, FormGroup} from '@angular/forms';
 
 export interface UserData {
   name: string;
@@ -16,6 +17,11 @@ export interface UserData {
 export class AdminDialogBoxComponent implements OnInit {
   action: string;
   localData: any;
+  employees: FormGroup = new FormGroup({
+    fullName: new FormControl(''),
+    teams: new FormControl(''),
+    status: new FormControl('')
+  });
 
   constructor(public dialogRef: MatDialogRef<AdminDialogBoxComponent>,
               // @Optional() is used to prevent error if no data is passed
@@ -23,6 +29,11 @@ export class AdminDialogBoxComponent implements OnInit {
               ) {
     console.log(data);
     this.localData = {...data};
+    this.employees.setValue({
+      fullName: data.name,
+      teams: data.team,
+      status: data.status,
+    });
     this.action = this.localData.action;
   }
 
