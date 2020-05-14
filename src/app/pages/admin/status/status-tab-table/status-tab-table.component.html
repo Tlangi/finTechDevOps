@@ -1,5 +1,34 @@
 
 <div class="mat-card">
+  <form [formGroup]="dataTableFilter">
+
+    <div fxLayout
+         fxLayout.xs="row"
+         fxLayoutAlign="space-between stretch"
+         fxLayoutGap="10px"
+         fxLayoutGap.xs="0">
+      <div class="mat-button">
+        <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
+          Add new
+        </button>
+      </div >
+
+      <div class="example-form" fxFlex="90%">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Table Filter</mat-label>
+          <input type="text"
+                 aria-label="Number"
+                 placeholder="Type to Search"
+                 matInput
+                 formControlName="tableFilterInput"
+          >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -29,6 +58,15 @@
         <mat-list>
           <a mat-list-item *ngFor="let description of subStatusList"> {{description.description}}</a>
         </mat-list>
+      </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <a (click)="openDialog('Update',element)">Edit</a> |
+        <a (click)="openDialog('Delete',element)">Delete</a>
       </td>
     </ng-container>
 

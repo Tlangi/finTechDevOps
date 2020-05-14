@@ -3,6 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { WorkTypeDataTableDataSource, WorkTypeDataTableItem } from './work-type-data-table-datasource';
+import {FormControl, FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.component';
 
 @Component({
   selector: 'app-work-type-data-table',
@@ -17,7 +20,58 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit, OnChan
   dataSource: WorkTypeDataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'description'];
+  displayedColumns = ['id', 'name', 'description', 'action'];
+  dataTableFilter: FormGroup = new FormGroup({
+      tableFilterInput: new FormControl(''),
+    }
+  );
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  openDialog(action, obj) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(AdminDialogBoxComponent, {
+      width: '60%',
+      data: obj
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'Add') {
+        this.addRowData(result.data);
+      } else if (result.event === 'Update') {
+        this.updateRowData(result.data);
+      } else if (result.event === 'Delete') {
+        this.deleteRowData(result.data);
+      }
+    });
+  }
+
+  addRowData(rowObject) {
+    const date = new Date();
+    this.dataSource.data.push({
+      id: date.getTime(),
+      name: rowObject.name,
+      description: rowObject.description
+    });
+    this.table.renderRows();
+  }
+
+  updateRowData(rowObject) {
+    this.dataSource.data =  this.dataSource.data.filter((value, key) => {
+      if (value.id === rowObject.id) {
+        value.name = rowObject.name;
+      }
+      return true;
+    });
+  }
+
+  deleteRowData(rowObject) {
+    this.dataSource.data = this.dataSource.data.filter((value, key) => {
+      return value.id !== rowObject.id;
+    });
+  }
+
 
   ngOnInit() {
     this.dataSource = new WorkTypeDataTableDataSource();
