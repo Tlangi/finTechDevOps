@@ -20,6 +20,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
   dataSource: StatusTabTableDataSource;
   subStatusList = [];
+  statusList = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'status', 'statusType', 'description', 'action'];
@@ -80,6 +81,8 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
       this.subStatusList = value1.statusType;
       // console.log(this.subStatusList);
     }));
+    this.statusList = this.dataSource.data.filter(statusValue => statusValue.status);
+    console.log(this.statusList);
     this.onFilterValueChange();
   }
 
