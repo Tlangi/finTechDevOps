@@ -94,7 +94,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
      if (value.length > 1) {
        this.table.dataSource = this.usersDataSource.data.filter(option =>
          new RegExp(value, 'gi').test(option.name));
-     }
+       }
     });
   }
 
