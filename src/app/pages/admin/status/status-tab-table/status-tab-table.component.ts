@@ -76,6 +76,10 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.dataSource = new StatusTabTableDataSource();
+    this.dataSource.data.filter( ((value1, index) => {
+      this.subStatusList = value1.statusType;
+      console.log(this.subStatusList);
+    }));
     this.onFilterValueChange();
   }
 
@@ -87,8 +91,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   onFilterValueChange(): void {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
       if (value.length > 1) {
-        this.table.dataSource = this.dataSource.data.filter(option =>
-          new RegExp(value, 'gi').test(option.status));
+        return this.subStatusList.filter(options => new RegExp(value, 'gi').test(options.status));
       }
     });
   }
