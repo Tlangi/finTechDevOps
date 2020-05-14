@@ -12,7 +12,7 @@ import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.c
   templateUrl: './work-type-data-table.component.html',
   styleUrls: ['./work-type-data-table.component.css']
 })
-export class WorkTypeDataTableComponent implements AfterViewInit, OnInit, OnChanges {
+export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
   @Input() workTypeFilterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -75,6 +75,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit, OnChan
 
   ngOnInit() {
     this.dataSource = new WorkTypeDataTableDataSource();
+    this.onFilterValueChange();
   }
 
   ngAfterViewInit() {
@@ -83,14 +84,12 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit, OnChan
     this.table.dataSource = this.dataSource;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.doFilter();
-  }
-
-  public doFilter() {
-    if (this.workTypeFilterValue.length > 0) {
-      this.table.dataSource = this.dataSource.data.filter(option =>
-        new RegExp(this.workTypeFilterValue, 'gi').test(option.name));
-    }
+  onFilterValueChange(): void {
+    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
+      if (value.length > 1) {
+        this.table.dataSource = this.dataSource.data.filter(option =>
+          new RegExp(value, 'gi').test(option.name));
+      }
+    });
   }
 }

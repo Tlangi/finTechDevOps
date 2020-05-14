@@ -12,7 +12,7 @@ import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.c
   templateUrl: './status-tab-table.component.html',
   styleUrls: ['./status-tab-table.component.css']
 })
-export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges {
+export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @Input() statusValueChange: string;
   @Input() subStatusValueChange: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -76,6 +76,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
 
   ngOnInit() {
     this.dataSource = new StatusTabTableDataSource();
+    this.onFilterValueChange();
   }
 
   ngAfterViewInit() {
@@ -83,33 +84,12 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit, OnChanges
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.doFilter();
-    this.doFilterSubStatus();
-  }
-
-  public doFilter() {
-    if (this.statusValueChange.length > 0) {
-      this.subStatusList = this.dataSource.data.filter(option =>
-        new RegExp(this.statusValueChange, 'gi').test(option.status))[0].statusType;
-      // console.log(this.subStatusList);
-      this.table.dataSource = this.dataSource.data.filter(option =>
-        new RegExp(this.statusValueChange, 'gi').test(option.status));
-    }
-  }
-
-  public doFilterSubStatus() {
-    if (this.subStatusValueChange.length > 0) {
-      if (this.statusValueChange === 'State of Emergency') {
-        this.subStatusList = this.dataSource.data[0].statusType.filter(option =>
-          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      } else if (this.statusValueChange === 'Approval State') {
-        this.subStatusList = this.dataSource.data[1].statusType.filter(option =>
-          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
-      }  else if (this.statusValueChange === 'Project State') {
-        this.subStatusList = this.dataSource.data[2].statusType.filter(option =>
-          new RegExp(this.subStatusValueChange, 'gi').test(option.subStatus));
+  onFilterValueChange(): void {
+    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
+      if (value.length > 1) {
+        this.table.dataSource = this.dataSource.data.filter(option =>
+          new RegExp(value, 'gi').test(option.status));
       }
-    }
+    });
   }
 }

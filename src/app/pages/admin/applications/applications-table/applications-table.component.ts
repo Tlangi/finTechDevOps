@@ -12,7 +12,7 @@ import {FormControl, FormGroup} from '@angular/forms';
   templateUrl: './applications-table.component.html',
   styleUrls: ['./applications-table.component.css']
 })
-export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChanges {
+export class ApplicationsTableComponent implements AfterViewInit, OnInit {
   @Input() applicationFilterValue: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -74,6 +74,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChan
 
   ngOnInit() {
     this.dataSource = new ApplicationsTableDataSource();
+    this.onFilterValueChange();
   }
 
   ngAfterViewInit() {
@@ -82,15 +83,12 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit, OnChan
     this.table.dataSource = this.dataSource;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.doFilter();
-  }
-
-  public doFilter() {
-    if (this.applicationFilterValue.length > 0) {
-      // console.log('Value in the table inside loop: ' + this.usersFullNameFilterValue);
-      this.table.dataSource = this.dataSource.data.filter(option =>
-        new RegExp(this.applicationFilterValue, 'gi').test(option.name));
-    }
+  onFilterValueChange(): void {
+    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
+      if (value.length > 1) {
+        this.table.dataSource = this.dataSource.data.filter(option =>
+          new RegExp(value, 'gi').test(option.name));
+      }
+    });
   }
 }
