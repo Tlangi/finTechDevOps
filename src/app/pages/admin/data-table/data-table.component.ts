@@ -21,8 +21,6 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   usersDataSource: DataTableDataSource;
-  nameList: any[] = [];
-  teamList = [];
 
   dataTableFilter: FormGroup = new FormGroup({
     tableFilterInput: new FormControl(''),
