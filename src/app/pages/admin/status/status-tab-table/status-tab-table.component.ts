@@ -78,7 +78,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
     this.dataSource = new StatusTabTableDataSource();
     this.dataSource.data.filter( ((value1, index) => {
       this.subStatusList = value1.statusType;
-      console.log(this.subStatusList);
+      // console.log(this.subStatusList);
     }));
     this.onFilterValueChange();
   }
