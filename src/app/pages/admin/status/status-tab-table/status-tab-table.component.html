@@ -49,13 +49,13 @@
           <!-- Id Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            <td mat-cell *matCellDef="let row">{{row.subId}}</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Status Type</th>
-            <td mat-cell *matCellDef="let row">{{row.status}}</td>
+            <td mat-cell *matCellDef="let row">{{row.subStatus}}</td>
           </ng-container>
 
           <!-- Name Column -->
@@ -78,9 +78,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedSubColumns;"></tr>
 
         </table>
-          <!-- <mat-list>
-             <a mat-list-item *ngFor="let description of subStatusList"> {{description.description}}</a>
-           </mat-list> -->
+
       </td>
     </ng-container>
 
