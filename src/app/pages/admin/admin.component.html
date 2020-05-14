@@ -11,13 +11,13 @@
           <app-data-table *ngIf="tabIndex == 0" [tabIndexValue]="tabIndex"></app-data-table>
         </mat-tab>
         <mat-tab label="Applications">
-          <app-data-table  *ngIf="tabIndex == 1" [tabIndexValue]="tabIndex"></app-data-table>
+          <app-applications-table  *ngIf="tabIndex == 1"></app-applications-table>
         </mat-tab>
         <mat-tab label="Work Type">
-          <app-data-table  *ngIf="tabIndex == 2" [tabIndexValue]="tabIndex"></app-data-table>
+          <app-work-type-data-table  *ngIf="tabIndex == 2"></app-work-type-data-table>
         </mat-tab>
         <mat-tab label="Status">
-          <app-data-table  *ngIf="tabIndex == 3" [tabIndexValue]="tabIndex"></app-data-table>
+          <app-status-tab-table *ngIf="tabIndex == 3" ></app-status-tab-table>
         </mat-tab>
       </mat-tab-group>
     </div>
