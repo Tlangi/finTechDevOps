@@ -21,6 +21,8 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<DataTableItem>;
   usersDataSource: DataTableDataSource;
+  nameList: any[] = [];
+  teamList = [];
 
   dataTableFilter: FormGroup = new FormGroup({
     tableFilterInput: new FormControl(''),
@@ -93,8 +95,11 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
      if (value.length > 1) {
        this.table.dataSource = this.usersDataSource.data.filter(option =>
-         new RegExp(value, 'gi').test(option.name));
-       }
+         new RegExp(value, 'gi').test(option.status)).slice(0, 5);
+       console.log(this.table.dataSource);
+       } else {
+       this.table.dataSource = this.usersDataSource;
+     }
     });
   }
 

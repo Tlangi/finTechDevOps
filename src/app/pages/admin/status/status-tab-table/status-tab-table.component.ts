@@ -23,7 +23,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   statusList = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'status', 'statusType'];
+  displayedColumns = ['id', 'status', 'statusType', 'action'];
   displayedSubColumns = ['id', 'status', 'description', 'action'];
   dataTableFilter: FormGroup = new FormGroup({
       tableFilterInput: new FormControl(''),

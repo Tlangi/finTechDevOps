@@ -43,7 +43,7 @@
     </ng-container>
 
     <ng-container matColumnDef="statusType">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sub Status</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let row">
         <table mat-table class="full-width-table" [dataSource]="subStatusList" matSort aria-label="Elements">
           <!-- Id Column -->
@@ -79,6 +79,14 @@
 
         </table>
 
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <a (click)="openDialog('Update',element)">Edit</a> |
+        <a (click)="openDialog('Delete',element)">Delete</a>
       </td>
     </ng-container>
 
