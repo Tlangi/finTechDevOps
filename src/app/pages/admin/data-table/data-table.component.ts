@@ -6,9 +6,6 @@ import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {AdminDialogBoxComponent} from '../admin-dialog-box/admin-dialog-box.component';
-import {ApplicationsTableDataSource} from '../applications/applications-table/applications-table-datasource';
-import {WorkTypeDataTableDataSource} from '../work-type/work-type-data-table/work-type-data-table-datasource';
-import {StatusTabTableDataSource} from '../status/status-tab-table/status-tab-table-datasource';
 
 @Component({
   selector: 'app-data-table',
