@@ -21,6 +21,8 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
   dataSource: StatusTabTableDataSource;
   emergencyList = [];
+  index: number;
+  statusTypeList = [];
   approvalList = [];
   projectList = [];
 
@@ -81,16 +83,18 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource = new StatusTabTableDataSource();
     this.dataSource.data.filter( ((value1, index) => {
-      if (index === 0) {
+      this.statusTypeList = value1.statusType.slice(0, 5);
+      /* if (index === 0) {
+        this.index = index;
         this.emergencyList = value1.statusType.slice(0, 5);
-        console.log('Emergency List: ' + this.emergencyList);
+        // console.log('Emergency List: ' + this.emergencyList);
       } else if (index === 1) {
         this.approvalList = value1.statusType.slice(0, 5);
-        console.log('Approval List: ' + this.approvalList);
+        // console.log('Approval List: ' + this.approvalList);
       } else if (index === 2) {
         this.projectList = value1.statusType.slice(0, 5);
-        console.log('Project List: ' + this.projectList);
-      }
+        // console.log('Project List: ' + this.projectList);
+      } */
     }));
     this.onFilterValueChange();
   }
@@ -103,6 +107,9 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   onFilterValueChange(): void {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
       if (value.length > 1) {
+        this.table.dataSource = this.dataSource.data.filter( option => {
+          return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
+        }).slice(0, 5);
       } else {
         this.table.dataSource = this.dataSource;
       }
