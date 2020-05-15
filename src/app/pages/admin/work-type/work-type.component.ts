@@ -1,7 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
-import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
-import {MatDialog} from '@angular/material/dialog';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -20,19 +18,38 @@ export class WorkTypeComponent implements OnInit {
     workType: new FormControl(''),
     workTypeDescription: new FormControl('')
   });
+  workType: string;
+  workTypeDescription: string;
+  action: string;
 
   workTypeList: any[]  = [];
   filteredWorkType: Observable<any[]>;
-  constructor(private matDialog: MatDialog) {
+  constructor(private dialogRef: MatDialogRef<WorkTypeComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.datasource = new WorkTypeDataTableDataSource();
+    this.workType = data.workType;
+    this.workTypeDescription = data.workTypeDescription;
+    this.action = data.action;
   }
 
   ngOnInit(): void {
+    this.workTypeForm.setValue({
+      workType: this.workType,
+      workTypeDescription: this.workTypeDescription
+    });
     this.filteredWorkType = this.workTypeForm.controls.workType.valueChanges
       .pipe(
         startWith(''),
         map(workType => this.filterWorkType(workType))
       );
+  }
+
+  doAction(): void {
+    this.dialogRef.close({event: this.action, data: this.workTypeForm});
+  }
+
+  closeDialog(){
+    this.dialogRef.close({event: 'Cancel'});
   }
 
   private filterWorkType(value: string) {
@@ -50,24 +67,6 @@ export class WorkTypeComponent implements OnInit {
       );
       return;
     }
-  }
-  updateWorkType() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(PopupDailogComponent,
-      {data: {tabName: this.workTypeForm.controls.workType.value, name: 'Work Type'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  removeWorkType() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
-      {data: {tabName: this.workTypeForm.controls.workType.value, name: 'Work Type'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
 }

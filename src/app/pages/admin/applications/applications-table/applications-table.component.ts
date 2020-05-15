@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {EmployeesComponent} from '../../employees/employees.component';
 import {ApplicationsComponent} from '../applications.component';
+import {WorkTypeComponent} from '../../work-type/work-type.component';
 
 @Component({
   selector: 'app-applications-table',

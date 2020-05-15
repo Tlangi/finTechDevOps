@@ -6,6 +6,7 @@ import { WorkTypeDataTableDataSource, WorkTypeDataTableItem } from './work-type-
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {EmployeesComponent} from '../../employees/employees.component';
+import {WorkTypeComponent} from '../work-type.component';
 
 @Component({
   selector: 'app-work-type-data-table',
@@ -31,7 +32,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(EmployeesComponent, {
+    const dialogRef = this.dialog.open(WorkTypeComponent, {
       width: '60%',
       data: obj
     });

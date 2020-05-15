@@ -1,7 +1,9 @@
-<div  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
-  <div fxLayout="column" fxLayoutAlign="center center">
 
-    <form [formGroup]="workTypeForm" class="example-form">
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h2 mat-dialog-title> <strong>{{action}} Work Type </strong></h2>
+  <mat-dialog-content>
+
+    <form [formGroup]="workTypeForm" class="example-form"  *ngIf="action != 'Delete'; else elseTemplate">
 
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label> Work Type </mat-label>
@@ -33,20 +35,17 @@
 
     </form>
 
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-      <div class="mat-button">
-        <button mat-raised-button (click)="updateWorkType()" color="primary">
-          Add/Update Work Type
-        </button>
-      </div>
+    <ng-template #elseTemplate>
+      Are you sure you want to Delete <b>{{workTypeForm.controls.workType.value}}</b>
+    </ng-template>
 
-      <div class="mat-button">
-        <button mat-raised-button (click)="removeWorkType()" color="warn">
-          Remove Work Type
-        </button>
-      </div>
-    </div>
+  </mat-dialog-content>
 
-  </div>
+  <mat-dialog-actions class="mat-button">
+    <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+    <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+  </mat-dialog-actions>
+
 </div>
+
 
