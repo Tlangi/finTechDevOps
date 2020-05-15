@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -30,15 +30,18 @@ export class EmployeesComponent implements OnInit {
   fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[] = [];
+  action: string;
 
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
-  constructor(private dialogRef: MatDialogRef<EmployeesComponent>, @Inject(MAT_DIALOG_DATA) data) {
+  constructor(private dialogRef: MatDialogRef<EmployeesComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new DataTableDataSource();
     this.fullName = data.fullName;
     this.teams = data.teams;
     this.status = data.status;
+    this.action = data.action;
   }
 
   ngOnInit(): void {
@@ -66,6 +69,14 @@ export class EmployeesComponent implements OnInit {
         map(status => this.filterStatus(status))
       );
 
+  }
+
+  doAction(): void {
+    this.dialogRef.close({event: this.action, data: this.employees.value});
+  }
+
+  closeDialog() {
+    this.dialogRef.close({event: 'Cancel'});
   }
 
   update(): void {

@@ -1,62 +1,68 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-  <h2 mat-dialog-title> Employees Form</h2>
-  <mat-dialog-content [formGroup]="employees" class="example-form">
+  <h2 mat-dialog-title> <strong>{{action}} Employees </strong></h2>
+  <mat-dialog-content>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Full Name </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="fullName"
-             [matAutocomplete]="autoName">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoName="matAutocomplete">
-        <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.name">
-          {{fullName.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <form [formGroup]="employees" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Full Name </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               formControlName="fullName"
+               [matAutocomplete]="autoName">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoName="matAutocomplete">
+          <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.name">
+            {{fullName.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Teams </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="teams"
-             [matAutocomplete]="autoTeams">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoTeams="matAutocomplete">
-        <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
-          {{teams.team}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Teams </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               formControlName="teams"
+               [matAutocomplete]="autoTeams">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoTeams="matAutocomplete">
+          <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
+            {{teams.team}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Status </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="status"
-             [matAutocomplete]="autoStatus">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoStatus="matAutocomplete">
-        <mat-option *ngFor="let status of filteredStatus | async"
-                    [value]="status.status">
-          {{status.status}}
-        </mat-option>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Status </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               formControlName="status"
+               [matAutocomplete]="autoStatus">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoStatus="matAutocomplete">
+          <mat-option *ngFor="let status of filteredStatus | async"
+                      [value]="status.status">
+            {{status.status}}
+          </mat-option>
 
-      </mat-autocomplete>
-    </mat-form-field>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <ng-template #elseTemplate>
+      Are you sure you want to Delete <b>{{employees.controls.fullName.value}}</b>
+    </ng-template>
 
   </mat-dialog-content>
 
-  <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="update()"> Update </button>
-    <button class="mat-raised-button" (click)="close()"> Cancel</button>
+  <mat-dialog-actions class="mat-button">
+    <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+    <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
   </mat-dialog-actions>
 
 </div>
