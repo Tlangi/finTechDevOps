@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { WorkTypeDataTableDataSource, WorkTypeDataTableItem } from './work-type-data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.component';
+import {EmployeesComponent} from '../../employees/employees.component';
 
 @Component({
   selector: 'app-work-type-data-table',
@@ -31,7 +31,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(AdminDialogBoxComponent, {
+    const dialogRef = this.dialog.open(EmployeesComponent, {
       width: '60%',
       data: obj
     });

@@ -4,8 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ApplicationsTableDataSource, ApplicationsTableItem } from './applications-table-datasource';
 import {MatDialog} from '@angular/material/dialog';
-import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.component';
 import {FormControl, FormGroup} from '@angular/forms';
+import {EmployeesComponent} from '../../employees/employees.component';
 
 @Component({
   selector: 'app-applications-table',
@@ -31,7 +31,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(AdminDialogBoxComponent, {
+    const dialogRef = this.dialog.open(EmployeesComponent, {
       width: '60%',
       data: obj
     });

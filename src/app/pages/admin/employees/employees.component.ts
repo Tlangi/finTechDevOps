@@ -1,8 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {DataTableDataSource} from '../data-table/data-table-datasource';
@@ -23,6 +23,10 @@ export class EmployeesComponent implements OnInit {
     teams: new FormControl(''),
     status: new FormControl('')
   });
+  fullName: string;
+  teams: string;
+  status: string;
+
   fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[] = [];
@@ -30,11 +34,19 @@ export class EmployeesComponent implements OnInit {
   filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
-  constructor(private matDialog: MatDialog) {
+  constructor(private dialogRef: MatDialogRef<EmployeesComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new DataTableDataSource();
+    this.fullName = data.fullName;
+    this.teams = data.teams;
+    this.status = data.status;
   }
 
   ngOnInit(): void {
+    this.employees.setValue({
+      fullName: this.fullName,
+      teams: this.teams,
+      status: this.status,
+    });
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
@@ -54,6 +66,14 @@ export class EmployeesComponent implements OnInit {
         map(status => this.filterStatus(status))
       );
 
+  }
+
+  update(): void {
+    this.dialogRef.close(this.employees.value);
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 
   private filterName(value: string) {
@@ -97,22 +117,4 @@ export class EmployeesComponent implements OnInit {
     }
   }
 
-  addNewEmployee() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(PopupDailogComponent,
-      {data: {tabName: this.employees.controls.fullName.value, name: 'Employees'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  removeEmployee() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
-      {data: {tabName: this.employees.controls.fullName.value, name: 'Employees'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 }

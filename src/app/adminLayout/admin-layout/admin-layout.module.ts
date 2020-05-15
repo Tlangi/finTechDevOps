@@ -22,7 +22,6 @@ import {ApplicationsTableComponent} from '../../pages/admin/applications/applica
 import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
 import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AdminDialogBoxComponent} from '../../pages/admin/admin-dialog-box/admin-dialog-box.component';
 
 @NgModule({
   imports: [
@@ -52,7 +51,6 @@ import {AdminDialogBoxComponent} from '../../pages/admin/admin-dialog-box/admin-
     ApplicationsTableComponent,
     StatusTabTableComponent,
     WorkTypeDataTableComponent,
-    AdminDialogBoxComponent,
   ],
   exports: [
     DataTableComponent,
@@ -60,6 +58,6 @@ import {AdminDialogBoxComponent} from '../../pages/admin/admin-dialog-box/admin-
     StatusTabTableComponent,
     WorkTypeDataTableComponent
   ],
-  entryComponents: [AdminDialogBoxComponent]
+  entryComponents: [EmployeesComponent]
 })
 export class AdminLayoutModule {}
