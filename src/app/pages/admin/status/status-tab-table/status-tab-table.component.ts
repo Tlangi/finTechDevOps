@@ -6,6 +6,7 @@ import { StatusTabTableDataSource, StatusTabTableItem } from './status-tab-table
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {AdminDialogBoxComponent} from '../../admin-dialog-box/admin-dialog-box.component';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-status-tab-table',
@@ -19,8 +20,9 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
   dataSource: StatusTabTableDataSource;
-  subStatusList = [];
-  statusList = [];
+  emergencyList = [];
+  approvalList = [];
+  projectList = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'status', 'statusType', 'action'];
@@ -79,11 +81,17 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource = new StatusTabTableDataSource();
     this.dataSource.data.filter( ((value1, index) => {
-      this.subStatusList = value1.statusType;
-      // console.log(this.subStatusList);
+      if (index === 0) {
+        this.emergencyList = value1.statusType.slice(0, 5);
+        console.log('Emergency List: ' + this.emergencyList);
+      } else if (index === 1) {
+        this.approvalList = value1.statusType.slice(0, 5);
+        console.log('Approval List: ' + this.approvalList);
+      } else if (index === 2) {
+        this.projectList = value1.statusType.slice(0, 5);
+        console.log('Project List: ' + this.projectList);
+      }
     }));
-    this.statusList = this.dataSource.data.filter(statusValue => statusValue.status);
-    console.log(this.statusList);
     this.onFilterValueChange();
   }
 
@@ -95,7 +103,8 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   onFilterValueChange(): void {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
       if (value.length > 1) {
-        return this.subStatusList.filter(options => new RegExp(value, 'gi').test(options.status));
+      } else {
+        this.table.dataSource = this.dataSource;
       }
     });
   }
