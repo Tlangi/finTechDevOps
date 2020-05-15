@@ -31,8 +31,8 @@ export class ApplicationsComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<ApplicationsComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.applicationsDataSource = new ApplicationsTableDataSource();
-    this.applicationName = data.applicationName;
-    this.applicationDescription = data.applicationDescription;
+    this.applicationName = data.name;
+    this.applicationDescription = data.description;
     this.action = data.action;
   }
 

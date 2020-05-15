@@ -38,8 +38,8 @@ export class EmployeesComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<EmployeesComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new DataTableDataSource();
-    this.fullName = data.fullName;
-    this.teams = data.teams;
+    this.fullName = data.name;
+    this.teams = data.team;
     this.status = data.status;
     this.action = data.action;
   }
@@ -72,7 +72,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.employees});
+    this.dialogRef.close({event: this.action, data: this.employees.value});
   }
 
   closeDialog() {

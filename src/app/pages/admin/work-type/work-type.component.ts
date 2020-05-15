@@ -27,8 +27,8 @@ export class WorkTypeComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<WorkTypeComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.datasource = new WorkTypeDataTableDataSource();
-    this.workType = data.workType;
-    this.workTypeDescription = data.workTypeDescription;
+    this.workType = data.name;
+    this.workTypeDescription = data.description;
     this.action = data.action;
   }
 

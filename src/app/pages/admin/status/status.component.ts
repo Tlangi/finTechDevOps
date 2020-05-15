@@ -35,10 +35,11 @@ export class StatusComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<StatusComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new StatusTabTableDataSource();
-    this.statusTpe = data.statusType;
-    this.subStatusType = data.subStatusType;
-    this.statusTypeDescription = data.statusTypeDescription;
+    this.statusTpe = data.status;
+    this.subStatusType = data.statusType.filter(option => option.subStatus);
+    this.statusTypeDescription = data.statusType.filter(option => option.description);
     this.action = data.action;
+    console.log(data);
   }
 
   ngOnInit(): void {
