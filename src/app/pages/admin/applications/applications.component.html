@@ -1,51 +1,51 @@
-<div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
+<div fxLayout="column" fxLayoutAlign="center center">
   <div fxLayout="column" fxLayoutAlign="center center">
+    <h2 mat-dialog-title> <strong>{{action}} Application </strong></h2>
+    <mat-dialog-content>
 
-    <form [formGroup]="applications" class="example-form">
+      <form [formGroup]="applications" class="example-form">
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label> Application Name </mat-label>
-        <input type="text"
-               placeholder="Search"
-               aria-label="Number"
-               matInput
-               [matAutocomplete]="autoApplication"
-               formControlName="applicationName"
-        >
-        <mat-icon matSuffix>search</mat-icon>
-        <mat-autocomplete #autoApplication="matAutocomplete">
-          <mat-option *ngFor="let application of filteredApplication | async"
-                      [value]="application.name">
-            {{application.name}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Application Name </mat-label>
+          <input type="text"
+                 placeholder="Search"
+                 aria-label="Number"
+                 matInput
+                 [matAutocomplete]="autoApplication"
+                 formControlName="applicationName"
+          >
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-autocomplete #autoApplication="matAutocomplete">
+            <mat-option *ngFor="let application of filteredApplication | async"
+                        [value]="application.name">
+              {{application.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label> Description </mat-label>
-        <textarea matInput
-                  aria-label="Number"
-                  placeholder="Description"
-                  formControlName="applicationDescription"
-        ></textarea>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label> Description </mat-label>
+          <textarea matInput
+                    aria-label="Number"
+                    placeholder="Description"
+                    formControlName="applicationDescription"
+          ></textarea>
+        </mat-form-field>
 
-    </form>
+      </form>
 
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-      <div class="mat-button">
-        <button mat-raised-button (click)="updateApplication()" color="primary">
-          Add/Update Applications
-        </button>
-      </div>
+      <ng-template #elseTemplate>
+        Are you sure you want to Delete <b>{{applications.controls.applicationName.value}}</b>
+      </ng-template>
 
-      <div class="mat-button">
-        <button mat-raised-button (click)="removeApplication()" color="warn">
-          Remove Applications
-        </button>
-      </div>
-    </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="mat-button">
+      <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+      <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+    </mat-dialog-actions>
 
   </div>
+
 
 </div>

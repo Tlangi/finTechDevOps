@@ -72,19 +72,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.employees.value});
+    this.dialogRef.close({event: this.action, data: this.employees});
   }
 
   closeDialog() {
     this.dialogRef.close({event: 'Cancel'});
-  }
-
-  update(): void {
-    this.dialogRef.close(this.employees.value);
-  }
-
-  close(): void {
-    this.dialogRef.close();
   }
 
   private filterName(value: string) {

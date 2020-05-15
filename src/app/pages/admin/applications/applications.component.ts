@@ -1,11 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {AdminService} from '../admin.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ApplicationsTableDataSource} from './applications-table/applications-table-datasource';
 
 @Component({
@@ -16,6 +16,9 @@ import {ApplicationsTableDataSource} from './applications-table/applications-tab
 export class ApplicationsComponent implements OnInit {
   @Output() sendApplicationValue = new EventEmitter<string>();
   applicationsDataSource: ApplicationsTableDataSource;
+  action: string;
+  applicationName: string;
+  applicationDescription: string;
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
@@ -25,18 +28,32 @@ export class ApplicationsComponent implements OnInit {
   applicationsList: any[]  = [];
 
   filteredApplication: Observable<any[]>;
-  constructor(private adminService: AdminService,
-              private matDialog: MatDialog) {
+  constructor(private dialogRef: MatDialogRef<ApplicationsComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.applicationsDataSource = new ApplicationsTableDataSource();
+    this.applicationName = data.applicationName;
+    this.applicationDescription = data.applicationDescription;
+    this.action = data.action;
   }
 
   ngOnInit(): void {
+    this.applications.setValue({
+      applicationName: this.applicationName,
+      applicationDescription: this.applicationDescription
+    });
     this.filteredApplication = this.applications.controls.applicationName.valueChanges
       .pipe(
         startWith(''),
         map(application => this.filterApplications(application))
       );
+  }
 
+  doAction(): void {
+    this.dialogRef.close({event: this.action, data: this.applications});
+  }
+
+  closeDialog(){
+    this.dialogRef.close({event: 'Cancel'});
   }
 
   private filterApplications(value: string) {
@@ -54,25 +71,6 @@ export class ApplicationsComponent implements OnInit {
       );
       return;
     }
-  }
-
-  updateApplication() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(PopupDailogComponent,
-      {data: {tabName: this.applications.controls.applicationName.value, name: 'Application'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  removeApplication() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
-      {data: {tabName:  this.applications.controls.applicationName.value, name: 'Application Name'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
 }

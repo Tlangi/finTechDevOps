@@ -6,6 +6,7 @@ import { ApplicationsTableDataSource, ApplicationsTableItem } from './applicatio
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {EmployeesComponent} from '../../employees/employees.component';
+import {ApplicationsComponent} from '../applications.component';
 
 @Component({
   selector: 'app-applications-table',
@@ -31,7 +32,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(EmployeesComponent, {
+    const dialogRef = this.dialog.open(ApplicationsComponent, {
       width: '60%',
       data: obj
     });
