@@ -6,6 +6,7 @@ import { StatusTabTableDataSource, StatusTabTableItem } from './status-tab-table
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {EmployeesComponent} from '../../employees/employees.component';
+import {StatusComponent} from '../status.component';
 
 @Component({
   selector: 'app-status-tab-table',
@@ -38,7 +39,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   openDialog(action, obj) {
     obj.action = action;
-    const dialogRef = this.dialog.open(EmployeesComponent, {
+    const dialogRef = this.dialog.open(StatusComponent, {
       width: '60%',
       data: obj
     });

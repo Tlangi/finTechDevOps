@@ -1,8 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {AdminService} from '../admin.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
 import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
@@ -23,14 +23,22 @@ export class StatusComponent implements OnInit {
     subStatusType: new FormControl(''),
     statusTypeDescription: new FormControl('')
   });
+  statusTpe: string;
+  subStatusType: string;
+  statusTypeDescription: string;
+  action: string;
 
   statusTypeList: any[]  = [];
   subStatusTypeList: any[]  = [];
   filteredStatusType: Observable<any[]>;
   filteredSubStatusType: Observable<any[]>;
-  constructor(private adminService: AdminService,
-              private matDialog: MatDialog) {
+  constructor(private dialogRef: MatDialogRef<StatusComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new StatusTabTableDataSource();
+    this.statusTpe = data.statusType;
+    this.subStatusType = data.subStatusType;
+    this.statusTypeDescription = data.statusTypeDescription;
+    this.action = data.action;
   }
 
   ngOnInit(): void {
@@ -44,6 +52,14 @@ export class StatusComponent implements OnInit {
         startWith(''),
         map(subStatusType => this.filterSubStatusType(subStatusType))
       );
+  }
+
+  doAction(): void {
+    this.dialogRef.close({event: this.action, data: this.statusTab.value});
+  }
+
+  closeDialog(){
+    this.dialogRef.close({event: 'Cancel'});
   }
 
   private filterStatusType(value: string) {
@@ -86,25 +102,5 @@ export class StatusComponent implements OnInit {
     return this.subStatusTypeList.filter(option =>
       new RegExp(value, 'gi').test(option.subStatus));
   }
-
-  updateStatusTab() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(PopupDailogComponent,
-      {data: {tabName: this.statusTab.controls.subStatusType.value, name: 'Work Type'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  removeStatusTab() {
-    console.log('submitted');
-    const dialogRef = this.matDialog.open(DialogComponent,
-      {data: {tabName: this.statusTab.controls.subStatusType.value, name: 'Work Type'}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
 
 }

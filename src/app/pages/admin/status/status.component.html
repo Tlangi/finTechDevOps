@@ -1,7 +1,9 @@
-<div  fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap="2%">
-  <div fxLayout="column" fxLayoutAlign="center center">
 
-    <form [formGroup]="statusTab" class="example-form">
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h2 mat-dialog-title> <strong>{{action}} Status </strong></h2>
+  <mat-dialog-content>
+
+    <form [formGroup]="statusTab" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
 
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label> Status </mat-label>
@@ -50,20 +52,17 @@
 
     </form>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <div class="mat-button">
-        <button mat-raised-button (click)="updateStatusTab()" color="primary">
-          Add/Update Status
-        </button>
-      </div>
+    <ng-template #elseTemplate>
+      Are you sure you want to Delete <b>{{statusTab.controls.statusType.value}}</b>
+    </ng-template>
 
-      <div class="mat-button">
-        <button mat-raised-button (click)="removeStatusTab()" color="warn">
-          Remove Status
-        </button>
-      </div>
-    </div>
+  </mat-dialog-content>
 
-  </div>
+  <mat-dialog-actions class="mat-button">
+    <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+    <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+  </mat-dialog-actions>
 
 </div>
+
+

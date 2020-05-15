@@ -5,7 +5,6 @@ import { MatTable } from '@angular/material/table';
 import { WorkTypeDataTableDataSource, WorkTypeDataTableItem } from './work-type-data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {EmployeesComponent} from '../../employees/employees.component';
 import {WorkTypeComponent} from '../work-type.component';
 
 @Component({
