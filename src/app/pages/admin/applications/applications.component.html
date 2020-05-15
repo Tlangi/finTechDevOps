@@ -3,7 +3,7 @@
     <h2 mat-dialog-title> <strong>{{action}} Application </strong></h2>
     <mat-dialog-content>
 
-      <form [formGroup]="applications" class="example-form">
+      <form [formGroup]="applications" class="example-form"  *ngIf="action != 'Delete'; else elseTemplate">
 
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Application Name </mat-label>
