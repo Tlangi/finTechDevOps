@@ -48,11 +48,11 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
   }
 
   addRowData(rowObject) {
-    const date = new Date();
+    const index = this.dataSource.data.length;
     this.dataSource.data.push({
-      id: date.getTime(),
-      name: rowObject.name,
-      description: rowObject.description
+      id: index + 1,
+      name: rowObject.workType,
+      description: rowObject.workTypeDescription
     });
     this.table.renderRows();
   }
@@ -60,7 +60,8 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value, key) => {
       if (value.id === rowObject.id) {
-        value.name = rowObject.name;
+        value.name = rowObject.workType;
+        value.description = rowObject.workTypeDescription;
       }
       return true;
     });

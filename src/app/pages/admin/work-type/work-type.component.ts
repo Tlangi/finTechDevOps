@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -45,7 +45,7 @@ export class WorkTypeComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.workTypeForm});
+    this.dialogRef.close({event: this.action, data: this.workTypeForm.getRawValue()});
   }
 
   closeDialog(){

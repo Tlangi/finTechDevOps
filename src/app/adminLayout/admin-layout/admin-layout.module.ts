@@ -17,7 +17,7 @@ import {ApplicationsComponent} from '../../pages/admin/applications/applications
 import {WorkTypeComponent} from '../../pages/admin/work-type/work-type.component';
 import {StatusComponent} from '../../pages/admin/status/status.component';
 import {MaterialModule} from '../../helpers/material.module';
-import {DataTableComponent} from '../../pages/admin/data-table/data-table.component';
+import {DataTableComponent} from '../../pages/admin/employees/data-table/data-table.component';
 import {ApplicationsTableComponent} from '../../pages/admin/applications/applications-table/applications-table.component';
 import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
 import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
@@ -58,6 +58,11 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     StatusTabTableComponent,
     WorkTypeDataTableComponent
   ],
-  entryComponents: [EmployeesComponent]
+  entryComponents: [
+    EmployeesComponent,
+    ApplicationsComponent,
+    WorkTypeComponent,
+    StatusComponent
+  ]
 })
 export class AdminLayoutModule {}

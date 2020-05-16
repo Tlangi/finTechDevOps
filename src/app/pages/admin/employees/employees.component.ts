@@ -2,10 +2,8 @@ import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angula
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
-import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
-import {DataTableDataSource} from '../data-table/data-table-datasource';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {DataTableDataSource} from './data-table/data-table-datasource';
 
 @Component({
   selector: 'app-employees',

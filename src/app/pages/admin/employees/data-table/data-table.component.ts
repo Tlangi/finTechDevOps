@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {EmployeesComponent} from '../employees/employees.component';
+import {EmployeesComponent} from '../employees.component';
 
 @Component({
   selector: 'app-data-table',
@@ -52,11 +52,11 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   addRowData(rowObject) {
-    const date = new Date();
+    const index = this.usersDataSource.data.length;
     this.usersDataSource.data.push({
-      id: date.getTime(),
-      name: rowObject.name,
-      team: rowObject.team,
+      id: index + 1,
+      name: rowObject.fullName,
+      team: rowObject.teams,
       status: rowObject.status
     });
     this.table.renderRows();
@@ -65,7 +65,9 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   updateRowData(rowObject) {
     this.usersDataSource.data =  this.usersDataSource.data.filter((value, key) => {
       if (value.id === rowObject.id) {
-        value.name = rowObject.name;
+        value.name = rowObject.fullName;
+        value.team = rowObject.teams;
+        value.status = rowObject.status;
     }
       return true;
     });

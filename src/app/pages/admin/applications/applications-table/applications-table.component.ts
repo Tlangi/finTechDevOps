@@ -5,9 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { ApplicationsTableDataSource, ApplicationsTableItem } from './applications-table-datasource';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
-import {EmployeesComponent} from '../../employees/employees.component';
 import {ApplicationsComponent} from '../applications.component';
-import {WorkTypeComponent} from '../../work-type/work-type.component';
 
 @Component({
   selector: 'app-applications-table',
@@ -50,9 +48,9 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
   }
 
   addRowData(rowObject) {
-    const date = new Date();
+    const index = this.dataSource.data.length;
     this.dataSource.data.push({
-      id: date.getTime(),
+      id: index + 1,
       name: rowObject.name,
       description: rowObject.description
     });
@@ -62,7 +60,8 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value, key) => {
       if (value.id === rowObject.id) {
-        value.name = rowObject.name;
+        value.name = rowObject.applicationName;
+        value.description = rowObject.applicationDescription;
       }
       return true;
     });
