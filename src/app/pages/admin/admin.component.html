@@ -22,58 +22,6 @@
       </mat-tab-group>
     </div>
 
-    <!-- <div class="mat-card" fxFlex="40%" >
-      <mat-tab-group (selectedTabChange)="getTabIndex($event)">
-
-        <mat-tab label="Users">
-          <app-employees (sendFullNameFilterValue)="getUsersFullNameFilterValue($event)"
-                         (sendTeamsFilterValue)="getUsersTeamsFilterValue($event)"
-                         (sendStatusFilterValue)="getUsersStatusFilterValue($event)"
-          ></app-employees>
-        </mat-tab>
-        <mat-tab label="Applications">
-          <app-applications (sendApplicationValue)="getApplicationsFilterValue($event)"></app-applications>
-        </mat-tab>
-
-        <mat-tab label="Work Type">
-          <app-work-type (sendWorkTypeValue)="getWorkTypeFilterValue($event)">
-          </app-work-type>
-        </mat-tab>
-
-        <mat-tab label="Status">
-          <app-status (statusFilterValue)="getStatusTabFilterValue($event)"
-                      (statusTypeFilterValue)="getSubStatusTabFilterValue($event)"
-          ></app-status>
-        </mat-tab>
-
-      </mat-tab-group>
-    </div>
-
-    <div class="mat-table" fxFlex="55%">
-      <div class="mat-card-content" *ngIf="tabIndex == 0">
-        <app-data-table
-          [usersFilterValue]="usersFullNameFilterValue"
-          [usersTeamsFilterValue]="usersTeamsFilterValue"
-          [usersStatusFilterValue]="usersStatusFilterValue"
-        ></app-data-table>
-      </div>
-      <div class="mat-card-content" *ngIf="tabIndex == 1">
-        <app-applications-table
-          [applicationFilterValue]="applicationFilterValue"
-        ></app-applications-table>
-      </div>
-      <div class="mat-card-content" *ngIf="tabIndex == 2">
-        <app-work-type-data-table [workTypeFilterValue]="workTypeFilterValue">
-        </app-work-type-data-table>
-      </div>
-      <div class="mat-card-content" *ngIf="tabIndex == 3">
-        <app-status-tab-table
-          [statusValueChange]="statusTabFilterValue"
-          [subStatusValueChange]="subStatusTypeFilterValue"
-        ></app-status-tab-table>
-      </div>
-    </div> -->
-
   </div>
 
 </ng-container>

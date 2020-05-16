@@ -42,17 +42,11 @@ export class EmployeesComponent implements OnInit {
     this.action = data.action;
   }
 
-  ngOnInit(): void {
-    this.employees.setValue({
-      fullName: this.fullName,
-      teams: this.teams,
-      status: this.status,
-    });
+  private filterFunction(): void {
     this.filteredFullName = this.employees.controls.fullName.valueChanges
       .pipe(
         startWith(''),
         map(fullName => this.filterName(fullName)),
-        // take(4)
       );
 
     this.filteredTeams = this.employees.controls.teams.valueChanges
@@ -66,11 +60,20 @@ export class EmployeesComponent implements OnInit {
         startWith(''),
         map(status => this.filterStatus(status))
       );
-
+  }
+  ngOnInit(): void {
+    if (this.action === 'Update') {
+      this.employees.setValue({
+        fullName: this.fullName,
+        teams: this.teams,
+        status: this.status,
+      });
+    }
+    this.filterFunction();
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.employees.value});
+    this.dialogRef.close({event: this.action, data: this.employees});
   }
 
   closeDialog() {
@@ -78,32 +81,15 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterName(value: string) {
-    this.sendFullNameFilterValue.emit(value);
     this.fullNameList = this.dataSource.data;
     if (value.length >= 2) {
-      this.employees.controls.teams.setValue(
-        this.fullNameList.filter(option =>
-          new RegExp(value, 'gi').test(option.name))[0].team
-      );
-      this.employees.controls.status.setValue(
-        this.fullNameList.filter(option =>
-          new RegExp(value, 'gi').test(option.name))[0].status
-      );
       return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
     } else {
-      this.employees.controls.teams.setValue(
-        ''
-      );
-      this.employees.controls.status.setValue(
-        ''
-      );
-      return;
+      this.fullNameList = this.dataSource.data;
     }
-
   }
 
   private filterTeams(value: string) {
-      this.sendTeamsFilterValue.emit(value);
       this.teamList = this.dataSource.data;
       if (value.length >= 2) {
         return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
@@ -111,7 +97,6 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterStatus(value: string) {
-    this.sendStatusFilterValue.emit(value);
     this.statusList = this.dataSource.data;
     if (value.length >= 2) {
       return this.statusList.filter(option => new RegExp(value, 'gi').test(option.status));
