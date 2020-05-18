@@ -12,13 +12,9 @@
                aria-label="Number"
                matInput
                formControlName="fullName"
-               [matAutocomplete]="autoName">
-        <mat-icon matSuffix>search</mat-icon>
-        <mat-autocomplete #autoName="matAutocomplete">
-          <mat-option *ngFor="let fullName of filteredFullName | async" [value]="fullName.name">
-            {{fullName.name}}
-          </mat-option>
-        </mat-autocomplete>
+               >
+        <mat-icon matSuffix>person</mat-icon>
+
       </mat-form-field>
 
       <mat-form-field  appearance="outline" class="example-full-width">
@@ -62,13 +58,23 @@
 
   </mat-dialog-content>
 
-  <mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+  <mat-dialog-actions *ngIf="action != 'Delete'" fxLayout="row" fxLayoutAlign="center center">
     <div class="mat-button">
       <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
     </div>
 
     <div class="mat-button">
       <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+    </div>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions *ngIf="action == 'Delete'" fxLayout="row" fxLayoutAlign="center center">
+    <div class="mat-button">
+      <button class="mat-raised-button" (click)="doAction()"> Yes </button>
+    </div>
+
+    <div class="mat-button">
+      <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> No </button>
     </div>
   </mat-dialog-actions>
 

@@ -36,13 +36,18 @@ export class StatusComponent implements OnInit {
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.dataSource = new StatusTabTableDataSource();
     this.statusTpe = data.status;
-    this.subStatusType = data.statusType.filter(option => option.subStatus);
-    this.statusTypeDescription = data.statusType.filter(option => option.description);
     this.action = data.action;
     console.log(data);
   }
 
   ngOnInit(): void {
+    if (this.action === 'Update') {
+      this.statusTab.setValue({
+        statusType: this.statusTpe,
+        subStatusType: this.subStatusType,
+        statusTypeDescription: this.statusTypeDescription
+      });
+    }
     this.filteredStatusType = this.statusTab.controls.statusType.valueChanges
       .pipe(
         startWith(''),
@@ -77,27 +82,12 @@ export class StatusComponent implements OnInit {
     if (statusType.length > 0 && value.length > 1) {
       if (statusType === 'State of Emergency') {
         this.subStatusTypeList = this.statusTypeList[0].statusType;
-        this.statusTab.controls.statusTypeDescription.setValue(
-          this.subStatusTypeList.filter(option =>
-            new RegExp(value, 'gi').test(option.subStatus))[0].description
-        );
       } else if (statusType === 'Approval State') {
         this.subStatusTypeList = this.statusTypeList[1].statusType;
-        this.statusTab.controls.statusTypeDescription.setValue(
-          this.subStatusTypeList.filter(option =>
-            new RegExp(value, 'gi').test(option.subStatus))[0].description
-        );
       } else if (statusType === 'Project State') {
         this.subStatusTypeList = this.statusTypeList[2].statusType;
-        this.statusTab.controls.statusTypeDescription.setValue(
-          this.subStatusTypeList.filter(option =>
-            new RegExp(value, 'gi').test(option.subStatus))[0].description
-        );
       } else {
         this.subStatusTypeList = [];
-        this.statusTab.controls.statusTypeDescription.setValue(
-          ''
-        );
       }
     }
     return this.subStatusTypeList.filter(option =>

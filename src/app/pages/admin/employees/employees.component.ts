@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnChanges, OnInit, Optional, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -10,7 +10,7 @@ import {DataTableDataSource} from './data-table/data-table-datasource';
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit, OnChanges {
   @Output() sendFullNameFilterValue = new EventEmitter<string>();
   @Output() sendTeamsFilterValue = new EventEmitter<string>();
   @Output() sendStatusFilterValue = new EventEmitter<string>();
@@ -30,7 +30,6 @@ export class EmployeesComponent implements OnInit {
   statusList: any[] = [];
   action: string;
 
-  filteredFullName: Observable<any[]>;
   filteredTeams: Observable<any[]>;
   filteredStatus: Observable<any[]>;
   constructor(private dialogRef: MatDialogRef<EmployeesComponent>,
@@ -43,33 +42,38 @@ export class EmployeesComponent implements OnInit {
   }
 
   private filterFunction(): void {
-    this.filteredFullName = this.employees.controls.fullName.valueChanges
-      .pipe(
-        startWith(''),
-        map(fullName => this.filterName(fullName)),
-      );
+      if (this.action === 'Update') {
+        this.employees.setValue({
+          fullName: this.fullName,
+          teams: this.teams,
+          status: this.status,
+        });
+      } else if (this.action === 'Delete') {
+        this.employees.setValue({
+          fullName: this.fullName,
+          teams: this.teams,
+          status: this.status,
+        });
+      }
 
-    this.filteredTeams = this.employees.controls.teams.valueChanges
+      this.filteredTeams = this.employees.controls.teams.valueChanges
       .pipe(
         startWith(''),
         map(teams => this.filterTeams(teams))
       );
 
-    this.filteredStatus = this.employees.controls.status.valueChanges
+      this.filteredStatus = this.employees.controls.status.valueChanges
       .pipe(
         startWith(''),
         map(status => this.filterStatus(status))
       );
   }
   ngOnInit(): void {
-    if (this.action === 'Update') {
-      this.employees.setValue({
-        fullName: this.fullName,
-        teams: this.teams,
-        status: this.status,
-      });
-    }
     this.filterFunction();
+    this.filterName();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
   doAction(): void {
@@ -80,13 +84,17 @@ export class EmployeesComponent implements OnInit {
     this.dialogRef.close({event: 'Cancel'});
   }
 
-  private filterName(value: string) {
-    this.fullNameList = this.dataSource.data;
-    if (value.length >= 2) {
-      return this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name));
-    } else {
-      this.fullNameList = this.dataSource.data;
-    }
+  private filterName() {
+   if (this.action === 'Add') {
+     const value: string = this.employees.controls.fullName.value;
+     this.fullNameList = this.dataSource.data;
+     if (value.length >= 2) {
+       console.log(value);
+       console.log(this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name)));
+     } else {
+       this.fullNameList = this.dataSource.data;
+     }
+   }
   }
 
   private filterTeams(value: string) {

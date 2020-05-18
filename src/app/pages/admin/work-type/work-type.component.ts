@@ -33,10 +33,13 @@ export class WorkTypeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.workTypeForm.setValue({
-      workType: this.workType,
-      workTypeDescription: this.workTypeDescription
-    });
+
+    if (this.action === 'Update') {
+      this.workTypeForm.setValue({
+        workType: this.workType,
+        workTypeDescription: this.workTypeDescription
+      });
+    }
     this.filteredWorkType = this.workTypeForm.controls.workType.valueChanges
       .pipe(
         startWith(''),
@@ -53,19 +56,11 @@ export class WorkTypeComponent implements OnInit {
   }
 
   private filterWorkType(value: string) {
-    this.sendWorkTypeValue.emit(value);
     this.workTypeList = this.datasource.data;
     if (value.length >= 2) {
-      this.workTypeForm.controls.workTypeDescription.setValue(
-        this.workTypeList.filter(option =>
-          new RegExp(value, 'gi').test(option.name))[0].description
-      );
       return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
     } else {
-      this.workTypeForm.controls.workTypeDescription.setValue(
-        ''
-      );
-      return;
+      this.workTypeList = this.datasource.data;
     }
   }
 

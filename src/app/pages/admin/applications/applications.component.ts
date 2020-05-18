@@ -37,10 +37,12 @@ export class ApplicationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.applications.setValue({
-      applicationName: this.applicationName,
-      applicationDescription: this.applicationDescription
-    });
+    if (this.action === 'Update') {
+      this.applications.setValue({
+        applicationName: this.applicationName,
+        applicationDescription: this.applicationDescription
+      });
+    }
     this.filteredApplication = this.applications.controls.applicationName.valueChanges
       .pipe(
         startWith(''),
@@ -60,16 +62,9 @@ export class ApplicationsComponent implements OnInit {
     this.sendApplicationValue.emit(value);
     this.applicationsList = this.applicationsDataSource.data;
     if (value.length >= 2) {
-      this.applications.controls.applicationDescription.setValue(
-        this.applicationsList.filter(option =>
-          new RegExp(value, 'gi').test(option.name))[0].description
-      );
       return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
     } else {
-      this.applications.controls.applicationDescription.setValue(
-       ''
-      );
-      return;
+      this.applicationsList = this.applicationsDataSource.data;
     }
   }
 

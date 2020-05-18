@@ -39,9 +39,24 @@
 
   </mat-dialog-content>
 
-  <mat-dialog-actions class="mat-button">
-    <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
-    <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+  <mat-dialog-actions *ngIf="action != 'Delete'" fxLayout="row" fxLayoutAlign="center center">
+    <div class="mat-button">
+      <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+    </div>
+
+    <div class="mat-button">
+      <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> Cancel</button>
+    </div>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions *ngIf="action == 'Delete'" fxLayout="row" fxLayoutAlign="center center">
+    <div class="mat-button">
+      <button class="mat-raised-button" (click)="doAction()"> Yes </button>
+    </div>
+
+    <div class="mat-button">
+      <button mat-button class="mat-raised-button" (click)="closeDialog()" color="warn"> No </button>
+    </div>
   </mat-dialog-actions>
 
 </div>
