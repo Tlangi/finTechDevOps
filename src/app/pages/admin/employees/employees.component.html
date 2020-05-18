@@ -5,6 +5,11 @@
   <mat-dialog-content >
 
     <form [formGroup]="employees" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
+      <div style="color: red" *ngIf="nameExist">
+        <mat-hint>
+          Name already <strong>exist</strong>
+        </mat-hint>
+      </div>
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Full Name </mat-label>
         <input type="text"
@@ -14,7 +19,6 @@
                formControlName="fullName"
                >
         <mat-icon matSuffix>person</mat-icon>
-
       </mat-form-field>
 
       <mat-form-field  appearance="outline" class="example-full-width">
@@ -60,7 +64,7 @@
 
   <mat-dialog-actions *ngIf="action != 'Delete'" fxLayout="row" fxLayoutAlign="center center">
     <div class="mat-button">
-      <button class="mat-raised-button" (click)="doAction()"> {{action}} </button>
+      <button class="mat-raised-button" (click)="doAction()" [disabled]="nameExist"> {{action}} </button>
     </div>
 
     <div class="mat-button">

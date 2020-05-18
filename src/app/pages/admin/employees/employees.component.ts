@@ -15,6 +15,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
   @Output() sendTeamsFilterValue = new EventEmitter<string>();
   @Output() sendStatusFilterValue = new EventEmitter<string>();
   dataSource: DataTableDataSource;
+  nameExist = false;
 
   employees: FormGroup = new FormGroup({
     fullName: new FormControl(''),
@@ -68,7 +69,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
         teams: this.teams,
         status: this.status,
       });
-    } else if (this.action === 'Add') {
+    } /* else if (this.action === 'Add') {
       const value: string = this.employees.controls.fullName.value;
       this.fullNameList = this.dataSource.data;
       if (value.length >= 2) {
@@ -77,7 +78,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
       } else {
         this.fullNameList = this.dataSource.data;
       }
-    }
+    }*/
   }
   ngOnInit(): void {
     this.checkAction();
@@ -97,6 +98,14 @@ export class EmployeesComponent implements OnInit, OnChanges {
 
   private filterTeams(value: string) {
       this.teamList = this.dataSource.data;
+      if (this.employees.controls.teams.touched) {
+      this.dataSource.data.filter((name, key) => {
+        if (name.name === this.employees.controls.fullName.value) {
+          this.nameExist = true;
+          console.log('What is the value name: ' + name.name);
+        }
+      });
+    }
       if (value.length >= 2) {
         return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
       }
