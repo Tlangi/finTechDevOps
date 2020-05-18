@@ -67,15 +67,14 @@ export class DataTableComponent implements AfterViewInit, OnInit {
       if (value.id === rowObject.id) {
         value.name = rowObject.fullName;
         value.team = rowObject.teams;
-        value.status = rowObject.status;
-    }
+      }
       return true;
     });
   }
 
   deleteRowData(rowObject) {
     this.usersDataSource.data = this.usersDataSource.data.filter((value, key) => {
-      return value.id !== rowObject.id;
+      return value.name !== rowObject.fullName;
     });
   }
 

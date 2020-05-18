@@ -88,7 +88,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.employees});
+    this.dialogRef.close({event: this.action, data: this.employees.value});
   }
 
   closeDialog() {

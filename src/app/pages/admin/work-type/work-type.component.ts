@@ -52,7 +52,7 @@ export class WorkTypeComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.workTypeForm.getRawValue()});
+    this.dialogRef.close({event: this.action, data: this.workTypeForm.value});
   }
 
   closeDialog(){

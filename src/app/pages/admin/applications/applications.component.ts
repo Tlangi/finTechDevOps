@@ -42,6 +42,11 @@ export class ApplicationsComponent implements OnInit {
         applicationName: this.applicationName,
         applicationDescription: this.applicationDescription
       });
+    } else if (this.action === 'Delete') {
+      this.applications.setValue({
+        applicationName: this.applicationName,
+        applicationDescription: this.applicationDescription
+      });
     }
     this.filteredApplication = this.applications.controls.applicationName.valueChanges
       .pipe(
@@ -51,7 +56,7 @@ export class ApplicationsComponent implements OnInit {
   }
 
   doAction(): void {
-    this.dialogRef.close({event: this.action, data: this.applications});
+    this.dialogRef.close({event: this.action, data: this.applications.value});
   }
 
   closeDialog(){
@@ -59,13 +64,14 @@ export class ApplicationsComponent implements OnInit {
   }
 
   private filterApplications(value: string) {
-    this.sendApplicationValue.emit(value);
-    this.applicationsList = this.applicationsDataSource.data;
-    if (value.length >= 2) {
-      return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
-    } else {
-      this.applicationsList = this.applicationsDataSource.data;
-    }
+   if (this.action === 'Add') {
+     this.applicationsList = this.applicationsDataSource.data;
+     if (value.length >= 2) {
+       return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
+     } else {
+       this.applicationsList = this.applicationsDataSource.data;
+     }
+   }
   }
 
 }

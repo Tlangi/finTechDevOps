@@ -85,11 +85,13 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  onFilterValueChange(): void {
-    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
-      if (value.length > 1) {
-        this.table.dataSource = this.dataSource.data.filter(option =>
-          new RegExp(value, 'gi').test(option.name)).slice(0, 5);
+  onFilterValueChange() {
+    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(input => {
+      if (input.length > 1) {
+        // This will filter through the whole object and return the results that meets the conditions
+        this.table.dataSource = this.dataSource.data.filter( option => {
+          return !!JSON.stringify(Object.values(option)).match(new RegExp(input, 'gi'));
+        }).slice(0, 5);
       } else {
         this.table.dataSource = this.dataSource;
       }
