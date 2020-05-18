@@ -65,7 +65,6 @@ export class ApplicationsComponent implements OnInit {
 
   private checkValueChange(value: string) {
     if (value.length >= 1) {
-      console.log(this.action);
       if (this.action === 'Add') {
         this.applicationsDataSource.data.filter((name, key) => {
           if (name.name === this.applications.controls.applicationName.value) {

@@ -20,10 +20,11 @@ export class WorkTypeComponent implements OnInit {
   });
   workType: string;
   workTypeDescription: string;
+  nameExist: boolean;
   action: string;
 
   workTypeList: any[]  = [];
-  filteredWorkType: Observable<any[]>;
+  filteredWorkTypeDescription: Observable<any>;
   constructor(private dialogRef: MatDialogRef<WorkTypeComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.datasource = new WorkTypeDataTableDataSource();
@@ -32,7 +33,7 @@ export class WorkTypeComponent implements OnInit {
     this.action = data.action;
   }
 
-  ngOnInit(): void {
+  private checkAction() {
     if (this.action === 'Update') {
       this.workTypeForm.setValue({
         workType: this.workType,
@@ -44,11 +45,15 @@ export class WorkTypeComponent implements OnInit {
         workTypeDescription: this.workTypeDescription
       });
     }
-    this.filteredWorkType = this.workTypeForm.controls.workType.valueChanges
+  }
+
+  ngOnInit(): void {
+    this.filteredWorkTypeDescription = this.workTypeForm.controls.workTypeDescription.valueChanges
       .pipe(
         startWith(''),
-        map(workType => this.filterWorkType(workType))
+        map(description => this.checkFilterValue(description))
       );
+    this.checkAction();
   }
 
   doAction(): void {
@@ -59,12 +64,18 @@ export class WorkTypeComponent implements OnInit {
     this.dialogRef.close({event: 'Cancel'});
   }
 
-  private filterWorkType(value: string) {
+  private checkFilterValue(value: string) {
     this.workTypeList = this.datasource.data;
-    if (value.length >= 2) {
-      return this.workTypeList.filter(option => new RegExp(value, 'gi').test(option.name));
+    if (value.length >= 1) {
+      if (this.action === 'Add') {
+        this.datasource.data.filter((name, key) => {
+          if (name.name === this.workTypeForm.controls.workType.value) {
+            this.nameExist = true;
+          }
+        });
+      }
     } else {
-      this.workTypeList = this.datasource.data;
+      this.nameExist = false;
     }
   }
 
