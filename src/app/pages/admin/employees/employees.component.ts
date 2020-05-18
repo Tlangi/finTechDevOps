@@ -103,7 +103,6 @@ export class EmployeesComponent implements OnInit, OnChanges {
           this.dataSource.data.filter((name, key) => {
             if (name.name === this.employees.controls.fullName.value) {
               this.nameExist = true;
-              console.log('What is the value: ' + this.employees.controls.fullName.value);
             }
           });
         }

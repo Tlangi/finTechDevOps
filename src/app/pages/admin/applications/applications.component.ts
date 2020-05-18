@@ -2,6 +2,8 @@ import {Component, EventEmitter, Inject, OnInit, Optional, Output, SimpleChanges
 import {FormControl, FormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApplicationsTableDataSource} from './applications-table/applications-table-datasource';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-applications',
@@ -15,6 +17,7 @@ export class ApplicationsComponent implements OnInit {
   applicationName: string;
   applicationDescription: string;
   nameExist = false;
+  filteredApplicationName: Observable<any>;
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
@@ -29,7 +32,7 @@ export class ApplicationsComponent implements OnInit {
     this.action = data.action;
   }
 
-  ngOnInit(): void {
+  private checkAction() {
     if (this.action === 'Update') {
       this.applications.setValue({
         applicationName: this.applicationName,
@@ -41,7 +44,15 @@ export class ApplicationsComponent implements OnInit {
         applicationDescription: this.applicationDescription
       });
     }
-    this.checkValueChange();
+  }
+
+  ngOnInit(): void {
+    this.filteredApplicationName = this.applications.controls.applicationDescription.valueChanges
+      .pipe(
+        startWith(''),
+        map(description => this.checkValueChange(description))
+    );
+    this.checkAction();
   }
 
   doAction(): void {
@@ -52,8 +63,19 @@ export class ApplicationsComponent implements OnInit {
     this.dialogRef.close({event: 'Cancel'});
   }
 
-  private checkValueChange() {
-    console.log(this.applications.controls.applicationDescription.value);
+  private checkValueChange(value: string) {
+    if (value.length >= 1) {
+      console.log(this.action);
+      if (this.action === 'Add') {
+        this.applicationsDataSource.data.filter((name, key) => {
+          if (name.name === this.applications.controls.applicationName.value) {
+            this.nameExist = true;
+          }
+        });
+      }
+    } else {
+      this.nameExist = false;
+    }
   }
 
 }
