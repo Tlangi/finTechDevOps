@@ -33,8 +33,12 @@ export class WorkTypeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     if (this.action === 'Update') {
+      this.workTypeForm.setValue({
+        workType: this.workType,
+        workTypeDescription: this.workTypeDescription
+      });
+    } else if (this.action === 'Delete') {
       this.workTypeForm.setValue({
         workType: this.workType,
         workTypeDescription: this.workTypeDescription

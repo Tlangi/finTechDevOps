@@ -69,7 +69,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
 
   deleteRowData(rowObject) {
     this.dataSource.data = this.dataSource.data.filter((value, key) => {
-      return value.id !== rowObject.id;
+      return value.name !== rowObject.workType;
     });
   }
 

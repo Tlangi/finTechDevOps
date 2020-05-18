@@ -42,19 +42,6 @@ export class EmployeesComponent implements OnInit, OnChanges {
   }
 
   private filterFunction(): void {
-      if (this.action === 'Update') {
-        this.employees.setValue({
-          fullName: this.fullName,
-          teams: this.teams,
-          status: this.status,
-        });
-      } else if (this.action === 'Delete') {
-        this.employees.setValue({
-          fullName: this.fullName,
-          teams: this.teams,
-          status: this.status,
-        });
-      }
 
       this.filteredTeams = this.employees.controls.teams.valueChanges
       .pipe(
@@ -68,9 +55,33 @@ export class EmployeesComponent implements OnInit, OnChanges {
         map(status => this.filterStatus(status))
       );
   }
+  private checkAction() {
+    if (this.action === 'Update') {
+      this.employees.setValue({
+        fullName: this.fullName,
+        teams: this.teams,
+        status: this.status,
+      });
+    } else if (this.action === 'Delete') {
+      this.employees.setValue({
+        fullName: this.fullName,
+        teams: this.teams,
+        status: this.status,
+      });
+    } else if (this.action === 'Add') {
+      const value: string = this.employees.controls.fullName.value;
+      this.fullNameList = this.dataSource.data;
+      if (value.length >= 2) {
+        console.log(value);
+        console.log(this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name)));
+      } else {
+        this.fullNameList = this.dataSource.data;
+      }
+    }
+  }
   ngOnInit(): void {
+    this.checkAction();
     this.filterFunction();
-    this.filterName();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -82,19 +93,6 @@ export class EmployeesComponent implements OnInit, OnChanges {
 
   closeDialog() {
     this.dialogRef.close({event: 'Cancel'});
-  }
-
-  private filterName() {
-   if (this.action === 'Add') {
-     const value: string = this.employees.controls.fullName.value;
-     this.fullNameList = this.dataSource.data;
-     if (value.length >= 2) {
-       console.log(value);
-       console.log(this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name)));
-     } else {
-       this.fullNameList = this.dataSource.data;
-     }
-   }
   }
 
   private filterTeams(value: string) {
