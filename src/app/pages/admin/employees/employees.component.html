@@ -5,10 +5,10 @@
   <mat-dialog-content >
 
     <form [formGroup]="employees" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
-      <div style="color: red" *ngIf="nameExist">
-        <mat-hint>
+      <div style="color: red" *ngIf="nameExist" class="alert-danger">
+        <h6>
           Name already <strong>exist</strong>
-        </mat-hint>
+        </h6>
       </div>
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Full Name </mat-label>
