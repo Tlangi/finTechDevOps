@@ -51,8 +51,8 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
     const index = this.dataSource.data.length;
     this.dataSource.data.push({
       id: index + 1,
-      name: rowObject.name,
-      description: rowObject.description
+      name: rowObject.applicationName,
+      description: rowObject.applicationDescription
     });
     this.table.renderRows();
   }
@@ -69,7 +69,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
 
   deleteRowData(rowObject) {
     this.dataSource.data = this.dataSource.data.filter((value, key) => {
-      return value.id !== rowObject.id;
+      return value.name !== rowObject.applicationName;
     });
   }
 
