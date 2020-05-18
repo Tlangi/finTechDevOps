@@ -98,16 +98,16 @@ export class EmployeesComponent implements OnInit, OnChanges {
 
   private filterTeams(value: string) {
       this.teamList = this.dataSource.data;
-      if (this.employees.controls.teams.touched) {
+      if (value.length >= 2) {
         this.dataSource.data.filter((name, key) => {
           if (name.name === this.employees.controls.fullName.value) {
             this.nameExist = true;
-            console.log('What is the value name: ' + name.name);
+            console.log('What is the value: ' + this.employees.controls.fullName.value);
           }
         });
-    }
-      if (value.length >= 2) {
         return this.teamList.filter(option =>  new RegExp(value, 'gi').test(option.team));
+      } else {
+        this.nameExist = false;
       }
   }
 

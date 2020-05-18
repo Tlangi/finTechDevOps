@@ -1,11 +1,6 @@
-import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
-import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
-import {AdminService} from '../admin.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApplicationsTableDataSource} from './applications-table/applications-table-datasource';
 
 @Component({
@@ -19,15 +14,13 @@ export class ApplicationsComponent implements OnInit {
   action: string;
   applicationName: string;
   applicationDescription: string;
+  nameExist = false;
 
   applications: FormGroup = new FormGroup({
     applicationName: new FormControl(''),
     applicationDescription: new FormControl('')
   });
 
-  applicationsList: any[]  = [];
-
-  filteredApplication: Observable<any[]>;
   constructor(private dialogRef: MatDialogRef<ApplicationsComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
     this.applicationsDataSource = new ApplicationsTableDataSource();
@@ -48,11 +41,7 @@ export class ApplicationsComponent implements OnInit {
         applicationDescription: this.applicationDescription
       });
     }
-    this.filteredApplication = this.applications.controls.applicationName.valueChanges
-      .pipe(
-        startWith(''),
-        map(application => this.filterApplications(application))
-      );
+    this.checkValueChange();
   }
 
   doAction(): void {
@@ -63,15 +52,8 @@ export class ApplicationsComponent implements OnInit {
     this.dialogRef.close({event: 'Cancel'});
   }
 
-  private filterApplications(value: string) {
-   if (this.action === 'Add') {
-     this.applicationsList = this.applicationsDataSource.data;
-     if (value.length >= 2) {
-       return this.applicationsList.filter(option => new RegExp(value, 'gi').test(option.name));
-     } else {
-       this.applicationsList = this.applicationsDataSource.data;
-     }
-   }
+  private checkValueChange() {
+    console.log(this.applications.controls.applicationDescription.value);
   }
 
 }
