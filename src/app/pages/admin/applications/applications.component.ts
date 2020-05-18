@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Optional, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApplicationsTableDataSource} from './applications-table/applications-table-datasource';
