@@ -103,8 +103,6 @@ export class EmployeesComponent implements OnInit, OnChanges {
           if (name.name === this.employees.controls.fullName.value) {
             this.nameExist = true;
             console.log('What is the value name: ' + name.name);
-          } else {
-            this.nameExist = false;
           }
         });
     }
