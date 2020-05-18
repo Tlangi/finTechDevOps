@@ -87,8 +87,9 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
   onFilterValueChange(): void {
     this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
       if (value.length > 1) {
-        this.table.dataSource = this.dataSource.data.filter(option =>
-          new RegExp(value, 'gi').test(option.name)).slice(0, 5);
+        this.table.dataSource = this.dataSource.data.filter( option => {
+          return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
+        }).slice(0, 5);
       } else {
         this.table.dataSource = this.dataSource;
       }
