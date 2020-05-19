@@ -22,6 +22,7 @@ import {ApplicationsTableComponent} from '../../pages/admin/applications/applica
 import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table/status-tab-table.component';
 import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     MaterialModule,
     ScrollingModule,
+    MatExpansionModule,
   ],
   declarations: [
     DashboardComponent,

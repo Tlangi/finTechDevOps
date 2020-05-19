@@ -1,6 +1,180 @@
 
 <div class="mat-card">
-  <form [formGroup]="dataTableFilter">
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          State of emergency
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-container>
+        <div class="mat-button">
+          <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
+            Add new
+          </button>
+        </div >
+
+        <div class="example-form">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label> Table Filter</mat-label>
+            <input type="text"
+                   aria-label="Number"
+                   placeholder="It describes how urgent a project is."
+                   matInput
+                   formControlName="tableFilterInput"
+            >
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <table mat-table class="full-width-table" [dataSource]="stateOfEmergency"
+               matSort aria-label="Elements">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let row">{{row.subId}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status Type</th>
+            <td mat-cell *matCellDef="let row">{{row.subStatus}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let row">{{row.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+              <a (click)="openDialog('Update',element)">Edit</a> |
+              <a (click)="openDialog('Delete',element)">Delete</a>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedSubColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedSubColumns;"></tr>
+
+        </table>
+      </ng-container>
+
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Approval State
+        </mat-panel-title>
+        <mat-panel-description>
+          Describes weather a project is approved or not
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ng-container>
+        <table mat-table class="full-width-table" [dataSource]="approvalState"
+               matSort aria-label="Elements">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let row">{{row.subId}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status Type</th>
+            <td mat-cell *matCellDef="let row">{{row.subStatus}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let row">{{row.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+              <a (click)="openDialog('Update',element)">Edit</a> |
+              <a (click)="openDialog('Delete',element)">Delete</a>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedSubColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedSubColumns;"></tr>
+
+        </table>
+      </ng-container>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Project State
+        </mat-panel-title>
+        <mat-panel-description>
+          Describes the state of the project
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ng-container>
+        <table mat-table class="full-width-table" [dataSource]="projectList"
+               matSort aria-label="Elements">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let row">{{row.subId}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status Type</th>
+            <td mat-cell *matCellDef="let row">{{row.subStatus}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let row">{{row.description}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+              <a (click)="openDialog('Update',element)">Edit</a> |
+              <a (click)="openDialog('Delete',element)">Delete</a>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedSubColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedSubColumns;"></tr>
+
+        </table>
+      </ng-container>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <!-- <form [formGroup]="dataTableFilter">
 
     <div fxLayout
          fxLayout.xs="row"
@@ -30,13 +204,12 @@
   </form>
 
   <table mat-table class="full-width-table" matSort aria-label="Elements">
-    <!-- Id Column -->
+
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
       <td mat-cell *matCellDef="let row">{{row.id}}</td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
       <td mat-cell *matCellDef="let row">{{row.status}}</td>
@@ -48,25 +221,24 @@
         <ng-container  *ngFor="let myRows of row.statusType">
           <table mat-table class="full-width-table" [dataSource]="[myRows].slice(0,3)"
                  matSort aria-label="Elements">
-            <!-- Id Column -->
+
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
               <td mat-cell *matCellDef="let row">{{row.subId}}</td>
             </ng-container>
 
-            <!-- Name Column -->
+
             <ng-container matColumnDef="status">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Status Type</th>
               <td mat-cell *matCellDef="let row">{{row.subStatus}}</td>
             </ng-container>
 
-            <!-- Name Column -->
+
             <ng-container matColumnDef="description">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
               <td mat-cell *matCellDef="let row">{{row.description}}</td>
             </ng-container>
 
-            <!-- Action Column -->
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef> Action </th>
               <td mat-cell *matCellDef="let element" class="action-link">
@@ -101,5 +273,5 @@
       [pageIndex]="0"
       [pageSize]="1"
       [pageSizeOptions]="[1, 3, 10, 20, 100]">
-  </mat-paginator>
+  </mat-paginator> -->
 </div>

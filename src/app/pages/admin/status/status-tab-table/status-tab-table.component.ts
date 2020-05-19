@@ -20,11 +20,12 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
   dataSource: StatusTabTableDataSource;
-  emergencyList = [];
+
+  step = 0;
   index: number;
-  statusTypeList = [];
-  approvalList = [];
-  projectList = [];
+  stateOfEmergency: any[] = [];
+  approvalState: any[] = [];
+  projectList: any[] = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'status', 'statusType', 'action'];
@@ -35,6 +36,19 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   );
 
   constructor(public dialog: MatDialog) {
+    this.dataSource = new StatusTabTableDataSource();
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
   openDialog(action, obj) {
@@ -81,38 +95,22 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new StatusTabTableDataSource();
-    this.dataSource.data.filter( ((value1, index) => {
-      this.statusTypeList = value1.statusType.slice(0, 5);
-      /* if (index === 0) {
-        this.index = index;
-        this.emergencyList = value1.statusType.slice(0, 5);
-        // console.log('Emergency List: ' + this.emergencyList);
-      } else if (index === 1) {
-        this.approvalList = value1.statusType.slice(0, 5);
-        // console.log('Approval List: ' + this.approvalList);
-      } else if (index === 2) {
-        this.projectList = value1.statusType.slice(0, 5);
-        // console.log('Project List: ' + this.projectList);
-      } */
-    }));
-    this.onFilterValueChange();
+    this.dataSource.data.filter((status, key) => {
+      if (status.id === 2) {
+        this.approvalState = status.statusType.slice(0, 5);
+        console.log(status.statusType);
+      } else if (status.id === 1) {
+        this.stateOfEmergency = status.statusType.slice(0, 5);
+        console.log(status.statusType);
+      } else if (status.id === 3) {
+        this.projectList = status.statusType.slice(0, 4);
+        console.log(status.statusType);
+      }
+    });
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
-  }
-  onFilterValueChange(): void {
-    this.dataTableFilter.controls.tableFilterInput.valueChanges.subscribe(value => {
-      if (value.length > 1) {
-        this.table.dataSource = this.dataSource.data.filter( option => {
-          return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
-        }).slice(0, 5);
-      } else {
-        this.table.dataSource = this.dataSource;
-      }
-    });
   }
 }
