@@ -3,7 +3,8 @@
 
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header matTooltip="Click to view the status types"
+                                  aria-label="Button that displays a tooltip when focused or hovered over">
         <mat-panel-title>
           State of emergency
         </mat-panel-title>
@@ -80,7 +81,8 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header matTooltip="Click to view the status types"
+                                  aria-label="Button that displays a tooltip when focused or hovered over">
         <mat-panel-title>
           Approval State
         </mat-panel-title>
@@ -162,7 +164,8 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header matTooltip="Click to view the status types"
+                                  aria-label="Button that displays a tooltip when focused or hovered over">
         <mat-panel-title>
           Project State
         </mat-panel-title>

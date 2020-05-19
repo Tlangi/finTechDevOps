@@ -8,13 +8,12 @@
          fxLayoutAlign="space-between stretch"
          fxLayoutGap="10px"
          fxLayoutGap.xs="0">
-      <div class="mat-button">
-        <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
+      <div style="display: inline-block">
+        <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button
+                style="font-size: 10px;">
           Add new
         </button>
-      </div >
 
-      <div class="example-form" fxFlex="90%">
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label> Table Filter</mat-label>
           <input type="text"

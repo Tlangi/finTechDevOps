@@ -23,6 +23,7 @@ import {StatusTabTableComponent} from '../../pages/admin/status/status-tab-table
 import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-data-table/work-type-data-table.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MaterialModule,
     ScrollingModule,
     MatExpansionModule,
+    MatTooltipModule,
   ],
   declarations: [
     DashboardComponent,
