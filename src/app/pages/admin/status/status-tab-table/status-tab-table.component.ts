@@ -5,7 +5,6 @@ import { MatTable } from '@angular/material/table';
 import { StatusTabTableDataSource, StatusTabTableItem } from './status-tab-table-datasource';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import {EmployeesComponent} from '../../employees/employees.component';
 import {StatusComponent} from '../status.component';
 
 @Component({
@@ -28,7 +27,6 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   projectList: any[] = [];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'status', 'statusType', 'action'];
   displayedSubColumns = ['id', 'status', 'description', 'action'];
   dataTableFilter: FormGroup = new FormGroup({
       tableFilterInput: new FormControl(''),
@@ -84,7 +82,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   }
 
   updateRowData(rowObject) {
-    this.dataSource.data =  this.dataSource.data.filter((value, key) => {
+    this.dataSource.data =  this.dataSource.data.filter((value) => {
       if (value.id === rowObject.id) {
         value.status = rowObject.status;
       }
@@ -93,13 +91,13 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   }
 
   deleteRowData(rowObject) {
-    this.dataSource.data = this.dataSource.data.filter((value, key) => {
+    this.dataSource.data = this.dataSource.data.filter((value) => {
       return value.id !== rowObject.id;
     });
   }
 
   ngOnInit() {
-    this.dataSource.data.filter((status, key) => {
+    this.dataSource.data.filter((status) => {
       if (status.id === 2) {
         this.approvalState = status.statusType.slice(0, 4);
       } else if (status.id === 1) {
@@ -119,7 +117,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   private filterTable() {
     this.emergencyState.controls.emergency.valueChanges.subscribe(value => {
       if (value.length > 0) {
-        this.dataSource.data.filter((status, key) => {
+        this.dataSource.data.filter((status) => {
           if (status.id === 1) {
             this.stateOfEmergency = status.statusType.filter(option => {
               return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
@@ -127,7 +125,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
           }
         });
       } else {
-        this.dataSource.data.filter((status, key) => {
+        this.dataSource.data.filter((status) => {
           if (status.id === 1) {
             this.stateOfEmergency = status.statusType.slice(0, 5);
           }
