@@ -20,7 +20,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<StatusTabTableItem>;
   dataSource: StatusTabTableDataSource;
 
-  step = 0;
+  step: number;
   index: number;
   stateOfEmergency: any[] = [];
   approvalState: any[] = [];
@@ -108,9 +108,11 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value) => {
-      if (value.id === rowObject.id) {
-        value.status = rowObject.status;
-      }
+      value.statusType.filter((statusType) => {
+        if (statusType.subId === rowObject.id) {
+          statusType.subStatus = rowObject.statusType;
+        }
+      });
       return true;
     });
   }
