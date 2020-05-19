@@ -28,12 +28,16 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedSubColumns = ['id', 'status', 'description', 'action'];
-  dataTableFilter: FormGroup = new FormGroup({
-      tableFilterInput: new FormControl(''),
+  approvalStateForm: FormGroup = new FormGroup({
+      approval: new FormControl(''),
     }
   );
   emergencyState: FormGroup = new FormGroup({
       emergency: new FormControl(''),
+    }
+  );
+  projectState: FormGroup = new FormGroup({
+      project: new FormControl(''),
     }
   );
 
@@ -106,7 +110,9 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
         this.projectList = status.statusType.slice(0, 4);
       }
     });
-    this.filterTable();
+    this.filterEmergencyState();
+    this.filterApprovalState();
+    this.filterProjectState();
   }
 
   ngAfterViewInit() {
@@ -114,20 +120,60 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  private filterTable() {
+  private filterEmergencyState() {
     this.emergencyState.controls.emergency.valueChanges.subscribe(value => {
       if (value.length > 0) {
         this.dataSource.data.filter((status) => {
           if (status.id === 1) {
             this.stateOfEmergency = status.statusType.filter(option => {
               return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
-            });
+            }).slice(0, 4);
           }
         });
       } else {
         this.dataSource.data.filter((status) => {
           if (status.id === 1) {
-            this.stateOfEmergency = status.statusType.slice(0, 5);
+            this.stateOfEmergency = status.statusType.slice(0, 4);
+          }
+        });
+      }
+    });
+  }
+
+  private filterApprovalState() {
+    this.approvalStateForm.controls.approval.valueChanges.subscribe(value => {
+      if (value.length > 0) {
+        this.dataSource.data.filter((status) => {
+          if (status.id === 2) {
+            this.approvalState = status.statusType.filter(option => {
+              return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
+            }).slice(0, 4);
+          }
+        });
+      } else {
+        this.dataSource.data.filter((status) => {
+          if (status.id === 2) {
+            this.approvalState = status.statusType.slice(0, 4);
+          }
+        });
+      }
+    });
+  }
+
+  private filterProjectState() {
+    this.projectState.controls.project.valueChanges.subscribe(value => {
+      if (value.length > 0) {
+        this.dataSource.data.filter((status) => {
+          if (status.id === 3) {
+            this.projectList = status.statusType.filter(option => {
+              return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
+            }).slice(0, 4);
+          }
+        });
+      } else {
+        this.dataSource.data.filter((status) => {
+          if (status.id === 3) {
+            this.projectList = status.statusType.slice(0, 4);
           }
         });
       }
