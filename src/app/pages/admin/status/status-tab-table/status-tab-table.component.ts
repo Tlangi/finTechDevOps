@@ -76,11 +76,32 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   }
 
   addRowData(rowObject) {
-    const date = new Date();
-    this.dataSource.data.push({
-      id: date.getTime(),
-      status: rowObject.status,
-      statusType: rowObject.statusType,
+    this.dataSource.data.filter((statusType) => {
+      if (statusType.id === 1) {
+        const index = statusType.statusType.length;
+        statusType.statusType.push({
+          subId: index + 1,
+          subStatus: rowObject.statusType,
+          description: rowObject.statusTypeDescription
+          }
+        );
+      } else if (statusType.id === 2) {
+        const index = statusType.statusType.length;
+        statusType.statusType.push({
+            subId: index + 1,
+            subStatus: rowObject.statusType,
+            description: rowObject.statusTypeDescription
+          }
+        );
+      } else if (statusType.id === 3) {
+        const index = statusType.statusType.length;
+        statusType.statusType.push({
+            subId: index + 1,
+            subStatus: rowObject.statusType,
+            description: rowObject.statusTypeDescription
+          }
+        );
+      }
     });
     this.table.renderRows();
   }
