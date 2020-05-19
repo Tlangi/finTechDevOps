@@ -12,16 +12,8 @@
                placeholder="Search"
                aria-label="Number"
                matInput
-               [matAutocomplete]="subStatusType"
-               formControlName="subStatusType"
+               formControlName="statusType"
         >
-        <mat-icon matSuffix>search</mat-icon>
-        <mat-autocomplete #subStatusType="matAutocomplete">
-          <mat-option *ngFor="let subStatusType of filteredSubStatusType | async"
-                      [value]="subStatusType.subStatus">
-            {{subStatusType.subStatus}}
-          </mat-option>
-        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="example-full-width">
@@ -30,6 +22,7 @@
                   aria-label="Number"
                   placeholder="Description"
                   formControlName="statusTypeDescription"
+                  [value]="filteredStatusType"
         ></textarea>
       </mat-form-field>
 

@@ -20,36 +20,48 @@ export class StatusComponent implements OnInit {
 
   statusTab: FormGroup = new FormGroup({
     statusType: new FormControl(''),
-    subStatusType: new FormControl(''),
     statusTypeDescription: new FormControl('')
   });
-  statusTpe: string;
-  subStatusType: string;
+  statusType: string;
   statusTypeDescription: string;
   action: string;
 
   statusTypeList: any[]  = [];
-  subStatusTypeList: any[]  = [];
-  filteredStatusType: Observable<any[]>;
-  filteredSubStatusType: Observable<any[]>;
+  filteredStatusType: Observable<any>;
   constructor(private dialogRef: MatDialogRef<StatusComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
-    this.dataSource = new StatusTabTableDataSource();
-    // this.statusTpe = data.status;
-    this.action = data.action;
     console.log(data);
+    this.statusType = data.subStatus;
+    this.statusTypeDescription = data.description;
+    this.action = data.action;
+    console.log(data.subStatus);
+  }
+
+  private checkAction() {
+    if (this.action === 'Update') {
+      this.statusTab.setValue({
+        statusType: this.statusType,
+        statusTypeDescription: this.statusTypeDescription
+      });
+    } else if (this.action === 'Delete') {
+      this.statusTab.setValue({
+        statusType: this.statusType,
+        statusTypeDescription: this.statusTypeDescription
+      });
+    } else if (this.action === 'Add') {
+      this.statusTab.setValue({
+        statusType: '',
+        statusTypeDescription: ''
+      });
+    }
   }
 
   ngOnInit(): void {
-    this.filteredStatusType = this.statusTab.controls.statusType.valueChanges
+    this.checkAction();
+    this.filteredStatusType = this.statusTab.controls.statusTypeDescription.valueChanges
       .pipe(
         startWith(''),
-        map(statusType => this.filterStatusType(statusType))
-      );
-    this.filteredSubStatusType = this.statusTab.controls.subStatusType.valueChanges
-      .pipe(
-        startWith(''),
-        map(subStatusType => this.filterSubStatusType(subStatusType))
+        map(description => this.filterStatusType(description))
       );
   }
 
@@ -62,29 +74,11 @@ export class StatusComponent implements OnInit {
   }
 
   private filterStatusType(value: string) {
-    this.statusFilterValue.emit(value);
     this.statusTypeList = this.dataSource.data;
     if (value.length >= 2) {
-      return this.statusTypeList.filter(option => new RegExp(value, 'gi').test(option.status));
+      this.dataSource.data.filter((status, key) => {
+        console.log(status.statusType);
+      });
     }
   }
-
-  private filterSubStatusType(value: string) {
-    const statusType = this.statusTab.controls.statusType.value;
-    this.statusTypeFilterValue.emit(value);
-    if (statusType.length > 0 && value.length > 1) {
-      if (statusType === 'State of Emergency') {
-        this.subStatusTypeList = this.statusTypeList[0].statusType;
-      } else if (statusType === 'Approval State') {
-        this.subStatusTypeList = this.statusTypeList[1].statusType;
-      } else if (statusType === 'Project State') {
-        this.subStatusTypeList = this.statusTypeList[2].statusType;
-      } else {
-        this.subStatusTypeList = [];
-      }
-    }
-    return this.subStatusTypeList.filter(option =>
-      new RegExp(value, 'gi').test(option.subStatus));
-  }
-
 }
