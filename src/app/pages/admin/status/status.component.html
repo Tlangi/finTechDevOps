@@ -7,24 +7,6 @@
     <form [formGroup]="statusTab" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
 
       <mat-form-field appearance="outline" class="example-full-width">
-        <mat-label> Status </mat-label>
-        <input type="text"
-               placeholder="Search"
-               aria-label="Number"
-               matInput
-               [matAutocomplete]="statusType"
-               formControlName="statusType"
-        >
-        <mat-icon matSuffix>search</mat-icon>
-        <mat-autocomplete #statusType="matAutocomplete">
-          <mat-option *ngFor="let statusType of filteredStatusType | async"
-                      [value]="statusType.status">
-            {{statusType.status}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="example-full-width">
         <mat-label> Status Type </mat-label>
         <input type="text"
                placeholder="Search"
