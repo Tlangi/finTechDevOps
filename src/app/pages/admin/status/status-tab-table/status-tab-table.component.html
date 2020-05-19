@@ -4,17 +4,13 @@
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>
-        <div fxLayout="row" fxLayoutAlign="space-between center" >
-         <div class="mat-card-header">
-           <mat-panel-title>
-             State of emergency
-           </mat-panel-title>
-         </div>
+        <mat-panel-title>
+          State of emergency
+        </mat-panel-title>
 
-          <mat-panel-description class="mat-card-content">
-            Describes weather a project is approved or not
-          </mat-panel-description>
-        </div>
+        <mat-panel-description>
+          Describes weather a project is approved or not
+        </mat-panel-description>
       </mat-expansion-panel-header>
 
       <ng-container>
@@ -85,15 +81,12 @@
 
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
       <mat-expansion-panel-header>
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-panel-title>
-            Approval State
-          </mat-panel-title>
-
-          <mat-panel-description>
-            Describes weather a project is approved or not
-          </mat-panel-description>
-        </div>
+        <mat-panel-title>
+          Approval State
+        </mat-panel-title>
+        <mat-panel-description>
+          Describes weather a project is approved or not
+        </mat-panel-description>
       </mat-expansion-panel-header>
 
       <ng-container>
@@ -170,15 +163,12 @@
 
     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
       <mat-expansion-panel-header>
-
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-panel-title>
-            Project State
-          </mat-panel-title>
-          <mat-panel-description>
-            Describes the state of the project
-          </mat-panel-description>
-        </div>
+        <mat-panel-title>
+          Project State
+        </mat-panel-title>
+        <mat-panel-description>
+          Describes the state of the project
+        </mat-panel-description>
       </mat-expansion-panel-header>
 
       <ng-container>
