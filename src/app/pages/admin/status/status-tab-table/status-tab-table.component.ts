@@ -34,6 +34,10 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
       tableFilterInput: new FormControl(''),
     }
   );
+  emergencyState: FormGroup = new FormGroup({
+      emergency: new FormControl(''),
+    }
+  );
 
   constructor(public dialog: MatDialog) {
     this.dataSource = new StatusTabTableDataSource();
@@ -97,20 +101,38 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource.data.filter((status, key) => {
       if (status.id === 2) {
-        this.approvalState = status.statusType.slice(0, 5);
-        console.log(status.statusType);
+        this.approvalState = status.statusType.slice(0, 4);
       } else if (status.id === 1) {
-        this.stateOfEmergency = status.statusType.slice(0, 5);
-        console.log(status.statusType);
+        this.stateOfEmergency = status.statusType.slice(0, 4);
       } else if (status.id === 3) {
         this.projectList = status.statusType.slice(0, 4);
-        console.log(status.statusType);
       }
     });
+    this.filterTable();
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  private filterTable() {
+    this.emergencyState.controls.emergency.valueChanges.subscribe(value => {
+      if (value.length > 0) {
+        this.dataSource.data.filter((status, key) => {
+          if (status.id === 1) {
+            this.stateOfEmergency = status.statusType.filter(option => {
+              return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
+            });
+          }
+        });
+      } else {
+        this.dataSource.data.filter((status, key) => {
+          if (status.id === 1) {
+            this.stateOfEmergency = status.statusType.slice(0, 5);
+          }
+        });
+      }
+    });
   }
 }
