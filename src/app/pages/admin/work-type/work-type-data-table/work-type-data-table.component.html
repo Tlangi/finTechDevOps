@@ -1,29 +1,22 @@
 <div class="mat-card">
   <form [formGroup]="dataTableFilter">
-
-    <div fxLayout
-         fxLayout.xs="row"
-         fxLayoutAlign="space-between stretch"
-         fxLayoutGap="10px"
-         fxLayoutGap.xs="0">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
       <div class="mat-button">
-        <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
+        <button mat-raised-button (click)="openDialog('Add', {})"
+        >
           Add new
         </button>
-      </div >
-
-      <div class="example-form" fxFlex="90%">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label> Table Filter</mat-label>
-          <input type="text"
-                 aria-label="Number"
-                 placeholder="Type to Search"
-                 matInput
-                 formControlName="tableFilterInput"
-          >
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
       </div>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label> Table Filter</mat-label>
+        <input type="text"
+               aria-label="Number"
+               placeholder="Type to Search"
+               matInput
+               formControlName="tableFilterInput"
+        >
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
     </div>
 
   </form>
