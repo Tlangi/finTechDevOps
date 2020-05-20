@@ -24,6 +24,7 @@ import {WorkTypeDataTableComponent} from '../../pages/admin/work-type/work-type-
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ScrollingModule,
     MatExpansionModule,
     MatTooltipModule,
+    MatSelectModule,
   ],
   declarations: [
     DashboardComponent,

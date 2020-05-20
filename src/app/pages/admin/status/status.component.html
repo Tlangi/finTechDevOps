@@ -6,6 +6,15 @@
 
     <form [formGroup]="statusTab" class="example-form" *ngIf="action != 'Delete'; else elseTemplate">
 
+      <mat-form-field appearance="outline" class="example-full-width" *ngIf="action == 'Add'">
+        <mat-label> Status </mat-label>
+        <mat-select
+               formControlName="status"
+        >
+          <mat-option *ngFor="let status of statusList" >{{status.status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label> Status Type </mat-label>
         <input type="text"

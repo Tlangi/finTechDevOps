@@ -19,37 +19,48 @@ export class StatusComponent implements OnInit {
   dataSource: StatusTabTableDataSource;
 
   statusTab: FormGroup = new FormGroup({
+    statusId: new FormControl(),
+    status: new FormControl(),
     statusType: new FormControl(''),
     statusTypeDescription: new FormControl('')
   });
+  statusId: number;
+  status: string;
   statusType: string;
   statusTypeDescription: string;
   action: string;
 
+  statusList: any[] = [];
   statusTypeList: any[]  = [];
   filteredStatusType: Observable<any>;
   constructor(private dialogRef: MatDialogRef<StatusComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
-    console.log(data);
+    this.statusId = data.subId;
     this.statusType = data.subStatus;
     this.statusTypeDescription = data.description;
     this.action = data.action;
-    console.log(data.subStatus);
+    console.log(data);
   }
 
   private checkAction() {
     if (this.action === 'Update') {
       this.statusTab.setValue({
+        statusId: this.statusId,
+        status: '',
         statusType: this.statusType,
         statusTypeDescription: this.statusTypeDescription
       });
     } else if (this.action === 'Delete') {
       this.statusTab.setValue({
+        statusId: this.statusId,
+        status: '',
         statusType: this.statusType,
         statusTypeDescription: this.statusTypeDescription
       });
     } else if (this.action === 'Add') {
       this.statusTab.setValue({
+        statusId: '',
+        status: '',
         statusType: '',
         statusTypeDescription: ''
       });

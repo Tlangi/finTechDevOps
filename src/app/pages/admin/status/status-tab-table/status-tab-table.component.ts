@@ -77,7 +77,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   addRowData(rowObject) {
     this.dataSource.data.filter((statusType) => {
-      if (statusType.id === 1) {
+      if (statusType.status === rowObject.status) {
         const index = statusType.statusType.length;
         statusType.statusType.push({
           subId: index + 1,
@@ -85,7 +85,8 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
           description: rowObject.statusTypeDescription
           }
         );
-      } else if (statusType.id === 2) {
+      }
+      /* else if (statusType.id === 2) {
         const index = statusType.statusType.length;
         statusType.statusType.push({
             subId: index + 1,
@@ -101,7 +102,7 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
             description: rowObject.statusTypeDescription
           }
         );
-      }
+      }*/
     });
     this.table.renderRows();
   }
@@ -109,8 +110,9 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value) => {
       value.statusType.filter((statusType) => {
-        if (statusType.subId === rowObject.id) {
+        if (statusType.subStatus === rowObject.statusType && statusType.subId === rowObject.statusId) {
           statusType.subStatus = rowObject.statusType;
+          statusType.description = rowObject.statusTypeDescription;
         }
       });
       return true;
@@ -119,7 +121,11 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
 
   deleteRowData(rowObject) {
     this.dataSource.data = this.dataSource.data.filter((value) => {
-      return value.id !== rowObject.id;
+      value.statusType.filter((statusType) => {
+        if (statusType.subStatus === rowObject.statusType && statusType.subId === rowObject.statusId) {
+          return statusType.subId !== rowObject.id;
+        }
+      });
     });
   }
 
