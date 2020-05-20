@@ -26,7 +26,6 @@ export class EmployeesComponent implements OnInit, OnChanges {
   teams: string;
   status: string;
 
-  fullNameList: any[]  = [];
   teamList: any[]  = [];
   statusList: any[] = [];
   action: string;
@@ -69,16 +68,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
         teams: this.teams,
         status: this.status,
       });
-    } /* else if (this.action === 'Add') {
-      const value: string = this.employees.controls.fullName.value;
-      this.fullNameList = this.dataSource.data;
-      if (value.length >= 2) {
-        console.log(value);
-        console.log(this.fullNameList.filter(option => new RegExp(value, 'gi').test(option.name)));
-      } else {
-        this.fullNameList = this.dataSource.data;
-      }
-    }*/
+    }
   }
   ngOnInit(): void {
     this.checkAction();
@@ -100,7 +90,7 @@ export class EmployeesComponent implements OnInit, OnChanges {
       this.teamList = this.dataSource.data;
       if (value.length >= 2) {
         if (this.action === 'Add') {
-          this.dataSource.data.filter((name, key) => {
+          this.dataSource.data.filter((name) => {
             if (name.name === this.employees.controls.fullName.value) {
               this.nameExist = true;
             }

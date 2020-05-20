@@ -1,11 +1,8 @@
 import {Component, EventEmitter, Inject, OnInit, Optional, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {AdminService} from '../admin.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {map, startWith} from 'rxjs/operators';
-import {PopupDailogComponent} from '../../../helpers/components/popup-dailog/popup-dailog.component';
-import {DialogComponent} from '../../../helpers/components/dialog/dialog.component';
 import {StatusTabTableDataSource} from './status-tab-table/status-tab-table-datasource';
 
 @Component({
@@ -89,7 +86,7 @@ export class StatusComponent implements OnInit {
   private filterStatusType(value: string) {
     this.statusTypeList = this.dataSource.data;
     if (value.length >= 2) {
-      this.dataSource.data.filter((status, key) => {
+      this.dataSource.data.filter((status) => {
         console.log(status.statusType);
       });
     }

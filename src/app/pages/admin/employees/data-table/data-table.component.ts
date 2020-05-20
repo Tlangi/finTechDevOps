@@ -74,7 +74,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   deleteRowData(rowObject) {
-    this.usersDataSource.data = this.usersDataSource.data.filter((value, key) => {
+    this.usersDataSource.data = this.usersDataSource.data.filter((value) => {
       return value.name !== rowObject.fullName;
     });
   }

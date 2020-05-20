@@ -58,7 +58,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
   }
 
   updateRowData(rowObject) {
-    this.dataSource.data =  this.dataSource.data.filter((value, key) => {
+    this.dataSource.data =  this.dataSource.data.filter((value) => {
       if (value.name === rowObject.workType) {
         value.name = rowObject.workType;
         value.description = rowObject.workTypeDescription;
@@ -68,7 +68,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
   }
 
   deleteRowData(rowObject) {
-    this.dataSource.data = this.dataSource.data.filter((value, key) => {
+    this.dataSource.data = this.dataSource.data.filter((value) => {
       return value.name !== rowObject.workType;
     });
   }
