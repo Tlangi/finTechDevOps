@@ -35,6 +35,7 @@ export class StatusComponent implements OnInit {
   filteredStatusType: Observable<any>;
   constructor(private dialogRef: MatDialogRef<StatusComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) data) {
+    this.dataSource = new StatusTabTableDataSource();
     this.statusId = data.subId;
     this.statusType = data.subStatus;
     this.statusTypeDescription = data.description;
@@ -69,6 +70,7 @@ export class StatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkAction();
+    this.statusList = this.dataSource.data;
     this.filteredStatusType = this.statusTab.controls.statusTypeDescription.valueChanges
       .pipe(
         startWith(''),

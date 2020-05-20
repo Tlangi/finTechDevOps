@@ -59,7 +59,7 @@ export class WorkTypeDataTableComponent implements AfterViewInit, OnInit {
 
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value, key) => {
-      if (value.id === rowObject.id) {
+      if (value.name === rowObject.workType) {
         value.name = rowObject.workType;
         value.description = rowObject.workTypeDescription;
       }

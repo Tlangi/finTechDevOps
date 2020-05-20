@@ -59,7 +59,7 @@ export class ApplicationsTableComponent implements AfterViewInit, OnInit {
 
   updateRowData(rowObject) {
     this.dataSource.data =  this.dataSource.data.filter((value, key) => {
-      if (value.id === rowObject.id) {
+      if (value.name === rowObject.applicationName) {
         value.name = rowObject.applicationName;
         value.description = rowObject.applicationDescription;
       }

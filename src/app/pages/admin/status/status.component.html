@@ -11,7 +11,7 @@
         <mat-select
                formControlName="status"
         >
-          <mat-option *ngFor="let status of statusList" >{{status.status}}</mat-option>
+          <mat-option *ngFor="let status of statusList" [value]="status.status">{{status.status}}</mat-option>
         </mat-select>
       </mat-form-field>
 

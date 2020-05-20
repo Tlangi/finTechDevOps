@@ -64,9 +64,10 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   updateRowData(rowObject) {
     this.usersDataSource.data =  this.usersDataSource.data.filter((value, key) => {
-      if (value.id === rowObject.id) {
+      if (value.name === rowObject.fullName) {
         value.name = rowObject.fullName;
         value.team = rowObject.teams;
+        value.status = rowObject.status;
       }
       return true;
     });
