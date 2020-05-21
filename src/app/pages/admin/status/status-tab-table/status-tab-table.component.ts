@@ -115,11 +115,11 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.dataSource.data.filter((status) => {
       if (status.id === 2) {
-        this.approvalState = status.statusType.slice(0, 4);
+        this.approvalState = status.statusType;
       } else if (status.id === 1) {
-        this.stateOfEmergency = status.statusType.slice(0, 4);
+        this.stateOfEmergency = status.statusType;
       } else if (status.id === 3) {
-        this.projectList = status.statusType.slice(0, 4);
+        this.projectList = status.statusType;
       }
     });
     this.filterEmergencyState();
@@ -139,13 +139,13 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
           if (status.id === 1) {
             this.stateOfEmergency = status.statusType.filter(option => {
               return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
-            }).slice(0, 4);
+            });
           }
         });
       } else {
         this.dataSource.data.filter((status) => {
           if (status.id === 1) {
-            this.stateOfEmergency = status.statusType.slice(0, 4);
+            this.stateOfEmergency = status.statusType;
           }
         });
       }
@@ -159,13 +159,13 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
           if (status.id === 2) {
             this.approvalState = status.statusType.filter(option => {
               return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
-            }).slice(0, 4);
+            });
           }
         });
       } else {
         this.dataSource.data.filter((status) => {
           if (status.id === 2) {
-            this.approvalState = status.statusType.slice(0, 4);
+            this.approvalState = status.statusType;
           }
         });
       }
@@ -179,13 +179,13 @@ export class StatusTabTableComponent implements AfterViewInit, OnInit {
           if (status.id === 3) {
             this.projectList = status.statusType.filter(option => {
               return !!JSON.stringify(Object.values(option)).match(new RegExp(value, 'gi'));
-            }).slice(0, 4);
+            });
           }
         });
       } else {
         this.dataSource.data.filter((status) => {
           if (status.id === 3) {
-            this.projectList = status.statusType.slice(0, 4);
+            this.projectList = status.statusType;
           }
         });
       }

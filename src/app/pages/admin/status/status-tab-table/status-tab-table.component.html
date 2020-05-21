@@ -14,7 +14,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <ng-container>
+      <ng-container class="example-container mat-elevation-z8">
 
         <form [formGroup]="emergencyState">
 
@@ -95,11 +95,7 @@
 
         <form [formGroup]="approvalStateForm">
 
-          <div fxLayout
-               fxLayout.xs="row"
-               fxLayoutAlign="space-between stretch"
-               fxLayoutGap="10px"
-               fxLayoutGap.xs="0">
+          <div  fxLayout="row" fxLayoutAlign="space-between center">
             <div class="mat-button">
               <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
                 Add new
@@ -178,11 +174,7 @@
 
         <form [formGroup]="projectState">
 
-          <div fxLayout
-               fxLayout.xs="row"
-               fxLayoutAlign="space-between stretch"
-               fxLayoutGap="10px"
-               fxLayoutGap.xs="0">
+          <div  fxLayout="row" fxLayoutAlign="space-between center">
             <div class="mat-button">
               <button mat-raised-button (click)="openDialog('Add', {})" mat-flat-button>
                 Add new
