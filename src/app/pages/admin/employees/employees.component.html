@@ -65,7 +65,7 @@
 
   <mat-dialog-actions *ngIf="action != 'Delete'" fxLayout="row" fxLayoutAlign="center center">
     <div class="mat-button">
-      <button class="mat-raised-button" (click)="doAction()" [disabled]="nameExist"> {{action}} </button>
+      <button style="background-color: orange" class="mat-raised-button" (click)="doAction()" [disabled]="nameExist"> {{action}} </button>
     </div>
 
     <div class="mat-button">
@@ -75,7 +75,7 @@
 
   <mat-dialog-actions *ngIf="action == 'Delete'" fxLayout="row" fxLayoutAlign="center center">
     <div class="mat-button">
-      <button class="mat-raised-button" (click)="doAction()"> Yes </button>
+      <button style="background-color: orange" class="mat-raised-button" (click)="doAction()"> Yes </button>
     </div>
 
     <div class="mat-button">
