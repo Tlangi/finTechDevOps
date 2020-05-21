@@ -19,4 +19,8 @@ th.mat-sort-header-sorted {
 }
 .mat-icon { cursor: pointer }
 
+.delete {
+  color: red;
+}
+
 
