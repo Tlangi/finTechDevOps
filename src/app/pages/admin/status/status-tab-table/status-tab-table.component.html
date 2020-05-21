@@ -3,8 +3,7 @@
 
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-      <mat-expansion-panel-header matTooltip="Click to view the status types"
-                                  aria-label="Button that displays a tooltip when focused or hovered over">
+      <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
         <mat-panel-title>
           State of emergency
         </mat-panel-title>
@@ -12,6 +11,12 @@
         <mat-panel-description>
           Describes weather a project is approved or not
         </mat-panel-description>
+
+        <span>
+          <mat-icon matTooltip="Click to view the status types"
+                    aria-label="Button that displays a tooltip when focused or hovered over"
+          >info</mat-icon>
+        </span>
       </mat-expansion-panel-header>
 
       <ng-container class="example-container mat-elevation-z8">
@@ -81,14 +86,19 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-      <mat-expansion-panel-header matTooltip="Click to view the status types"
-                                  aria-label="Button that displays a tooltip when focused or hovered over">
+      <mat-expansion-panel-header  fxLayout="row" fxLayoutAlign="space-between center">
         <mat-panel-title>
           Approval State
         </mat-panel-title>
         <mat-panel-description>
           Describes weather a project is approved or not
         </mat-panel-description>
+
+        <span>
+        <mat-icon matTooltip="Click to view the status types"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+        >info</mat-icon>
+      </span>
       </mat-expansion-panel-header>
 
       <ng-container>
@@ -160,14 +170,19 @@
     </mat-expansion-panel>
 
     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-      <mat-expansion-panel-header matTooltip="Click to view the status types"
-                                  aria-label="Button that displays a tooltip when focused or hovered over">
+      <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
         <mat-panel-title>
           Project State
         </mat-panel-title>
         <mat-panel-description>
           Describes the state of the project
         </mat-panel-description>
+
+        <span>
+        <mat-icon matTooltip="Click to view the status types"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+        >info</mat-icon>
+      </span>
       </mat-expansion-panel-header>
 
       <ng-container>
