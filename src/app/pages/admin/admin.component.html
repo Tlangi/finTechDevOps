@@ -7,7 +7,7 @@
        fxLayoutGap.xs="0">
     <div class="mat-card-content" fxFlex="80">
       <mat-tab-group (selectedTabChange)="getTabIndex($event)">
-        <mat-tab label="Employees">
+        <mat-tab label="Teams Management">
           <app-data-table *ngIf="tabIndex == 0" [tabIndexValue]="tabIndex"></app-data-table>
         </mat-tab>
         <mat-tab label="Applications">

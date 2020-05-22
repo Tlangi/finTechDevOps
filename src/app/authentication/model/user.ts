@@ -2,10 +2,12 @@
 export class User {
 
   id: number;
-  username: string;
-  password: string;
   firstName: string;
   lastName: string;
-  roll: string;
+  username: string;
+  email: string;
+  confirmEmail: string;
+  password: string;
+  confirmPassword: string;
   token: string;
 }

@@ -19,6 +19,7 @@ import {MaterialModule} from './helpers/material.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { RegisterUserComponent } from './authentication/register-user/register-user.component';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { MatSortModule } from '@angular/material/sort';
         AlertComponent,
         DialogComponent,
         PopupDailogComponent,
-        LoginPageComponent
+        LoginPageComponent,
+        RegisterUserComponent
     ],
     entryComponents: [
         DialogComponent,

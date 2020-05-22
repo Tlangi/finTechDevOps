@@ -1,14 +1,14 @@
 
 <div class="mat-card">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <div class="mat-button">
+  <div fxLayout="row" fxLayoutAlign="none center">
+    <div class="mat-button" fxLayout="row"   fxLayoutAlign="none center">
       <button style="background-color: orange" mat-raised-button (click)="openDialog('Add', {})"
       >
         Add new
       </button>
     </div>
-    <form [formGroup]="dataTableFilter">
+    <form [formGroup]="dataTableFilter" class="example-form full-width-table">
 
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label> Table Filter</mat-label>

@@ -10,9 +10,7 @@ import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 import {ok} from 'assert';
 
-const users = [
-  { id: 1, firstName: 'Admin', lastName: 'Maswanganye', roll: 'adimn', username: 'test', password: 'test' }
-  ];
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
 export class FakeBackendInterceptor implements HttpInterceptor {
 
@@ -31,6 +29,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       switch (true) {
         case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
+        case url.endsWith('/users/register') && method === 'POST':
+          return getUsers();
         default:
           // pass through any requests not handled above
           return next.handle(request);
@@ -48,9 +48,30 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
+        email: user.email,
         roll: user.roll,
         token: 'fake-jwt-token'
       });
+    }
+
+    function register() {
+      const user = body;
+      if (users.find(x => x.email === user.email)) {
+        return error('Email "' + user.email + '" is already taken');
+      }
+      if (users.find(x => x.username === user.username)) {
+        return error('username "' + user.username + '" is already taken');
+      }
+
+      user.id = users.length ? Math.max(...users.map(value => value.id)) + 1 : 1;
+      users.push(user);
+      localStorage.setItem('users', JSON.stringify(users));
+      return ok();
+    }
+
+    function getUsers() {
+      if (!isLoggedIn()) { return unauthorized(); }
+      return ok(users);
     }
 
     // helper functions
@@ -61,6 +82,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function error(message) {
       return throwError({ error: { message } });
+    }
+
+    function unauthorized() {
+      return throwError({status: 401, error: {message: 'Unauthorised'}});
+    }
+
+    function isLoggedIn() {
+      return headers.get('Authorization') === 'Bearer fake-jwt-token';
     }
   }
 }
