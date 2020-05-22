@@ -13,11 +13,16 @@ import {ContactUsComponent} from './pages/contact-us/contact-us.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {AuthenticationGuardService} from './authentication/services/authentication-guard.service';
 import {LoginPageComponent} from './authentication/login-page/login-page.component';
+import {RegisterUserComponent} from './authentication/register-user/register-user.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'register',
+    component: RegisterUserComponent
   },
   {
     path: '',
