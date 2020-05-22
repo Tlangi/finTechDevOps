@@ -18,32 +18,17 @@
       <mat-nav-list>
 
         <a mat-list-item [routerLink]="'/dashboard'">
-          <span matPrefix>
-            <mat-icon>dashboard</mat-icon>
-          </span>
           Dashboard </a>
         <a mat-list-item [routerLink]="'/teams'">
-           <span matPrefix>
-            <mat-icon>group_work</mat-icon>
-          </span>
-          Teams </a>
+          Task Board </a>
         <a mat-list-item [routerLink]="'/projects'"> Projects </a>
         <a mat-list-item [routerLink]="'/infrastructure'"> Infrastructure </a>
         <a mat-list-item [routerLink]="'/architecture'"> Architecture </a>
         <a mat-list-item [routerLink]="'/admin'">
-           <span matPrefix>
-            <mat-icon>group_add</mat-icon>
-          </span>
           Admin </a>
         <a mat-list-item [routerLink]="'/contactUs'">
-           <span matPrefix>
-            <mat-icon>contact_support</mat-icon>
-          </span>
           Contact Us </a>
         <a mat-list-item (click)="sidenav.toggle()" >
-          <span matPrefix>
-            <mat-icon>close</mat-icon>
-          </span>
           Close</a>
 
       </mat-nav-list>
