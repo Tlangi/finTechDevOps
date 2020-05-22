@@ -42,7 +42,7 @@ import { RegisterUserComponent } from './authentication/register-user/register-u
         DialogComponent,
         PopupDailogComponent,
         LoginPageComponent,
-        RegisterUserComponent
+        RegisterUserComponent,
     ],
     entryComponents: [
         DialogComponent,

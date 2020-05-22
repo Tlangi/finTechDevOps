@@ -1,0 +1,198 @@
+
+<div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
+  <h2> Add new task </h2>
+
+  <form [formGroup]="taskAllocationForm" class="example-form">
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Employee Name </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="employeeName"
+      >
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> System or Project </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="systemOrProject"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Task Name </mat-label>
+      <input type="text"
+             placeholder="Task Name"
+             aria-label="Number"
+             matInput
+             formControlName="taskName"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Task Description </mat-label>
+      <textarea type="text"
+             placeholder="Task Description "
+             aria-label="Number"
+             matInput
+             formControlName="taskDescription"
+      >
+      </textarea>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Type of work </mat-label>
+      <input type="text"
+             placeholder="Type of work"
+             aria-label="Number"
+             matInput
+             formControlName="typeOfWork"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Priority </mat-label>
+      <input type="text"
+             placeholder="Priority"
+             aria-label="Number"
+             matInput
+             formControlName="priority"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Jira </mat-label>
+      <input type="text"
+             placeholder="Jira"
+             aria-label="Number"
+             matInput
+             formControlName="jira"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Story </mat-label>
+      <input type="text"
+             placeholder="Story"
+             aria-label="Number"
+             matInput
+             formControlName="story"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Status </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="status"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Date Created </mat-label>
+      <input type="date"
+             placeholder="Date"
+             aria-label="Number"
+             matInput
+             formControlName="dateCreated"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Task State Date </mat-label>
+      <input type="date"
+             placeholder="Date"
+             aria-label="Number"
+             matInput
+             formControlName="taskStartDate"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Task end date </mat-label>
+      <input type="date"
+             placeholder="Date"
+             aria-label="Number"
+             matInput
+             formControlName="taskEndDate"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Expected release date </mat-label>
+      <input type="date"
+             placeholder="date"
+             aria-label="Number"
+             matInput
+             formControlName="expectedReleaseDate"
+      >
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Comments </mat-label>
+      <input type="text"
+             placeholder="Comments"
+             aria-label="Number"
+             matInput
+             formControlName="comments"
+      >
+      <mat-icon matSuffix>comments</mat-icon>
+    </mat-form-field>
+
+
+    <!-- <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Full Name </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="fullName"
+      >
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Teams </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="teams"
+             [matAutocomplete]="autoTeams">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #autoTeams="matAutocomplete">
+        <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
+          {{teams.team}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label> Status </mat-label>
+      <input type="text"
+             placeholder="Search"
+             aria-label="Number"
+             matInput
+             formControlName="status"
+             [matAutocomplete]="autoStatus">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #autoStatus="matAutocomplete">
+        <mat-option *ngFor="let status of filteredStatus | async"
+                    [value]="status.status">
+          {{status.status}}
+        </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field> -->
+  </form>
+
+</div>
+

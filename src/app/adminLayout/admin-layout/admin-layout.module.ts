@@ -25,6 +25,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-allocation.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import {MatSelectModule} from '@angular/material/select';
     ApplicationsTableComponent,
     StatusTabTableComponent,
     WorkTypeDataTableComponent,
+    TaskAllocationComponent
   ],
   exports: [
     DataTableComponent,
