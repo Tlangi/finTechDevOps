@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
-import {ok} from 'assert';
 
 const users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -50,6 +49,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
+        email: user.email,
         token: 'fake-jwt-token'
       });
     }
@@ -75,6 +75,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     // helper functions
 
+    // tslint:disable-next-line:no-shadowed-variable
     function ok(body?) {
       return of(new HttpResponse({ status: 200, body }));
     }
