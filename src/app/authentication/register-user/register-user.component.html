@@ -10,28 +10,6 @@
       <form [formGroup]="registerForm" class="example-form" (ngSubmit)="onSubmit()">
 
         <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> First Name </mat-label>
-          <input type="text"
-                 placeholder="First Name"
-                 aria-label="Number"
-                 matInput
-                 formControlName="firstName"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> Last Name </mat-label>
-          <input type="text"
-                 placeholder="Last Name"
-                 aria-label="Number"
-                 matInput
-                 formControlName="lastName"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field  appearance="outline" class="example-full-width">
           <mat-label> Username </mat-label>
           <input type="text"
                  placeholder="Username"
@@ -42,49 +20,78 @@
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
-        <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> Email Address </mat-label>
-          <input type="text"
-                 placeholder="Email Address"
-                 aria-label="Number"
-                 matInput
-                 formControlName="email"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+         <mat-form-field  appearance="outline" class="example-full-width">
+           <mat-label> First Name </mat-label>
+           <input type="text"
+                  placeholder="First Name"
+                  aria-label="Number"
+                  matInput
+                  formControlName="firstName"
+           >
+           <mat-icon matSuffix>person</mat-icon>
+         </mat-form-field>
 
-        <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> Confirm Email Address </mat-label>
-          <input type="text"
-                 placeholder="Confirm Email Address"
-                 aria-label="Number"
-                 matInput
-                 formControlName="confirmEmail"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
+         <mat-form-field  appearance="outline" class="example-full-width">
+           <mat-label> Last Name </mat-label>
+           <input type="text"
+                  placeholder="Last Name"
+                  aria-label="Number"
+                  matInput
+                  formControlName="lastName"
+           >
+           <mat-icon matSuffix>person</mat-icon>
+         </mat-form-field>
 
-        <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> Password </mat-label>
-          <input type="password"
-                 placeholder="Password"
-                 aria-label="Number"
-                 matInput
-                 formControlName="password"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
+       </div>
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Email Address </mat-label>
+            <input type="text"
+                   placeholder="Email Address"
+                   aria-label="Number"
+                   matInput
+                   formControlName="email"
+            >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
 
-        <mat-form-field  appearance="outline" class="example-full-width">
-          <mat-label> Confirm Password </mat-label>
-          <input type="password"
-                 placeholder="Password"
-                 aria-label="Number"
-                 matInput
-                 formControlName="confirmPassword"
-          >
-          <mat-icon matSuffix>person</mat-icon>
-        </mat-form-field>
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Confirm Email Address </mat-label>
+            <input type="text"
+                   placeholder="Confirm Email Address"
+                   aria-label="Number"
+                   matInput
+                   formControlName="confirmEmail"
+            >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Password </mat-label>
+            <input type="password"
+                   placeholder="Password"
+                   aria-label="Number"
+                   matInput
+                   formControlName="password"
+            >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Confirm Password </mat-label>
+            <input type="password"
+                   placeholder="Password"
+                   aria-label="Number"
+                   matInput
+                   formControlName="confirmPassword"
+            >
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+        </div>
 
         <div class="mat-button">
           <button mat-button mat-raised-button [disabled]="loading" class="btn btn-primary">

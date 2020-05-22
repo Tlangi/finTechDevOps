@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import validate = WebAssembly.validate;
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {UsersService} from '../services/users.service';
@@ -15,6 +14,8 @@ import {first} from 'rxjs/operators';
 export class RegisterUserComponent implements OnInit {
 
   loading = false;
+  checkEmail: boolean;
+  checkPassword: boolean;
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -36,6 +37,18 @@ export class RegisterUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerForm.controls.confirmEmail.valueChanges
+      .subscribe(value => {
+        if (value === this.registerForm.controls.email.value) {
+          return this.checkEmail = true;
+        }
+      });
+    this.registerForm.controls.confirmPassword.valueChanges
+      .subscribe(value => {
+        if (value === this.registerForm.controls.password.value) {
+          return this.checkPassword = true;
+        }
+      });
   }
 
   get formFields() { return this.registerForm.controls; }
@@ -48,16 +61,6 @@ export class RegisterUserComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(data => {
-        this.alertService.success('Registration Successful', true);
-        this.router.navigate(['/login']);
-      },
-      error => {
-        this.alertService.error(error);
-        this.loading = false;
-      });
   }
 
 
