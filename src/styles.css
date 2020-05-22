@@ -24,4 +24,8 @@ th.mat-sort-header-sorted {
 }
 .otherButtons { color: orange }
 
+a {
+  cursor: pointer;
+}
+
 

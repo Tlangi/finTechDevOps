@@ -20,8 +20,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // wrap in delayed observable to simulate server api call
     return of(null)
       .pipe(mergeMap(handleRoute))
-      .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is
-      // thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+      .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error
+      // is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
       .pipe(delay(500))
       .pipe(dematerialize());
 
@@ -30,6 +30,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
         case url.endsWith('/users/register') && method === 'POST':
+          return register();
+        case url.endsWith('/users') && method === 'GET':
           return getUsers();
         default:
           // pass through any requests not handled above
@@ -48,24 +50,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
-        email: user.email,
-        roll: user.roll,
         token: 'fake-jwt-token'
       });
     }
 
     function register() {
       const user = body;
-      if (users.find(x => x.email === user.email)) {
-        return error('Email "' + user.email + '" is already taken');
-      }
+
       if (users.find(x => x.username === user.username)) {
-        return error('username "' + user.username + '" is already taken');
+        return error('Username "' + user.username + '" is already taken');
       }
 
-      user.id = users.length ? Math.max(...users.map(value => value.id)) + 1 : 1;
+      user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
       users.push(user);
       localStorage.setItem('users', JSON.stringify(users));
+
       return ok();
     }
 
@@ -75,7 +74,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     // helper functions
-    // tslint:disable-next-line:no-shadowed-variable
+
     function ok(body?) {
       return of(new HttpResponse({ status: 200, body }));
     }
@@ -85,7 +84,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function unauthorized() {
-      return throwError({status: 401, error: {message: 'Unauthorised'}});
+      return throwError({ status: 401, error: { message: 'Unauthorised' } });
     }
 
     function isLoggedIn() {
