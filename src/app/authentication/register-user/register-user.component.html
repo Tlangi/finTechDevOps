@@ -6,28 +6,18 @@
        fxLayoutAlign="space-evenly center"
        fxLayoutGap="10px"
        fxLayoutGap.xs="0">
-    <div class="mat-card-content" fxFlex="40">
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="2%">
+     <div class="mat-headline">
+       <mat-card-header>
+         <h2> Register new user </h2>
+       </mat-card-header>
+     </div>
 
-      <mat-card>
-        <mat-card-header>
-          <h2> Register new user </h2>
-        </mat-card-header>
-
+      <div class="mat-body">
         <mat-card-content>
           <form [formGroup]="registerForm" class="example-form" (ngSubmit)="onSubmit()">
 
-            <mat-form-field  appearance="outline" class="example-full-width">
-              <mat-label> Username </mat-label>
-              <input type="text"
-                     placeholder="Username"
-                     aria-label="Number"
-                     matInput
-                     formControlName="username"
-              >
-              <mat-icon matSuffix>person</mat-icon>
-            </mat-form-field>
-
-            <div fxLayout="row" fxLayoutAlign="space-between none">
+            <div fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
               <mat-form-field  appearance="outline" class="example-full-width">
                 <mat-label> First Name </mat-label>
                 <input type="text"
@@ -51,7 +41,7 @@
               </mat-form-field>
 
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-between none">
+            <div fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
               <mat-form-field  appearance="outline" class="example-full-width">
                 <mat-label> Email Address </mat-label>
                 <input type="text"
@@ -75,7 +65,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="space-between none">
+            <div fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
               <mat-form-field  appearance="outline" class="example-full-width">
                 <mat-label> Password </mat-label>
                 <input type="password"
@@ -113,7 +103,7 @@
 
           </form>
         </mat-card-content>
-      </mat-card>
+      </div>
     </div>
 
   </div>
