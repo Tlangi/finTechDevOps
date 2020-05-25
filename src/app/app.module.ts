@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { RegisterUserComponent } from './authentication/register-user/register-u
         MaterialModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatCheckboxModule
     ],
     declarations: [
         AppComponent,
