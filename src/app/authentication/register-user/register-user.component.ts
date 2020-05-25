@@ -14,8 +14,9 @@ import {first} from 'rxjs/operators';
 export class RegisterUserComponent implements OnInit {
 
   loading = false;
-  checkEmail: boolean;
-  checkPassword: boolean;
+  checkEmail = false;
+  checkPassword = false;
+  submitted = false;
 
   registerForm: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -43,13 +44,14 @@ export class RegisterUserComponent implements OnInit {
     this.registerForm.controls.confirmEmail.valueChanges
       .subscribe(value => {
         if (value === this.registerForm.controls.email.value) {
-          return this.checkEmail = true;
+          this.checkEmail = true;
         }
       });
     this.registerForm.controls.confirmPassword.valueChanges
       .subscribe(value => {
         if (value === this.registerForm.controls.password.value) {
-          return this.checkPassword = true;
+          this.checkPassword = true;
+          console.log(this.checkPassword);
         }
       });
   }
@@ -57,6 +59,7 @@ export class RegisterUserComponent implements OnInit {
   get formFields() { return this.registerForm.controls; }
 
   onSubmit() {
+    this.submitted = true;
     this.alertService.clear();
 
     if (this.registerForm.invalid) {

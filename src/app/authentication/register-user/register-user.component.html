@@ -26,7 +26,9 @@
                        matInput
                        formControlName="firstName"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted && formFields.firstName.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.firstName.errors.required">First name is required</mat-error>
+                </mat-error>
               </mat-form-field>
 
               <mat-form-field  appearance="outline" class="example-full-width">
@@ -37,7 +39,9 @@
                        matInput
                        formControlName="lastName"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted && formFields.lastName.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.lastName.errors.required">Last name is required</mat-error>
+                </mat-error>
               </mat-form-field>
 
             </div>
@@ -50,7 +54,10 @@
                        matInput
                        formControlName="email"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted && formFields.email.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.email.errors.required">Email address is required</mat-error>
+                  <mat-error *ngIf="formFields.email.errors.email">Enter a valid email</mat-error>
+                </mat-error>
               </mat-form-field>
 
               <mat-form-field  appearance="outline" class="example-full-width">
@@ -61,7 +68,9 @@
                        matInput
                        formControlName="confirmEmail"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted" class="mat-form-field-invalid">
+                  <mat-error *ngIf="checkEmail">Confirm email</mat-error>
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -74,7 +83,10 @@
                        matInput
                        formControlName="password"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted && formFields.password.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.password.errors.required">Password is required</mat-error>
+                  <mat-error *ngIf="formFields.password.errors.minLength">Password must have at least 6 characters</mat-error>
+                </mat-error>
               </mat-form-field>
 
               <mat-form-field  appearance="outline" class="example-full-width">
@@ -85,7 +97,9 @@
                        matInput
                        formControlName="confirmPassword"
                 >
-                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="submitted" class="mat-form-field-invalid">
+                  <mat-error *ngIf="checkPassword">Confirm password</mat-error>
+                </mat-error>
               </mat-form-field>
 
             </div>
