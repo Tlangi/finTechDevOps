@@ -15,25 +15,27 @@
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> System or Project </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="systemOrProject"
-      >
-    </mat-form-field>
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> System or Project </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               formControlName="systemOrProject"
+        >
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Task Name </mat-label>
-      <input type="text"
-             placeholder="Task Name"
-             aria-label="Number"
-             matInput
-             formControlName="taskName"
-      >
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Task Name </mat-label>
+        <input type="text"
+               placeholder="Task Name"
+               aria-label="Number"
+               matInput
+               formControlName="taskName"
+        >
+      </mat-form-field>
+    </div>
 
     <mat-form-field  appearance="outline" class="example-full-width">
       <mat-label> Task Description </mat-label>
@@ -56,85 +58,91 @@
       >
     </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Priority </mat-label>
-      <input type="text"
-             placeholder="Priority"
-             aria-label="Number"
-             matInput
-             formControlName="priority"
-      >
-    </mat-form-field>
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Priority </mat-label>
+        <input type="text"
+               placeholder="Priority"
+               aria-label="Number"
+               matInput
+               formControlName="priority"
+        >
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Jira </mat-label>
-      <input type="text"
-             placeholder="Jira"
-             aria-label="Number"
-             matInput
-             formControlName="jira"
-      >
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Jira </mat-label>
+        <input type="text"
+               placeholder="Jira"
+               aria-label="Number"
+               matInput
+               formControlName="jira"
+        >
+      </mat-form-field>
+    </div>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Story </mat-label>
-      <input type="text"
-             placeholder="Story"
-             aria-label="Number"
-             matInput
-             formControlName="story"
-      >
-    </mat-form-field>
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Story </mat-label>
+        <input type="text"
+               placeholder="Story"
+               aria-label="Number"
+               matInput
+               formControlName="story"
+        >
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Status </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="status"
-      >
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Status </mat-label>
+        <input type="text"
+               placeholder="Search"
+               aria-label="Number"
+               matInput
+               formControlName="status"
+        >
+      </mat-form-field>
+    </div>
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Date Created </mat-label>
+        <input type="date"
+               placeholder="Date"
+               aria-label="Number"
+               matInput
+               formControlName="dateCreated"
+        >
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Date Created </mat-label>
-      <input type="date"
-             placeholder="Date"
-             aria-label="Number"
-             matInput
-             formControlName="dateCreated"
-      >
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Task State Date </mat-label>
+        <input type="date"
+               placeholder="Date"
+               aria-label="Number"
+               matInput
+               formControlName="taskStartDate"
+        >
+      </mat-form-field>
+    </div>
+    <div  fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Task end date </mat-label>
+        <input type="date"
+               placeholder="Date"
+               aria-label="Number"
+               matInput
+               formControlName="taskEndDate"
+        >
+      </mat-form-field>
 
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Task State Date </mat-label>
-      <input type="date"
-             placeholder="Date"
-             aria-label="Number"
-             matInput
-             formControlName="taskStartDate"
-      >
-    </mat-form-field>
-
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Task end date </mat-label>
-      <input type="date"
-             placeholder="Date"
-             aria-label="Number"
-             matInput
-             formControlName="taskEndDate"
-      >
-    </mat-form-field>
-
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Expected release date </mat-label>
-      <input type="date"
-             placeholder="date"
-             aria-label="Number"
-             matInput
-             formControlName="expectedReleaseDate"
-      >
-    </mat-form-field>
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label> Expected release date </mat-label>
+        <input type="date"
+               placeholder="date"
+               aria-label="Number"
+               matInput
+               formControlName="expectedReleaseDate"
+        >
+      </mat-form-field>
+    </div>
 
     <mat-form-field  appearance="outline" class="example-full-width">
       <mat-label> Comments </mat-label>
@@ -147,7 +155,15 @@
       <mat-icon matSuffix>comments</mat-icon>
     </mat-form-field>
 
+    <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
+      <button style="color: orange" mat-button mat-raised-button>
+        Add Task
+      </button>
 
+      <button mat-button mat-raised-button color="warn">
+        Cancel
+      </button>
+    </div>
     <!-- <mat-form-field  appearance="outline" class="example-full-width">
       <mat-label> Full Name </mat-label>
       <input type="text"

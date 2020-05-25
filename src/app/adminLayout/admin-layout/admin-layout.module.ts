@@ -26,6 +26,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-allocation.component';
+import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.component';
 
 @NgModule({
   imports: [
@@ -58,13 +59,15 @@ import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-al
     ApplicationsTableComponent,
     StatusTabTableComponent,
     WorkTypeDataTableComponent,
-    TaskAllocationComponent
+    TaskAllocationComponent,
+    TasksUpdateComponent,
   ],
   exports: [
     DataTableComponent,
     ApplicationsTableComponent,
     StatusTabTableComponent,
-    WorkTypeDataTableComponent
+    WorkTypeDataTableComponent,
+    TasksUpdateComponent,
   ],
   entryComponents: [
     EmployeesComponent,
