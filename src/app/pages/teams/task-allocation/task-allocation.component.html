@@ -15,7 +15,7 @@
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
 
-    <div  fxLayout="row" fxLayoutAlign="space-between center">
+    <div   fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> System or Project </mat-label>
         <input type="text"
@@ -58,7 +58,7 @@
       >
     </mat-form-field>
 
-    <div  fxLayout="row" fxLayoutAlign="space-between center">
+    <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Priority </mat-label>
         <input type="text"
@@ -80,7 +80,7 @@
       </mat-form-field>
     </div>
 
-    <div  fxLayout="row" fxLayoutAlign="space-between center">
+    <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Story </mat-label>
         <input type="text"
@@ -101,7 +101,17 @@
         >
       </mat-form-field>
     </div>
-    <div  fxLayout="row" fxLayoutAlign="space-between center">
+
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label> Expected release date </mat-label>
+      <input type="date"
+             placeholder="date"
+             aria-label="Number"
+             matInput
+             formControlName="expectedReleaseDate"
+      >
+    </mat-form-field>
+    <!-- <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Date Created </mat-label>
         <input type="date"
@@ -122,7 +132,7 @@
         >
       </mat-form-field>
     </div>
-    <div  fxLayout="row" fxLayoutAlign="space-between center">
+    <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
       <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Task end date </mat-label>
         <input type="date"
@@ -142,9 +152,9 @@
                formControlName="expectedReleaseDate"
         >
       </mat-form-field>
-    </div>
+    </div> -->
 
-    <mat-form-field  appearance="outline" class="example-full-width">
+    <!-- <mat-form-field  appearance="outline" class="example-full-width">
       <mat-label> Comments </mat-label>
       <input type="text"
              placeholder="Comments"
@@ -153,7 +163,8 @@
              formControlName="comments"
       >
       <mat-icon matSuffix>comments</mat-icon>
-    </mat-form-field>
+
+    </mat-form-field> -->
 
     <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
       <button style="color: orange" mat-button mat-raised-button>
@@ -164,50 +175,6 @@
         Cancel
       </button>
     </div>
-    <!-- <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Full Name </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="fullName"
-      >
-      <mat-icon matSuffix>person</mat-icon>
-    </mat-form-field>
-
-    <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Teams </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="teams"
-             [matAutocomplete]="autoTeams">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoTeams="matAutocomplete">
-        <mat-option *ngFor="let teams of filteredTeams | async" [value]="teams.team">
-          {{teams.team}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label> Status </mat-label>
-      <input type="text"
-             placeholder="Search"
-             aria-label="Number"
-             matInput
-             formControlName="status"
-             [matAutocomplete]="autoStatus">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-autocomplete #autoStatus="matAutocomplete">
-        <mat-option *ngFor="let status of filteredStatus | async"
-                    [value]="status.status">
-          {{status.status}}
-        </mat-option>
-
-      </mat-autocomplete>
-    </mat-form-field> -->
   </form>
 
 </div>
