@@ -15,7 +15,6 @@ export class TaskAllocationComponent implements OnInit {
     taskDescription: new FormControl('', [Validators.required]),
     typeOfWork: new FormControl('', [Validators.required]),
     priority: new FormControl('', [Validators.required]),
-    jira: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     dateCreated: new FormControl(''),
     expectedReleaseDate: new FormControl('', [Validators.required]),

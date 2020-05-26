@@ -1,6 +1,5 @@
 
 <div class="mat-card" fxLayout="column" fxLayoutAlign="center center">
-  <h2> Add new task </h2>
 
   <form [formGroup]="taskAllocationForm" class="example-form">
 
@@ -70,28 +69,6 @@
       </mat-form-field>
 
       <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Jira </mat-label>
-        <input type="text"
-               placeholder="Jira"
-               aria-label="Number"
-               matInput
-               formControlName="jira"
-        >
-      </mat-form-field>
-    </div>
-
-    <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Story </mat-label>
-        <input type="text"
-               placeholder="Story"
-               aria-label="Number"
-               matInput
-               formControlName="story"
-        >
-      </mat-form-field>
-
-      <mat-form-field  appearance="outline" class="example-full-width">
         <mat-label> Status </mat-label>
         <input type="text"
                placeholder="Search"
@@ -111,63 +88,9 @@
              formControlName="expectedReleaseDate"
       >
     </mat-form-field>
-    <!-- <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Date Created </mat-label>
-        <input type="date"
-               placeholder="Date"
-               aria-label="Number"
-               matInput
-               formControlName="dateCreated"
-        >
-      </mat-form-field>
-
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Task State Date </mat-label>
-        <input type="date"
-               placeholder="Date"
-               aria-label="Number"
-               matInput
-               formControlName="taskStartDate"
-        >
-      </mat-form-field>
-    </div>
-    <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Task end date </mat-label>
-        <input type="date"
-               placeholder="Date"
-               aria-label="Number"
-               matInput
-               formControlName="taskEndDate"
-        >
-      </mat-form-field>
-
-      <mat-form-field  appearance="outline" class="example-full-width">
-        <mat-label> Expected release date </mat-label>
-        <input type="date"
-               placeholder="date"
-               aria-label="Number"
-               matInput
-               formControlName="expectedReleaseDate"
-        >
-      </mat-form-field>
-    </div> -->
-
-    <!-- <mat-form-field  appearance="outline" class="example-full-width">
-      <mat-label> Comments </mat-label>
-      <input type="text"
-             placeholder="Comments"
-             aria-label="Number"
-             matInput
-             formControlName="comments"
-      >
-      <mat-icon matSuffix>comments</mat-icon>
-
-    </mat-form-field> -->
 
     <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
-      <button style="color: orange" mat-button mat-raised-button>
+      <button style="background-color: orange" mat-button mat-raised-button>
         Add Task
       </button>
 
