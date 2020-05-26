@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {UsersService} from '../services/users.service';
 import {AlertService} from '../../helpers/service/alert.service';
 import {first} from 'rxjs/operators';
+import {MustMatchService} from '../../helpers/service/must-match.service';
 
 @Component({
   selector: 'app-register-user',
@@ -14,46 +15,36 @@ import {first} from 'rxjs/operators';
 export class RegisterUserComponent implements OnInit {
 
   loading = false;
-  checkEmail = false;
-  checkPassword = false;
   submitted = false;
-
-  registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    username: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    confirmEmail: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-  });
-
+  registerForm: FormGroup;
   constructor(private router: Router,
+              private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
               private userService: UsersService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private mustMatch: MustMatchService
+              ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }
   }
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      confirmEmail: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+  }, [{validators: this.mustMatch.mustMatch('email', 'confirmEmail')},
+      {validators: this.mustMatch.mustMatch('password', 'confirmPassword')}
+    ]);
+
     this.registerForm.controls.email.valueChanges.subscribe(email => {
       this.registerForm.controls.username.setValue(email);
     });
-    this.registerForm.controls.confirmEmail.valueChanges
-      .subscribe(value => {
-        if (value === this.registerForm.controls.email.value) {
-          this.checkEmail = true;
-        }
-      });
-    this.registerForm.controls.confirmPassword.valueChanges
-      .subscribe(value => {
-        if (value === this.registerForm.controls.password.value) {
-          this.checkPassword = true;
-          console.log(this.checkPassword);
-        }
-      });
   }
 
   get formFields() { return this.registerForm.controls; }

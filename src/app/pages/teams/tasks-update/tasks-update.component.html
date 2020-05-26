@@ -37,10 +37,10 @@
       <td mat-cell *matCellDef="let row">{{row.priority}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="jira">
+    <!-- <ng-container matColumnDef="jira">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Jira</th>
       <td mat-cell *matCellDef="let row">{{row.jira}}</td>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="story">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Story</th>
@@ -52,29 +52,25 @@
       <td mat-cell *matCellDef="let row">{{row.status}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="dateCreated">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</th>
-      <td mat-cell *matCellDef="let row">{{row.dateCreated}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="taskStartDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>taskStartDate</th>
-      <td mat-cell *matCellDef="let row">{{row.taskStartDate}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="taskEndDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>taskEndDate</th>
-      <td mat-cell *matCellDef="let row">{{row.taskEndDate}}</td>
-    </ng-container>
-
     <ng-container matColumnDef="expectedReleaseDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>expectedReleaseDate</th>
       <td mat-cell *matCellDef="let row">{{row.expectedReleaseDate}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="comments">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>comments</th>
-      <td mat-cell *matCellDef="let row">{{row.comments}}</td>
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Progress</th>
+      <td mat-cell *matCellDef="let row">
+        <a>Start</a>
+        <a>End</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" class="mat-tab-link">
+        <a class="otherButtons"> <mat-icon>edit</mat-icon> </a>
+        <a class="delete"> <mat-icon>delete</mat-icon> </a>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

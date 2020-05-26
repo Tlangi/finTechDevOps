@@ -17,8 +17,7 @@ export class TasksUpdateComponent implements AfterViewInit, OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'employeeName', 'systemOrProject', 'taskName', 'taskDescription',
-    'typeOfWork', 'priority', 'jira', 'story', 'status', 'dateCreated', 'taskStartDate',
-    'taskEndDate', 'expectedReleaseDate', 'comments'
+    'typeOfWork', 'priority', 'story', 'status', 'expectedReleaseDate', 'progress', 'action'
   ];
 
   ngOnInit() {

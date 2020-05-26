@@ -67,8 +67,13 @@
                        matInput
                        formControlName="confirmEmail"
                 >
-                <mat-error *ngIf="submitted" class="mat-form-field-invalid">
-                  <mat-error *ngIf="checkEmail">Confirm email</mat-error>
+                <mat-error *ngIf="submitted && formFields.confirmEmail.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.confirmEmail.errors?.required">
+                    Confirm email is required
+                  </mat-error>
+                  <mat-error *ngIf="formFields.confirmEmail.errors?.mustMatch">
+                    Email must match
+                  </mat-error>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -96,8 +101,13 @@
                        matInput
                        formControlName="confirmPassword"
                 >
-                <mat-error *ngIf="submitted" class="mat-form-field-invalid">
-                  <mat-error *ngIf="checkPassword">Confirm password</mat-error>
+                <mat-error *ngIf="formFields.confirmPassword.errors?.required" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.confirmPassword.errors?.required">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="formFields.confirmPassword.errors?.mustMatch">
+                    Password must match
+                  </mat-error>
                 </mat-error>
               </mat-form-field>
 
