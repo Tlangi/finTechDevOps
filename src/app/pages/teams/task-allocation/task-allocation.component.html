@@ -10,8 +10,13 @@
              aria-label="Number"
              matInput
              formControlName="employeeName"
-      >
-      <mat-icon matSuffix>person</mat-icon>
+             [matAutocomplete]="autoEmployeeName">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #autoEmployeeName="matAutocomplete">
+        <mat-option *ngFor="let name of filterEmployeeNameList | async" [value]="name.employeeName">
+          {{name.employeeName}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <div   fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
@@ -22,7 +27,13 @@
                aria-label="Number"
                matInput
                formControlName="systemOrProject"
-        >
+               [matAutocomplete]="autoSystemOrProject">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoSystemOrProject="matAutocomplete">
+          <mat-option *ngFor="let system of filterSystemOrProjectList | async" [value]="system.systemOrProject">
+            {{system.systemOrProject}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field  appearance="outline" class="example-full-width">
@@ -54,7 +65,13 @@
              aria-label="Number"
              matInput
              formControlName="typeOfWork"
-      >
+             [matAutocomplete]="autoTypeOfWork">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-autocomplete #autoTypeOfWork="matAutocomplete">
+        <mat-option *ngFor="let typeOfWork of filterTypeOfWorkList | async" [value]="typeOfWork.typeOfWork">
+          {{typeOfWork.typeOfWork}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <div  fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
@@ -65,7 +82,13 @@
                aria-label="Number"
                matInput
                formControlName="priority"
-        >
+               [matAutocomplete]="autoPriority">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoPriority="matAutocomplete">
+          <mat-option *ngFor="let priority of filterPriorityList | async" [value]="priority.priority">
+            {{priority.priority}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field  appearance="outline" class="example-full-width">
@@ -75,7 +98,13 @@
                aria-label="Number"
                matInput
                formControlName="status"
-        >
+               [matAutocomplete]="autoStatus">
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-autocomplete #autoStatus="matAutocomplete">
+          <mat-option *ngFor="let status of filteredStatusList | async" [value]="status.status">
+            {{status.status}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
 

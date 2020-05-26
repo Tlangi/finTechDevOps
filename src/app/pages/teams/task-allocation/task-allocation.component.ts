@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {TasksUpdateDataSource} from '../tasks-update/tasks-update-datasource';
 
 @Component({
   selector: 'app-task-allocation',
@@ -7,6 +10,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./task-allocation.component.css']
 })
 export class TaskAllocationComponent implements OnInit {
+
+  dataSource: TasksUpdateDataSource;
 
   taskAllocationForm: FormGroup = new FormGroup({
     employeeName: new FormControl('', [Validators.required]),
@@ -20,9 +25,35 @@ export class TaskAllocationComponent implements OnInit {
     expectedReleaseDate: new FormControl('', [Validators.required]),
   });
 
-  constructor() { }
+  employeeNameList: any[] = [];
+  systemOrProjectList: any[] = [];
+  typeOfWorkList: any[] = [];
+  priorityList: any[] = [];
+  statusList: any[] = [];
+
+  filterEmployeeNameList: Observable<any[]>;
+  filterSystemOrProjectList: Observable<any[]>;
+  filterTypeOfWorkList: Observable<any[]>;
+  filterPriorityList: Observable<any[]>;
+  filteredStatusList: Observable<any[]>;
+
+  constructor() {
+    this.dataSource = new TasksUpdateDataSource();
+  }
 
   ngOnInit(): void {
+    this.filterEmployeeNameList = this.taskAllocationForm.controls.employeeName.valueChanges
+      .pipe(
+        startWith(''),
+        map(employeeName => this.filterEmployeeName(employeeName))
+      );
+  }
+
+  private filterEmployeeName(value: string) {
+    this.employeeNameList = this.dataSource.data;
+    if (value.length > 2) {
+      return this.employeeNameList.filter(option => new RegExp(value, 'gi').test(option.employeeName));
+    }
   }
 
 }
