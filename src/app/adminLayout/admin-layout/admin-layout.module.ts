@@ -27,6 +27,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-allocation.component';
 import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.component';
+import {AllocatedTasksComponent} from '../../pages/teams/allocated-tasks/allocated-tasks.component';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.
     WorkTypeDataTableComponent,
     TaskAllocationComponent,
     TasksUpdateComponent,
+    AllocatedTasksComponent,
   ],
   exports: [
     DataTableComponent,
