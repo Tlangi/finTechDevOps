@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-allocation.component';
 import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.component';
 import {AllocatedTasksComponent} from '../../pages/teams/allocated-tasks/allocated-tasks.component';
+import {SprintComponent} from '../../pages/teams/sprint/sprint.component';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import {AllocatedTasksComponent} from '../../pages/teams/allocated-tasks/allocat
     TaskAllocationComponent,
     TasksUpdateComponent,
     AllocatedTasksComponent,
+    SprintComponent,
   ],
   exports: [
     DataTableComponent,
