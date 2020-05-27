@@ -25,8 +25,8 @@
                        matInput
                        formControlName="firstName"
                 >
-                <mat-error *ngIf="submitted && formFields.firstName.errors" class="mat-form-field-invalid">
-                  <mat-error *ngIf="formFields.firstName.errors.required">First name is required</mat-error>
+                <mat-error *ngIf="submitted && formFields.firstName?.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.firstName.errors?.required">First name is required</mat-error>
                 </mat-error>
               </mat-form-field>
 
@@ -38,8 +38,8 @@
                        matInput
                        formControlName="lastName"
                 >
-                <mat-error *ngIf="submitted && formFields.lastName.errors" class="mat-form-field-invalid">
-                  <mat-error *ngIf="formFields.lastName.errors.required">Last name is required</mat-error>
+                <mat-error *ngIf="submitted && formFields.lastName?.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.lastName.errors?.required">Last name is required</mat-error>
                 </mat-error>
               </mat-form-field>
 

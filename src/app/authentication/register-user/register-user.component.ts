@@ -38,8 +38,7 @@ export class RegisterUserComponent implements OnInit {
       confirmEmail: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-  }, [{validators: this.mustMatch.mustMatch('email', 'confirmEmail')},
-      {validators: this.mustMatch.mustMatch('password', 'confirmPassword')}
+  }, [{validators: this.mustMatch.mustMatch('email', 'confirmEmail')}
     ]);
 
     this.registerForm.controls.email.valueChanges.subscribe(email => {
