@@ -5,6 +5,7 @@ import {AuthenticationService} from '../services/authentication.service';
 import {UsersService} from '../services/users.service';
 import {AlertService} from '../../helpers/service/alert.service';
 import {first} from 'rxjs/operators';
+import {MustMatchService} from '../../helpers/service/must-match.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,8 @@ export class ResetPasswordComponent implements OnInit {
               private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
               private userService: UsersService,
-              private alertService: AlertService
+              private alertService: AlertService,
+              private mustMatch: MustMatchService
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -31,7 +33,7 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPasswordForm = this.formBuilder.group({
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-    });
+    }, {validators: this.mustMatch.mustMatch('password', 'confirmPassword')});
   }
 
   get formFields() { return this.resetPasswordForm.controls; }
