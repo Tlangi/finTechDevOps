@@ -15,11 +15,10 @@ export interface TasksUpdateItem {
   jira: string;
   story: string;
   status: string;
-  dateCreated: string;
-  taskStartDate: string;
-  taskEndDate: string;
-  expectedReleaseDate: string;
-  comments: string;
+  dateCreated: Date;
+  taskStartDate: Date;
+  taskEndDate: Date;
+  expectedReleaseDate: Date;
   id: number;
 }
 
@@ -27,34 +26,54 @@ export interface TasksUpdateItem {
 const EXAMPLE_DATA: TasksUpdateItem[] = [
   {id: 1, employeeName: 'Tlangelani Maswanganye', systemOrProject: 'FMS', taskName: 'FMS Dev', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-  status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+  status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 2, employeeName: 'Thakhani Tharage', systemOrProject: 'Miles', taskName: 'Miles changes', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 3, employeeName: 'Larry Holeni', systemOrProject: 'FDP', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 4, employeeName: 'Ayanda Ngobeni', systemOrProject: 'FMS', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 5, employeeName: 'Tlangelani Maswanganye', systemOrProject: 'Miles', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 6, employeeName: 'Larry Holeni', systemOrProject: 'Phs', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 7, employeeName: 'Ismael Makitla', systemOrProject: 'Komainu', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 8, employeeName: 'Ismael Makitla', systemOrProject: 'Miles', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 9, employeeName: 'Ayanda Ngobeni', systemOrProject: 'FMS', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
   {id: 10, employeeName: 'Thakhani Tharage', systemOrProject: 'Miles', taskName: '', taskDescription: '',
     typeOfWork: '', priority: '', jira: '', story: '',
-    status: '', dateCreated: '', taskStartDate: '', taskEndDate: '', expectedReleaseDate: '', comments: ''},
+    status: '', dateCreated: new Date(2016, 11, 24),
+    taskStartDate: new Date(2016, 11, 24), taskEndDate: new Date(2016, 11, 24),
+    expectedReleaseDate: new Date(2016, 11, 24)},
 ];
 
 /**

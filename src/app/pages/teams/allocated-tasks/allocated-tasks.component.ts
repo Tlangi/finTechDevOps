@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTable} from '@angular/material/table';
 import {TasksUpdateDataSource, TasksUpdateItem} from '../tasks-update/tasks-update-datasource';
 import {AuthenticationService} from '../../../authentication/services/authentication.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-allocated-tasks',
@@ -16,9 +17,13 @@ export class AllocatedTasksComponent implements OnInit, AfterViewInit {
   @ViewChild(MatTable) table: MatTable<TasksUpdateItem>;
   dataSource: TasksUpdateDataSource;
   fullName: string;
+  allocatedTasksFilter: FormGroup = new FormGroup({
+    inputFilter: new FormControl(''),
+    dateFilter: new FormControl('')
+  });
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'employeeName', 'systemOrProject', 'taskName', 'taskDescription',
+  displayedColumns = ['id', 'systemOrProject', 'taskName', 'taskDescription',
     'typeOfWork', 'priority', 'story', 'status', 'expectedReleaseDate', 'progress', 'action'
   ];
 
