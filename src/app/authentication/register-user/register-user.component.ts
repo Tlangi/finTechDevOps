@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {UsersService} from '../services/users.service';
@@ -17,8 +17,7 @@ export class RegisterUserComponent implements OnInit {
   loading = false;
   submitted = false;
   registerForm: FormGroup;
-  emailFields: FormGroup;
-  passwordFields: FormGroup;
+
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
