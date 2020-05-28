@@ -16,11 +16,7 @@ import { DialogComponent } from './helpers/components/dialog/dialog.component';
 import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-dailog.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import {MaterialModule} from './helpers/material.module';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
     imports: [
@@ -32,10 +28,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
         RouterModule,
         AppRoutingModule,
         MaterialModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatCheckboxModule
     ],
     declarations: [
         AppComponent,

@@ -29,6 +29,7 @@ import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-al
 import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.component';
 import {AllocatedTasksComponent} from '../../pages/teams/allocated-tasks/allocated-tasks.component';
 import {SprintComponent} from '../../pages/teams/sprint/sprint.component';
+import {ForgotPasswordComponent} from '../../authentication/forgot-password/forgot-password.component';
 
 @NgModule({
   imports: [
@@ -65,6 +66,7 @@ import {SprintComponent} from '../../pages/teams/sprint/sprint.component';
     TasksUpdateComponent,
     AllocatedTasksComponent,
     SprintComponent,
+    ForgotPasswordComponent,
   ],
   exports: [
     DataTableComponent,

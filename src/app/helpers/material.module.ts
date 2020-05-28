@@ -16,6 +16,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
@@ -54,6 +56,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }
