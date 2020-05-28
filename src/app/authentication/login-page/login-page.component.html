@@ -34,10 +34,10 @@
                        formControlName="password"
                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
               </label>
-              <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <mat-error *ngIf="f.password.errors.required">Password is required <span>
-                    <a routerLink="/forgotPassword" class="btn btn-link">Forgot password</a>
-                </span></mat-error>
+              <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback"
+                         fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
+                <a routerLink="/forgotPassword" class="btn btn-link">Forgot password?</a>
               </mat-error>
             </mat-form-field>
 
