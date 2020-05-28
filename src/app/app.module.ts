@@ -17,6 +17,9 @@ import { PopupDailogComponent } from './helpers/components/popup-dailog/popup-da
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import {MaterialModule} from './helpers/material.module';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
+import { ChangePasswordComponent } from './authentication/change-password/change-password.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
+import {ForgotPasswordComponent} from './authentication/forgot-password/forgot-password.component';
 
 @NgModule({
     imports: [
@@ -37,6 +40,9 @@ import { RegisterUserComponent } from './authentication/register-user/register-u
         PopupDailogComponent,
         LoginPageComponent,
         RegisterUserComponent,
+        ChangePasswordComponent,
+        ResetPasswordComponent,
+      ForgotPasswordComponent,
     ],
     entryComponents: [
         DialogComponent,
@@ -48,6 +54,5 @@ import { RegisterUserComponent } from './authentication/register-user/register-u
         fakeBackendProvider
     ],
     bootstrap: [AppComponent],
-    //  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

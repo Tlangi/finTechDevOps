@@ -15,6 +15,8 @@ import {AuthenticationGuardService} from './authentication/services/authenticati
 import {LoginPageComponent} from './authentication/login-page/login-page.component';
 import {RegisterUserComponent} from './authentication/register-user/register-user.component';
 import {ForgotPasswordComponent} from './authentication/forgot-password/forgot-password.component';
+import {ChangePasswordComponent} from './authentication/change-password/change-password.component';
+import {ResetPasswordComponent} from './authentication/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,14 @@ const routes: Routes = [
   {
     path: 'forgotPassword',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'changePassword',
+    component: ChangePasswordComponent
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent
   },
   {
     path: 'register',
