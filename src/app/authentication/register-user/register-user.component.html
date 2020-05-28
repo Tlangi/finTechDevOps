@@ -53,9 +53,9 @@
                        matInput
                        formControlName="email"
                 >
-                <mat-error *ngIf="submitted && formFields.email.errors" class="mat-form-field-invalid">
-                  <mat-error *ngIf="formFields.email.errors.required">Email address is required</mat-error>
-                  <mat-error *ngIf="formFields.email.errors.email">Enter a valid email</mat-error>
+                <mat-error *ngIf="submitted && formFields.email?.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.email.errors?.required">Email address is required</mat-error>
+                  <mat-error *ngIf="formFields.email.errors?.email">Enter a valid email</mat-error>
                 </mat-error>
               </mat-form-field>
 
@@ -67,7 +67,7 @@
                        matInput
                        formControlName="confirmEmail"
                 >
-                <mat-error *ngIf="submitted && formFields.confirmEmail.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="submitted && formFields.confirmEmail?.errors" class="mat-form-field-invalid">
                   <mat-error *ngIf="formFields.confirmEmail.errors?.required">
                     Confirm email is required
                   </mat-error>
@@ -87,9 +87,9 @@
                        matInput
                        formControlName="password"
                 >
-                <mat-error *ngIf="submitted && formFields.password.errors" class="mat-form-field-invalid">
-                  <mat-error *ngIf="formFields.password.errors.required">Password is required</mat-error>
-                  <mat-error *ngIf="formFields.password.errors.minLength">Password must have at least 6 characters</mat-error>
+                <mat-error *ngIf="submitted && formFields.password?.errors" class="mat-form-field-invalid">
+                  <mat-error *ngIf="formFields.password.errors?.required">Password is required</mat-error>
+                  <mat-error *ngIf="formFields.password.errors?.minLength">Password must have at least 6 characters</mat-error>
                 </mat-error>
               </mat-form-field>
 

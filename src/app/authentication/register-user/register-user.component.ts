@@ -17,6 +17,8 @@ export class RegisterUserComponent implements OnInit {
   loading = false;
   submitted = false;
   registerForm: FormGroup;
+  emailFields: FormGroup;
+  passwordFields: FormGroup;
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
@@ -31,15 +33,15 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
+      firstName: ['', [Validators.required]],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       confirmEmail: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-  }, [{validators: this.mustMatch.mustMatch('email', 'confirmEmail')}
-    ]);
+    }, {validators: [this.mustMatch.mustMatch('email', 'confirmEmail'),
+        this.mustMatch.mustMatch('password', 'confirmPassword')]});
 
     this.registerForm.controls.email.valueChanges.subscribe(email => {
       this.registerForm.controls.username.setValue(email);
