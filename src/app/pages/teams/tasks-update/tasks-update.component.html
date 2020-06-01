@@ -54,7 +54,7 @@
 
     <ng-container matColumnDef="expectedReleaseDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>expectedReleaseDate</th>
-      <td mat-cell *matCellDef="let row">{{row.expectedReleaseDate}}</td>
+      <td mat-cell *matCellDef="let row">{{row.expectedReleaseDate | date: 'dd/MM/yyyy'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="progress">

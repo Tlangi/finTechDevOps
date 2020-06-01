@@ -29,6 +29,7 @@ import {TaskAllocationComponent} from '../../pages/teams/task-allocation/task-al
 import {TasksUpdateComponent} from '../../pages/teams/tasks-update/tasks-update.component';
 import {AllocatedTasksComponent} from '../../pages/teams/allocated-tasks/allocated-tasks.component';
 import {SprintComponent} from '../../pages/teams/sprint/sprint.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import {SprintComponent} from '../../pages/teams/sprint/sprint.component';
     MatExpansionModule,
     MatTooltipModule,
     MatSelectModule,
+    MatDatepickerModule,
   ],
   declarations: [
     DashboardComponent,

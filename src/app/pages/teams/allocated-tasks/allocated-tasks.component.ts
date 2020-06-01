@@ -5,6 +5,7 @@ import {MatTable} from '@angular/material/table';
 import {TasksUpdateDataSource, TasksUpdateItem} from '../tasks-update/tasks-update-datasource';
 import {AuthenticationService} from '../../../authentication/services/authentication.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-allocated-tasks',
@@ -16,10 +17,13 @@ export class AllocatedTasksComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<TasksUpdateItem>;
   dataSource: TasksUpdateDataSource;
+  pipe: DatePipe;
+
   fullName: string;
   allocatedTasksFilter: FormGroup = new FormGroup({
     inputFilter: new FormControl(''),
-    dateFilter: new FormControl('')
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
   });
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -28,13 +32,16 @@ export class AllocatedTasksComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(user => {
-      this.fullName = user.firstName + ' ' + user.lastName;
-    });
+    this.dataSource = new TasksUpdateDataSource();
+    this.pipe = new DatePipe('en');
+    if (this.authenticationService.currentUser) {
+      this.authenticationService.currentUser.subscribe(user => {
+        this.fullName = user.firstName + ' ' + user.lastName;
+      });
+    }
   }
 
   ngOnInit() {
-    this.dataSource = new TasksUpdateDataSource();
   }
 
   ngAfterViewInit() {
