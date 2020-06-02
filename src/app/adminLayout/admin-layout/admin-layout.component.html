@@ -1,25 +1,34 @@
 <mat-toolbar  color="primary"  class="fixed-header">
   <mat-toolbar-row>
-    <span style="width:50px;">Menu</span>
-    <a  mat-button  [routerLink]="'/dashboard'">
-      Dashboard </a>
-    <a  mat-button  [routerLink]="'/teams'">
-      Task Board </a>
-    <a  mat-button [routerLink]="'/projects'"> Projects </a>
-    <a mat-button  [routerLink]="'/infrastructure'"> Infrastructure </a>
-    <a mat-button  [routerLink]="'/architecture'"> Architecture </a>
-    <a mat-button [routerLink]="'/admin'">
-      Admin </a>
-    <a  mat-button  [routerLink]="'/contactUs'">
-      Contact Us </a>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
 
-    <button mat-icon-button (click)="onLogout()">
-      Logout
-    </button>
+      <div class="mat-nav-list">
+        <span style="width:50px;">Menu</span>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <a  mat-button  [routerLink]="'/dashboard'">
+          Dashboard </a>
+        <a  mat-button  [routerLink]="'/teams'">
+          Task Board </a>
+        <a  mat-button [routerLink]="'/projects'"> Projects </a>
+        <a mat-button  [routerLink]="'/infrastructure'"> Infrastructure </a>
+        <a mat-button  [routerLink]="'/architecture'"> Architecture </a>
+        <a mat-button [routerLink]="'/admin'">
+          Admin </a>
+        <a  mat-button  [routerLink]="'/contactUs'">
+          Contact Us </a>
+      </div>
+
+      <button mat-icon-button (click)="onLogout()">
+        Logout
+      </button>
+    </div>
+
   </mat-toolbar-row>
 </mat-toolbar>
 <main>
   <app-alert></app-alert>
-  <router-outlet  style="margin-top: 80px;"></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
