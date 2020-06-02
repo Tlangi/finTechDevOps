@@ -1,72 +1,80 @@
 
-<ng-container>
-  <div fxLayout
-       fxLayout.xs="column"
-       fxLayoutAlign="center center"
-       fxLayoutGap="10px"
-       fxLayoutGap.xs="0">
-    <div class="mat-card-content"fxFlex="30">
-      <mat-card-content>
+<div fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+  <div class="mat-card" fxFlex="45">
+    <div fxLayout="column" fxLayoutAlign="center center" >
 
-        <h2>Login</h2>
+      <div class="mat-card-header" style="background-color: blue; width: 100%">
+        <div fxLayout="column" fxLayoutAlign="center center" >
+          <h2 style="color: white">Login</h2>
+        </div>
+      </div>
 
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
-          <div  fxLayout="column" fxLayoutAlign="space-between center"
-          >
-            <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label>Username</mat-label>
-              <label>
-                <input matInput type="text"
-                       placeholder="Username"
-                       formControlName="username"
-                       [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-              </label>
-              <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                <mat-error *ngIf="f.username.errors.required">Username is required</mat-error>
-              </mat-error>
-            </mat-form-field>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
+        <div fxLayout="column" fxLayoutAlign="space-between none" fxLayoutGap="2%"
+        >
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Username</mat-label>
+            <label>
+              <input matInput type="text"
+                     placeholder="Username"
+                     formControlName="username"
+                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            </label>
+            <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <mat-error *ngIf="f.username.errors.required">Username is required</mat-error>
+            </mat-error>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label>Password</mat-label>
-              <label>
-                <input matInput type="password"
-                       placeholder="Password"
-                       formControlName="password"
-                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-              </label>
-              <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback"
-                         fxLayout="row" fxLayoutAlign="space-between center">
-                <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
-                <a routerLink="/forgotPassword" class="btn btn-link">Forgot password?</a>
-              </mat-error>
-            </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Password</mat-label>
+            <label>
+              <input matInput type="password"
+                     placeholder="Password"
+                     formControlName="password"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            </label>
+            <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback"
+                       fxLayout="row" fxLayoutAlign="space-between center">
+              <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
+            </mat-error>
+          </mat-form-field>
 
-          </div>
-
-          <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="mat-form-field" fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
             <mat-checkbox formControlName="rememberPassword">Remember password</mat-checkbox>
+
+            <a routerLink="/forgotPassword" class="btn btn-link">Forgot password</a>
           </div>
 
-          <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
-            <button style="background-color: orange" mat-button mat-raised-button [disabled]="loading" color="primary">
+          <button style="background-color: orange" mat-button mat-raised-button [disabled]="loading" color="primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"
             ></span>
-              Login
-            </button>
+            Login
+          </button>
 
-            <button mat-button mat-raised-button routerLink="/register" class="btn btn-link">Don't you have an account</button>
+          <div class="mat-form-field">
+            <mat-card-footer><header>Do you have an account?
+              <strong>
+                <a  routerLink="/register" class="btn btn-link">Register account
+                </a>
+              </strong>
+            </header></mat-card-footer>
           </div>
 
-          <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center">
-            <a routerLink="/forgotPassword" class="btn btn-link">Forgot password</a>
-            <a routerLink="/changePassword" class="btn btn-link">Change your password</a>
-            <a routerLink="/resetPassword" class="btn btn-link">Reset your password</a>
-          </div>
-        </form>
+          <br>
 
-      </mat-card-content>
+          <div class="mat-form-field" fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
+            <!-- <a routerLink="/changePassword" class="btn btn-link">Change your password</a> -->
+            <!-- <a routerLink="/resetPassword" class="btn btn-link">Reset your password</a> -->
+          </div>
+
+        </div>
+
+      </form>
     </div>
-
   </div>
 
-</ng-container>
+</div>
