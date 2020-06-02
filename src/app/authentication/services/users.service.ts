@@ -15,6 +15,6 @@ export class UsersService {
   }
 
   register(user: User) {
-    return this.httpClient.post(`${environment.apiUrl}/users/register`, user);
+    return this.httpClient.post(`${environment.baseUrl}/register`, user);
   }
 }

@@ -4,6 +4,7 @@
 
 export const environment = {
   apiUrl: 'http://localhost:4200',
+  baseUrl: 'htttp://burialsociety.deltasolutions.co.za',
   production: false
 };
 
