@@ -1,15 +1,16 @@
 
 <div fxLayout
-     fxLayout.xs="column"
-     fxLayoutAlign="center center"
+     fxLayout.xs="row"
+     fxLayoutAlign="center none"
      fxLayoutGap="10px"
-     fxLayoutGap.xs="0">
+     fxLayoutGap.xs="0"
+>
   <div class="mat-card" fxFlex="45">
     <div fxLayout="column" fxLayoutAlign="center center" >
 
       <div class="mat-card-header" style="background-color: blue; width: 100%">
         <div fxLayout="column" fxLayoutAlign="center center" >
-          <h2 style="color: white">Login</h2>
+          <h2 style="color: white">Login page</h2>
         </div>
       </div>
 
@@ -56,7 +57,7 @@
           </button>
 
           <div class="mat-form-field">
-            <mat-card-footer><header>Do you have an account?
+            <mat-card-footer><header>Do you want an account?
               <strong>
                 <a  routerLink="/register" class="btn btn-link">Register account
                 </a>
@@ -65,16 +66,11 @@
           </div>
 
           <br>
-
-          <div class="mat-form-field" fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
-            <!-- <a routerLink="/changePassword" class="btn btn-link">Change your password</a> -->
-            <!-- <a routerLink="/resetPassword" class="btn btn-link">Reset your password</a> -->
-          </div>
+          <br>
 
         </div>
 
       </form>
     </div>
   </div>
-
 </div>
