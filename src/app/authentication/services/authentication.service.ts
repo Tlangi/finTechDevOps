@@ -24,6 +24,7 @@ export class AuthenticationService {
   public getHeaders(): HttpHeaders {
     return new HttpHeaders({
       Accept: 'application/json',
+      'Content-Type': 'application/json',
     });
   }
 
