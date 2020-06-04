@@ -22,8 +22,8 @@
             <label>
               <input matInput type="text"
                      placeholder="Username"
-                     formControlName="username"
-                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                     formControlName="email"
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
             </label>
             <mat-error *ngIf="submitted && f.username.errors" class="invalid-feedback">
               <mat-error *ngIf="f.username.errors.required">Username is required</mat-error>

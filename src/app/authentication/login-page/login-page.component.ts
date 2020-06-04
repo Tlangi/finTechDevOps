@@ -13,7 +13,7 @@ import {AlertService} from '../../helpers/service/alert.service';
 export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     rememberPassword: new FormControl(''),
   });
@@ -53,7 +53,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {

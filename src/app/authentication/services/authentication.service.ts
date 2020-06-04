@@ -21,16 +21,9 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
-  public getHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    });
-  }
 
-  login(username, password) {
-    return this.httpClient.post<any>(`${environment.baseUrl}/login`, { username, password },
-      {headers: this.getHeaders()})
+  login(email, password) {
+    return this.httpClient.post<any>(`${environment.baseUrl}/login`, { email, password })
       .pipe(map(user => {
         // store user details and jwt toke on session storage and keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
