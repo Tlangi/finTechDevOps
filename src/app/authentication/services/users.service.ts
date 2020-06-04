@@ -11,7 +11,7 @@ export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
-    return this.httpClient.get<User[]>(`${environment.apiUrl}/users`);
+    return this.httpClient.get<User[]>(`${environment.apiUrl}/login`);
   }
 
   register(user: User) {
