@@ -77,6 +77,20 @@
             </mat-form-field>
           </div>
 
+          <mat-form-field  appearance="outline" class="example-full-width">
+            <mat-label> Password </mat-label>
+            <input type="password"
+                   placeholder="Password"
+                   aria-label="Number"
+                   matInput
+                   formControlName="password"
+            >
+            <mat-error *ngIf="submitted && formFields.password?.errors" class="mat-form-field-invalid">
+              <mat-error *ngIf="formFields.password.errors?.required">Password is required</mat-error>
+              <mat-error *ngIf="formFields.password.errors?.minLength">Password must have at least 6 characters</mat-error>
+            </mat-error>
+          </mat-form-field>
+
           <!-- <mat-form-field  appearance="outline" class="example-full-width">
             <mat-label> Password </mat-label>
             <input type="password"

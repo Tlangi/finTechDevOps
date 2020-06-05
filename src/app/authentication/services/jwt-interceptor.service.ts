@@ -18,13 +18,8 @@ export class JwtInterceptorService implements HttpInterceptor {
         setHeaders: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'Content-Length': '',
-          Host: '',
-          'Accept-Encoding': 'gzip, deflate, br',
           Connection: 'keep-alive',
           'Accept-Charset': 'application/json',
-          email: currentUser.email,
-          password: currentUser.password,
           Authorization: `Bearer ${currentUser.token}`
         }
       });

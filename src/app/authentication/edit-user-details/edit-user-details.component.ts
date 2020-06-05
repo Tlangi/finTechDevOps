@@ -32,9 +32,7 @@ export class EditUserDetailsComponent implements OnInit {
       lastName: ['', Validators.required],
       cell: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      // password: ['', [Validators.required, Validators.minLength(6)]],
-      // newPassword: [''],
-      // confirmPassword: ['']
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
     if (this.authenticationService.currentUserValue.id > 0) {
@@ -43,9 +41,7 @@ export class EditUserDetailsComponent implements OnInit {
         lastName: this.authenticationService.currentUserValue.lastname,
         cell: this.authenticationService.currentUserValue.cell,
         email: this.authenticationService.currentUserValue.email,
-        // password: '',
-        // newPassword: '',
-        // confirmPassword: ''
+        password: '',
       });
     }
   }
