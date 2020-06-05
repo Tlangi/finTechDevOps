@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {UsersService} from '../services/users.service';
 import {AlertService} from '../../helpers/service/alert.service';
-import {MustMatchService} from '../../helpers/service/must-match.service';
 import {first} from 'rxjs/operators';
 
 @Component({
@@ -23,27 +22,32 @@ export class EditUserDetailsComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private userService: UsersService,
               private alertService: AlertService,
-              private mustMatch: MustMatchService
   ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    console.log(authenticationService.currentUserValue);
   }
 
   ngOnInit(): void {
     this.editProfileForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', Validators.required],
-      username: ['', Validators.required],
       cell: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-    }, this.mustMatch.mustMatch('password', 'confirmPassword'));
-
-    this.editProfileForm.controls.email.valueChanges.subscribe(email => {
-      this.editProfileForm.controls.username.setValue(email);
+      // password: ['', [Validators.required, Validators.minLength(6)]],
+      // newPassword: [''],
+      // confirmPassword: ['']
     });
+
+    if (this.authenticationService.currentUserValue.id > 0) {
+      this.editProfileForm.setValue({
+        firstName: this.authenticationService.currentUserValue.firstname,
+        lastName: this.authenticationService.currentUserValue.lastname,
+        cell: this.authenticationService.currentUserValue.cell,
+        email: this.authenticationService.currentUserValue.email,
+        // password: '',
+        // newPassword: '',
+        // confirmPassword: ''
+      });
+    }
   }
 
   get formFields() { return this.editProfileForm.controls; }
@@ -57,11 +61,11 @@ export class EditUserDetailsComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.register(this.editProfileForm.value)
+    this.userService.updateProfile(this.editProfileForm.value)
       .pipe(first())
       .subscribe(data => {
           this.alertService.success('Edit Successful', true);
-          this.router.navigate(['/login']);
+          this.router.navigate(['']);
         },
         error => {
           this.alertService.error(error);

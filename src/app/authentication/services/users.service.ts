@@ -14,6 +14,10 @@ export class UsersService {
     return this.httpClient.get<User[]>(`${environment.apiUrl}/login`);
   }
 
+  updateProfile(user: User) {
+    return this.httpClient.put(`${environment.baseUrl}/${user.id}`, user);
+  }
+
   register(user: User) {
     return this.httpClient.post(`${environment.baseUrl}/register`, user);
   }
