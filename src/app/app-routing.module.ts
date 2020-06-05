@@ -17,11 +17,16 @@ import {RegisterUserComponent} from './authentication/register-user/register-use
 import {ForgotPasswordComponent} from './authentication/forgot-password/forgot-password.component';
 import {ChangePasswordComponent} from './authentication/change-password/change-password.component';
 import {ResetPasswordComponent} from './authentication/reset-password/reset-password.component';
+import {EditUserDetailsComponent} from './authentication/edit-user-details/edit-user-details.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'editUserDetails',
+    component: EditUserDetailsComponent
   },
   {
     path: 'forgotPassword',

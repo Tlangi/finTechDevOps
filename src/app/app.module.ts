@@ -20,6 +20,7 @@ import { RegisterUserComponent } from './authentication/register-user/register-u
 import { ChangePasswordComponent } from './authentication/change-password/change-password.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import {ForgotPasswordComponent} from './authentication/forgot-password/forgot-password.component';
+import { EditUserDetailsComponent } from './authentication/edit-user-details/edit-user-details.component';
 
 @NgModule({
     imports: [
@@ -43,6 +44,7 @@ import {ForgotPasswordComponent} from './authentication/forgot-password/forgot-p
         ChangePasswordComponent,
         ResetPasswordComponent,
       ForgotPasswordComponent,
+      EditUserDetailsComponent,
     ],
     entryComponents: [
         DialogComponent,
