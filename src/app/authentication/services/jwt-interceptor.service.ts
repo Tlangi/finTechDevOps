@@ -23,8 +23,9 @@ export class JwtInterceptorService implements HttpInterceptor {
           'Accept-Encoding': 'gzip, deflate, br',
           Connection: 'keep-alive',
           'Accept-Charset': 'application/json',
-          email: currentUser.username,
-          password: currentUser.password
+          email: currentUser.email,
+          password: currentUser.password,
+          Authorization: `Bearer ${currentUser.token}`
         }
       });
     }
