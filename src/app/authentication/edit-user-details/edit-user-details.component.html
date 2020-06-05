@@ -1,1 +1,140 @@
-<p>edit-user-details works!</p>
+
+
+<div fxLayout
+     fxLayout.xs="row"
+     fxLayoutAlign="center none"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0"
+>
+  <div class="mat-card" fxFlex="45">
+    <div fxLayout="column" fxLayoutAlign="center center" >
+
+      <div class="mat-card-header" style="background-color: blue; width: 100%">
+        <div fxLayout="column" fxLayoutAlign="center center" >
+          <h2 style="color: white">Update Profile</h2>
+        </div>
+      </div>
+
+      <form [formGroup]="editProfileForm" class="example-form" (ngSubmit)="onSubmit()">
+        <div fxLayout="column" fxLayoutAlign="space-between none" fxLayoutGap="2%">
+          <div fxLayout="column" fxLayoutAlign="space-between none" fxLayoutGap="2%"
+          >
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> First Name </mat-label>
+              <input type="text"
+                     placeholder="First Name"
+                     aria-label="Number"
+                     matInput
+                     formControlName="firstName"
+              >
+              <mat-error *ngIf="submitted && formFields.firstName?.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.firstName.errors?.required">First name is required</mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> Last Name </mat-label>
+              <input type="text"
+                     placeholder="Last Name"
+                     aria-label="Number"
+                     matInput
+                     formControlName="lastName"
+              >
+              <mat-error *ngIf="submitted && formFields.lastName?.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.lastName.errors?.required">Last name is required</mat-error>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div fxLayout="column" fxLayoutAlign="space-between none" fxLayoutGap="2%">
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> Cellphone </mat-label>
+              <input type="tel"
+                     placeholder="Cell phone"
+                     aria-label="Number"
+                     matInput
+                     formControlName="cell"
+              >
+              <mat-error *ngIf="submitted && formFields.cell?.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.cell.errors?.required">Cellphone is required</mat-error>
+                <mat-error *ngIf="formFields.cell.errors?.minLength">
+                  Cellphone number must be 10. E.g 0712345678</mat-error>
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> Email Address </mat-label>
+              <input type="text"
+                     placeholder="Email Address"
+                     aria-label="Number"
+                     matInput
+                     formControlName="email"
+              >
+              <mat-error *ngIf="submitted && formFields.email?.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.email.errors?.required">Email address is required</mat-error>
+                <mat-error *ngIf="formFields.email.errors?.email">Enter a valid email</mat-error>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between none" fxLayoutGap="2%">
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> Password </mat-label>
+              <input type="password"
+                     placeholder="Password"
+                     aria-label="Number"
+                     matInput
+                     formControlName="password"
+              >
+              <mat-error *ngIf="submitted && formFields.password?.errors" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.password.errors?.required">Password is required</mat-error>
+                <mat-error *ngIf="formFields.password.errors?.minLength">Password must have at least 6 characters</mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label> Confirm Password </mat-label>
+              <input type="password"
+                     placeholder="Password"
+                     aria-label="Number"
+                     matInput
+                     formControlName="confirmPassword"
+              >
+              <mat-error *ngIf="formFields.confirmPassword.errors?.required" class="mat-form-field-invalid">
+                <mat-error *ngIf="formFields.confirmPassword.errors?.required">
+                  Password is required
+                </mat-error>
+                <mat-error *ngIf="formFields.confirmPassword.errors?.mustMatch">
+                  Password must match
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <button style="background-color: orange" mat-button mat-raised-button [disabled]="loading" color="primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"
+            ></span>
+            Update profile
+          </button>
+
+          <div class="mat-form-field">
+            <mat-card-footer><header>Do you want to cancel?
+              <strong>
+                <a  routerLink="/login" class="btn btn-link">Return to login
+                </a>
+              </strong>
+            </header></mat-card-footer>
+          </div>
+          <br>
+          <br>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
